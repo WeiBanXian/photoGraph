@@ -1,0 +1,105 @@
+/**index.wxss**/
+.container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: #000;
+	background-image: url("./../../resource/images/nLogin/bg.jpg");
+	background-size: 100% 100%;
+}
+
+.wrapper {
+	width: 76%;
+	height: 80%;
+	padding: 10% 5% 10% 5%;
+	border-radius: 3px;
+	background-color: rgba(0, 0, 0, 0.3);
+}
+
+.row {
+	width: 100%;
+	height: 36px;
+	margin: 5% auto;
+	display: flex;
+	flex-direction: row;
+	/*justify-content: center;*/
+	align-items: center;
+	border-bottom: 0.5px solid #FFF;
+	/*background-color: #F00;*/
+}
+
+.icon {
+	width: 24px;
+	height: 24px;
+	margin: 0 5px;
+	align-self: center;
+}
+
+.input {
+	height: 36px;
+}
+
+.input-placeholder {
+	font-size: 14px;
+	color: #DDD;
+	font-weight: lighter;
+}
+
+.forgetWrapper {
+	width: 100%;
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+}
+
+.forgetText {
+	display: block;
+	color: #DDD;
+	font-size: 14px;
+}
+
+.button {
+	width: 100%;
+	height: 36px;
+	display: flex;
+	margin: 20% auto;
+	justify-content: center;
+	align-items: center;
+	border: 1px solid #FFF;
+	border-radius: 18px;
+	background-color: rgba(255, 255, 255, 0.4)
+}
+
+.btnText {
+	color: #EEE;
+	font-size: 14px;
+}
+
+.bottomWrapper {
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+}
+
+.leftWrapper {
+	flex: 1;
+	line-height: 14px;
+	text-align: center;
+	border-right: 1px solid #FFF;
+}
+
+.leftText {
+	font-size: 14px;
+	color: #DDD;
+}
+
+.rightWrapper {
+	flex: 1;
+	line-height: 14px;
+	text-align: center;
+}
+
+.rightText {
+	font-size: 14px;
+	color: #DDD;
+}
