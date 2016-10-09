@@ -1,0 +1,94 @@
+.wrapper {
+    width: 100%;
+    height: 100%;
+    background: #E8E8E8;
+}
+
+.emptyWrapper {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.empty {
+    display: block;
+    margin: auto;
+    width: 30%;
+}
+
+.row {
+    display: flex;
+    width: 710rpx;
+    height: 250rpx;
+    position: relative;
+    top: 16rpx;
+    margin: auto;
+    margin-bottom: 16rpx;
+    flex-direction: row;
+}
+
+.leftWrapper {
+    flex: 3;
+    height: 250rpx;
+    background: #FFF;
+}
+
+.titleText {
+    display: block;
+    margin: 15rpx 25rpx;
+    font-size: 30rpx;
+    color: #80CFE0;
+}
+
+.midWrapper {
+    margin: 40rpx 0 -20rpx 25rpx;
+}
+
+.yuanText {
+    font-size: 60rpx;
+    color: #80CFE0;
+}
+
+.moneyText {
+    font-size: 90rpx;
+    color: #80CFE0;
+}
+
+.linePic {
+    width: 100%;
+    height: 1px;
+    z-index: 999;
+}
+
+.dateText {
+    display: block;
+    margin-top: 15rpx;
+    margin-left: 25rpx;
+    font-size: 24rpx;
+    color: #666;
+}
+
+.statusSquarePic {
+    flex: 1;
+    height: 250rpx;
+}
+
+.statusRoundPic {
+    position: absolute;
+    top: 30rpx;
+    bottom: 0;
+    right: 90rpx;
+    width: 180rpx;
+    height: 180rpx;
+}
+
+.statusTextPic {
+    position: absolute;
+    top: 80rpx;
+    bottom: 0;
+    right: 10rpx;
+    width: 160rpx;
+    height: 90rpx;
+}

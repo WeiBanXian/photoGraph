@@ -1,0 +1,88 @@
+.wrapper {
+    width: 100%;
+    height: 100%;
+    background-color: #F9F9F9;
+}
+
+.block {
+    display: block;
+    padding: 20rpx;
+    font-size: 30rpx;
+    color: #333;
+}
+
+.row {
+    display: flex;
+    padding: 25rpx 20rpx;
+    justify-content: space-between;
+    align-items: center;
+    background: #FFF;
+}
+
+.label {
+    font-size: 26rpx;
+    color: #333;
+}
+
+.value {
+    font-size: 26rpx;
+    color: #000;
+}
+
+.headPic {
+    width: 90rpx;
+    height: 90rpx;
+    border-radius: 90rpx;
+}
+
+.input {
+    width: 500rpx;
+    text-align: right;
+}
+
+.sexName {
+    display: flex;
+    width: 240rpx;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.sexWrapper {
+    display: flex;
+    width: 80rpx;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.sexPic {
+    width: 36rpx;
+    height: 36rpx;
+}
+
+.sexText {
+    font-size: 30rpx;
+    color: #000;
+}
+
+.line {
+    width: 730rpx;
+    height: 1px;
+    border-left: 20rpx solid #FFF;
+    background-color: #EEE;
+}
+
+.logoutBtn {
+    display: flex;
+    margin: 50rpx auto;
+    padding: 25rpx;
+    justify-content: center;
+    align-items: center;
+    border-top: 1px solid #EEE;
+    border-bottom: 1px solid #EEE;
+    background: #FFF;
+}
+
+.logoutText {
+    font-size: 30rpx;
+    color: #F00;
+}

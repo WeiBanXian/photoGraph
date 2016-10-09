@@ -6,14 +6,23 @@
     "navigationBarTextStyle":"#FFF"
   },
   "pages": [
-      "pages/index/index",
+      "pages/order/order",
+      "pages/mine/myCoupon/myCoupon",
+      "pages/mine/feedback/feedback",
       "pages/home/home",
-      "pages/order/order"
+      "pages/mine/aboutUs/aboutUs",
+      "pages/mine/mine",
+      "pages/mine/myInfo/myInfo",
+      "pages/home/book/location/location",
+      "pages/home/book/location/city/city",
+      "pages/home/book/book",
+      "pages/home/enjoy/streetEnjoy",
+      "pages/gallery/gallery"
   ],
   "tabBar": {
-      "color": "#dddddd",
-      "selectedColor": "#3cc51f",
-      "borderStyle": "black",
+      "color": "#AAA",
+      "selectedColor": "#000",
+      "borderStyle": "white",
       "backgroundColor": "#ffffff",
       "list": [{
       "pagePath": "pages/home/home",
@@ -24,6 +33,16 @@
       "pagePath": "pages/order/order",
       "iconPath": "./../../resource/images/tabBar/fb_tab_orders@3x.png",
       "selectedIconPath": "./../../resource/images/tabBar/fb_tab_orders_h@3x.png",
+      "text": "订单"
+      }, {
+      "pagePath": "pages/gallery/gallery",
+      "iconPath": "./../../resource/images/tabBar/fb_tab_photos@3x.png",
+      "selectedIconPath": "./../../resource/images/tabBar/fb_tab_photos_h@3x.png",
+      "text": "照片库"
+      }, {
+      "pagePath": "pages/mine/mine",
+      "iconPath": "./../../resource/images/tabBar/fb_tab_user@3x.png",
+      "selectedIconPath": "./../../resource/images/tabBar/fb_tab_user_h@3x.png",
       "text": "订单"
       }]
   }

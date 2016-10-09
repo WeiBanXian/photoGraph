@@ -1,0 +1,77 @@
+<view class="wrapper">
+	<view class="leftMesWrapper">
+        <image class="leftHeadPic" src="./../../../resource/images/user/logo@2x.png" />
+        <view class="leftMesContainer">
+            <text class="leftMesContent">aasdfjalasdfsadfasdfasdfasdfasdfasdfasdfasdfasdfadssdfkjasdflkdsj</text>
+            <view class="leftArrow"></view>
+        </view>
+    </view>
+	<view class="rightMesWrapper">
+        <view class="rightMesContainer">
+            <text class="rightMesContent">aasdfjalsdfkjasdflkdsj</text>
+            <view class="rightArrow"></view>
+        </view>
+        <image class="rightHeadPic" src="./../../../resource/images/user/logo@2x.png" />
+    </view>
+	<view class="leftMesWrapper">
+        <image class="leftHeadPic" src="./../../../resource/images/user/logo@2x.png" />
+        <view class="leftMesContainer">
+            <text class="leftMesContent">aasdfjalasdfsadfasdfasdfasdfasdfasdfasdfasdfasdfadssdfkjasdflkdsj</text>
+            <view class="leftArrow"></view>
+        </view>
+    </view>
+	<view class="rightMesWrapper">
+        <view class="rightMesContainer">
+            <text class="rightMesContent">aasdfjalsdfkjasdflkdsj</text>
+            <view class="rightArrow"></view>
+        </view>
+        <image class="rightHeadPic" src="./../../../resource/images/user/logo@2x.png" />
+    </view>
+	<view class="leftMesWrapper">
+        <image class="leftHeadPic" src="./../../../resource/images/user/logo@2x.png" />
+        <view class="leftMesContainer">
+            <text class="leftMesContent">aasdfjalasdfsadfasdfasdfasdfasdfasdfasdfasdfasdfadssdfkjasdflkdsj</text>
+            <view class="leftArrow"></view>
+        </view>
+    </view>
+	<view class="rightMesWrapper">
+        <view class="rightMesContainer">
+            <text class="rightMesContent">aasdfjalsdfkjasdflkdsj</text>
+            <view class="rightArrow"></view>
+        </view>
+        <image class="rightHeadPic" src="./../../../resource/images/user/logo@2x.png" />
+    </view>
+	<view class="leftMesWrapper">
+        <image class="leftHeadPic" src="./../../../resource/images/user/logo@2x.png" />
+        <view class="leftMesContainer">
+            <text class="leftMesContent">aasdfjalasdfsadfasdfasdfasdfasdfasdfasdfasdfasdfadssdfkjasdflkdsj</text>
+            <view class="leftArrow"></view>
+        </view>
+    </view>
+	<view class="rightMesWrapper">
+        <view class="rightMesContainer">
+            <text class="rightMesContent">aasdfjalsdfkjasdflkdsj</text>
+            <view class="rightArrow"></view>
+        </view>
+        <image class="rightHeadPic" src="./../../../resource/images/user/logo@2x.png" />
+    </view>
+	<view class="leftMesWrapper">
+        <image class="leftHeadPic" src="./../../../resource/images/user/logo@2x.png" />
+        <view class="leftMesContainer">
+            <text class="leftMesContent">aasdfjalasdfsadfasdfasdfasdfasdfasdfasdfasdfasdfadssdfkjasdflkdsj</text>
+            <view class="leftArrow"></view>
+        </view>
+    </view>
+	<view class="rightMesWrapper">
+        <view class="rightMesContainer">
+            <text class="rightMesContent">aasdfjalsdfkjasdflkdsj</text>
+            <view class="rightArrow"></view>
+        </view>
+        <image class="rightHeadPic" src="./../../../resource/images/user/logo@2x.png" />
+    </view>
+    <!--<view class="blank"></view>-->
+	<view class="inputWrapper">
+		<input type="text" class="input" placeholder="请输入你的意见"/>
+		<text class="sendBtn">发送</text>
+	</view>
+</view>

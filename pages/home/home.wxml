@@ -1,3 +1,39 @@
 <view>
-    <text>home</text>
+    <view class="bannerWrapper">
+        <swiper class="swiperWrapper" autoplay="true" duration="1000" bindchange="listenSwiper">
+            <swiper-item>
+                <image class="bannerPic" data-name="街拍写真" data-type="street" bindtap="handlerGoToStreet" src="./../../resource/images/home/banner0@3x.jpg"></image>
+            </swiper-item>
+            <swiper-item>
+                <image class="bannerPic" data-name="亲子瞬间" data-type="baby" bindtap="handlerGoToStreet" src="./../../resource/images/home/banner1@3x.jpg"></image>
+            </swiper-item>
+            <swiper-item>
+                <image class="bannerPic" data-name="聚会" data-type="party" bindtap="handlerGoToStreet" src="./../../resource/images/home/banner2@3x.jpg"></image>
+            </swiper-item>    
+        </swiper>
+    </view>
+    <view class="contentWrapper">
+        <view class="midWrapper">
+            <view class="titleWrapper">
+                <text class="zhTitle">拍摄专题</text>
+                <text class="enTitle">PHOTOGRAPHY PROJECT</text>
+            </view>
+            <view class="priceWrapper">
+                <text class="priceNum">199</text>
+                <text class="priceUnit">元/每小时</text>
+            </view>
+        </view>
+        <view class="picsWrapper">
+            <view class="picsRow">
+                <image class="pic" src="./../../resource/images/home/street@3x.png"></image>
+                <image class="pic" src="./../../resource/images/home/baby@3x.png"></image>
+                <image class="pic" src="./../../resource/images/home/party@3x.png"></image>
+            </view>
+            <view class="picsRow">
+                <image class="pic" src="./../../resource/images/home/food@3x.png"></image>
+                <image class="pic" src="./../../resource/images/home/meeting@3x.png"></image>
+                <image class="pic" src="./../../resource/images/home/pet@3x.png"></image>
+            </view>
+        </view>
+    </view>
 </view>

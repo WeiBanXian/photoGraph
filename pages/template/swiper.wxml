@@ -1,0 +1,3 @@
+<template name="swiper">
+  <text>{{text}}</text>
+</template>

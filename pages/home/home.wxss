@@ -1,0 +1,75 @@
+.bannerWrapper {
+    width: 750rpx;
+    height: 610rpx;
+    /*background: #AAA;*/
+}
+
+.swiperWrapper {
+    width: 750rpx;
+    height: 610rpx;
+}
+
+.bannerPic {
+    width: 750rpx;
+    height: 610rpx;
+    border: 0;
+}
+
+.contentWrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.midWrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 20rpx 30rpx;
+    background-color: #FFF;
+}
+
+.titleWrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.zhTitle {
+    font-size: 36rpx;
+}
+
+.enTitle {
+    font-size: 28rpx;
+    margin-top: 20rpx;
+}
+
+.priceWrapper {
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.priceNum {
+    font-size: 60rpx;
+    color: #55CBBD;
+}
+
+.priceUnit {
+    font-size: 24rpx;
+    color: #55CBBD;
+}
+
+.picsWrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.picsRow {
+    display: flex;
+    margin-bottom: 5rpx;
+    justify-content: space-between;
+    background: #FFF;
+}
+
+.pic {
+    width: 245rpx;
+    height: 245rpx;
+}

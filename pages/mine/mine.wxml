@@ -1,0 +1,38 @@
+<view class="wrapper">
+    <view class="headWrapper">
+        <image class="headPic" mode="aspectFit" src="./../../resource/images/user/logo@2x.png"></image>
+        <text class="headText">Bonon</text>
+    </view>
+    <view class="rows" bindtap="handleGoToMyInfo">
+        <view class="rowLeft">
+            <image class="rowPic" mode="aspectFit" src="./../../resource/images/user/user_profile@3x.png"></image>
+            <text class="rowText">我的资料</text>
+        </view>
+        <image class="rowArrow" src="./../../resource/images/user/arrow@3x.png"></image>
+    </view>
+    <view class="line"></view>
+    <view class="rows" bindtap="handleGoToMyCoupon">
+        <view class="rowLeft">
+            <image class="rowPic" mode="aspectFit" src="./../../resource/images/user/user_coupon@3x.png"></image>
+            <text class="rowText">我的优惠券</text>
+        </view>
+        <image class="rowArrow" src="./../../resource/images/user/arrow@3x.png"></image>
+    </view>
+    <view class="line"></view>
+    <view class="rows">
+        <view class="rowLeft" bindtap="handleGoToFeedback">
+            <image class="rowPic" mode="aspectFit" src="./../../resource/images/user/user_feedback@3x.png"></image>
+            <text class="rowText">意见反馈</text>
+        </view>
+        <image class="rowArrow" src="./../../resource/images/user/arrow@3x.png"></image>
+    </view>
+    <view class="line"></view>
+    <view class="rows" bindtap="handleGoToAboutUs">
+        <view class="rowLeft">
+            <image class="rowPic" mode="aspectFit" src="./../../resource/images/user/user_about@3x.png"></image>
+            <text class="rowText">关于我们</text>
+        </view>
+        <image class="rowArrow" src="./../../resource/images/user/arrow@3x.png"></image>
+    </view>
+    <view class="line"></view>
+</view>

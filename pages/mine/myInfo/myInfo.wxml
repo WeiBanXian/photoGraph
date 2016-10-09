@@ -1,0 +1,40 @@
+<view class="wrapper">
+	<view class="block">
+		<text class="blockText">基本信息</text>
+	</view>
+	<view class="row">
+		<text class="label">头像</text>
+		<image class="headPic" bindtap="handleChoseImage" src="./../../../resource/images/user/logo@2x.png" />
+	</view>
+    <view class="line"></view>
+	<view class="row">
+		<text class="label">昵称</text>
+		<input class="input" value="Bonon" />
+	</view>
+    <view class="line"></view>
+	<view class="row">
+		<text class="label">性别</text>
+		<view class="sexName">
+            <view class="sexWrapper">
+			    <image class="malePic sexPic" src="./../../../resource/images/common/unselectRadio@3x.png"/>
+			    <text class="maleText sexText">男</text>
+            </view>
+            <view class="sexWrapper">
+                <image class="femalePic sexPic" src="./../../../resource/images/common/selectedRadio@3x.png"/>
+                <text class="femaleText sexText">女</text>
+            </view>
+		</view>
+	</view>
+    <view class="line"></view>
+	<view class="block">
+		<text class="blockText">账号信息</text>
+	</view>
+	<view class="row">
+		<text class="label">手机</text>
+		<text class="value" style="color: #999;">18583269107</text>
+	</view>
+    <view class="line"></view>
+	<view class="logoutBtn">
+		<text class="logoutText">退出登录</text>
+	</view>
+</view>

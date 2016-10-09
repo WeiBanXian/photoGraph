@@ -1,0 +1,14 @@
+<view class="wrapper">
+	<view class="headWrapper">
+		<text class="currentCity" bindtap="handleGoToCity">成都</text>
+		<image class="arrow" bindtap="handleGoToCity" src="./../../../../resource/images/home/downArrow@3x.png" />
+		<input class="input" type="input" placeholder="搜索..." />
+		<text class="cancel" bindtap="handleCancelSearch">取消</text>
+	</view>
+	<scroll-view scroll-y="true" class="locationList">
+		<view class="row" wx:for="{{[1,2,3,4,5,6,7,8,9,10,11]}}"  bindtap="handleChoseLocation">
+			<text class="name">天府大道天府四街</text>
+			<text class="address">武侯区天府大道中端800号</text>
+		</view>
+	</scroll-view>
+</view>

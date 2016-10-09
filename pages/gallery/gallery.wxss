@@ -1,0 +1,28 @@
+.container {
+    display: flex;
+    position: absolute;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 100%;
+    background: #FFF;
+}
+
+.swiperContainer {
+    width: 100px;
+    height: 100px;
+    /*overflow: hidden;*/
+    background-color: #F00;
+}
+
+.swiperContent {
+    position: relative;
+    width: 500px;
+    height: 100px;
+    transform: translateX(-100);
+    transition-duration: 0;
+}
+
+.pic {
+    width: 100px;
+    height: 100px;
+}

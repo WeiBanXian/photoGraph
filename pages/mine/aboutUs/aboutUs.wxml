@@ -1,0 +1,9 @@
+<view class="wrapper">
+	<image class="logo" src="./../../../resource/images/user/logo@2x.png" />
+	<text class="name">想拍就拍</text>
+	<text class="version">Version 1.1.9</text>
+	<view class="botWrapper">
+		<text class="protocol" bindtap="handleGoToProtocol">{{'<<'}}想拍就拍用户协议声明{{'>>'}}</text>
+		<text class="email">官方邮箱：photograph@camera360.com</text>
+	</view>
+</view>

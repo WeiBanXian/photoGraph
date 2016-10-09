@@ -1,0 +1,66 @@
+<view class="wrapper">
+	<view class="banner">
+		<image class="backBtn" bindtap="handleBack" src="./../../../resource/images/order/createOrderBack_normal@3x.png"/>
+        <swiper class="swiperWrapper" autoplay="true" duration="1000">
+            <swiper-item>
+                <image class="bannerPic" bindtap="handlerGoToStreet" src="./../../../resource/images/home/banner0@3x.jpg"></image>
+            </swiper-item>
+            <swiper-item>
+                <image class="bannerPic" bindtap="handlerGoToStreet" src="./../../../resource/images/home/banner1@3x.jpg"></image>
+            </swiper-item>
+            <swiper-item>
+                <image class="bannerPic" bindtap="handlerGoToStreet" src="./../../../resource/images/home/banner2@3x.jpg"></image>
+            </swiper-item>    
+        </swiper>
+	</view>
+    <view class="block">
+	    <text class="blockText">地址和时间</text>
+    </view>
+	<view class="row" bindtap="handleGoToLocation">
+		<text class="label">拍摄地址</text>
+		<text class="value">成都没事国际学校</text>
+		<image class="arrow" src="./../../../resource/images/user/arrow@3x.png"/>
+	</view>
+	<view class="row">
+		<text class="label">详细地址</text>
+		<text class="value">街道/小区/楼层</text>
+	</view>
+	<view class="row">
+		<text class="label">拍摄时间</text>
+        <picker mode="selector" range="{{array}}" value="{{index}}" bindchange="listenerPickerSelected">
+            <text class="value">{{array[index]}}</text>
+        </picker>
+	</view>
+	<view class="row">
+		<text class="label">拍摄时长</text>
+        <picker mode="selector" range="{{array}}" value="{{index}}" bindchange="listenerPickerSelected">
+            <text class="value">{{array[index]}}</text>
+        </picker>
+	</view>
+    <view class="block">
+	    <text class="blockText">预约人信息</text>
+    </view>
+	<view class="row">
+		<text class="label">姓名</text>
+		<text class="value">Bonon</text>
+	</view>
+	<view class="row">
+		<text class="label">性别</text>
+        <view class="female radioWrapper">
+            <image class="femalePic radioPic" src="./../../../resource/images/common/unselectRadio@3x.png" />
+		    <text class="radioText">女</text>
+        </view>
+        <view class="male radioWrapper">
+            <image class="malePic radioPic" src="./../../../resource/images/common/selectedRadio@3x.png" />
+		    <text class="radioText">男</text>
+        </view>
+	</view>
+	<view class="row">
+		<text class="label">手机号</text>
+		<text class="value">18583269107</text>
+	</view>
+    <view class="blank"></view>
+	<view class="submitBtn">
+		<text class="submitText">立即预约</text>
+	</view>
+</view>

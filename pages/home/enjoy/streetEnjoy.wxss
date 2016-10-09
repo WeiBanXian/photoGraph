@@ -1,0 +1,120 @@
+.wrapper {
+    justify-content: center;
+    align-items: center;
+}
+
+.backBtn {
+    position: fixed;
+    top: 30rpx;
+    left: 30rpx;
+    width: 60rpx;
+    height: 60rpx;
+}
+
+.headPic {
+    width: 100%;
+}
+
+.textWrapper {
+    padding-top: 30rpx;
+    text-align: center;
+}
+
+.nameText {
+    display: block;
+    margin-bottom: 15rpx;
+    font-size: 36rpx;
+    color: #000;
+}
+
+.enjoyText {
+    padding: 7rpx 20rpx;
+    font-size: 24rpx;
+    line-height: 36rpx;
+    color: #999;
+    border: 1px solid #999;
+    border-radius: 3rpx;
+}
+
+.line {
+    display: block;
+    width: 100%;
+    height: 1px;
+    margin-top: 45rpx;
+}
+
+.midWrapper {
+    display: flex;
+    width: 100%;
+    height: 100rpx;
+    padding: 40rpx 0;
+}
+
+.column {
+    flex: 1;
+    margin-top: 10rpx;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.columnPic {
+    display: block;
+    width: 40rpx;
+    height: 40rpx;
+    margin: auto;
+}
+
+.columnText {
+    font-size: 16rpx;
+    color: #999;
+}
+
+.pic {
+    width: 100%;
+    margin-top: 20rpx;
+}
+
+.orderTipsWrapper {
+    display: flex;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 80rpx;
+    justify-content:  space-between;
+    align-items: center;
+    background: rgba(255,255,255,0.95)
+}
+
+.priceWrapper {
+    justify-content: flex-start;
+    align-items: center;
+    margin-left: 25rpx;
+}
+
+.priceNum {
+    font-size: 40rpx;
+    color: #55CBBD;
+}
+
+.priceUnit {
+    font-size: 10rpx;
+    color: #55CBBD;
+}
+
+.orderTipsBtn {
+    margin-right: 25rpx;
+    padding: 3rpx 45rpx;
+    justify-content: center;
+    align-items: center;
+    border-radius: 3rpx;
+    background: #42CDC2;
+}
+
+.orderTipsText {
+    font-size: 24rpx;
+    line-height: 40rpx;
+    color: #FFF;
+}

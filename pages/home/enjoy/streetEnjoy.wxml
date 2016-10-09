@@ -1,0 +1,40 @@
+<view class="wrapper">
+	<image class="backBtn" bindtap="handleBack" src="./../../../resource/images/photoSample/photoSample_back@3x.png"/>
+	<image class="headPic" src="./../../../resource/images/home/banner0@3x.jpg"/>
+	<view class="textWrapper">
+	    <text class="nameText">街拍写真</text>
+        <view class="enjoy">
+		    <text class="enjoyText">客片欣赏</text>
+        </view>
+        <image class="line" src="./../../../resource/images/photoSample/photoSample_Line@3x.png" />
+	</view>
+	<view class="midWrapper">
+		<view class="column">
+			<image class="columnPic" src="./../../../resource/images/photoSample/photoSample_location@3x.png"></image>
+			<text class="columnText">成都地区拍摄</text>
+		</view>
+		<view class="column">
+			<image class="columnPic" src="./../../../resource/images/photoSample/photoSample_photo@3x.png"></image>
+			<text class="columnText">照片27张</text>
+		</view>
+		<view class="column">
+			<image class="columnPic" src="./../../../resource/images/photoSample/photoSample_photographer@3x.png"></image>
+			<text class="columnText">专业摄影1名</text>
+		</view>
+	</view>
+	<view class="picsWrapper">
+		<image class="pic" src="./../../../resource/images/home/banner0@3x.jpg"></image>
+		<image class="pic" src="./../../../resource/images/home/banner0@3x.jpg"></image>
+		<image class="pic" src="./../../../resource/images/home/banner0@3x.jpg"></image>
+		<image class="pic" src="./../../../resource/images/home/banner0@3x.jpg"></image>
+	</view>
+	<view class="orderTipsWrapper">
+        <view class="priceWrapper">
+            <text class="priceNum">199</text>
+            <text class="priceUnit">元/每小时</text>
+        </view>
+		<view class="orderTipsBtn" bindtap="handleGoToBook">
+			<text class="orderTipsText">立即预约</text>
+		</view>
+	</view>
+</view>
