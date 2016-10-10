@@ -5,6 +5,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background: #F9F9F9;
 }
 
 .logo {

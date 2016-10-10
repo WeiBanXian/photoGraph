@@ -1,11 +1,12 @@
 {
   "window":{
     "backgroundTextStyle":"#FFF",
-    "navigationBarBackgroundColor": "#AAA",
+    "navigationBarBackgroundColor": "#FFF",
     "navigationBarTitleText": "想拍就拍",
     "navigationBarTextStyle":"#FFF"
   },
   "pages": [
+      "pages/gallery/gallery",
       "pages/order/order",
       "pages/mine/myCoupon/myCoupon",
       "pages/mine/feedback/feedback",
@@ -16,8 +17,7 @@
       "pages/home/book/location/location",
       "pages/home/book/location/city/city",
       "pages/home/book/book",
-      "pages/home/enjoy/streetEnjoy",
-      "pages/gallery/gallery"
+      "pages/home/enjoy/streetEnjoy"
   ],
   "tabBar": {
       "color": "#AAA",
@@ -43,7 +43,7 @@
       "pagePath": "pages/mine/mine",
       "iconPath": "./../../resource/images/tabBar/fb_tab_user@3x.png",
       "selectedIconPath": "./../../resource/images/tabBar/fb_tab_user_h@3x.png",
-      "text": "订单"
+      "text": "我的"
       }]
   }
 }

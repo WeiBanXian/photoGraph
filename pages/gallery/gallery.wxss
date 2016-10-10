@@ -1,28 +1,52 @@
-.container {
-    display: flex;
-    position: absolute;
-    justify-content: flex-start;
-    align-items: flex-start;
+.wrapper {
     width: 100%;
+}
+
+.block {
     background: #FFF;
 }
 
-.swiperContainer {
-    width: 100px;
-    height: 100px;
-    /*overflow: hidden;*/
-    background-color: #F00;
+.topWrapper {
+    padding: 30rpx 0 0 25rpx;
 }
 
-.swiperContent {
-    position: relative;
-    width: 500px;
-    height: 100px;
-    transform: translateX(-100);
-    transition-duration: 0;
+.dayText {
+    font-size: 40rpx;
+    color: #333;
+}
+
+.dateText {
+    margin-left: 15rpx;
+    font-size: 32rpx;
+    color: #333;
+}
+
+.midWrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20rpx;
+}
+
+.addressText {
+    font-size: 26rpx;
+    color: #999;
+}
+
+.photoText {
+    font-size: 26rpx;
+    color: #999;
+}
+
+.picsWrapper {
+    display: flex;
+    flex-wrap: wrap;
+    background: #F9F9F9;
 }
 
 .pic {
-    width: 100px;
-    height: 100px;
+    display: block;
+    margin: 2rpx;
+    width: 246rpx;
+    height: 246rpx;
 }

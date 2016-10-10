@@ -19,8 +19,8 @@
         <image class="rowArrow" src="./../../resource/images/user/arrow@3x.png"></image>
     </view>
     <view class="line"></view>
-    <view class="rows">
-        <view class="rowLeft" bindtap="handleGoToFeedback">
+    <view class="rows" bindtap="handleGoToFeedback">
+        <view class="rowLeft">
             <image class="rowPic" mode="aspectFit" src="./../../resource/images/user/user_feedback@3x.png"></image>
             <text class="rowText">意见反馈</text>
         </view>
