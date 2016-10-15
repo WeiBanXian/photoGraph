@@ -1,46 +1,46 @@
-<view class="wrapper">
-    <view class="block">
-        <view class="topWrapper">
-            <text class="dayText">05</text>
-            <text class="dateText">2016.09</text>
+<view class="wrapperGallery">
+    <view class="blockGallery">
+        <view class="topWrapperGallery">
+            <text class="dayTextGallery">05</text>
+            <text class="dateTextGallery">2016.09</text>
         </view>
-        <view class="midWrapper">
-            <text class="addressText">黄桃园KTV</text>
-            <text class="photoText">20张照片</text>
+        <view class="midWrapperGallery">
+            <text class="addressTextGallery">黄桃园KTV</text>
+            <text class="photoTextGallery">20张照片</text>
         </view>
-        <view class="picsWrapper">
-            <image class="pic" mode="aspectFill" src="./../../../resource/images/home/banner0@3x.jpg" />
-            <image class="pic" mode="aspectFill" src="./../../../resource/images/home/banner0@3x.jpg" />
-            <image class="pic" mode="aspectFill" src="./../../../resource/images/home/banner0@3x.jpg" />
-            <image class="pic" mode="aspectFill" src="./../../../resource/images/home/banner0@3x.jpg" />
-            <image class="pic" mode="aspectFill" src="./../../../resource/images/home/banner0@3x.jpg" />
-            <image class="pic" mode="aspectFill" src="./../../../resource/images/home/banner0@3x.jpg" />
-            <image class="pic" mode="aspectFill" src="./../../../resource/images/home/banner0@3x.jpg" />
-            <image class="pic" mode="aspectFill" src="./../../../resource/images/home/banner0@3x.jpg" />
-            <image class="pic" mode="aspectFill" src="./../../../resource/images/home/banner0@3x.jpg" />
-            <image class="pic" mode="aspectFill" src="./../../../resource/images/home/banner0@3x.jpg" />
+        <view class="picsWrapperGallery">
+            <image class="picGallery" mode="aspectFill" src="./../../../resource/images/home/banner0@3x.jpg" />
+            <image class="picGallery" mode="aspectFill" src="./../../../resource/images/home/banner0@3x.jpg" />
+            <image class="picGallery" mode="aspectFill" src="./../../../resource/images/home/banner0@3x.jpg" />
+            <image class="picGallery" mode="aspectFill" src="./../../../resource/images/home/banner0@3x.jpg" />
+            <image class="picGallery" mode="aspectFill" src="./../../../resource/images/home/banner0@3x.jpg" />
+            <image class="picGallery" mode="aspectFill" src="./../../../resource/images/home/banner0@3x.jpg" />
+            <image class="picGallery" mode="aspectFill" src="./../../../resource/images/home/banner0@3x.jpg" />
+            <image class="picGallery" mode="aspectFill" src="./../../../resource/images/home/banner0@3x.jpg" />
+            <image class="picGallery" mode="aspectFill" src="./../../../resource/images/home/banner0@3x.jpg" />
+            <image class="picGallery" mode="aspectFill" src="./../../../resource/images/home/banner0@3x.jpg" />
         </view>
     </view>
-    <view class="block">
-        <view class="topWrapper">
-            <text class="dayText">05</text>
-            <text class="dateText">2016.09</text>
+    <view class="blockGallery">
+        <view class="topWrapperGallery">
+            <text class="dayTextGallery">05</text>
+            <text class="dateTextGallery">2016.09</text>
         </view>
-        <view class="midWrapper">
-            <text class="addressText">黄桃园KTV</text>
-            <text class="photoText">20张照片</text>
+        <view class="midWrapperGallery">
+            <text class="addressTextGallery">黄桃园KTV</text>
+            <text class="photoTextGallery">20张照片</text>
         </view>
-        <view class="picsWrapper">
-            <image class="pic" mode="aspectFill" src="./../../../resource/images/home/banner0@3x.jpg" />
-            <image class="pic" mode="aspectFill" src="./../../../resource/images/home/banner0@3x.jpg" />
-            <image class="pic" mode="aspectFill" src="./../../../resource/images/home/banner0@3x.jpg" />
-            <image class="pic" mode="aspectFill" src="./../../../resource/images/home/banner0@3x.jpg" />
-            <image class="pic" mode="aspectFill" src="./../../../resource/images/home/banner0@3x.jpg" />
-            <image class="pic" mode="aspectFill" src="./../../../resource/images/home/banner0@3x.jpg" />
-            <image class="pic" mode="aspectFill" src="./../../../resource/images/home/banner0@3x.jpg" />
-            <image class="pic" mode="aspectFill" src="./../../../resource/images/home/banner0@3x.jpg" />
-            <image class="pic" mode="aspectFill" src="./../../../resource/images/home/banner0@3x.jpg" />
-            <image class="pic" mode="aspectFill" src="./../../../resource/images/home/banner0@3x.jpg" />
+        <view class="picsWrapperGallery">
+            <image class="picGallery" mode="aspectFill" src="./../../../resource/images/home/banner0@3x.jpg" />
+            <image class="picGallery" mode="aspectFill" src="./../../../resource/images/home/banner0@3x.jpg" />
+            <image class="picGallery" mode="aspectFill" src="./../../../resource/images/home/banner0@3x.jpg" />
+            <image class="picGallery" mode="aspectFill" src="./../../../resource/images/home/banner0@3x.jpg" />
+            <image class="picGallery" mode="aspectFill" src="./../../../resource/images/home/banner0@3x.jpg" />
+            <image class="picGallery" mode="aspectFill" src="./../../../resource/images/home/banner0@3x.jpg" />
+            <image class="picGallery" mode="aspectFill" src="./../../../resource/images/home/banner0@3x.jpg" />
+            <image class="picGallery" mode="aspectFill" src="./../../../resource/images/home/banner0@3x.jpg" />
+            <image class="picGallery" mode="aspectFill" src="./../../../resource/images/home/banner0@3x.jpg" />
+            <image class="picGallery" mode="aspectFill" src="./../../../resource/images/home/banner0@3x.jpg" />
         </view>
     </view>
 </view>

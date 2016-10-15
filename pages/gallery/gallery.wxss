@@ -1,50 +1,50 @@
-.wrapper {
+.wrapperGallery {
     width: 100%;
 }
 
-.block {
+.blockGallery {
     background: #FFF;
 }
 
-.topWrapper {
+.topWrapperGallery {
     padding: 30rpx 0 0 25rpx;
 }
 
-.dayText {
+.dayTextGallery {
     font-size: 40rpx;
     color: #333;
 }
 
-.dateText {
+.dateTextGallery {
     margin-left: 15rpx;
     font-size: 32rpx;
     color: #333;
 }
 
-.midWrapper {
+.midWrapperGallery {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 20rpx;
 }
 
-.addressText {
+.addressTextGallery {
     font-size: 26rpx;
     color: #999;
 }
 
-.photoText {
+.photoTextGallery {
     font-size: 26rpx;
     color: #999;
 }
 
-.picsWrapper {
+.picsWrapperGallery {
     display: flex;
     flex-wrap: wrap;
     background: #F9F9F9;
 }
 
-.pic {
+.picGallery {
     display: block;
     margin: 2rpx;
     width: 246rpx;

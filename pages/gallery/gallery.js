@@ -9,38 +9,20 @@ Page({
     // Do something when page ready.
   },
   onShow:function(){
-
-    this._translateX = -0;
-
-    var animation = wx.createAnimation({
-      duration:1000,
-      timingFunction:"ease",
-    })
-
-    this.setData({
-      animationData: animation.translate(this._translateX).step({duration: 0}).export()
-    })
-
-    this.timer = setInterval(function(){
-      
-      if (this._translateX == -200) {
-          this._translateX = 0;
-          // this.setData({
-          //   animationData: animation.translate(this._translateX).step({duration: 0}).export()
-          // })
-      } 
-      else {
-        this._translateX += -100;
-      }
-      
-      this.setData({
-        animationData:wx.createAnimation({
-                        duration: 500,
-                      }).translate(this._translateX).step().export()
-      })
-
-    }.bind(this), 3000)
-
+    wx.previewImage({
+        current: './../../../resource/images/home/banner0@3x.jpg', // 当前显示图片的http链接
+        urls: ['./../../../resource/images/home/banner0@3x.jpg', './../../../resource/images/home/banner0@3x.jpg', './../../../resource/images/home/banner0@3x.jpg'], // 需要预览的图片http链接列表
+        success: function(res) {
+        	console.log(res);
+	      },
+　　　　  //也根本不走
+　　　　 fail: function() {
+　　　　    console.log('fail')
+　　　　 },
+	      complete:function(){
+	        console.log('complete')
+	      }
+    });
   },
   onHide: function() {
     clearInterval(this.timer);

@@ -1,6 +1,0 @@
-<template name="msgItem">
-  <view>
-    <text>hahahahhahaha</text>
-    <text> Time:dfasdfasdf</text>
-  </view>
-</template>

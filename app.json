@@ -3,21 +3,23 @@
     "backgroundTextStyle":"#FFF",
     "navigationBarBackgroundColor": "#FFF",
     "navigationBarTitleText": "想拍就拍",
-    "navigationBarTextStyle":"#FFF"
+    "navigationBarTextStyle":"#000"
   },
   "pages": [
-      "pages/gallery/gallery",
-      "pages/order/order",
-      "pages/mine/myCoupon/myCoupon",
-      "pages/mine/feedback/feedback",
-      "pages/home/home",
-      "pages/mine/aboutUs/aboutUs",
-      "pages/mine/mine",
-      "pages/mine/myInfo/myInfo",
-      "pages/home/book/location/location",
-      "pages/home/book/location/city/city",
-      "pages/home/book/book",
-      "pages/home/enjoy/streetEnjoy"
+    "pages/index/index",
+    "pages/total/total",
+    "pages/home/home",
+    "pages/gallery/gallery",
+    "pages/order/order",
+    "pages/mine/myCoupon/myCoupon",
+    "pages/mine/feedback/feedback",
+    "pages/mine/aboutUs/aboutUs",
+    "pages/mine/mine",
+    "pages/mine/myInfo/myInfo",
+    "pages/home/book/location/location",
+    "pages/home/book/location/city/city",
+    "pages/home/book/book",
+    "pages/home/enjoy/streetEnjoy"
   ],
   "tabBar": {
       "color": "#AAA",

@@ -1,0 +1,58 @@
+<scroll-view
+    scroll-y="true"
+    class="totalWrapper"
+    bindscrolltoupper="upper"
+    bindscrolltolower="lower"
+    bindscroll="scroll"
+    scroll-top="{{scrollTop}}">
+    <view class="tabBar">
+        <view class="tabItem" style="background: #FFF;" wx:if="{{page == 1}}" data-page="1" bindtap="handleChangeTab">
+            <image class="tabIcon" data-page="1" bindtap="handleChangeTab" src="./../../resource/images/tabBar/fb_tab_home_h@3x.png"/>
+            <text class="tabText" data-page="1" bindtap="handleChangeTab">首页</text>
+        </view>
+        <view class="tabItem" wx:else data-page="1" bindtap="handleChangeTab">
+            <image class="tabIcon" data-page="1" bindtap="handleChangeTab" src="./../../resource/images/tabBar/fb_tab_home@3x.png"/>
+            <text class="tabText unselectedTabText" data-page="1" bindtap="handleChangeTab">首页</text>
+        </view>
+
+        <view class="tabItem" style="background: #FFF;" wx:if="{{page == 2}}" data-page="2" bindtap="handleChangeTab">
+            <image class="tabIcon" data-page="2" bindtap="handleChangeTab" src="./../../resource/images/tabBar/fb_tab_orders_h@3x.png"/>
+            <text class="tabText" data-page="2" bindtap="handleChangeTab">订单</text>
+        </view>
+        <view class="tabItem" wx:else data-page="2" bindtap="handleChangeTab">
+            <image class="tabIcon" data-page="2" bindtap="handleChangeTab" src="./../../resource/images/tabBar/fb_tab_orders@3x.png"/>
+            <text class="tabText unselectedTabText" data-page="2" bindtap="handleChangeTab">订单</text>
+        </view>
+
+        <view class="tabItem" style="background: #FFF;" wx:if="{{page == 3}}" data-page="3" bindtap="handleChangeTab">
+            <image class="tabIcon" data-page="3" bindtap="handleChangeTab" src="./../../resource/images/tabBar/fb_tab_photos_h@3x.png"/>
+            <text class="tabText" data-page="3" bindtap="handleChangeTab">照片库</text>
+        </view>
+        <view class="tabItem" wx:else data-page="3" bindtap="handleChangeTab">
+            <image class="tabIcon" data-page="3" bindtap="handleChangeTab" src="./../../resource/images/tabBar/fb_tab_photos@3x.png"/>
+            <text class="tabText unselectedTabText" data-page="3" bindtap="handleChangeTab">照片库</text>
+        </view>
+
+        <view class="tabItem" style="background: #FFF;" wx:if="{{page == 4}}" data-page="4" bindtap="handleChangeTab">
+            <image class="tabIcon" data-page="4" bindtap="handleChangeTab" src="./../../resource/images/tabBar/fb_tab_user_h@3x.png"/>
+            <text class="tabText" data-page="4" bindtap="handleChangeTab">我的</text>
+        </view>
+        <view class="tabItem" wx:else data-page="4" bindtap="handleChangeTab">
+            <image class="tabIcon" data-page="4" bindtap="handleChangeTab" src="./../../resource/images/tabBar/fb_tab_user@3x.png"/>
+            <text class="tabText unselectedTabText" data-page="4" bindtap="handleChangeTab">我的</text>
+        </view>
+    </view>
+    <view wx:if="{{page == 1}}">
+        <include src="../../pages/home/home.wxml" />
+    </view>
+    <view wx:elif="{{page == 2}}">
+        <include src="../../pages/order/order.wxml" />
+    </view>
+    <view wx:elif="{{page == 3}}">
+        <include src="../../pages/gallery/gallery.wxml" />
+    </view>
+    <view wx:elif="{{page == 4}}">
+        <include src="../../pages/mine/mine.wxml" />
+    </view>
+    <view class="tabBarBlank"></view>
+</scroll-view>

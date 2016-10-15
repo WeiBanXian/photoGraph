@@ -1,18 +1,30 @@
-<!--index.wxml-->
-<view class="container">
-    <view class="wrapper">
+<view class="wrapper">
+    <include src="../../pages/template/loading/loading.wxml" />
+    <view class="content">
         <view class="row">
             <image class="icon" src="./../../resource/images/nLogin/newPhone@3x.png"></image>
-            <input class="input" placeholder-class="input-placeholder" placeholder-style="color: #DDD;" type="number" placeholder="手机号码" />
+            <input
+                class="input"
+                placeholder-class="input-placeholder"
+                placeholder-style="color: #DDD;"
+                type="number"
+                placeholder="手机号码"
+                bindinput="handleChangePhoneNum" />
         </view>
         <view class="row">
             <image class="icon" src="./../../resource/images/nLogin/newLock@3x.png"></image>
-            <input class="input" placeholder-class="input-placeholder" placeholder-style="color: #DDD;" password="true" placeholder="密码" />
+            <input
+                class="input"
+                placeholder-class="input-placeholder"
+                placeholder-style="color: #DDD;"
+                password="true"
+                placeholder="密码"
+                bindinput="handleChangePassword" />
         </view>
         <view class="forgetWrapper">
             <text class="forgetText">忘记密码？</text>
         </view>
-        <view class="button" bindtap="bindViewTap">
+        <view class="button" bindtap="handleLogin">
             <text class="btnText">登录</text>
         </view>
         <view class="bottomWrapper">

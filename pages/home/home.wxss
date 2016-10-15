@@ -70,6 +70,21 @@
 }
 
 .pic {
+    position: relative;
     width: 245rpx;
     height: 245rpx;
+}
+
+.picText {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    text-align: center;
+    vertical-align: baseline;
+    color: #FFF;
+    font-size: 30rpx;
+    line-height: 245rpx;
 }
