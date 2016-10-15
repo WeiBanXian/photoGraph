@@ -1,5 +1,4 @@
 <view class="wrapper">
-    <include src="../../pages/template/loading/loading.wxml" />
     <view class="content">
         <view class="row">
             <image class="icon" src="./../../resource/images/nLogin/newPhone@3x.png"></image>
@@ -36,4 +35,7 @@
             </view>
         </view>
     </view>
+    <loading hidden="{{hidden}}" bindchange="loadingChange">
+        加载中...
+    </loading>
 </view>

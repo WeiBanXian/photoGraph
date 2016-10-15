@@ -1,3 +1,3 @@
 <view class="loadingWrapper">
-    <image class="loadingPic"  src="./../../../resource/images/common/loading@3x.png"/>
+    <image class="loadingPic" animation="{{animationData}}" src="./../../../resource/images/common/loading@3x.png"/>
 </view>

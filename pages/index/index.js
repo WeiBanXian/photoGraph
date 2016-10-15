@@ -1,19 +1,19 @@
-var root = require("../../server/common.js").root;
-var loginRoot = require("../../server/common.js").loginRoot;
+var {root, loginRoot} = require("../../server/common.js");
+var UserServer = require("../../server/user.js");
 var md5 = require('../../utils/md5.js')
 
 //获取应用实例
 var app = getApp()
 Page({
   data: {
-    motto: 'Hello World',
-    userInfo: {},
+    hidden: true,
     userName: '18583269107',
     password: '584520'
   },
   //事件处理函数
   handleLogin: function() {
-    
+    this.loadingTap();
+    var _self = this;
     var data = {};
     var isMobile = true;
 
@@ -32,6 +32,7 @@ Page({
           "Content-Type":"application/json"
       },
       success: function(res) {
+        _self.loadingChange();
         console.log(res);
         var data = res.data;
         if (res.data.status == "200") {
@@ -61,5 +62,22 @@ Page({
     this.setData({
       password: event.detail.value
     })
+  },
+  loadingChange: function () {
+    this.setData({
+      hidden: true
+    })
+  },
+  loadingTap: function () {
+    this.setData({
+      hidden: false
+    })
+
+    // var that = this
+    // setTimeout(function () {
+    //   that.setData({
+    //     hidden: true
+    //   })
+    // }, 1500)
   }
 })
