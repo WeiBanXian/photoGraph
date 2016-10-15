@@ -1,20 +1,64 @@
+var {root, loginRoot} = require("../../server/common.js");
+var UserServer = require("../../server/user.js").User;
+
 Page({
   data:{
     // text:"这是一个页面"
     page: 1,
-    scrollTop: 100
+    scrollTop: 100,
+    homeData: {
+      bannerData: {},
+      priceData: {}
+    },
+    mineData: {}
   },
   onLoad:function(options){
     // 页面初始化 options为页面跳转所带来的参数
+    console.log(options);
+    var mineData = UserServer.getPublicParams();
+    this.setData({
+      mineData: mineData
+    })
   },
   onReady:function(){
     // 页面渲染完成
-    // setInterval(function () {
-    //   var _page = this.data.page + 1;
-    //   this.setData({
-    //     page: _page
-    //   })
-    // }.bind(this),3000)
+    var _self = this;
+    // 首页
+    wx.request({
+      url: root + '/photoBazaar/index/slide',
+      data: {},
+      medthod: 'post',
+      header:{
+          "Content-Type":"application/json"
+      },
+      success: function(res) {
+          var data = _self.data.homeData;
+          data.bannerData = res.data;
+          if (res.data.status == "200") {
+            _self.setData({
+              homeData: data
+            })
+          }
+      }
+    })
+    wx.request({
+      url: root + '/photoBazaar/index/conf',
+      data: {},
+      medthod: 'post',
+      header:{
+          "Content-Type":"application/json"
+      },
+      success: function(res) {
+          var data = _self.data.homeData;
+          data.priceData = res.data;
+          if (res.data.status == "200") {
+            _self.setData({
+              homeData: data
+            })
+          }
+      }
+    })
+    
   },
   onShow:function(){
     // 页面显示
@@ -26,22 +70,22 @@ Page({
     // 页面关闭
   },
   upper: function () {
-    console.log("upperupperupperupperupper")
+    
   },
   lower: function () {
-    console.log("lowerlowerlowerlowerlower")
+    
   },
   handleChangeTab: function (event) {
       this.setData({
         page: event.target.dataset.page
       })
   },
-  handlerGoToStreet:function (e) {
+  handlerGoToBannerNext:function (e) {
       wx.navigateTo({url: "../home/enjoy/streetEnjoy"})
-    // console.log(e.target.dataset)
+    console.log(e.target.dataset)
   },
   handleGoToMyInfo: function () {
-      wx.navigateTo({url: "myInfo/myInfo"});
+      wx.navigateTo({url: "../mine/myInfo/myInfo"});
   },
   handleGoToMyCoupon: function () {
       wx.navigateTo({url: "myCoupon/myCoupon"});

@@ -1,15 +1,9 @@
 <view>
     <view class="bannerWrapper">
-        <swiper class="swiperWrapper" autoplay="true" duration="1000" bindchange="listenSwiper">
-            <swiper-item>
-                <image class="bannerPic" data-name="街拍写真" data-type="street" bindtap="handlerGoToStreet" src="./../../resource/images/home/banner0@3x.jpg"></image>
+        <swiper class="swiperWrapper" autoplay="true" duration="1000">
+            <swiper-item wx:for="{{homeData.bannerData.data}}"  wx:for-index="idx" wx:for-item="item">
+                <image class="bannerPic" data-item="{{item.sceneType}}" bindtap="handlerGoToBannerNext" src="{{item.picUrl}}"></image>
             </swiper-item>
-            <swiper-item>
-                <image class="bannerPic" data-name="亲子瞬间" data-type="baby" bindtap="handlerGoToStreet" src="./../../resource/images/home/banner1@3x.jpg"></image>
-            </swiper-item>
-            <swiper-item>
-                <image class="bannerPic" data-name="聚会" data-type="party" bindtap="handlerGoToStreet" src="./../../resource/images/home/banner2@3x.jpg"></image>
-            </swiper-item>    
         </swiper>
     </view>
     <view class="contentWrapper">
@@ -19,7 +13,7 @@
                 <text class="enTitle">PHOTOGRAPHY PROJECT</text>
             </view>
             <view class="priceWrapper">
-                <text class="priceNum">199</text>
+                <text class="priceNum">{{homeData.priceData.data.price}}</text>
                 <text class="priceUnit">元/每小时</text>
             </view>
         </view>

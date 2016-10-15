@@ -1,33 +1,29 @@
+var {root, loginRoot} = require("./../../server/common.js");
+// var Home = {
+
+// }
+
+// module.exports = {
+//   Home: Home
+// }
 Page({
   data:{
-    text:"这是一个页面"
+    // text:"这是一个页面"
   },
-
-/**
- * 这里处理滚动事件处理
- */
-  listenSwiper:function(e) {
-      //打印信息
-    //   console.log(e)
-  },
-
-  onLoad:function(options) {
+  onLoad:function(options){
     // 页面初始化 options为页面跳转所带来的参数
   },
-  onReady:function () {
+  onReady:function(){
     // 页面渲染完成
   },
-  onShow:function () {
+  onShow:function(){
+    console.log("asdfasdf")
     // 页面显示
   },
-  onHide:function () {
+  onHide:function(){
     // 页面隐藏
   },
-  onUnload:function () {
+  onUnload:function(){
     // 页面关闭
-  },
-  handlerGoToStreet:function (e) {
-      wx.navigateTo({url: "enjoy/streetEnjoy"})
-    // console.log(e.target.dataset)
   }
 })

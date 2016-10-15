@@ -1,9 +1,16 @@
+var UserServer = require("../../../server/user.js").User;
+
 Page({
   data:{
-    // text:"这是一个页面"
+    // text:"这是一个页面",
+    userData: {}
   },
   onLoad:function(options){
     // 页面初始化 options为页面跳转所带来的参数
+    this.setData({
+      userData: UserServer.getPublicParams()
+    })
+    console.log(this.data.userData)
   },
   onReady:function(){
     // 页面渲染完成

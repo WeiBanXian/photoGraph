@@ -1,6 +1,6 @@
 Page({
   data:{
-    array: ['Android', 'IOS', 'ReactNativ', 'WeChat', 'Web', ''],
+    array: ['Android', 'IOS', 'ReactNativ', 'WeChat', 'Web'],
     index: 0,
     time: '2016-09-26'
   },

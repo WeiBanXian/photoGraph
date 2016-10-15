@@ -43,7 +43,7 @@
         </view>
     </view>
     <view wx:if="{{page == 1}}">
-        <include src="../../pages/home/home.wxml" />
+        <include src="../../pages/home/home.wxml" data="{{...homeData}}"/>
     </view>
     <view wx:elif="{{page == 2}}">
         <include src="../../pages/order/order.wxml" />
@@ -52,7 +52,7 @@
         <include src="../../pages/gallery/gallery.wxml" />
     </view>
     <view wx:elif="{{page == 4}}">
-        <include src="../../pages/mine/mine.wxml" />
+        <include src="../../pages/mine/mine.wxml" data="{{...mineData}}"/>
     </view>
     <view class="tabBarBlank"></view>
 </scroll-view>

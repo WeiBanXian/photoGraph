@@ -4,12 +4,12 @@
 	</view>
 	<view class="row">
 		<text class="label">头像</text>
-		<image class="headPic" bindtap="handleChoseImage" src="./../../../resource/images/user/logo@2x.png" />
+		<image class="headPic" bindtap="handleChoseImage" src="{{userData.avatar}}" />
 	</view>
     <view class="line"></view>
 	<view class="row">
 		<text class="label">昵称</text>
-		<input class="input" value="Bonon" />
+		<input class="input" value="{{userData.nickname}}" />
 	</view>
     <view class="line"></view>
 	<view class="row">
@@ -31,7 +31,7 @@
 	</view>
 	<view class="row">
 		<text class="label">手机</text>
-		<text class="value" style="color: #999;">18583269107</text>
+		<text class="value" style="color: #999;">{{userData.mobile}}</text>
 	</view>
     <view class="line"></view>
 	<view class="logoutBtn">

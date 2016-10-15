@@ -1,7 +1,7 @@
 <view class="wrapperMine">
     <view class="headWrapperMine">
-        <image class="headPicMine" mode="aspectFit" src="./../../resource/images/user/logo@2x.png"></image>
-        <text class="headTextMine">Bonon</text>
+        <image class="headPicMine" mode="aspectFit" src="{{mineData.avatar}}"></image>
+        <text class="headTextMine">{{mineData.nickname}}</text>
     </view>
     <view class="rowsMine" bindtap="handleGoToMyInfo">
         <view class="rowLeftMine">
