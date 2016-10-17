@@ -8,6 +8,7 @@
   "pages": [
     "pages/index/index",
     "pages/index/register/register",
+    "pages/index/forget/forget",
     "pages/total/total",
     "pages/home/home",
     "pages/gallery/gallery",

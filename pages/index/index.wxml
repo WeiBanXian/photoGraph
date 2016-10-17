@@ -21,7 +21,7 @@
                 bindinput="handleChangePassword" />
         </view>
         <view class="forgetWrapper">
-            <text class="forgetText">忘记密码？</text>
+            <text class="forgetText" bindtap="handleGoToForget">忘记密码？</text>
         </view>
         <view class="button" bindtap="handleLogin">
             <text class="btnText">登录</text>
@@ -30,7 +30,7 @@
             <view class="leftWrapper">
                 <text class="leftText">微信登录</text>
             </view>
-            <view class="rightWrapper">
+            <view class="rightWrapper" bindtap="handleGoToRegister">
                 <text class="rightText">注册新用户</text>
             </view>
         </view>
@@ -38,4 +38,5 @@
     <loading hidden="{{hidden}}" bindchange="loadingChange">
         加载中...
     </loading>
+    <include src="../template/alert/alert.wxml" animation="{{...animationData}}" data="{{...toastText}}"/>
 </view>

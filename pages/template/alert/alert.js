@@ -9,16 +9,17 @@ var alert ={
         animation.translate(0, -45).step();
         setTimeout(function () {
             callback && callback(animation);
-        }.bind(this), 1000);
+        }.bind(this), 200);
     },
     hide: function (callback) {
         var animation = wx.createAnimation({
+            duration: 1000,
             timingFunction:"linear"
         })
         animation.translate(0, 45).step();
         setTimeout(function () {
             callback && callback(animation);
-        }.bind(this), 1000);
+        }.bind(this), 500);
     },
 }
 

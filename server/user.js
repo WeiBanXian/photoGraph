@@ -126,8 +126,8 @@ var User = {
                     // tokenEnd: 1479090029
                     // tokenExpire: 2592000
                     // userId: "06943d573188c9317ee6e176"
-                    callback && callback(data);
                 }
+                callback && callback(data);
             }.bind(this)
         });
     },

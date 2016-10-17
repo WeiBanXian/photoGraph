@@ -7,6 +7,9 @@
   justify-content: space-between;
   padding: 200rpx 0;
   box-sizing: border-box;
-  background: #F9F9F9;
+  background: #000;
 }
 
+.body {
+  height: 100%;
+}
