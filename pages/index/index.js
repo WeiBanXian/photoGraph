@@ -1,4 +1,3 @@
-var {root, loginRoot} = require("../../server/common.js");
 var UserServer = require("../../server/user.js").User;
 
 //获取应用实例
@@ -11,6 +10,7 @@ Page({
   },
   onLoad: function () {
     UserServer.init();
+    console.log("init")
   },
   onReady:function(){
     // 页面渲染完成
@@ -28,8 +28,8 @@ Page({
     })
   },
   // 登录
-  // handleLogin: function() {
-  onLoad: function() {
+  handleLogin: function() {
+  // onLoad: function() {
     var _self = this;
     this.loadingTap();
     UserServer.setUserName(this.data.userName);

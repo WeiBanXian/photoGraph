@@ -1,0 +1,37 @@
+<view class="wrapper">
+    <include src="../../template/alert/alert.wxml" animation="{{...animationData}}" data="{{...toastText}}"/>
+    <view class="line"></view>
+    <view class="row">
+        <input
+            class="input"
+            type="number"
+            placeholder-style="color: #898989;"
+            placeholder="手机号码"
+            bindinput="handleChangePhoneNum" />
+    </view>
+    <view class="row">
+        <input
+            class="input"
+            password="true"
+            placeholder-style="color: #898989;"
+            placeholder="密码"
+            bindinput="handleChangePassword" />
+    </view>
+    <view class="row">
+        <input
+            class="input"
+            placeholder="输入验证码"
+            type="number"
+            placeholder-style="color: #898989;"
+            bindinput="handleChangeRegisterCode" />
+        <view class="codeBtn">
+            <text class="codeText" bindtap="handleRequestRegisterCode">{{registerText}}</text>
+        </view>
+    </view>
+    <view class="registerBtn" bindtap="handleRegister">
+        <text class="registerText">注册</text>
+    </view>
+    <loading hidden="{{hidden}}" bindchange="loadingChange">
+        加载中...
+    </loading>
+</view>

@@ -7,6 +7,7 @@
   },
   "pages": [
     "pages/index/index",
+    "pages/index/register/register",
     "pages/total/total",
     "pages/home/home",
     "pages/gallery/gallery",

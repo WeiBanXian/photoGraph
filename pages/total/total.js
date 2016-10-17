@@ -14,8 +14,7 @@ Page({
   },
   onLoad:function(options){
     // 页面初始化 options为页面跳转所带来的参数
-    console.log(options);
-    var mineData = UserServer.getPublicParams();
+    var mineData = UserServer.getUserParams();
     this.setData({
       mineData: mineData
     })
@@ -88,12 +87,12 @@ Page({
       wx.navigateTo({url: "../mine/myInfo/myInfo"});
   },
   handleGoToMyCoupon: function () {
-      wx.navigateTo({url: "myCoupon/myCoupon"});
+      wx.navigateTo({url: "../mine/myCoupon/myCoupon"});
   },
   handleGoToFeedback: function () {
-      wx.navigateTo({url: "feedback/feedback"});
+      wx.navigateTo({url: "../mine/feedback/feedback"});
   },
   handleGoToAboutUs: function () {
-      wx.navigateTo({url: "aboutUs/aboutUs"});
+      wx.navigateTo({url: "../mine/aboutUs/aboutUs"});
   }
 })

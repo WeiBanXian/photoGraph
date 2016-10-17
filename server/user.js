@@ -1,10 +1,84 @@
-var {root, loginRoot} = require("./common.js");
+var {root, userCenterRoot} = require("./common.js");
 var md5 = require('../utils/md5.js')
 
 var User = {
+    // 初始化
     init:function () {
+        this.setUserParams();
         this.setPublicParams();
+        this.getWithPublicParams({hha: "hha"});
     },
+
+    // 校验手机号码格式
+    checkPhoneNum: function (loadingChange, callback) {
+        var _phoneNum = this.getUserName();
+        if (/^1\d{10}$/.test(_phoneNum)) {
+            callback && callback();
+        } else {
+            console.log("用户名错误");
+            loadingChange && loadingChange();
+        }
+    },
+
+    // 校验邮箱格式
+    checkEmail: function (callback) {
+        var _email = this.getUserName();
+        if (/^(\w-*\.*)+@(\w-?)+(\.\w{2,})+$/.test(_email)) {
+            callback && callback();
+        } else {
+            console.log("错误");
+        }
+    },
+
+    // 校验密码格式
+    checkPassword: function (loadingChange, callback) {
+        var _password = this.getPassword();
+        var _length = _password.length;
+        if (_length >= 6 && _length <= 20) {
+            callback && callback();
+        } else {
+            console.log("密码错误");
+            loadingChange && loadingChange();
+        }
+    },
+
+    // 获取验证码
+    getRegisterCode: function (callback) {
+        // wx.request({
+        //     url: userCenterRoot + '/api/v2/mobLoginForTest',
+        //     data: data?data:{},
+        //     medthod: 'post',
+        //     header:{
+        //         "Content-Type":"application/json"
+        //     },
+        //     success: function(res) {
+        //         var data = res.data;
+        //         if (res.data.status == "200") {
+                    callback && callback();
+        //         }
+        //     }
+        // });
+    },
+
+    // 注册
+    register: function (callback) {
+        // wx.request({
+        //     url: userCenterRoot + '/api/v2/mobLoginForTest',
+        //     data: data?data:{},
+        //     medthod: 'post',
+        //     header:{
+        //         "Content-Type":"application/json"
+        //     },
+        //     success: function(res) {
+        //         var data = res.data;
+        //         if (res.data.status == "200") {
+                    callback && callback();
+        //         }
+        //     }
+        // });
+    },
+
+    // 登录
     login: function (callback) {
         var data = {};
         var isMobile = true;
@@ -17,7 +91,7 @@ var User = {
             };
         }
         wx.request({
-            url: loginRoot + '/api/v2/mobLoginForTest',
+            url: userCenterRoot + '/api/v2/mobLoginForTest',
             data: data?data:{},
             medthod: 'post',
             header:{
@@ -26,7 +100,7 @@ var User = {
             success: function(res) {
                 var data = res.data;
                 if (res.data.status == "200") {
-                    this.publicParams = data.data;
+                    this.UserParams = data.data;
                     // avatar: "https://phototask.c360dn.com/FgLLcrZnb5GdQ9ND8SEC6JqJFYZI"
                     // backgroundPic: ""
                     // birthday: ""
@@ -69,14 +143,45 @@ var User = {
     getPassword: function () {
     	return this._password;
     },
-    setPublicParams: function () {
-        this.publicParams = {
+    setRegisterCode: function (_registerCode) {
+    	this._registerCode = _registerCode;
+    },
+    getRegisterCode: function () {
+    	return this._registerCode;
+    },
+    setUserParams: function () {
+        this.UserParams = {
             avatar: ''
         };
     },
-    getPublicParams: function () {
-        return this.publicParams;
-    }
+    getUserParams: function () {
+        return this.UserParams;
+    },
+
+    // 设置公共参数
+    setPublicParams: function() {
+        this.publicParams = {
+            appKey: "f6cb3d93e7ac1146",
+            appname: "想拍就拍",
+            appVersion: "1.1.8",
+            systemVersion: "10.0",
+            platform: "iphone",
+            device: "Unknown",
+            deviceId: "4A27FABF-D501-4AA8-BF4F-BA844D742BF2",
+            certType: "production",
+            locale: "zh-Hans-CN",
+            channel: "appstore"
+        };
+    },
+    
+    getWithPublicParams: function(data) {
+        // console.log("getWithPublicParams")
+        // for (var key in this.publicParams) {
+        //     console.log(key)
+        // }
+    },
+
+
 }
 
 module.exports = {

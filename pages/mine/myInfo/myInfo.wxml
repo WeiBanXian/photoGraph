@@ -15,12 +15,14 @@
 	<view class="row">
 		<text class="label">性别</text>
 		<view class="sexName">
-            <view class="sexWrapper">
-			    <image class="malePic sexPic" src="./../../../resource/images/common/unselectRadio@3x.png"/>
+            <view class="sexWrapper" data-gender="1" bindtap="handleChoseGender">
+			    <image class="malePic sexPic" wx:if="{{userData.gender == 1}}" src="./../../../resource/images/common/selectedRadio@3x.png"/>
+			    <image class="malePic sexPic" wx:else src="./../../../resource/images/common/unselectRadio@3x.png"/>
 			    <text class="maleText sexText">男</text>
             </view>
-            <view class="sexWrapper">
-                <image class="femalePic sexPic" src="./../../../resource/images/common/selectedRadio@3x.png"/>
+            <view class="sexWrapper" data-gender="0" bindtap="handleChoseGender">
+                <image class="femalePic sexPic" wx:if="{{userData.gender == 0}}" src="./../../../resource/images/common/selectedRadio@3x.png"/>
+                <image class="femalePic sexPic" wx:else src="./../../../resource/images/common/unselectRadio@3x.png"/>
                 <text class="femaleText sexText">女</text>
             </view>
 		</view>

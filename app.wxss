@@ -10,11 +10,3 @@
   background: #F9F9F9;
 }
 
-.tabBarWrapper {
-    position: fixed;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    height: 75rpx;
-    background: #AAA;
-}
