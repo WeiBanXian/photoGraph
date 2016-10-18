@@ -6,7 +6,6 @@ var User = {
     init:function () {
         this.setUserParams();
         this.setPublicParams();
-        this.getWithPublicParams({hha: "hha"});
     },
 
     // 校验手机号码格式
@@ -101,6 +100,9 @@ var User = {
                 var data = res.data;
                 if (res.data.status == "200") {
                     this.UserParams = data.data;
+                    this.setToken(data.data.token);
+                    this.setUserId(data.data.userId);
+                    this.setPublicParams();
                     // avatar: "https://phototask.c360dn.com/FgLLcrZnb5GdQ9ND8SEC6JqJFYZI"
                     // backgroundPic: ""
                     // birthday: ""
@@ -131,24 +133,28 @@ var User = {
             }.bind(this)
         });
     },
+    // 用户名
     setUserName: function (_userName) {
     	this._userName = _userName;
     },
     getUserName: function () {
     	return this._userName;
     },
+    // 密码
     setPassword: function (_password) {
     	this._password = _password;
     },
     getPassword: function () {
     	return this._password;
     },
+    // 注册验证码
     setRegisterCode: function (_registerCode) {
     	this._registerCode = _registerCode;
     },
     getRegisterCode: function () {
     	return this._registerCode;
     },
+    // 用户信息
     setUserParams: function () {
         this.UserParams = {
             avatar: ''
@@ -157,7 +163,20 @@ var User = {
     getUserParams: function () {
         return this.UserParams;
     },
-
+    // token
+    setToken: function (_token) {
+        this._token = _token;
+    },
+    getToken: function () {
+        return this._token;
+    },
+    // userId
+    setUserId: function (_userId) {
+        this._userId = _userId;
+    },
+    getUserId: function () {
+        return this._userId;
+    },
     // 设置公共参数
     setPublicParams: function() {
         this.publicParams = {
@@ -170,15 +189,19 @@ var User = {
             deviceId: "4A27FABF-D501-4AA8-BF4F-BA844D742BF2",
             certType: "production",
             locale: "zh-Hans-CN",
-            channel: "appstore"
+            channel: "appstore",
+            token: this.getToken(),
+            userId: this.getUserId()
         };
+        console.log(this.publicParams.token)
     },
     
-    getWithPublicParams: function(data) {
-        // console.log("getWithPublicParams")
-        // for (var key in this.publicParams) {
-        //     console.log(key)
-        // }
+    getDataWithPublicParams: function(data) {
+        var _publicParams = this.publicParams;
+        for (var key in this.publicParams) {
+            data[key] = _publicParams[key];
+        }
+        return data;
     },
 
 

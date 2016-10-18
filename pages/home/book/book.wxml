@@ -18,23 +18,23 @@
     </view>
 	<view class="row" bindtap="handleGoToLocation">
 		<text class="label">拍摄地址</text>
-		<text class="value">成都没事国际学校</text>
+		<text class="value">{{locationText}}</text>
 		<image class="arrow" src="./../../../resource/images/user/arrow@3x.png"/>
 	</view>
 	<view class="row">
 		<text class="label">详细地址</text>
-		<text class="value">街道/小区/楼层</text>
+		<input class="value" placeholder="街道/小区/楼层" bindinput="handleChangeDetailAddress" />
 	</view>
 	<view class="row">
 		<text class="label">拍摄时间</text>
-        <picker mode="selector" range="{{array}}" value="{{index}}" bindchange="listenerPickerSelected">
-            <text class="value">{{array[index]}}</text>
+        <picker mode="selector" range="{{date}}" value="{{dateIndex}}" bindchange="handleSelectDate">
+            <text class="value">{{time}}</text>
         </picker>
 	</view>
 	<view class="row">
 		<text class="label">拍摄时长</text>
-        <picker mode="selector" range="{{array}}" value="{{index}}" bindchange="listenerPickerSelected">
-            <text class="value">{{array[index]}}</text>
+        <picker mode="selector" range="{{timeLength}}" value="{{timeLengthIndex}}" bindchange="handleSelectTimeLength">
+            <text class="value">{{timeLength[timeLengthIndex]}}</text>
         </picker>
 	</view>
     <view class="block">
@@ -42,25 +42,27 @@
     </view>
 	<view class="row">
 		<text class="label">姓名</text>
-		<text class="value">Bonon</text>
+		<input class="value" value="{{userName}}" placeholder="预约人姓名" bindinput="handleChangeName" />
 	</view>
 	<view class="row">
 		<text class="label">性别</text>
-        <view class="female radioWrapper">
-            <image class="femalePic radioPic" src="./../../../resource/images/common/unselectRadio@3x.png" />
+        <view class="female radioWrapper" data-gender="0" bindtap="handleChoseGender">
+            <image class="femalePic radioPic" wx:if="{{gender == 0}}" src="./../../../resource/images/common/selectedRadio@3x.png" />
+            <image class="femalePic radioPic" wx:else src="./../../../resource/images/common/unselectRadio@3x.png" />
 		    <text class="radioText">女</text>
         </view>
-        <view class="male radioWrapper">
-            <image class="malePic radioPic" src="./../../../resource/images/common/selectedRadio@3x.png" />
+        <view class="male radioWrapper" data-gender="1" bindtap="handleChoseGender">
+            <image class="malePic radioPic" wx:if="{{gender == 1}}" src="./../../../resource/images/common/selectedRadio@3x.png" />
+            <image class="malePic radioPic" wx:else src="./../../../resource/images/common/unselectRadio@3x.png" />
 		    <text class="radioText">男</text>
         </view>
 	</view>
 	<view class="row">
 		<text class="label">手机号</text>
-		<text class="value">18583269107</text>
+		<input class="value" value="{{mobile}}" placeholder="预约手机号" bindinput="handleChangePhone" />
 	</view>
     <view class="blank"></view>
-	<view class="submitBtn">
+	<view class="submitBtn" bindtap="handleCreateOrder">
 		<text class="submitText">立即预约</text>
 	</view>
 </view>

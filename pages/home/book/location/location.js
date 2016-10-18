@@ -1,36 +1,15 @@
+var OrderServer = require("../../../../server/order.js").Order;
+
 Page({
   data:{
+    locationPois: []
     // text:"这是一个页面"
-     items: [{
-            message: 'foo',
-        },{
-            message: 'bar'
-        }]
   },
   onLoad:function(options){
     // 页面初始化 options为页面跳转所带来的参数
-    // wx.getLocation({
-    // type: 'wgs84',
-    // success: function (res) {
-    //     console.log(res)
-    //     var url = 'http://restapi.amap.com/v3/geocode/regeo';
-    //     wx.request({
-    //     url: url,
-    //     data: {
-    //         key: "6bbcf8a9041e51985d60fb352723e62c",
-    //         location: res.longitude + ',' + res.latitude,
-    //         radius: 100,
-    //         extensions: "all"
-    //     },
-    //     header:{
-    //         "Content-Type":"application/json"
-    //     },
-    //     success: function(result) {
-    //         console.log(result.data.regeocode.pois)
-    //     }
-    //     });
-    // }
-    // })
+    this.setData({
+      locationPois: OrderServer.getLocationPois()
+    })
   },
   onReady:function(){
     // 页面渲染完成
@@ -50,7 +29,21 @@ Page({
   handleCancelSearch: function () {
     wx.navigateBack();
   },
-  handleChoseLocation: function () {
+  handleChoseLocation: function (event) {
+    var locationtext = event.target.dataset.locationtext;
+    var location = event.target.dataset.location.split(",");
+    OrderServer.setLocationText(locationtext);
+    OrderServer.setLongitude(location[0]);
+    OrderServer.setLatitude(location[1]);
     wx.navigateBack();
+  },
+  handleSearchLocation: function (event) {
+    var searchText = event.detail.value;
+    OrderServer.setSearchText(searchText);
+    OrderServer.searchLocation(function (result) {
+      this.setData({
+        locationPois: result.data.pois
+      })
+    }.bind(this));
   }
 })

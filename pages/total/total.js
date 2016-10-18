@@ -81,7 +81,6 @@ Page({
   },
   handlerGoToBannerNext:function (e) {
       wx.navigateTo({url: "../home/enjoy/streetEnjoy"})
-    console.log(e.target.dataset)
   },
   handleGoToMyInfo: function () {
       wx.navigateTo({url: "../mine/myInfo/myInfo"});

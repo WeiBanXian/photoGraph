@@ -18,7 +18,7 @@ Page({
     // 页面关闭
   },
   handleGoToBook:function () {
-    wx.navigateTo({url: "./../book/book"})
+    wx.navigateTo({url: "./../book/book?type=1"})
   },
   handleBack: function () {
     wx.navigateBack();
