@@ -42,21 +42,28 @@ var User = {
     },
 
     // 获取验证码
-    getRegisterCode: function (callback) {
-        // wx.request({
-        //     url: userCenterRoot + '/api/v2/mobLoginForTest',
-        //     data: data?data:{},
-        //     medthod: 'post',
-        //     header:{
-        //         "Content-Type":"application/json"
-        //     },
-        //     success: function(res) {
-        //         var data = res.data;
-        //         if (res.data.status == "200") {
+    getRequestRegisterCode: function (callback) {
+        var url = userCenterRoot + '/api/mobile/register';
+        console.log(url);
+        var data = {
+            mobile: this.getUserName(),
+            password: this.getPassword()
+        };
+        wx.request({
+            url: url,
+            data: data?data:{},
+            medthod: 'post',
+            header:{
+                "Content-Type":"application/json"
+            },
+            success: function(res) {
+                var data = res.data;
+                console.log(res)
+                if (res.data.status == "200") {
                     callback && callback();
-        //         }
-        //     }
-        // });
+                }
+            }
+        });
     },
 
     // 注册
@@ -101,6 +108,7 @@ var User = {
                 if (res.data.status == "200") {
                     this.UserParams = data.data;
                     this.setToken(data.data.token);
+                    // this.setToken("dURPL3ZoQlJBbDFPeWlhSFBXSVp3SVFSR3pnbGFCb0hXQkZEZmExSmZtS2dQVC9sVVQ3U25TdWllNjd0R3NLbXZyb0h6TUtHYlFhemVJbFRNWmxXM3Jkck5mRjZLQXR4");
                     this.setUserId(data.data.userId);
                     this.setPublicParams();
                     // avatar: "https://phototask.c360dn.com/FgLLcrZnb5GdQ9ND8SEC6JqJFYZI"

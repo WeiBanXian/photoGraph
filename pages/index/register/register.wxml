@@ -1,5 +1,5 @@
 <view class="wrapper">
-    <include src="../../template/alert/alert.wxml" animation="{{...animationData}}" data="{{...toastText}}"/>
+    <!--<include src="../../template/alert/alert.wxml" animation="{{...animationData}}" data="{{...toastText}}"/>-->
     <view class="line"></view>
     <view class="row">
         <input

@@ -79,12 +79,13 @@ Page({
 
     UserServer.checkPhoneNum(this.loadingChange, function() {
       UserServer.checkPassword(_self.loadingChange, function() {
-        UserServer.getRegisterCode(function () {
-          wx.redirectTo({
-              url: '../../total/total'
-          })
-          _self.loadingChange();
-        });
+        UserServer.getRequestRegisterCode(function () {
+            wx.redirectTo({
+                url: '../../total/total'
+            })
+            _self.loadingChange();
+          }
+        );
       });
     });
 
@@ -107,6 +108,10 @@ Page({
         });
       }
     }.bind(this), 1000);
+  },
+  // 注册
+  handleRegister: function () {
+
   },
   // 关闭loading
   loadingChange: function () {
