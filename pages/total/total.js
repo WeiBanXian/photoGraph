@@ -1,5 +1,6 @@
 var {root, loginRoot} = require("../../server/common.js");
 var UserServer = require("../../server/user.js").User;
+var OrderServer = require("../../server/order.js").Order;
 
 Page({
   data:{
@@ -10,6 +11,7 @@ Page({
       bannerData: {},
       priceData: {}
     },
+    orderData: {},
     mineData: {}
   },
   onLoad:function(options){
@@ -57,6 +59,14 @@ Page({
           }
       }
     })
+    // 订单列表
+    OrderServer.getOrderList(function (result) {
+      if (result.data.status == 200) {
+        _self.setData({
+          orderData: result.data.data
+        })
+      }
+    });
     
   },
   onShow:function(){
@@ -93,5 +103,17 @@ Page({
   },
   handleGoToAboutUs: function () {
       wx.navigateTo({url: "../mine/aboutUs/aboutUs"});
+  },
+
+  // 订单列表
+  handleGoToOrderDetail: function (event) {
+    console.log(event.currentTarget.dataset.orderid)
+    var currentOrderId = event.currentTarget.dataset.orderid;
+    var orderList = this.data.orderData.list;
+    for (var index in orderList) {
+      if (currentOrderId == orderList[index].orderId) {
+        wx.navigateTo({url: "../order/orderDetail/orderDetail?orderData=" + JSON.stringify(orderList[index])});
+      }
+    }
   }
 })

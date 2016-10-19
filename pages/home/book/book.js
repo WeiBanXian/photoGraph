@@ -17,7 +17,7 @@ Page({
   },
   onLoad:function(options){
     var now = new Date();
-    var date = now.getTime() + '';           //时间戳
+    var date = (now.getTime()+'').substr(0, 10) + '3600';      //时间戳
     var year = now.getFullYear();       //年
     var month = now.getMonth() + 1;     //月
     var day = now.getDate();            //日    
@@ -50,7 +50,7 @@ Page({
       this.setData({
         type: type,
         time: clock,
-        date: date.substr(0, 10),
+        date: date,
         mobile: mobile,
         userName: userName,
         locationText: OrderServer.getLocationText()
@@ -127,8 +127,12 @@ Page({
     OrderServer.setUserName(this.data.userName);
     OrderServer.setGender(this.data.gender);
     OrderServer.setMobile(this.data.mobile);
-    OrderServer.createOrder(function () {
-
+    OrderServer.createOrder(function (res) {
+      if (res.data.status == 200) {
+        wx.navigateTo({url: "../../order/orderDetail/orderDetail"});
+      } else if (res.data.status == 10880) {
+        console.log(res.data.message)
+      }
     });
   }
 })

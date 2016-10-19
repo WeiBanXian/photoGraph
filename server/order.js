@@ -149,6 +149,27 @@ var Order = {
             sex: this.getGender(),  // 性别，默认为 0/女, 1/男
             name: this.getUserName(),  // 姓名
             mobile: this.getMobile()  // 电话
+            // name: "this.getUserName()",  // 姓名
+            // mobile: "18583269107"  // 电话
+        };
+        UserServer.getDataWithPublicParams(data);
+        wx.request({
+            url: url,
+            data: data?data:{},
+            header:{
+                "Content-Type":"application/json"
+            },
+            success: function(result) {
+                // if (result.statusCode == 200) {}
+                callback && callback(result)
+            }.bind(this)
+        });
+    },
+    getOrderList:function (callback) {
+        var url = root + "/photoBazaar/order/getList";
+        var data = {
+            sp: 0,
+            limit: 10
         };
         console.log(UserServer.getDataWithPublicParams(data))
         wx.request({
@@ -158,7 +179,7 @@ var Order = {
                 "Content-Type":"application/json"
             },
             success: function(result) {
-                console.log(result);
+                // if (result.statusCode == 200) {}
                 callback && callback(result)
             }.bind(this)
         });

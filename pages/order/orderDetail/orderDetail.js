@@ -1,9 +1,29 @@
 Page({
   data:{
     // text:"这是一个页面"
+    price: 199,
+    timeLength: '234:23:00',
+    statusArray: ["订单提交", "等待拍摄", "正在拍摄", "付款", "完成"],
+    status: 2,
+    orderId: '',
+    userName: 'Mary',
+    photographer: '',
+    mobile: '',
+    time: '',
+    address: '',
+    amount: '1244'
   },
   onLoad:function(options){
-    // 页面初始化 options为页面跳转所带来的参数
+    // var orderData = JSON.parse(options.orderData)
+    // var time = orderData.bookDate;
+    // this.setData({
+    //   status: parseInt(orderData.orderStat) + 1,
+    //   orderId: orderData.orderId,
+    //   photographer: orderData.nickname,
+    //   mobile: orderData.mobile,
+    //   time: time,
+    //   address: orderData.place
+    // })
   },
   onReady:function(){
     // 页面渲染完成

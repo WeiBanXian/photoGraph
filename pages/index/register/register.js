@@ -6,9 +6,10 @@ Page({
     toastText: "haha",
     animationData: {},
     hidden: true,
-    userName: '18583269107',
+    // userName: '18583269107',
+    userName: '15811459956',
     password: '584520',
-    regiserCode: '',
+    registerCode: '',
     registerBtnActive: false,
     registerText: "获取验证码"
   },
@@ -20,11 +21,6 @@ Page({
   },
   onShow:function(){
     // 页面显示
-    Alert.show(function (animation) {
-      this.setData({
-            animationData:animation.export()
-      })
-    }.bind(this));
   },
   onHide:function(){
     // 页面隐藏
@@ -48,27 +44,8 @@ Page({
   // 验证码
   handleChangeRegisterCode: function (event) {
     this.setData({
-      regiserCode: event.detail.value
+      registerCode: event.detail.value
     })
-  },
-  // 注册
-  handleRegister: function() {
-    var _self = this;
-    this.loadingTap();
-    UserServer.setUserName(this.data.userName);
-    UserServer.setPassword(this.data.password);
-    UserServer.setRegisterCode(this.data.registerCode);
-
-    UserServer.checkPhoneNum(this.loadingChange, function() {
-      UserServer.checkPassword(_self.loadingChange, function() {
-        UserServer.register(function () {
-          wx.redirectTo({
-              url: '../../total/total'
-          })
-          _self.loadingChange();
-        });
-      });
-    });
   },
   // 获取验证码
   handleRequestRegisterCode: function () {
@@ -76,17 +53,28 @@ Page({
     this.loadingTap();
     UserServer.setUserName(this.data.userName);
     UserServer.setPassword(this.data.password);
-
-    UserServer.checkPhoneNum(this.loadingChange, function() {
-      UserServer.checkPassword(_self.loadingChange, function() {
-        UserServer.getRequestRegisterCode(function () {
-            wx.redirectTo({
-                url: '../../total/total'
-            })
-            _self.loadingChange();
-          }
-        );
-      });
+    
+    UserServer.getRequestRegisterCode(function (res) {
+      var data = res.data;
+      if (data.status == 200) {
+         _self.AlertShow("已发送验证码");
+      } else {
+        registerTextNum = 60;
+        _self.setData({
+          registerText: "获取验证码"
+        });
+        clearInterval(_self.timer);
+        
+        switch (data.status) {
+          case 20881:
+            _self.AlertShow(data.message);
+          break;
+        }
+      }
+      _self.loadingChange();
+    }, function (mes) {
+      _self.AlertShow(mes);
+      _self.loadingChange();
     });
 
     var registerTextNum = 60;
@@ -110,8 +98,24 @@ Page({
     }.bind(this), 1000);
   },
   // 注册
-  handleRegister: function () {
+  handleRegister: function() {
+    var _self = this;
+    this.loadingTap();
+    UserServer.setUserName(this.data.userName);
+    UserServer.setPassword(this.data.password);
+    UserServer.setRegisterCode(this.data.registerCode);
 
+    UserServer.register(function (res) {
+      var data = res.data;
+      if (data.status == "200") {
+        wx.redirectTo({
+            url: '../../total/total'
+        })
+      } else if (data.status == "10537") {
+        _self.AlertShow("验证码错误");
+      }
+      _self.loadingChange();
+    });
   },
   // 关闭loading
   loadingChange: function () {
@@ -124,5 +128,23 @@ Page({
     this.setData({
       hidden: false
     })
+  },
+  AlertShow: function (toastText) {
+    Alert.show(function (animation) {
+      this.setData({
+        toastText: toastText,
+        animationData:animation.export()
+      })
+    }.bind(this));
+    setTimeout(function () {
+      this.AlertHide();
+    }.bind(this), 2500);
+  },
+  AlertHide: function () {
+    Alert.hide(function (animation) {
+      this.setData({
+        animationData:animation.export()
+      })
+    }.bind(this));
   }
 })

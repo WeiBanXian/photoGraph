@@ -1,3 +1,73 @@
-<view>
-	<image src="./../../../resource/images/banner0@3x.jpg"/>
+<view class="wrapper">
+	<view class="topWrapper">
+		<image class="bgPic" src="../../../../resource/images/home/banner0@3x.jpg" />
+		<view class="topContent">
+			<view class="contentTopWrapper">
+				<text class="cancelText" bindtap="handleCancelOrder" wx:if="{{status < 3}}">取消订单</text>
+				<!--<text class="cancelText" bindtap="" wx:else></text>-->
+				<text class="timelengthText" wx:if="{{status >= 4}}">拍摄时长 {{timeLength}}</text>
+				<view class="priceWrapper" wx:if="{{status < 4}}">
+					<text class="priceNum">{{price}}</text>
+					<text class="priceUnit">元/时</text>
+				</view>
+				<view class="priceWrapper" wx:else>
+					<text class="priceNum">{{amount}}</text>
+					<text class="priceUnit">元</text>
+				</view>
+				<text class="timingText" wx:if="{{status == 3}}">正在计时...</text>
+				<text class="payText" wx:if="{{status == 4}}">订单支付</text>
+			</view>
+			<view class="statusWrapper">
+				<view class="statusRowTopWrapper">
+					<view class="statusItem" wx:for="{{statusArray}}" wx-index="{{index}}" wx-item="{{item}}">
+						<view class="statusItemTop" wx:if="{{index < status}}">
+							<view class="solidLine" wx:if="{{index != 0}}"></view>
+							<view class="solidCircle"></view>
+						</view>
+						<view class="statusItemTop" wx:else>
+							<view class="hollowLine" wx:if="{{index != 0}}"></view>
+							<view class="hollowCircle"></view>
+						</view>
+					</view>
+				</view>
+				<view class="statusRowBottomWrapper">
+					<view class="statusItem" wx:for="{{statusArray}}" wx-index="{{index}}" wx-item="{{item}}">
+						<text class="statusItemText" wx:if="{{index < status}}">{{statusArray[index]}}</text>
+						<text class="statusItemOpacityText" wx:else>{{statusArray[index]}}</text>
+					</view>
+				</view>
+			</view>
+		</view>
+	</view>
+	<view class="botWrapper">
+		<view class="block">
+			<text class="blockText">订单编号：</text>
+			<text class="blockText">{{orderId}}</text>
+		</view>
+		<!--<view class="row">
+			<text class="label">用户：</text>
+			<text class="value">{{userName}}</text>
+		</view>-->
+		<view class="row">
+			<text class="label">摄影师：</text>
+			<text class="value">{{photographer}}</text>
+		</view>
+		<view class="row">
+			<text class="label">联系电话：</text>
+			<text class="value">{{mobile}}</text>
+			<image class="arrow" src="./../../../resource/images/order/listPhone@3x.png"/>
+		</view>
+		<view class="row">
+			<text class="label">拍摄时间：</text>
+			<text class="value">{{time}}</text>
+		</view>
+		<view class="row">
+			<text class="label">拍摄地点：</text>
+			<text class="value">{{address}}</text>
+		</view>
+		<view class="blank"></view>
+	</view>
+    <view class="photoBtn" bindtap="handleGoToGallery">
+        <text class="photoText">照片库</text>
+    </view>
 </view>

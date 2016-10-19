@@ -46,7 +46,7 @@
         <include src="../../pages/home/home.wxml" data="{{...homeData}}"/>
     </view>
     <view wx:elif="{{page == 2}}">
-        <include src="../../pages/order/order.wxml" />
+        <include src="../../pages/order/order.wxml" data="{{...orderData}}"/>
     </view>
     <view wx:elif="{{page == 3}}">
         <include src="../../pages/gallery/gallery.wxml" />

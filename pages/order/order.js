@@ -1,3 +1,5 @@
+var OrderServer = require("../../server/order.js").Order;
+
 Page({
   data:{
     // text:"这是一个页面"
@@ -7,6 +9,8 @@ Page({
   },
   onReady:function(){
     // 页面渲染完成
+    console.log("dfdfsdsdfdfs")
+    // OrderServer.getOrderList();
   },
   onShow:function(){
     // 页面显示

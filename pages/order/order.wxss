@@ -1,4 +1,3 @@
-
 .wrapperOrder {
     width: 100%;
     height: 100%;
@@ -20,7 +19,7 @@
 
 .rowOrder {
     width: 750rpx;
-    height: 625rpx;
+    margin-bottom: 20rpx;
     background: #F9F9F9;
 }
 
@@ -31,15 +30,15 @@
 
 .rowContentOrder {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
 	width: 720rpx;
-    height: 600rpx;
+    height: 360rpx;
     position: relative;
     top: 25rpx;
     margin: auto;
     border-radius: 7rpx;
     background: #FFF;
-    /*box-shadow: 0 1px 10px #888888;*/
+    box-shadow: 1px 1px 10px #888888;
 }
 
 .orderStatusTextOrder {
@@ -64,106 +63,117 @@
     z-index: 998;
 }
 
-.orderBgWrapperOrder {
+.leftWrapperOrder {
+    flex: 8;
     position: relative;
-	width: 720rpx;
-    height: 375rpx;
 }
 
 .orderInfoBgPicOrder {
-	width: 720rpx;
-    height: 375rpx;
-    border-top-right-radius: 7rpx;
-    border-top-left-radius: 7rpx; 
+    width: 100%;
+    height: 100%;
 }
 
 .orderInfoTextOrder {
-	position: absolute;
+    display: block;
+    position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    width: 187.5rpx;
-    height: 152rpx;
     margin: auto;
+    padding: 100rpx;
+    color: #FFF;
+    font-size: 45rpx;
+    text-align: center;
+    line-height: 160rpx;
 }
 
-.midWrapperOrder {
-	display: flex;
-    padding: 40rpx 0 60rpx 0;
-    justify-content: space-between;
-    align-items: center;
+.rightWrapperOrder {
+    display: flex;
+    flex: 9;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
 }
 
 .headWrapperOrder {
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-	position: relative;
-    margin-top: -75rpx;
-    margin-left: 25rpx;
-    width: 164rpx;
-    height: 164rpx;
-    border-radius: 82rpx;
-    border: 1.5px solid #EEE;
-    background: rgba(0,0,0,0);
+    text-align: center;
 }
 
 .headPicOrder {
-    width: 145rpx;
-    height: 145rpx;
-    border-radius: 70rpx;
+    width: 90rpx;
+    height: 90rpx;
+    border-radius: 45rpx;
 }
 
 .nameTextOrder {
-	position: relative;
-    width: 360rpx;
+    display: block;
+    margin: 10rpx;
     font-size: 36rpx;
     color: #333;
 }
 
-.phonePicOrder {
-	position: relative;
-    width: 100rpx;
-    height: 60rpx;
-    margin-right: 30rpx;
+.phoneTextorder {
+    display: block;
+    font-size: 32rpx;
+    color: #AED1DF;
+    text-decoration: underline;
 }
 
 .botWrapperOrder {
-	display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 40rpx 30rpx;
-    border-top: 2px solid #F9F9F9;
+    margin: 15rpx;
 }
 
 .timeWrapperOrder {
-	display: flex;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
     align-items: center;
+    width: 94%;
+    margin: auto;
+    margin-top: 10rpx;
+    margin-bottom: 5rpx;
 }
 
 .timePicOrder {
-	width: 50rpx;
-    height: 50rpx;
+    display: block;
+    width: 45rpx;
+    height: 45rpx;
 }
 
 .timeTextOrder {
-    margin-left: 10rpx;
-	font-size: 30rpx;
-    color: #666;
+    display: block;
+    width: 80%;
+    font-size: 24rpx;
+    color: #333;
+    text-align: left;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
 .addressWrapperOrder {
-	display: flex;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
     align-items: center;
+    width: 94%;
+    margin: auto;
 }
 
 .addressPicOrder {
-	width: 50rpx;
-    height: 50rpx;
+    display: block;
+    width: 45rpx;
+    height: 45rpx;
 }
 
 .addressTextOrder {
-	font-size: 30rpx;
-    color: #666;
+    display: block;
+    width: 80%;
+    font-size: 24rpx;
+    color: #333;
+    text-align: left;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }

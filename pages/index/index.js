@@ -8,8 +8,8 @@ Page({
     toastText: "",
     animationData: {},
     hidden: true,
-    userName: '18583269107',
-    password: '584520'
+    userName: '11000000907',
+    password: '123456'
   },
   onLoad: function () {
     UserServer.init();
@@ -33,7 +33,7 @@ Page({
   handleLogin: function() {
     var _self = this;
     this.loadingTap();
-    UserServer.setUserName(this.data.userName);
+    UserServer.setMobile(this.data.userName);
     UserServer.setPassword(this.data.password);
     UserServer.login(function (res) {
       switch(res.status) {

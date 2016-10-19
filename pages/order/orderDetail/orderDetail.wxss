@@ -1,0 +1,236 @@
+.wrapper {
+    width: 100%;
+}
+
+.topWrapper {
+    position: relative;
+}
+
+.bgPic {
+
+}
+
+.topContent {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    z-index: 999;
+    background: rgba(255, 255, 255, 0.6);
+    box-shadow: 0 0 1500px 5px #999 inset;
+}
+
+.contentTopWrapper {
+    
+}
+
+.cancelText {
+    position: absolute;
+    top: 30rpx;
+    right: 30rpx;
+    /*margin-right: 30rpx;*/
+    /*align-self: flex-end;*/
+    font-size: 34rpx;
+    color: #EEE;
+}
+
+.priceWrapper {
+    margin: 15rpx;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.priceNum {
+    font-size: 160rpx;
+    color: #FFF;
+}
+
+.priceUnit {
+    font-size: 42rpx;
+    color: #FFF;
+}
+
+.timingText {
+    font-size: 20rpx;
+    color: #FFF;
+}
+
+.timelengthText {
+    font-size: 20rpx;
+    color: #FFF;
+}
+
+.payText {
+    display: block;
+    padding: 16rpx 75rpx;
+    font-size: 28rpx;
+    color: #FFF;
+    border-radius: 30rpx;
+    background: #E1556B;
+}
+
+.statusWrapper {
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    align-self: flex-end;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 120rpx;
+    background: rgba(0, 0, 0, 0.3)
+}
+
+.statusRowTopWrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+
+.statusRowBottomWrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    margin-top: 15rpx;
+}
+
+.statusItem {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-left: 1px;
+}
+
+.statusItemTop {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.solidLine {
+    width: 120rpx;
+    height: 1px;
+    background: #FFF;
+}
+
+.hollowLine {
+    width: 120rpx;
+    height: 0;
+    border-top: 1px dotted rgba(255, 255, 255, 0.6);
+}
+
+.solidCircle {
+    width: 20rpx;
+    height: 20rpx;
+    margin: 5rpx;
+    border-radius: 10rpx;
+    background: #FFF;
+}
+
+.hollowCircle {
+    width: 16rpx;
+    height: 16rpx;
+    margin: 5rpx;
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgba(255, 255, 255, 0.6);
+    border-radius: 8rpx;
+}
+
+.statusItemText {
+    display: block;
+    font-size: 20rpx;
+    width: 120rpx;
+    text-align: center;
+    color: #FFF;
+}
+
+.statusItemOpacityText {
+    display: block;
+    font-size: 20rpx;
+    width: 120rpx;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.botWrapper {
+    background: #F9F9F9;
+}
+
+.block {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.blockText {
+    display: block;
+    padding: 20rpx;
+    font-size: 26rpx;
+    color: #666;
+}
+
+.row {
+    position: relative;
+    display: flex;
+    height: 100rpx;
+    flex-direction: row;
+    align-items: center;
+    border-bottom: 1px solid #EEE;
+    background: #FFF;
+}
+
+.label {
+    margin: 20rpx;
+    font-size: 26rpx;
+    color: #333;
+}
+
+.value {
+    font-size: 28rpx;
+    color: #000;
+}
+
+.arrow {
+    position: absolute;
+    right: 0;
+    width: 90rpx;
+    height: 60rpx;
+    margin-right: 45rpx;
+}
+
+.blank {
+    height: 190rpx;
+}
+
+.photoBtn {
+    display: block;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    text-align: center;
+    background: #42CDC3;
+}
+
+.photoText {
+    display: block;
+    font-size: 30rpx;
+    padding: 30rpx;
+    color: #FFF;
+    letter-spacing: 3px;
+}

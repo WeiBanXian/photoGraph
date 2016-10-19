@@ -2,56 +2,29 @@
     <!--<view class="emptyWrapperOrder">
         <image class="emptyOrder" mode="aspectFit" src="./../../resource/images/order/order_nodata@3x.png"></image>
     </view>-->
-	<view class="rowOrder">
+	<view class="rowOrder" wx:for="{{orderData.list}}" wx:for-index="index" wx:for-item="item" data-orderid="{{item.orderId}}" bindtap="handleGoToOrderDetail">
         <view class="rowContentOrder">
             <text class="orderStatusTextOrder">等待支付</text>
             <image class="orderStatusPicOrder" src="./../../../resource/images/order/order_Pay@3x.png" />
-            <view class="orderBgWrapperOrder">
-                <image class="orderInfoBgPicOrder" mode="aspectFill" src="./../../../resource/images/order/orderInfo_bg1@3x.png" />
-                <image class="orderInfoTextOrder" src="./../../../resource/images/order/fb_ordercell_type1@3x.png" />
+            <view class="leftWrapperOrder">
+                <image class="orderInfoBgPicOrder" mode="aspectFill" src="{{item.scenePic}}" />
+                <text class="orderInfoTextOrder">{{item.sceneName}}</text>
             </view>
-            <view class="midWrapperOrder">
+            <view class="rightWrapperOrder">
                 <view class="headWrapperOrder">
-                    <image class="headPicOrder" mode="aspectFill" src="./../../../resource/images/user/logo@2x.png" />
+                    <image class="headPicOrder" mode="aspectFill" src="{{item.avatar}}" />
                 </view>
-                <text class="nameTextOrder">摄影师：奥巴马</text>
-                <image class="phonePicOrder" mode="aspectFill" src="./../../../resource/images/order/listPhone@3x.png" />
-            </view>
-            <view class="botWrapperOrder">
-                <view class="timeWrapperOrder">
-                    <image class="timePicOrder" mode="aspectFit" src="./../../../resource/images/order/time@3x.png" />
-                    <text class="timeTextOrder">2016年01月19日 21:11</text>
-                </view>
-                <view class="addressWrapperOrder">
-                    <image class="addressPicOrder" mode="aspectFit" src="./../../../resource/images/order/location@3x.png" />
-                    <text class="addressTextOrder">五角大楼</text>
-                </view>
-            </view>
-        </view>
-	</view>
-	<view class="rowOrder">
-        <view class="rowContentOrder">
-            <text class="orderStatusTextOrder">等待支付</text>
-            <image class="orderStatusPicOrder" src="./../../../resource/images/order/order_Pay@3x.png" />
-            <view class="orderBgWrapperOrder">
-                <image class="orderInfoBgPicOrder" mode="aspectFill" src="./../../../resource/images/order/orderInfo_bg1@3x.png" />
-                <image class="orderInfoTextOrder" src="./../../../resource/images/order/fb_ordercell_type1@3x.png" />
-            </view>
-            <view class="midWrapperOrder">
-                <view class="headWrapperOrder">
-                    <image class="headPicOrder" mode="aspectFill" src="./../../../resource/images/user/logo@2x.png" />
-                </view>
-                <text class="nameTextOrder">摄影师：奥巴马</text>
-                <image class="phonePicOrder" mode="aspectFill" src="./../../../resource/images/order/listPhone@3x.png" />
-            </view>
-            <view class="botWrapperOrder">
-                <view class="timeWrapperOrder">
-                    <image class="timePicOrder" mode="aspectFit" src="./../../../resource/images/order/time@3x.png" />
-                    <text class="timeTextOrder">2016年01月19日 21:11</text>
-                </view>
-                <view class="addressWrapperOrder">
-                    <image class="addressPicOrder" mode="aspectFit" src="./../../../resource/images/order/location@3x.png" />
-                    <text class="addressTextOrder">五角大楼</text>
+                <text class="nameTextOrder">{{item.nickname}}</text>
+                <text class="phoneTextorder">{{item.mobile}}</text>
+                <view class="botWrapperOrder">
+                    <view class="timeWrapperOrder">
+                        <image class="timePicOrder" mode="aspectFit" src="./../../../resource/images/order/time@3x.png" />
+                        <text class="timeTextOrder">{{item.bookDate}}</text>
+                    </view>
+                    <view class="addressWrapperOrder">
+                        <image class="addressPicOrder" mode="aspectFit" src="./../../../resource/images/order/location@3x.png" />
+                        <text class="addressTextOrder">{{item.place}}</text>
+                    </view>
                 </view>
             </view>
         </view>
