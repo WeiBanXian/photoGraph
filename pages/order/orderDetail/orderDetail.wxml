@@ -4,7 +4,6 @@
 		<view class="topContent">
 			<view class="contentTopWrapper">
 				<text class="cancelText" bindtap="handleCancelOrder" wx:if="{{status < 3}}">取消订单</text>
-				<!--<text class="cancelText" bindtap="" wx:else></text>-->
 				<text class="timelengthText" wx:if="{{status >= 4}}">拍摄时长 {{timeLength}}</text>
 				<view class="priceWrapper" wx:if="{{status < 4}}">
 					<text class="priceNum">{{price}}</text>

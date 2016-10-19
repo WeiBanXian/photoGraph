@@ -9,7 +9,8 @@ Page({
     animationData: {},
     hidden: true,
     userName: '11000000907',
-    password: '123456'
+    password: '123456',
+    pic: ''
   },
   onLoad: function () {
     UserServer.init();
@@ -31,26 +32,34 @@ Page({
   },
   // 登录
   handleLogin: function() {
-    var _self = this;
-    this.loadingTap();
-    UserServer.setMobile(this.data.userName);
-    UserServer.setPassword(this.data.password);
-    UserServer.login(function (res) {
-      switch(res.status) {
-        case 10538:
-          this.handleAlert("请输入合法的手机号码");
-        break;
-        case 10510:
-          this.handleAlert("账号密码输入有误");
-        break;
-        case 200:
-          wx.redirectTo({
-              url: '../total/total'
-          })
-        break;
-      }
-      _self.loadingChange();
-    }.bind(this));
+    wx.chooseImage({
+      success:function(res){
+        console.log(res)
+        this.setData({
+          pic: res.tempFilePaths[0]
+        })  
+      }.bind(this)
+    });
+    // var _self = this;
+    // this.loadingTap();
+    // UserServer.setMobile(this.data.userName);
+    // UserServer.setPassword(this.data.password);
+    // UserServer.login(function (res) {
+    //   switch(res.status) {
+    //     case 10538:
+    //       this.handleAlert("请输入合法的手机号码");
+    //     break;
+    //     case 10510:
+    //       this.handleAlert("账号密码输入有误");
+    //     break;
+    //     case 200:
+    //       wx.redirectTo({
+    //           url: '../total/total'
+    //       })
+    //     break;
+    //   }
+    //   _self.loadingChange();
+    // }.bind(this));
   },
   // 跳转到忘记密码
   handleGoToForget: function () {

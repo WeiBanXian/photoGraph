@@ -1,12 +1,14 @@
+var OrderServer = require("../../server/order.js").Order;
+
 Page({
   data:{
     animationData: {}
   },
   onLoad: function(options) {
-    
+    console.log('sdf')
   },
   onReady: function() {
-    // Do something when page ready.
+    
   },
   onShow:function(){
     wx.previewImage({
@@ -15,7 +17,6 @@ Page({
         success: function(res) {
         	console.log(res);
 	      },
-　　　　  //也根本不走
 　　　　 fail: function() {
 　　　　    console.log('fail')
 　　　　 },
@@ -28,6 +29,6 @@ Page({
     clearInterval(this.timer);
   },
   onUnload: function() {
-    // Do something when page close.
+    
   },
 })

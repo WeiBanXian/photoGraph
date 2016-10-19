@@ -20,6 +20,7 @@ Page({
     this.setData({
       mineData: mineData
     })
+    OrderServer.setIsCancelOrder(true);
   },
   onReady:function(){
     // 页面渲染完成
@@ -59,18 +60,21 @@ Page({
           }
       }
     })
-    // 订单列表
-    OrderServer.getOrderList(function (result) {
-      if (result.data.status == 200) {
-        _self.setData({
-          orderData: result.data.data
-        })
-      }
-    });
-    
   },
   onShow:function(){
     // 页面显示
+    // 订单列表
+    var _self = this;
+    if (OrderServer.getIsCancelOrder()) {
+      OrderServer.getOrderList(function (result) {
+        if (result.data.status == 200) {
+          _self.setData({
+            // orderData: result.data.data
+            orderData: OrderServer.getOrderListData()
+          })
+        }
+      });
+    }
   },
   onHide:function(){
     // 页面隐藏
@@ -104,10 +108,8 @@ Page({
   handleGoToAboutUs: function () {
       wx.navigateTo({url: "../mine/aboutUs/aboutUs"});
   },
-
   // 订单列表
   handleGoToOrderDetail: function (event) {
-    console.log(event.currentTarget.dataset.orderid)
     var currentOrderId = event.currentTarget.dataset.orderid;
     var orderList = this.data.orderData.list;
     for (var index in orderList) {

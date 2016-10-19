@@ -18,6 +18,10 @@
     width: 30%;
 }
 
+.rowWrapper {
+    background: #F9F9F9;
+}
+
 .row {
     display: flex;
     width: 710rpx;

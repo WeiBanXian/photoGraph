@@ -9,7 +9,7 @@
             <text class="photoTextGallery">20张照片</text>
         </view>
         <view class="picsWrapperGallery">
-            <image class="picGallery" mode="aspectFill" src="./../../../resource/images/home/banner0@3x.jpg" />
+            <image class="picGallery" mode="aspectFill" src="/Users/macbook/Desktop/pic.png" />
             <image class="picGallery" mode="aspectFill" src="./../../../resource/images/home/banner0@3x.jpg" />
             <image class="picGallery" mode="aspectFill" src="./../../../resource/images/home/banner0@3x.jpg" />
             <image class="picGallery" mode="aspectFill" src="./../../../resource/images/home/banner0@3x.jpg" />

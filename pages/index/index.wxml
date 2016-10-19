@@ -1,6 +1,7 @@
 <view class="wrapper">
     <view class="content">
         <view class="row">
+            <image class="icon" src="{{pic}}"></image>
             <image class="icon" src="./../../resource/images/nLogin/newPhone@3x.png"></image>
             <input
                 class="input"

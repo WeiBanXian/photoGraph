@@ -86,6 +86,27 @@ var Order = {
     getType: function () {
         return this._type;
     },
+    // 订单号
+    setOrderId: function (_orderId) {
+        this._orderId = _orderId;
+    },
+    getOrderId: function () {
+        return this._orderId;
+    },
+    // 订单列表
+    setOrderListData: function (_orderListData) {
+        this._orderListData = _orderListData;
+    },
+    getOrderListData: function () {
+        return this._orderListData;
+    },
+    // 是否取消订单
+    setIsCancelOrder: function (_isCancelOrder) {
+        this._isCancelOrder = _isCancelOrder;
+    },
+    getIsCancelOrder: function () {
+        return this._isCancelOrder;
+    },
     // 获取当前经纬度的信息
     getLocationInfo: function (callback) {
         wx.getLocation({
@@ -160,18 +181,18 @@ var Order = {
                 "Content-Type":"application/json"
             },
             success: function(result) {
-                // if (result.statusCode == 200) {}
                 callback && callback(result)
             }.bind(this)
         });
     },
+    // 获取订单列表
     getOrderList:function (callback) {
         var url = root + "/photoBazaar/order/getList";
         var data = {
             sp: 0,
             limit: 10
         };
-        console.log(UserServer.getDataWithPublicParams(data))
+        UserServer.getDataWithPublicParams(data);
         wx.request({
             url: url,
             data: data?data:{},
@@ -179,6 +200,52 @@ var Order = {
                 "Content-Type":"application/json"
             },
             success: function(result) {
+                if (result.statusCode == 200) {
+                    if (result.data.status == 200) {
+                        this.setOrderListData(result.data.data);
+                    }
+                }
+                this.setIsCancelOrder(false);
+                callback && callback(result)
+            }.bind(this)
+        });
+    },
+    // 取消订单
+    cancelOrder: function (callback) {
+        this.setIsCancelOrder(true);
+        // var url = root + "/photoBazaar/order/cancelOrder";
+        // var data = {
+        //     orderId: this.getOrderId()
+        // };
+        // UserServer.getDataWithPublicParams(data);
+        // wx.request({
+        //     url: url,
+        //     data: data?data:{},
+        //     header:{
+        //         "Content-Type":"application/json"
+        //     },
+        //     success: function(result) {
+        //         // if (result.statusCode == 200) {}
+                // callback && callback(result)
+                callback && callback()
+        //     }.bind(this)
+        // });
+    },
+    // 获取云端照片
+    getOrderPhoto: function () {
+        var url = root + "/photoBazaar/photo/orderPhoto";
+        var data = {
+            
+        };
+        UserServer.getDataWithPublicParams(data);
+        wx.request({
+            url: url,
+            data: data?data:{},
+            header:{
+                "Content-Type":"application/json"
+            },
+            success: function(result) {
+                console.log(result)
                 // if (result.statusCode == 200) {}
                 callback && callback(result)
             }.bind(this)

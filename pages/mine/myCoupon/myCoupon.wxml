@@ -2,45 +2,47 @@
     <!--<view class="emptyWrapper">
         <image class="empty" mode="aspectFit" src="./../../../resource/images/coupon/coupon_nodata@3x.png" />
     </view>-->
-    <view class="row">
-        <view class="leftWrapper">
-            <text class="titleText">想拍就拍VIP优惠券</text>
-            <view class="midWrapper">
-                <text class="yuanText">￥</text>
-                <text class="moneyText">100</text>
+    <view class="rowWrapper">
+        <view class="row" wx:for="{{couponList}}" wx:for-index="index" wx:for-item="item" wx:if="{{item.status == 3}}">
+            <view class="leftWrapper">
+                <text class="titleText">想拍就拍VIP优惠券</text>
+                <view class="midWrapper">
+                    <text class="yuanText">￥</text>
+                    <text class="moneyText">{{item.amount}}</text>
+                </view>
+                <image class="linePic" src="./../../../resource/images/coupon/coupon_line@2x.png"/>
+                <text class="dateText">{{item.startTime}}至{{item.endTime}}</text>
             </view>
-            <image class="linePic" src="./../../../resource/images/coupon/coupon_line@2x.png"/>
-            <text class="dateText">有效期2015-11-01至2015-11-29</text>
+            <image class="statusRoundPic" mode="aspectFit" src="./../../../resource/images/coupon/coupon_hasusedStatus@3x.png"/>
+            <image class="statusSquarePic" src="./../../../resource/images/coupon/coupon_hasused_bg@3x.png"/>
+            <image class="statusTextPic" mode="aspectFit" src="./../../../resource/images/coupon/coupon_hasused@3x.png"/>
         </view>
-        <image class="statusRoundPic" mode="aspectFit" src="./../../../resource/images/coupon/coupon_hasusedStatus@3x.png"/>
-        <image class="statusSquarePic" src="./../../../resource/images/coupon/coupon_hasused_bg@3x.png"/>
-        <image class="statusTextPic" mode="aspectFit" src="./../../../resource/images/coupon/coupon_hasused@3x.png"/>
-    </view>
-    <view class="row">
-        <view class="leftWrapper">
-            <text class="titleText">想拍就拍VIP优惠券</text>
-            <view class="midWrapper">
-                <text class="yuanText">￥</text>
-                <text class="moneyText">100</text>
+        <view class="row" wx:for="{{couponList}}" wx:for-index="index" wx:for-item="item" wx:if="{{item.status == 2}}">
+            <view class="leftWrapper">
+                <text class="titleText">想拍就拍VIP优惠券</text>
+                <view class="midWrapper">
+                    <text class="yuanText">￥</text>
+                    <text class="moneyText">{{item.amount}}</text>
+                </view>
+                <image class="linePic" src="./../../../resource/images/coupon/coupon_line@2x.png"/>
+                <text class="dateText">{{item.startTime}}至{{item.endTime}}</text>
             </view>
-            <image class="linePic" src="./../../../resource/images/coupon/coupon_line@2x.png"/>
-            <text class="dateText">有效期2015-11-01至2015-11-29</text>
+            <image class="statusRoundPic" mode="aspectFit" src="./../../../resource/images/coupon/coupon_overdateStatus@3x.png"/>
+            <image class="statusSquarePic" src="./../../../resource/images/coupon/coupon_hasused_bg@3x.png"/>
+            <image class="statusTextPic" mode="aspectFit" src="./../../../resource/images/coupon/coupon_overdate@3x.png"/>
         </view>
-        <image class="statusRoundPic" mode="aspectFit" src="./../../../resource/images/coupon/coupon_overdateStatus@3x.png"/>
-        <image class="statusSquarePic" src="./../../../resource/images/coupon/coupon_hasused_bg@3x.png"/>
-        <image class="statusTextPic" mode="aspectFit" src="./../../../resource/images/coupon/coupon_overdate@3x.png"/>
-    </view>
-    <view class="row">
-        <view class="leftWrapper">
-            <text class="titleText">想拍就拍VIP优惠券</text>
-            <view class="midWrapper">
-                <text class="yuanText">￥</text>
-                <text class="moneyText">100</text>
+        <view class="row" wx:for="{{couponList}}" wx:for-index="index" wx:for-item="item" wx:if="{{item.status == 1}}">
+            <view class="leftWrapper">
+                <text class="titleText">想拍就拍VIP优惠券</text>
+                <view class="midWrapper">
+                    <text class="yuanText">￥</text>
+                    <text class="moneyText">{{item.amount}}</text>
+                </view>
+                <image class="linePic" src="./../../../resource/images/coupon/coupon_line@2x.png"/>
+                <text class="dateText">{{item.startTime}}至{{item.endTime}}</text>
             </view>
-            <image class="linePic" src="./../../../resource/images/coupon/coupon_line@2x.png"/>
-            <text class="dateText">有效期2015-11-01至2015-11-29</text>
+            <image class="statusSquarePic" src="./../../../resource/images/coupon/coupon_noused_bg@3x.png"/>
+            <image class="statusTextPic" mode="aspectFit" src="./../../../resource/images/coupon/coupon_noused@3x.png"/>
         </view>
-        <image class="statusSquarePic" src="./../../../resource/images/coupon/coupon_noused_bg@3x.png"/>
-        <image class="statusTextPic" mode="aspectFit" src="./../../../resource/images/coupon/coupon_noused@3x.png"/>
     </view>
 </view>

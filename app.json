@@ -6,8 +6,8 @@
     "navigationBarTextStyle":"#000"
   },
   "pages": [
-    "pages/order/orderDetail/orderDetail",
     "pages/index/index",
+    "pages/order/orderDetail/orderDetail",
     "pages/order/order",
     "pages/gallery/gallery",
     "pages/home/book/book",

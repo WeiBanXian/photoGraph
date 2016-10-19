@@ -285,7 +285,26 @@ var User = {
         return data;
     },
 
-
+    // 获取优惠券列表
+    getCouponList: function (callback) {
+        // /photoBazaar/order/couponList
+        var url = root + "/photoBazaar/order/couponList";
+        var data = {
+            
+        };
+        this.getDataWithPublicParams(data);
+        wx.request({
+            url: url,
+            data: data?data:{},
+            header:{
+                "Content-Type":"application/json"
+            },
+            success: function(result) {
+                // if (result.statusCode == 200) {}
+                callback && callback(result)
+            }.bind(this)
+        });
+    }
 }
 
 module.exports = {
