@@ -23,32 +23,5 @@
     "pages/home/book/location/location",
     "pages/home/book/location/city/city",
     "pages/home/enjoy/streetEnjoy"
-  ],
-  "tabBar": {
-      "color": "#AAA",
-      "selectedColor": "#000",
-      "borderStyle": "white",
-      "backgroundColor": "#ffffff",
-      "list": [{
-      "pagePath": "pages/home/home",
-      "iconPath": "./../../resource/images/tabBar/fb_tab_home@3x.png",
-      "selectedIconPath": "./../../resource/images/tabBar/fb_tab_home_h@3x.png",
-      "text": "首页"
-      }, {
-      "pagePath": "pages/order/order",
-      "iconPath": "./../../resource/images/tabBar/fb_tab_orders@3x.png",
-      "selectedIconPath": "./../../resource/images/tabBar/fb_tab_orders_h@3x.png",
-      "text": "订单"
-      }, {
-      "pagePath": "pages/gallery/gallery",
-      "iconPath": "./../../resource/images/tabBar/fb_tab_photos@3x.png",
-      "selectedIconPath": "./../../resource/images/tabBar/fb_tab_photos_h@3x.png",
-      "text": "照片库"
-      }, {
-      "pagePath": "pages/mine/mine",
-      "iconPath": "./../../resource/images/tabBar/fb_tab_user@3x.png",
-      "selectedIconPath": "./../../resource/images/tabBar/fb_tab_user_h@3x.png",
-      "text": "我的"
-      }]
-  }
+  ]
 }

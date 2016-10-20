@@ -213,23 +213,23 @@ var Order = {
     // 取消订单
     cancelOrder: function (callback) {
         this.setIsCancelOrder(true);
-        // var url = root + "/photoBazaar/order/cancelOrder";
-        // var data = {
-        //     orderId: this.getOrderId()
-        // };
-        // UserServer.getDataWithPublicParams(data);
-        // wx.request({
-        //     url: url,
-        //     data: data?data:{},
-        //     header:{
-        //         "Content-Type":"application/json"
-        //     },
-        //     success: function(result) {
-        //         // if (result.statusCode == 200) {}
-                // callback && callback(result)
-                callback && callback()
-        //     }.bind(this)
-        // });
+        var url = root + "/photoBazaar/order/cancelOrder";
+        var data = {
+            orderId: this.getOrderId()
+        };
+        UserServer.getDataWithPublicParams(data);
+        wx.request({
+            url: url,
+            data: data?data:{},
+            header:{
+                "Content-Type":"application/json"
+            },
+            success: function(result) {
+                // if (result.statusCode == 200) {}
+                callback && callback(result)
+                // callback && callback()
+            }.bind(this)
+        });
     },
     // 获取云端照片
     getOrderPhoto: function () {

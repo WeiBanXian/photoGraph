@@ -1,8 +1,8 @@
 <view class="wrapper">
 	<image class="backBtn" bindtap="handleBack" src="./../../../resource/images/photoSample/photoSample_back@3x.png"/>
-	<image class="headPic" src="./../../../resource/images/home/banner0@3x.jpg"/>
+	<image class="headPic" src="{{sceneData.scenePic}}"/>
 	<view class="textWrapper">
-	    <text class="nameText">街拍写真</text>
+	    <text class="nameText">{{sceneData.sceneName}}</text>
         <view class="enjoy">
 		    <text class="enjoyText">客片欣赏</text>
         </view>
@@ -23,10 +23,7 @@
 		</view>
 	</view>
 	<view class="picsWrapper">
-		<image class="pic" src="./../../../resource/images/home/banner0@3x.jpg"></image>
-		<image class="pic" src="./../../../resource/images/home/banner0@3x.jpg"></image>
-		<image class="pic" src="./../../../resource/images/home/banner0@3x.jpg"></image>
-		<image class="pic" src="./../../../resource/images/home/banner0@3x.jpg"></image>
+		<image class="pic" wx:for="{{sceneData.list}}" wx:for-item="{{item}}" src="{{item.photo}}"></image>
 	</view>
 	<view class="orderTipsWrapper">
         <view class="priceWrapper">

@@ -11,7 +11,7 @@
                     <text class="moneyText">{{item.amount}}</text>
                 </view>
                 <image class="linePic" src="./../../../resource/images/coupon/coupon_line@2x.png"/>
-                <text class="dateText">{{item.startTime}}至{{item.endTime}}</text>
+                <text class="dateText">有效期从{{item.startTime}}至{{item.endTime}}</text>
             </view>
             <image class="statusRoundPic" mode="aspectFit" src="./../../../resource/images/coupon/coupon_hasusedStatus@3x.png"/>
             <image class="statusSquarePic" src="./../../../resource/images/coupon/coupon_hasused_bg@3x.png"/>
@@ -25,7 +25,7 @@
                     <text class="moneyText">{{item.amount}}</text>
                 </view>
                 <image class="linePic" src="./../../../resource/images/coupon/coupon_line@2x.png"/>
-                <text class="dateText">{{item.startTime}}至{{item.endTime}}</text>
+                <text class="dateText">有效期从{{item.startTime}}至{{item.endTime}}</text>
             </view>
             <image class="statusRoundPic" mode="aspectFit" src="./../../../resource/images/coupon/coupon_overdateStatus@3x.png"/>
             <image class="statusSquarePic" src="./../../../resource/images/coupon/coupon_hasused_bg@3x.png"/>
@@ -39,7 +39,7 @@
                     <text class="moneyText">{{item.amount}}</text>
                 </view>
                 <image class="linePic" src="./../../../resource/images/coupon/coupon_line@2x.png"/>
-                <text class="dateText">{{item.startTime}}至{{item.endTime}}</text>
+                <text class="dateText">有效期从{{item.startTime}}至{{item.endTime}}</text>
             </view>
             <image class="statusSquarePic" src="./../../../resource/images/coupon/coupon_noused_bg@3x.png"/>
             <image class="statusTextPic" mode="aspectFit" src="./../../../resource/images/coupon/coupon_noused@3x.png"/>

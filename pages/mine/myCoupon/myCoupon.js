@@ -1,5 +1,7 @@
 var UserServer = require("../../../server/user.js").User;
 
+var {DateManager} = require('../../../utils/dateManage.js');
+
 Page({
   data:{
     couponList: []
@@ -9,18 +11,23 @@ Page({
     var _self = this;
     UserServer.getCouponList(function (result) {
       if (result.data.status == 200) {
+        var _couponList = result.data.data.list;
+        for (var index in _couponList) {
+          _couponList[index].startTime = DateManager.getTimeToLocaleDate(_couponList[index].startTime);
+          _couponList[index].endTime = DateManager.getTimeToLocaleDate(_couponList[index].endTime);
+        }
         _self.setData({
-          couponList: result.data.data.list
+          couponList: _couponList
         })
       }
     });
+    
   },
   onReady:function(){
     // 页面渲染完成
   },
   onShow:function(){
     // 页面显示
-    console.log(this.data.couponList.length)
   },
   onHide:function(){
     // 页面隐藏

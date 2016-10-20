@@ -17,7 +17,7 @@ Page({
   },
   onLoad:function(options){
     var now = new Date();
-    var date = (now.getTime()+'').substr(0, 10) + '3600';      //时间戳
+    var date = (now.getTime()+3600*1000 + '').substr(0, 10);      //10位时间戳
     var year = now.getFullYear();       //年
     var month = now.getMonth() + 1;     //月
     var day = now.getDate();            //日    
@@ -129,7 +129,8 @@ Page({
     OrderServer.setMobile(this.data.mobile);
     OrderServer.createOrder(function (res) {
       if (res.data.status == 200) {
-        wx.navigateTo({url: "../../order/orderDetail/orderDetail"});
+        // wx.navigateTo({url: "../../order/orderDetail/orderDetail"});
+        wx.navigateTo({url: "../../order/order"});
       } else if (res.data.status == 10880) {
         console.log(res.data.message)
       }

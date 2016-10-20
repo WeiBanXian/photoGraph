@@ -4,24 +4,24 @@
 	</view>
 	<view class="row">
 		<text class="label">头像</text>
-		<image class="headPic" bindtap="handleChoseImage" src="{{userData.avatar}}" />
+		<image class="headPic" bindtap="handleChoseImage" src="{{avatar}}" />
 	</view>
     <view class="line"></view>
 	<view class="row">
 		<text class="label">昵称</text>
-		<input class="input" value="{{userData.nickname}}" />
+		<input class="input" value="{{nickname}}" bindblur="handleChangeNickname" />
 	</view>
     <view class="line"></view>
 	<view class="row">
 		<text class="label">性别</text>
 		<view class="sexName">
             <view class="sexWrapper" data-gender="1" bindtap="handleChoseGender">
-			    <image class="malePic sexPic" wx:if="{{userData.gender == 1}}" src="./../../../resource/images/common/selectedRadio@3x.png"/>
+			    <image class="malePic sexPic" wx:if="{{gender == 1}}" src="./../../../resource/images/common/selectedRadio@3x.png"/>
 			    <image class="malePic sexPic" wx:else src="./../../../resource/images/common/unselectRadio@3x.png"/>
 			    <text class="maleText sexText">男</text>
             </view>
             <view class="sexWrapper" data-gender="0" bindtap="handleChoseGender">
-                <image class="femalePic sexPic" wx:if="{{userData.gender == 0}}" src="./../../../resource/images/common/selectedRadio@3x.png"/>
+                <image class="femalePic sexPic" wx:if="{{gender == 0}}" src="./../../../resource/images/common/selectedRadio@3x.png"/>
                 <image class="femalePic sexPic" wx:else src="./../../../resource/images/common/unselectRadio@3x.png"/>
                 <text class="femaleText sexText">女</text>
             </view>
@@ -33,7 +33,7 @@
 	</view>
 	<view class="row">
 		<text class="label">手机</text>
-		<text class="value" style="color: #999;">{{userData.mobile}}</text>
+		<text class="value" style="color: #999;">{{mobile}}</text>
 	</view>
     <view class="line"></view>
 	<view class="logoutBtn">

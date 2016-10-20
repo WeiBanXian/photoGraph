@@ -7,8 +7,8 @@ Page({
     animationData: {},
     hidden: true,
     // userName: '18583269107',
-    userName: '15811459956',
-    password: '584520',
+    userName: '',
+    password: '',
     registerCode: '',
     registerBtnActive: false,
     registerText: "获取验证码"

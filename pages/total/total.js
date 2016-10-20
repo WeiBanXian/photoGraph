@@ -2,6 +2,8 @@ var {root, loginRoot} = require("../../server/common.js");
 var UserServer = require("../../server/user.js").User;
 var OrderServer = require("../../server/order.js").Order;
 
+var {DateManager} = require('../../utils/dateManage.js');
+
 Page({
   data:{
     // text:"这是一个页面"
@@ -9,17 +11,14 @@ Page({
     scrollTop: 100,
     homeData: {
       bannerData: {},
-      priceData: {}
+      priceData: {},
+      sceneData: {}
     },
     orderData: {},
     mineData: {}
   },
   onLoad:function(options){
     // 页面初始化 options为页面跳转所带来的参数
-    var mineData = UserServer.getUserParams();
-    this.setData({
-      mineData: mineData
-    })
     OrderServer.setIsCancelOrder(true);
   },
   onReady:function(){
@@ -64,13 +63,21 @@ Page({
   onShow:function(){
     // 页面显示
     // 订单列表
+    var mineData = UserServer.getUserParams();
+    this.setData({
+      mineData: mineData
+    })
     var _self = this;
     if (OrderServer.getIsCancelOrder()) {
       OrderServer.getOrderList(function (result) {
         if (result.data.status == 200) {
+          var _orderData = OrderServer.getOrderListData();
+          for (var index in _orderData.list) {
+            _orderData.list[index].bookDate = DateManager.getTimeToLocaleDate(_orderData.list[index].bookDate);
+          }
           _self.setData({
             // orderData: result.data.data
-            orderData: OrderServer.getOrderListData()
+            orderData: _orderData
           })
         }
       });
@@ -107,6 +114,10 @@ Page({
   },
   handleGoToAboutUs: function () {
       wx.navigateTo({url: "../mine/aboutUs/aboutUs"});
+  },
+  // 跳转到场景
+  handleGoToScene: function (event) {
+    wx.navigateTo({url: "../home/enjoy/streetEnjoy?type=" + event.currentTarget.dataset.type})
   },
   // 订单列表
   handleGoToOrderDetail: function (event) {

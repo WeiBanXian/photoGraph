@@ -196,6 +196,20 @@ var User = {
     getPassword: function () {
     	return this._password;
     },
+    // 性别
+    setGender: function (_gender) {
+    	this._gender = _gender;
+    },
+    getGender: function () {
+    	return this._gender;
+    },
+    // 头像
+    setAvatar: function (_avatar) {
+    	this._avatar = _avatar;
+    },
+    getAvatar: function () {
+    	return this._avatar;
+    },
     // 注册验证码
     setRegisterCode: function (_registerCode) {
     	this._registerCode = _registerCode;
@@ -304,7 +318,27 @@ var User = {
                 callback && callback(result)
             }.bind(this)
         });
+    },
+
+    // 更新用户信息
+    updateInfo: function (data, callback) { 
+        // /photoBazaar/user/updateInfo
+        var url = root + "/photoBazaar/user/updateInfo";
+        var data = data;
+        this.getDataWithPublicParams(data);
+        wx.request({
+            url: url,
+            data: data?data:{},
+            header:{
+                "Content-Type":"application/json"
+            },
+            success: function(result) {
+                // if (result.statusCode == 200) {}
+                callback && callback(result)
+            }.bind(this)
+        });
     }
+   
 }
 
 module.exports = {

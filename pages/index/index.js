@@ -1,6 +1,9 @@
 var UserServer = require("../../server/user.js").User;
 var Alert = require("../template/alert/alert.js").Alert;
 
+var {getEtag} = require('../../utils/qetag.js');
+var {DateManager} = require('../../utils/dateManage.js');
+
 //获取应用实例
 var app = getApp()
 Page({
@@ -14,6 +17,7 @@ Page({
   },
   onLoad: function () {
     UserServer.init();
+    DateManager.init()
   },
   onReady:function(){
     // 页面渲染完成
@@ -32,34 +36,42 @@ Page({
   },
   // 登录
   handleLogin: function() {
-    wx.chooseImage({
-      success:function(res){
-        console.log(res)
-        this.setData({
-          pic: res.tempFilePaths[0]
-        })  
-      }.bind(this)
-    });
-    // var _self = this;
-    // this.loadingTap();
-    // UserServer.setMobile(this.data.userName);
-    // UserServer.setPassword(this.data.password);
-    // UserServer.login(function (res) {
-    //   switch(res.status) {
-    //     case 10538:
-    //       this.handleAlert("请输入合法的手机号码");
-    //     break;
-    //     case 10510:
-    //       this.handleAlert("账号密码输入有误");
-    //     break;
-    //     case 200:
-    //       wx.redirectTo({
-    //           url: '../total/total'
-    //       })
-    //     break;
-    //   }
-    //   _self.loadingChange();
-    // }.bind(this));
+    // wx.chooseImage({
+    //   success:function(res){
+    //     console.log(res)
+    //     // console.log(getEtag(res.tempFilePaths[0]))
+    //     this.setData({
+    //       pic: res.tempFilePaths[0]
+    //     })  
+    //     // var reader = new FileReader();
+    //     // reader.readAsDataURL(res.tempFilePaths[0]);
+    //     // reader.onload=function(e){
+    //     //   console.log("aa")
+    //     // }
+    //   }.bind(this)
+    // });
+
+
+    var _self = this;
+    this.loadingTap();
+    UserServer.setMobile(this.data.userName);
+    UserServer.setPassword(this.data.password);
+    UserServer.login(function (res) {
+      switch(res.status) {
+        case 10538:
+          this.handleAlert("请输入合法的手机号码");
+        break;
+        case 10510:
+          this.handleAlert("账号密码输入有误");
+        break;
+        case 200:
+          wx.redirectTo({
+              url: '../total/total'
+          })
+        break;
+      }
+      _self.loadingChange();
+    }.bind(this));
   },
   // 跳转到忘记密码
   handleGoToForget: function () {

@@ -59,7 +59,7 @@
 	</view>
 	<view class="row">
 		<text class="label">手机号</text>
-		<input class="value" value="{{mobile}}" placeholder="预约手机号" bindinput="handleChangePhone" />
+		<input class="value" value="{{mobile}}" placeholder="预约手机号" bindinput="handleChangeMobile" />
 	</view>
     <view class="blank"></view>
 	<view class="submitBtn" bindtap="handleCreateOrder">
