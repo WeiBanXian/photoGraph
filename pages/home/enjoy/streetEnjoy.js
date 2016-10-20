@@ -24,7 +24,6 @@ Page({
             _self.setData({
               sceneData: sceneData
             })
-            console.log(_self.data.sceneData)
           }
       }
     })
@@ -41,8 +40,9 @@ Page({
   onUnload:function(){
     // 页面关闭
   },
-  handleGoToBook:function () {
-    wx.navigateTo({url: "./../book/book?type=1"})
+  handleGoToBook:function (event) {
+    console.log(this.data.sceneData.list)
+    wx.navigateTo({url: "./../book/book?list=" + JSON.stringify(this.data.sceneData.list)})
   },
   handleBack: function () {
     wx.navigateBack();

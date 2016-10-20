@@ -2,7 +2,7 @@
     <view class="bannerWrapper">
         <swiper class="swiperWrapper" autoplay="true" duration="1000">
             <swiper-item wx:for="{{homeData.bannerData.data}}"  wx:for-index="idx" wx:for-item="item">
-                <image class="bannerPic" data-item="{{item.sceneType}}" bindtap="handlerGoToBannerNext" src="{{item.picUrl}}"></image>
+                <image class="bannerPic" bindtap="handleGoToScene" data-type="{{item.id}}" src="{{item.picUrl}}"></image>
             </swiper-item>
         </swiper>
     </view>

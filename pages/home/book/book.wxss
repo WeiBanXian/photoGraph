@@ -28,10 +28,11 @@
 
 .block {
     width: 100%;
-    padding: 20rpx;
 }
 
 .blockText {
+    display: block;
+    padding: 20rpx;
     font-size: 26rpx;
     color: #666;
 }

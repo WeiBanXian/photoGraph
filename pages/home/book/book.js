@@ -3,6 +3,7 @@ var UserServer = require("../../../server/user.js").User;
 
 Page({
   data:{
+    list: {},
     locationText: "",
     detailAddress: "",
     type: 1,
@@ -16,6 +17,10 @@ Page({
     mobile: ""
   },
   onLoad:function(options){
+    this.setData({
+      list: JSON.parse(options.list)
+    })
+    console.log(options)
     var now = new Date();
     var date = (now.getTime()+3600*1000 + '').substr(0, 10);      //10位时间戳
     var year = now.getFullYear();       //年

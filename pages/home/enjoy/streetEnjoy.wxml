@@ -1,6 +1,6 @@
 <view class="wrapper">
 	<image class="backBtn" bindtap="handleBack" src="./../../../resource/images/photoSample/photoSample_back@3x.png"/>
-	<image class="headPic" src="{{sceneData.scenePic}}"/>
+	<image class="headPic" mode="aspectFill" src="{{sceneData.scenePic}}"/>
 	<view class="textWrapper">
 	    <text class="nameText">{{sceneData.sceneName}}</text>
         <view class="enjoy">
@@ -22,8 +22,8 @@
 			<text class="columnText">专业摄影1名</text>
 		</view>
 	</view>
-	<view class="picsWrapper">
-		<image class="pic" wx:for="{{sceneData.list}}" wx:for-item="{{item}}" src="{{item.photo}}"></image>
+	<view class="picsWrapper" wx:for="{{sceneData.list}}" wx:for-item="item" >
+		<image class="pic" mode="aspectFill" src="{{item.photo}}"></image>
 	</view>
 	<view class="orderTipsWrapper">
         <view class="priceWrapper">

@@ -2,15 +2,9 @@
 	<view class="banner">
 		<image class="backBtn" bindtap="handleBack" src="./../../../resource/images/order/createOrderBack_normal@3x.png"/>
         <swiper class="swiperWrapper" autoplay="true" duration="1000">
-            <swiper-item>
-                <image class="bannerPic" bindtap="handlerGoToStreet" src="./../../../resource/images/home/banner0@3x.jpg"></image>
-            </swiper-item>
-            <swiper-item>
-                <image class="bannerPic" bindtap="handlerGoToStreet" src="./../../../resource/images/home/banner1@3x.jpg"></image>
-            </swiper-item>
-            <swiper-item>
-                <image class="bannerPic" bindtap="handlerGoToStreet" src="./../../../resource/images/home/banner2@3x.jpg"></image>
-            </swiper-item>    
+            <swiper-item wx:for="{{list}}" wx:for-item="item">
+                <image class="bannerPic" src="{{item.photo}}"></image>
+            </swiper-item> 
         </swiper>
 	</view>
     <view class="block">
