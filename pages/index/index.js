@@ -1,5 +1,6 @@
 var UserServer = require("../../server/user.js").User;
 var Alert = require("../template/alert/alert.js").Alert;
+var Loading = require("../template/loading/loading.js").Loading;
 
 var {getEtag} = require('../../utils/qetag.js');
 var {DateManager} = require('../../utils/dateManage.js');
@@ -10,6 +11,7 @@ Page({
   data: {
     toastText: "",
     animationData: {},
+    loadingAnimationData: {},
     hidden: true,
     userName: '11000000907',
     password: '123456',
@@ -21,6 +23,15 @@ Page({
   },
   onReady:function(){
     // 页面渲染完成
+  },
+  onShow: function(){
+      // setInterval(function () {
+        Loading.show(function (animation) {
+            this.setData({
+              loadingAnimationData: animation
+            })
+        }.bind(this));
+      // }.bind(this), 1000);
   },
   // 用户名
   handleChangePhoneNum: function (event) {

@@ -337,6 +337,25 @@ var User = {
                 callback && callback(result)
             }.bind(this)
         });
+    },
+
+    // 退出登录
+    loginOut: function (callback) {
+        // /photoBazaar/user/loginOut
+        var url = root + "/photoBazaar/user/loginOut";
+        var data = {};
+        this.getDataWithPublicParams(data);
+        wx.request({
+            url: url,
+            data: data?data:{},
+            header:{
+                "Content-Type":"application/json"
+            },
+            success: function(result) {
+                // if (result.statusCode == 200) {}
+                callback && callback(result)
+            }.bind(this)
+        });
     }
    
 }

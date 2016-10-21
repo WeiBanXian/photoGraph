@@ -4,7 +4,11 @@
     </view>-->
 	<view class="rowOrder" wx:for="{{orderData.list}}" wx:for-index="index" wx:for-item="item" data-orderid="{{item.orderId}}" bindtap="handleGoToOrderDetail">
         <view class="rowContentOrder">
-            <text class="orderStatusTextOrder">等待支付</text>
+            <text class="orderStatusTextOrder" wx:if="{{item.orderStat == 1}}">等待拍摄</text>
+            <text class="orderStatusTextOrder" wx:elif="{{item.orderStat == 2}}">正在拍摄</text>
+            <text class="orderStatusTextOrder" wx:elif="{{item.orderStat == 3}}">等待支付</text>
+            <text class="orderStatusTextOrder" wx:elif="{{item.orderStat == 4}}">已完成</text>
+            <text class="orderStatusTextOrder" wx:elif="{{item.orderStat == 5}}">订单取消</text>
             <image class="orderStatusPicOrder" src="./../../../resource/images/order/order_Pay@3x.png" />
             <view class="leftWrapperOrder">
                 <image class="orderInfoBgPicOrder" mode="aspectFill" src="{{item.scenePic}}" />

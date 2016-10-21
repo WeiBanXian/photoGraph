@@ -1,3 +1,5 @@
+@import "../../template/alert/alert.wxss";
+
 .wrapper {
     width: 100%;
     height: 100%;

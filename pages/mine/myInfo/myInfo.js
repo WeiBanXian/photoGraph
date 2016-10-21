@@ -1,8 +1,12 @@
 var UserServer = require("../../../server/user.js").User;
+var Alert = require("../../template/alert/alert.js").Alert;
 
 Page({
   data:{
     // text:"这是一个页面",
+    toastText: "",
+    animationData: {},
+    hidden: true,
     userData: {},
     avatar: '',
     nickname: '',
@@ -48,6 +52,7 @@ Page({
   },
   // 修改性别
   handleChoseGender: function (event) {
+    var _self = this;
     var _userData = this.data.userData; 
     var gender = event.currentTarget.dataset.gender;
     this.setData({
@@ -59,12 +64,13 @@ Page({
       var data = result.data.data;
       if (data.sex == 0 || data.sex == 1) {
         UserServer.getUserParams().gender = data.sex;
-        console.log(data.sex)
+        _self.AlertShow("更新资料成功");
       }
     });
   },
   // 修改昵称
   handleChangeNickname: function (event) {
+    var _self = this;
     var _nickname = event.detail.value;
     this.setData({
       nickname: _nickname
@@ -75,22 +81,44 @@ Page({
       var data = result.data.data;
       if (data.nickname != "undefined") {
         UserServer.getUserParams().nickname = data.nickname;
+        _self.AlertShow("更新资料成功");
       }
     });
   },
-  // handleUpdateInfo: function () {
-  //   UserServer.setGender(this.data.gender);
-  //   UserServer.setUserName(this.data.nickname);
-  //   // console.log(UserServer.getGender())
-  //   // console.log(UserServer.getUserName())
-  //   UserServer.updateInfo(function (result) {
-  //     var data = result.data.data;
-  //     for (var key in data) {
-  //       if () {
-
-  //       }
-  //       UserServer.getUserParams()[key] = 
-  //     }
-  //   });
-  // }
+  // 退出登录
+  handleLogout: function () {
+    UserServer.loginOut(function () {
+      wx.redirectTo({url: "../../../pages/index/index"});
+    });
+  },
+  // 关闭loading
+  loadingChange: function () {
+    this.setData({
+      hidden: true
+    })
+  },
+  // 开启loading
+  loadingTap: function () {
+    this.setData({
+      hidden: false
+    })
+  },
+  AlertShow: function (toastText) {
+    Alert.show(function (animation) {
+      this.setData({
+        toastText: toastText,
+        animationData:animation.export()
+      })
+    }.bind(this));
+    setTimeout(function () {
+      this.AlertHide();
+    }.bind(this), 2500);
+  },
+  AlertHide: function () {
+    Alert.hide(function (animation) {
+      this.setData({
+        animationData:animation.export()
+      })
+    }.bind(this));
+  }
 })

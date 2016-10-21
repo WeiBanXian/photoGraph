@@ -39,4 +39,5 @@
         加载中...
     </loading>
     <include src="../template/alert/alert.wxml" animation="{{...animationData}}" data="{{...toastText}}"/>
+    <include src="../template/loading/loading.wxml" animation="{{...loadingAnimationData}}" />
 </view>

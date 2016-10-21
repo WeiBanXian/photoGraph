@@ -3,7 +3,7 @@ var Alert = require("../../template/alert/alert.js").Alert;
 
 Page({
   data:{
-    toastText: "haha",
+    toastText: "",
     animationData: {},
     hidden: true,
     // userName: '18583269107',

@@ -36,7 +36,11 @@
 		<text class="value" style="color: #999;">{{mobile}}</text>
 	</view>
     <view class="line"></view>
-	<view class="logoutBtn">
+	<view class="logoutBtn" bindtap="handleLogout">
 		<text class="logoutText">退出登录</text>
 	</view>
+    <loading hidden="{{hidden}}" bindchange="loadingChange">
+        加载中...
+    </loading>
+    <include src="../../template/alert/alert.wxml" animation="{{...animationData}}" data="{{...toastText}}"/>
 </view>

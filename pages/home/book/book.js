@@ -20,9 +20,8 @@ Page({
     this.setData({
       list: JSON.parse(options.list)
     })
-    console.log(options)
     var now = new Date();
-    var date = (now.getTime()+3600*1000 + '').substr(0, 10);      //10位时间戳
+    var date = (now.getTime()+7200*1000 + '').substr(0, 10);      //10位时间戳
     var year = now.getFullYear();       //年
     var month = now.getMonth() + 1;     //月
     var day = now.getDate();            //日    
