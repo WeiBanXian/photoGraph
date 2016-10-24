@@ -1,10 +1,4 @@
-<scroll-view
-    scroll-y="true"
-    class="totalWrapper"
-    bindscrolltoupper="handleScrollUpper"
-    bindscrolltolower="handleScrollLower"
-    bindscroll="handleScroll"
-    scroll-top="{{scrollTop}}">
+<view>
     <view class="tabBar">
         <view class="tabItem" style="background: #FFF;" wx:if="{{page == 1}}" data-page="1" bindtap="handleChangeTab">
             <image class="tabIcon" data-page="1" bindtap="handleChangeTab" src="./../../resource/images/tabBar/fb_tab_home_h@3x.png"/>
@@ -55,4 +49,4 @@
         <include src="../../pages/mine/mine.wxml" data="{{...mineData}}"/>
     </view>
     <view class="tabBarBlank"></view>
-</scroll-view>
+</view>

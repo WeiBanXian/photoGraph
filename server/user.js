@@ -8,9 +8,22 @@ var md5 = require('../utils/md5.js')
 
 var User = {
     // 初始化
-    init:function () {
+    init:function (callback) {
+        var _self = this;
         this.setUserParams();
         this.setPublicParams();
+        wx.getStorage({
+            key: 'loginData',
+            success: function(res) {
+                if (res.data.mobile) {
+                    _self.setMobile(res.data.mobile);
+                }
+                if (res.data.password) {
+                    _self.setPassword(res.data.password);
+                }
+                callback && callback(res.data);
+            }
+        })
     },
 
     // 校验手机号码格式
@@ -108,6 +121,11 @@ var User = {
                     this.setUserId(data.data.userId);
                     this.setPublicParams();
                 }
+                var loginData = {
+                    mobile: this.getMobile(),
+                    password: this.getPassword()
+                };
+                wx.setStorage({"loginData": loginData});
                 successCallback && successCallback(res);
             }.bind(this)
         });
@@ -179,6 +197,11 @@ var User = {
                     // tokenExpire: 2592000
                     // userId: "06943d573188c9317ee6e176"
                 }
+                var loginData = {
+                    mobile: this.getMobile(),
+                    password: this.getPassword()
+                };
+                wx.setStorage({key: "loginData", data: loginData});
                 successCallback && successCallback(data);
             }.bind(this)
         });
@@ -361,6 +384,7 @@ var User = {
             },
             success: function(result) {
                 // if (result.statusCode == 200) {}
+                wx.clearStorage();
                 callback && callback(result)
             }.bind(this)
         });

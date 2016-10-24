@@ -95,7 +95,10 @@ Page({
   },
   // 退出登录
   handleLogout: function () {
+    this.loadingTap();
+    var _self = this;
     UserServer.loginOut(function () {
+      _self.loadingChange();
       wx.redirectTo({url: "../../../pages/index/index"});
     });
   },

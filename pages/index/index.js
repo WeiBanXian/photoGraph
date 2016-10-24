@@ -13,12 +13,20 @@ Page({
     animationData: {},
     loadingAnimationData: {},
     hidden: true,
-    userName: '11000000907',
-    password: '123456',
+    // userName: '11000000907',
+    // password: '123456',
+    userName: '',
+    password: '',
     pic: ''
   },
   onLoad: function () {
-    UserServer.init();
+    var _self = this;
+    UserServer.init(function (res) {
+      _self.setData({
+        userName: res.mobile,
+        password: res.password
+      })
+    });
     DateManager.init();
     Loading.init(function (animation) {
         this.setData({

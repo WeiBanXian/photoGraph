@@ -1,20 +1,23 @@
 var {root, loginRoot} = require("../../server/common.js");
 var UserServer = require("../../server/user.js").User;
 var OrderServer = require("../../server/order.js").Order;
+var GlobalServer = require("../../server/global.js").Global;
 
 var {DateManager} = require('../../utils/dateManage.js');
 
 Page({
   data:{
-    // text:"这是一个页面"
     page: 1,
-    scrollTop: 100,
+    homeScrollTop: 0,
+    orderScrollTop: 0,
+    galleryScrollTop: 0,
     homeData: {
       bannerData: {},
       priceData: {},
       sceneData: {}
     },
     orderData: {},
+    galleryData: {},
     mineData: {}
   },
   onLoad:function(options){
@@ -80,13 +83,24 @@ Page({
           for (var index in _orderData.list) {
             _orderData.list[index].bookDate = DateManager.getTimeToLocaleDate(_orderData.list[index].bookDate);
           }
+          // _orderData.list = [];
           _self.setData({
             // orderData: result.data.data
+            orderData: _orderData
+          })
+        } else {
+          _orderData.list = [];
+          _self.setData({
             orderData: _orderData
           })
         }
       });
     }
+    var _galleryData = {};
+    _galleryData.list = [];
+    this.setData({
+      galleryData: _galleryData
+    })
   },
   onHide:function(){
     // 页面隐藏
@@ -94,32 +108,51 @@ Page({
   onUnload:function(){
     // 页面关闭
   },
+  // 滚动到顶部
   handleScrollUpper: function () {
-    console.log("scrollUpper")
+    
   },
+  // 滚动到底部
   handleScrollLower: function () {
-    console.log("scrollLower")
+    
   },
-  handleScroll: function () {
-    console.log("scroll")
+  // 首页界面滚动事件
+  handleHomeScroll: function (e) {
+    var _homeScrollTop = e.detail.scrollTop;
+    GlobalServer.setHomeScrollTop(_homeScrollTop)
   },
+  // 订单界面滚动事件
+  handleOrderScroll: function (e) {
+    var _orderScrollTop = e.detail.scrollTop;
+    GlobalServer.setOrderScrollTop(_orderScrollTop)
+  },
+  // 照片库界面滚动事件
+  handleGalleryScroll: function (e) {
+    var _galleryScrollTop = e.detail.scrollTop;
+    GlobalServer.setGalleryScrollTop(_galleryScrollTop)
+  },
+  // 切换界面
   handleChangeTab: function (event) {
       this.setData({
-        page: event.target.dataset.page
+        page: event.target.dataset.page,
+        orderScrollTop: GlobalServer.getOrderScrollTop(),
+        homeScrollTop: GlobalServer.getHomeScrollTop(),
+        galleryScrollTop: GlobalServer.getGalleryScrollTop()
       })
   },
-  handlerGoToBannerNext:function (e) {
-      wx.navigateTo({url: "../home/enjoy/streetEnjoy"})
-  },
+  // 跳转到我的资料
   handleGoToMyInfo: function () {
       wx.navigateTo({url: "../mine/myInfo/myInfo"});
   },
+  // 跳转到我的优惠券
   handleGoToMyCoupon: function () {
       wx.navigateTo({url: "../mine/myCoupon/myCoupon"});
   },
+  // 跳转到意见反馈
   handleGoToFeedback: function () {
       wx.navigateTo({url: "../mine/feedback/feedback"});
   },
+  // 跳转到关于我们
   handleGoToAboutUs: function () {
       wx.navigateTo({url: "../mine/aboutUs/aboutUs"});
   },

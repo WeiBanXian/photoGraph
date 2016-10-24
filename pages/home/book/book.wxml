@@ -62,4 +62,7 @@
 	<view class="submitBtn" bindtap="handleCreateOrder">
 		<text class="submitText">立即预约</text>
 	</view>
+    <loading hidden="{{hidden}}" bindchange="loadingChange">
+        加载中...
+    </loading>
 </view>

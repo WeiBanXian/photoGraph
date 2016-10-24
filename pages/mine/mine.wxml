@@ -1,6 +1,6 @@
 <view class="wrapperMine">
     <view class="headWrapperMine">
-        <image class="headPicMine" mode="aspectFit" src="{{mineData.avatar}}"></image>
+        <image class="headPicMine" mode="aspectFit" src="{{mineData.avatar}}" bindtap="handleGoToMyInfo"></image>
         <text class="headTextMine">{{mineData.nickname}}</text>
     </view>
     <view class="rowsMine" bindtap="handleGoToMyInfo">

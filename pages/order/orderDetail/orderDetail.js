@@ -2,7 +2,7 @@ var OrderServer = require("../../../server/order.js").Order;
 
 Page({
   data:{
-    // text:"这是一个页面"
+    hidden: true,
     price: 199,
     timeLength: '234:23:00',
     statusArray: ["订单提交", "等待拍摄", "正在拍摄", "付款", "完成"],
@@ -40,12 +40,27 @@ Page({
     // 页面关闭
   },
   handleCancelOrder: function () {
+    this.loadingTap();
+    var _self = this;
     OrderServer.setOrderId(this.data.orderId);
     OrderServer.cancelOrder(function () {
+      _self.loadingChange();
       wx.navigateBack();
     });
   },
   handleGoToGallery: function () {
 	  wx.navigateTo({url: "../../gallery/gallery"});
-  }
+  },
+  // 开启loading
+  loadingTap: function () {
+    this.setData({
+      hidden: false
+    })
+  },
+  // 关闭loading
+  loadingChange: function () {
+    this.setData({
+      hidden: true
+    })
+  },
 })

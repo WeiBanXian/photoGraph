@@ -69,4 +69,7 @@
     <view class="photoBtn" bindtap="handleGoToGallery">
         <text class="photoText">照片库</text>
     </view>
+    <loading hidden="{{hidden}}" bindchange="loadingChange">
+        加载中...
+    </loading>
 </view>

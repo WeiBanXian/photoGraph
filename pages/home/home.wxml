@@ -1,4 +1,10 @@
-<view>
+<scroll-view
+    scroll-y="true"
+    class="homeScrollWrapper"
+    bindscrolltoupper="handleScrollUpper"
+    bindscrolltolower="handleScrollLower"
+    bindscroll="handleHomeScroll"
+    scroll-top="{{homeScrollTop}}">
     <view class="bannerWrapper">
         <swiper class="swiperWrapper" autoplay="true" duration="1000">
             <swiper-item wx:for="{{homeData.bannerData.data}}"  wx:for-index="idx" wx:for-item="item">
@@ -30,4 +36,5 @@
             </view>
         </view>
     </view>
-</view>
+    <view class="blankHome"></view>
+</scroll-view>

@@ -1,37 +1,46 @@
 <view class="wrapperOrder">
-    <!--<view class="emptyWrapperOrder">
+    <view class="emptyWrapperOrder" wx:if="{{orderData.list.length == 0}}">
         <image class="emptyOrder" mode="aspectFit" src="./../../resource/images/order/order_nodata@3x.png"></image>
-    </view>-->
-	<view class="rowOrder" wx:for="{{orderData.list}}" wx:for-index="index" wx:for-item="item" data-orderid="{{item.orderId}}" bindtap="handleGoToOrderDetail">
-        <view class="rowContentOrder">
-            <text class="orderStatusTextOrder" wx:if="{{item.orderStat == 1}}">等待拍摄</text>
-            <text class="orderStatusTextOrder" wx:elif="{{item.orderStat == 2}}">正在拍摄</text>
-            <text class="orderStatusTextOrder" wx:elif="{{item.orderStat == 3}}">等待支付</text>
-            <text class="orderStatusTextOrder" wx:elif="{{item.orderStat == 4}}">已完成</text>
-            <text class="orderStatusTextOrder" wx:elif="{{item.orderStat == 5}}">订单取消</text>
-            <image class="orderStatusPicOrder" src="./../../../resource/images/order/order_Pay@3x.png" />
-            <view class="leftWrapperOrder">
-                <image class="orderInfoBgPicOrder" mode="aspectFill" src="{{item.scenePic}}" />
-                <text class="orderInfoTextOrder">{{item.sceneName}}</text>
-            </view>
-            <view class="rightWrapperOrder">
-                <view class="headWrapperOrder">
-                    <image class="headPicOrder" mode="aspectFill" src="{{item.avatar}}" />
+    </view>
+    <scroll-view
+        wx:else
+        scroll-y="true"
+        class="orderScrollWrapper"
+        bindscrolltoupper="handleScrollUpper"
+        bindscrolltolower="handleScrollLower"
+        bindscroll="handleOrderScroll"
+        scroll-top="{{orderScrollTop}}">
+        <view class="rowOrder" wx:for="{{orderData.list}}" wx:for-index="index" wx:for-item="item" data-orderid="{{item.orderId}}" bindtap="handleGoToOrderDetail">
+            <view class="rowContentOrder">
+                <text class="orderStatusTextOrder" wx:if="{{item.orderStat == 1}}">等待拍摄</text>
+                <text class="orderStatusTextOrder" wx:elif="{{item.orderStat == 2}}">正在拍摄</text>
+                <text class="orderStatusTextOrder" wx:elif="{{item.orderStat == 3}}">等待支付</text>
+                <text class="orderStatusTextOrder" wx:elif="{{item.orderStat == 4}}">已完成</text>
+                <text class="orderStatusTextOrder" wx:elif="{{item.orderStat == 5}}">订单取消</text>
+                <image class="orderStatusPicOrder" src="./../../../resource/images/order/order_Pay@3x.png" />
+                <view class="leftWrapperOrder">
+                    <image class="orderInfoBgPicOrder" mode="aspectFill" src="{{item.scenePic}}" />
+                    <text class="orderInfoTextOrder">{{item.sceneName}}</text>
                 </view>
-                <text class="nameTextOrder">{{item.nickname}}</text>
-                <text class="phoneTextorder">{{item.mobile}}</text>
-                <view class="botWrapperOrder">
-                    <view class="timeWrapperOrder">
-                        <image class="timePicOrder" mode="aspectFit" src="./../../../resource/images/order/time@3x.png" />
-                        <text class="timeTextOrder">{{item.bookDate}}</text>
+                <view class="rightWrapperOrder">
+                    <view class="headWrapperOrder">
+                        <image class="headPicOrder" mode="aspectFill" src="{{item.avatar}}" />
                     </view>
-                    <view class="addressWrapperOrder">
-                        <image class="addressPicOrder" mode="aspectFit" src="./../../../resource/images/order/location@3x.png" />
-                        <text class="addressTextOrder">{{item.place}}</text>
+                    <text class="nameTextOrder">{{item.nickname}}</text>
+                    <text class="phoneTextorder">{{item.mobile}}</text>
+                    <view class="botWrapperOrder">
+                        <view class="timeWrapperOrder">
+                            <image class="timePicOrder" mode="aspectFit" src="./../../../resource/images/order/time@3x.png" />
+                            <text class="timeTextOrder">{{item.bookDate}}</text>
+                        </view>
+                        <view class="addressWrapperOrder">
+                            <image class="addressPicOrder" mode="aspectFit" src="./../../../resource/images/order/location@3x.png" />
+                            <text class="addressTextOrder">{{item.place}}</text>
+                        </view>
                     </view>
                 </view>
             </view>
         </view>
-	</view>
-    <view class="blankOrder"></view>
+        <view class="blankOrder"></view>
+    </scroll-view>
 </view>
