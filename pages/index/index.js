@@ -73,10 +73,10 @@ Page({
     UserServer.login(function (res) {
       switch(res.status) {
         case 10538:
-          this.handleAlert("请输入合法的手机号码");
+          _self.handleAlert("请输入合法的手机号码");
         break;
         case 10510:
-          this.handleAlert("账号密码输入有误");
+          _self.handleAlert("账号密码输入有误");
         break;
         case 200:
           wx.redirectTo({
@@ -85,7 +85,10 @@ Page({
         break;
       }
       _self.loadingChange();
-    }.bind(this));
+    }, function (error) {
+      _self.handleAlert(error);
+      _self.loadingChange();
+    });
   },
   // 跳转到忘记密码
   handleGoToForget: function () {

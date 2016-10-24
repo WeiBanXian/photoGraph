@@ -50,20 +50,39 @@ Page({
   // 获取验证码
   handleRequestRegisterCode: function () {
     var _self = this;
+    var registerTextNum = 60;
     this.loadingTap();
-    UserServer.setUserName(this.data.userName);
+    UserServer.setMobile(this.data.userName);
     UserServer.setPassword(this.data.password);
     
     UserServer.getRequestRegisterCode(function (res) {
       var data = res.data;
       if (data.status == 200) {
-         _self.AlertShow("已发送验证码");
+        _self.AlertShow("已发送验证码");
+        _self.setData({
+          registerBtnActive: true,
+          registerText: registerTextNum + "s"
+        });
+        _self.timer = setInterval(function () {
+          if (registerTextNum == 0) {
+            registerTextNum = 60;
+            _self.setData({
+              registerText: "获取验证码"
+            });
+            clearInterval(_self.timer);
+          } else {
+            registerTextNum --;
+            _self.setData({
+              registerText: registerTextNum + "s"
+            });
+          }
+        }.bind(this), 1000);
       } else {
+        clearInterval(_self.timer);
         registerTextNum = 60;
         _self.setData({
           registerText: "获取验证码"
         });
-        clearInterval(_self.timer);
         
         switch (data.status) {
           case 20881:
@@ -76,32 +95,12 @@ Page({
       _self.AlertShow(mes);
       _self.loadingChange();
     });
-
-    var registerTextNum = 60;
-    this.setData({
-      registerBtnActive: true,
-      registerText: registerTextNum + "s"
-    });
-    this.timer = setInterval(function () {
-      if (registerTextNum == 0) {
-        registerTextNum = 60;
-        this.setData({
-          registerText: "获取验证码"
-        });
-        clearInterval(this.timer);
-      } else {
-        registerTextNum --;
-        this.setData({
-          registerText: registerTextNum + "s"
-        });
-      }
-    }.bind(this), 1000);
   },
   // 注册
   handleRegister: function() {
     var _self = this;
     this.loadingTap();
-    UserServer.setUserName(this.data.userName);
+    UserServer.setMobile(this.data.userName);
     UserServer.setPassword(this.data.password);
     UserServer.setRegisterCode(this.data.registerCode);
 
@@ -113,7 +112,12 @@ Page({
         })
       } else if (data.status == "10537") {
         _self.AlertShow("验证码错误");
+      } else if (data.status == "20881") {
+        _self.AlertShow(data.message);
       }
+      _self.loadingChange();
+    }, function (error) {
+      _self.AlertShow(error);
       _self.loadingChange();
     });
   },

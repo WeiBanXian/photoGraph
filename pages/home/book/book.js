@@ -9,47 +9,33 @@ Page({
     locationText: "",
     detailAddress: "",
     type: 1,
-    timeLength: ["1.0 小时", "1.5 小时", "2.0 小时", "2.5 小时", "3.0 小时", "3.5 小时", "4.0 小时"],
+    currentDate: '',
+    currentTimestamp: '',
     date: ['Android', 'IOS', 'ReactNativ', 'WeChat', 'Web'],
-    timeLengthIndex: 0,
     dateIndex: 0,
-    time: '2016-09-26',
+    timeLength: ["1.0 小时", "1.5 小时", "2.0 小时", "2.5 小时", "3.0 小时", "3.5 小时", "4.0 小时"],
+    timeLengthIndex: 0,
     userName: "",
     gender: 0,
     mobile: ""
   },
   onLoad:function(options){
-    // this.setData({
-    //   list: JSON.parse(options.list)
-    // })
-    var start = DateManager.getCurrentTimestamp()+3600;
-    // var end = DateManager.getCurrentTimestamp()+60*60*24*30;
-    var end = DateManager.getCurrentTimestamp()+3600+60*60*12;
-    var _timeItem = start;
-    while (parseInt(_timeItem) < parseInt(end)) {
-      console.log("_timeItem")
-      _timeItem += 60;
-    }
+    var startTimestamp = DateManager.getCurrentTimestamp()+3600;
+    var start = DateManager.getTimeToLocale(startTimestamp);
     
-    var now = new Date("2019-12-22");
-    
-    // console.log(parseInt(_timeItem))
-    // console.log(start)
-    // console.log(end)
-    
-    // console.log(DateManager.getTime(now))
-
     OrderServer.getLocationInfo(function () {
       var type = options.type;
       var userName = UserServer.getUserParams().nickname;
       var mobile = UserServer.getUserParams().mobile;
       this.setData({
         type: type,
-        time: clock,
-        date: date,
+        currentDate: start,
+        currentTimestamp: startTimestamp,
+        date: start,
         mobile: mobile,
         userName: userName,
-        locationText: OrderServer.getLocationText()
+        locationText: OrderServer.getLocationText(),
+        list: JSON.parse(options.list)
       });
     }.bind(this));
   },
@@ -119,7 +105,7 @@ Page({
     // OrderServer.setDetailAddress(this.data.detailAddress);
     // OrderServer.setType(this.data.type);
     // OrderServer.setTimeLength(this.data.timeLength);
-    // OrderServer.setDate(this.data.date);
+    // OrderServer.setDate(this.data.currentTimestamp);
     // OrderServer.setUserName(this.data.userName);
     // OrderServer.setGender(this.data.gender);
     // OrderServer.setMobile(this.data.mobile);

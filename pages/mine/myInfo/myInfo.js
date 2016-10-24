@@ -60,7 +60,11 @@ Page({
     });
     UserServer.setGender(this.data.gender);
     UserServer.setUserName(this.data.nickname);
+
+    this.loadingTap();
+
     UserServer.updateInfo({sex: this.data.gender}, function (result) {
+      _self.loadingChange();
       var data = result.data.data;
       if (data.sex == 0 || data.sex == 1) {
         UserServer.getUserParams().gender = data.sex;
@@ -77,7 +81,11 @@ Page({
     });
     UserServer.setGender(this.data.gender);
     UserServer.setUserName(this.data.nickname);
+
+    this.loadingTap();
+
     UserServer.updateInfo({nickname: this.data.nickname}, function (result) {
+      _self.loadingChange();
       var data = result.data.data;
       if (data.nickname != "undefined") {
         UserServer.getUserParams().nickname = data.nickname;

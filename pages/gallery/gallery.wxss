@@ -1,6 +1,22 @@
 .wrapperGallery {
     width: 100%;
+    height: 100%;
+    background: #F9F9F9;
 }
+
+.emptyWrapperGallery {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    background: #FFF;
+}
+
+.emptyGallery {
+    width: 20%;
+}
+
 
 .blockGallery {
     background: #FFF;

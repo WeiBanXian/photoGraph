@@ -21,9 +21,9 @@
 	</view>
 	<view class="row">
 		<text class="label">拍摄时间</text>
-        <picker mode="selector" range="{{date}}" value="{{dateIndex}}" bindchange="handleSelectDate">
-            <text class="value">{{time}}</text>
-        </picker>
+        <!--<picker mode="date" value="{{date}}" start="{{currentDate}}" end="2017-09-01" bindchange="handleSelectDate">-->
+            <text class="value">{{currentDate}}</text>
+        <!--</picker>-->
 	</view>
 	<view class="row">
 		<text class="label">拍摄时长</text>

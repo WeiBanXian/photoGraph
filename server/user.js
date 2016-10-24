@@ -15,7 +15,7 @@ var User = {
 
     // 校验手机号码格式
     checkPhoneNum: function () {
-        var _phoneNum = this.getUserName();
+        var _phoneNum = this.getMobile();
         if (/^1\d{10}$/.test(_phoneNum)) {
             return true;
         } else {
@@ -60,7 +60,7 @@ var User = {
         // var url = root + '/manage/index/sendCode';
         var url = root + '/photoBazaar/sPro/sendCode';
         var data = {
-            mobile: this.getUserName(),
+            mobile: this.getMobile(),
             password: this.getPassword()
         };
         wx.request({
@@ -90,7 +90,7 @@ var User = {
         // var url = userCenterRoot + '/api/v2/mobLoginForTest',
         var url = root + '/photoBazaar/sPro/register';
         var data = {
-            mobile: this.getUserName(),
+            mobile: this.getMobile(),
             vcode: this.getRegisterCode()
         };
         wx.request({
@@ -107,7 +107,6 @@ var User = {
                     this.setToken(data.data.token);
                     this.setUserId(data.data.userId);
                     this.setPublicParams();
-                    console.log(this.UserParams);
                 }
                 successCallback && successCallback(res);
             }.bind(this)
@@ -116,6 +115,15 @@ var User = {
 
     // 登录
     login: function (successCallback, failCallback) {
+        if (!this.checkPhoneNum()) {
+            failCallback && failCallback("用户名错误");
+            return false;
+        }
+        if (!this.checkPassword()) {
+            failCallback && failCallback("密码错误");
+            return false;
+        }
+
         var data = {};
         var isMobile = true;
 

@@ -1,5 +1,8 @@
 <view class="wrapperGallery">
-    <view class="blockGallery">
+    <view class="emptyWrapperGallery">
+        <image class="emptyGallery" mode="aspectFit" src="./../../resource/images/order/photo_nodata@3x.png"></image>
+    </view>
+    <!--<view class="blockGallery">
         <view class="topWrapperGallery">
             <text class="dayTextGallery">05</text>
             <text class="dateTextGallery">2016.09</text>
@@ -42,5 +45,5 @@
             <image class="picGallery" mode="aspectFill" src="./../../../resource/images/home/banner0@3x.jpg" />
             <image class="picGallery" mode="aspectFill" src="./../../../resource/images/home/banner0@3x.jpg" />
         </view>
-    </view>
+    </view>-->
 </view>
