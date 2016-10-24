@@ -6,12 +6,14 @@ var {DateManager} = require("../../../utils/dateManage.js");
 Page({
   data:{
     list: {},
+    imageList: [],
     locationText: "",
     detailAddress: "",
     type: 1,
     currentDate: '',
     currentTimestamp: '',
-    date: ['Android', 'IOS', 'ReactNativ', 'WeChat', 'Web'],
+    date: "2016-09-01",
+    time: "12:00",
     dateIndex: 0,
     timeLength: ["1.0 小时", "1.5 小时", "2.0 小时", "2.5 小时", "3.0 小时", "3.5 小时", "4.0 小时"],
     timeLengthIndex: 0,
@@ -21,21 +23,25 @@ Page({
   },
   onLoad:function(options){
     var startTimestamp = DateManager.getCurrentTimestamp()+3600;
-    var start = DateManager.getTimeToLocale(startTimestamp);
+    var startDate = DateManager.getDetailDate();
+    var startTime = DateManager.getDetailTime();
     
+    var list = JSON.parse(options.list);
+    var imageList = JSON.parse(options.imageList);
+
     OrderServer.getLocationInfo(function () {
       var type = options.type;
       var userName = UserServer.getUserParams().nickname;
       var mobile = UserServer.getUserParams().mobile;
       this.setData({
         type: type,
-        currentDate: start,
-        currentTimestamp: startTimestamp,
-        date: start,
+        date: startDate,
+        time: startTime,
         mobile: mobile,
         userName: userName,
         locationText: OrderServer.getLocationText(),
-        list: JSON.parse(options.list)
+        list: list,
+        imageList: imageList
       });
     }.bind(this));
   },
@@ -54,6 +60,15 @@ Page({
   onUnload:function(){
     // 页面关闭
   },
+  // 预览图片
+  handlePreviewImage: function (e) {
+    var current = e.target.dataset.src
+
+    wx.previewImage({
+      current: current,
+      urls: this.data.imageList
+    })
+  },
   // 详细地址
   handleChangeDetailAddress: function (event) {
     this.setData({
@@ -66,11 +81,16 @@ Page({
       timeLengthIndex: e.detail.value
     });
   },
-  // 日期
-  handleSelectDate: function(e) {
+  // 日期,
+  bindDateChange:function(e){
     this.setData({
-      dateIndex: e.detail.value
-    });
+      date:e.detail.value
+    })
+  },
+  bindTimeChange:function(e){
+    this.setData({
+      time:e.detail.value
+    })
   },
   // 跳转到地址
   handleGoToLocation:  function () {
@@ -101,11 +121,13 @@ Page({
   },
   // 立即预约，创建订单
   handleCreateOrder: function () {
+    var bookTimestamp = DateManager.getTimestamp(this.data.date + " " + this.data.time);
+
     // OrderServer.setLocationText(this.data.locationText+this.data.detailAddress);
     // OrderServer.setDetailAddress(this.data.detailAddress);
     // OrderServer.setType(this.data.type);
     // OrderServer.setTimeLength(this.data.timeLength);
-    // OrderServer.setDate(this.data.currentTimestamp);
+    // OrderServer.setDate(bookTimestamp);
     // OrderServer.setUserName(this.data.userName);
     // OrderServer.setGender(this.data.gender);
     // OrderServer.setMobile(this.data.mobile);

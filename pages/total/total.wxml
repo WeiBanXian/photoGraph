@@ -1,9 +1,9 @@
 <scroll-view
     scroll-y="true"
     class="totalWrapper"
-    bindscrolltoupper="upper"
-    bindscrolltolower="lower"
-    bindscroll="scroll"
+    bindscrolltoupper="handleScrollUpper"
+    bindscrolltolower="handleScrollLower"
+    bindscroll="handleScroll"
     scroll-top="{{scrollTop}}">
     <view class="tabBar">
         <view class="tabItem" style="background: #FFF;" wx:if="{{page == 1}}" data-page="1" bindtap="handleChangeTab">

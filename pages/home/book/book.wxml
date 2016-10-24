@@ -2,8 +2,8 @@
 	<view class="banner">
 		<image class="backBtn" bindtap="handleBack" src="./../../../resource/images/order/createOrderBack_normal@3x.png"/>
         <swiper class="swiperWrapper" autoplay="true" duration="1000">
-            <swiper-item wx:for="{{list}}" wx:for-item="item">
-                <image class="bannerPic" src="{{item.photo}}"></image>
+            <swiper-item wx:for="{{imageList}}" wx:for-item="item" wx:for-index="index">
+                <image class="bannerPic" src="{{imageList[index]}}" data-src="{{imageList[index]}}" bindtap="handlePreviewImage"></image>
             </swiper-item> 
         </swiper>
 	</view>
@@ -21,9 +21,12 @@
 	</view>
 	<view class="row">
 		<text class="label">拍摄时间</text>
-        <!--<picker mode="date" value="{{date}}" start="{{currentDate}}" end="2017-09-01" bindchange="handleSelectDate">-->
-            <text class="value">{{currentDate}}</text>
-        <!--</picker>-->
+        <picker mode="date" value="{{date}}" start="{{date}}" bindchange="bindDateChange">
+            <text class="value">{{date}}</text>
+        </picker>
+        <picker mode="time" value="{{time}}" start="{{time}}" bindchange="bindTimeChange">
+            <text class="value" style="margin-left: 20rpx;">{{time}}</text>
+        </picker>
 	</view>
 	<view class="row">
 		<text class="label">拍摄时长</text>

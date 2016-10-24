@@ -5,7 +5,7 @@ Page({
     animationData: {}
   },
   onLoad: function(options) {
-    console.log('sdf')
+    
   },
   onReady: function() {
     

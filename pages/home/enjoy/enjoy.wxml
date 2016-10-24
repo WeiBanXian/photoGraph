@@ -23,7 +23,7 @@
 		</view>
 	</view>
 	<view class="picsWrapper" wx:for="{{sceneData.list}}" wx:for-item="item" >
-		<image class="pic" mode="aspectFill" src="{{item.photo}}"></image>
+		<image class="pic" mode="aspectFill" src="{{item.photo}}" data-src="{{item.photo}}" bindtap="handlePreviewImage"></image>
 	</view>
 	<view class="orderTipsWrapper">
         <view class="priceWrapper">

@@ -94,11 +94,14 @@ Page({
   onUnload:function(){
     // 页面关闭
   },
-  upper: function () {
-    
+  handleScrollUpper: function () {
+    console.log("scrollUpper")
   },
-  lower: function () {
-    
+  handleScrollLower: function () {
+    console.log("scrollLower")
+  },
+  handleScroll: function () {
+    console.log("scroll")
   },
   handleChangeTab: function (event) {
       this.setData({
