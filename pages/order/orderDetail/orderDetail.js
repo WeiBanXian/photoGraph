@@ -44,5 +44,8 @@ Page({
     OrderServer.cancelOrder(function () {
       wx.navigateBack();
     });
+  },
+  handleGoToGallery: function () {
+	  wx.navigateTo({url: "../../gallery/gallery"});
   }
 })

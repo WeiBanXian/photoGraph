@@ -19,19 +19,18 @@ Page({
   },
   onLoad: function () {
     UserServer.init();
-    DateManager.init()
+    DateManager.init();
+    Loading.init(function (animation) {
+        this.setData({
+          loadingAnimationData:animation.export()
+        })
+    }.bind(this));
   },
   onReady:function(){
     // 页面渲染完成
   },
   onShow: function(){
-      // setInterval(function () {
-        Loading.show(function (animation) {
-            this.setData({
-              loadingAnimationData: animation
-            })
-        }.bind(this));
-      // }.bind(this), 1000);
+    
   },
   // 用户名
   handleChangePhoneNum: function (event) {
@@ -47,6 +46,10 @@ Page({
   },
   // 登录
   handleLogin: function() {
+    // this.setData({
+    //   hidden: true
+    // })
+      
     // wx.chooseImage({
     //   success:function(res){
     //     console.log(res)
@@ -92,9 +95,14 @@ Page({
   },
   // 跳转到注册
   handleGoToRegister: function () {
-      wx.navigateTo({
-          url: './register/register'
-      })
+    // Loading.hide(function (animation) {
+    //     this.setData({
+    //       loadingAnimationData:animation.export()
+    //     })
+    //   }.bind(this));
+    wx.navigateTo({
+        url: './register/register'
+    })
   },
   // 关闭loading
   loadingChange: function () {

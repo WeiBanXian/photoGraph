@@ -1,33 +1,30 @@
 var Loading ={
-    init: function () {
-        console.log("init");
-    },
-    show: function (callback) {
-        this._deg = 180;
-        var animation = wx.createAnimation({
-            timingFunction:"linear"
-        })
-        animation.opacity(1).rotate(this._deg).step();
-        setTimeout(function () {
-            callback && callback(animation);
-        }, 1000)
-        setInterval(function () {
+    init: function (callback) {
+        this._deg = 0;
+    // },
+    // show: function (callback) {
+    //     clearInterval(this.timer);
+        // var animation = wx.createAnimation({
+        //     timingFunction:"linear"
+        // })
+        // animation.opacity(1).step({ duration: 500 });
+        // callback && callback(animation);
+        this.timer = setInterval(function () {
+            var animation = wx.createAnimation({
+                timingFunction:"linear"
+            })
             this._deg += 180;
-            animation.rotate(this._deg).step();
-            // setTimeout(function () {
-                callback && callback(animation);
-            // }.bind(this), 200);
-        }.bind(this),1000);
-    },
-    hide: function (callback) {
-        var animation = wx.createAnimation({
-            duration: 1000,
-            timingFunction:"linear"
-        })
-        animation.translate(0, 45).step();
-        setTimeout(function () {
+            animation.rotate(this._deg).step({ duration: 500 });
             callback && callback(animation);
         }.bind(this), 500);
+    },
+    hide: function (callback) {
+        clearInterval(this.timer);
+        var animation = wx.createAnimation({
+            timingFunction:"linear"
+        })
+        animation.rotate(this._deg).step({ duration: 10 });
+        callback && callback(animation);
     },
 }
 

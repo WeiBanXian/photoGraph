@@ -1,6 +1,8 @@
 var OrderServer = require("../../../server/order.js").Order;
 var UserServer = require("../../../server/user.js").User;
 
+var {DateManager} = require("../../../utils/dateManage.js");
+
 Page({
   data:{
     list: {},
@@ -17,35 +19,25 @@ Page({
     mobile: ""
   },
   onLoad:function(options){
-    this.setData({
-      list: JSON.parse(options.list)
-    })
-    var now = new Date();
-    var date = (now.getTime()+7200*1000 + '').substr(0, 10);      //10位时间戳
-    var year = now.getFullYear();       //年
-    var month = now.getMonth() + 1;     //月
-    var day = now.getDate();            //日    
-    var hh = now.getHours();            //时
-    var mm = now.getMinutes();          //分
+    // this.setData({
+    //   list: JSON.parse(options.list)
+    // })
+    var start = DateManager.getCurrentTimestamp()+3600;
+    // var end = DateManager.getCurrentTimestamp()+60*60*24*30;
+    var end = DateManager.getCurrentTimestamp()+3600+60*60*12;
+    var _timeItem = start;
+    while (parseInt(_timeItem) < parseInt(end)) {
+      console.log("_timeItem")
+      _timeItem += 60;
+    }
     
-    var clock = year + "-";
+    var now = new Date("2019-12-22");
     
-    if(month < 10)
-        clock += "0";
+    // console.log(parseInt(_timeItem))
+    // console.log(start)
+    // console.log(end)
     
-    clock += month + "-";
-    
-    if(day < 10)
-        clock += "0";
-        
-    clock += day + " ";
-    
-    if(hh < 10)
-        clock += "0";
-        
-    clock += hh + ":";
-    if (mm < 10) clock += '0'; 
-    clock += mm; 
+    // console.log(DateManager.getTime(now))
 
     OrderServer.getLocationInfo(function () {
       var type = options.type;
@@ -123,21 +115,22 @@ Page({
   },
   // 立即预约，创建订单
   handleCreateOrder: function () {
-    OrderServer.setLocationText(this.data.locationText);
-    OrderServer.setDetailAddress(this.data.detailAddress);
-    OrderServer.setType(this.data.type);
-    OrderServer.setTimeLength(this.data.timeLength);
-    OrderServer.setDate(this.data.date);
-    OrderServer.setUserName(this.data.userName);
-    OrderServer.setGender(this.data.gender);
-    OrderServer.setMobile(this.data.mobile);
-    OrderServer.createOrder(function (res) {
-      if (res.data.status == 200) {
+    // OrderServer.setLocationText(this.data.locationText+this.data.detailAddress);
+    // OrderServer.setDetailAddress(this.data.detailAddress);
+    // OrderServer.setType(this.data.type);
+    // OrderServer.setTimeLength(this.data.timeLength);
+    // OrderServer.setDate(this.data.date);
+    // OrderServer.setUserName(this.data.userName);
+    // OrderServer.setGender(this.data.gender);
+    // OrderServer.setMobile(this.data.mobile);
+    // OrderServer.createOrder(function (res) {
+    //   if (res.data.status == 200) {
         // wx.navigateTo({url: "../../order/orderDetail/orderDetail"});
         wx.navigateTo({url: "../../order/order"});
-      } else if (res.data.status == 10880) {
-        console.log(res.data.message)
-      }
-    });
+        // wx.redirectTo({url: "../../total/total?page=2"});
+    //   } else if (res.data.status == 10880) {
+    //     console.log(res.data.message)
+    //   }
+    // });
   }
 })

@@ -20,6 +20,11 @@ Page({
   onLoad:function(options){
     // 页面初始化 options为页面跳转所带来的参数
     OrderServer.setIsCancelOrder(true);
+    if (options.page && options.page > 0) {
+      this.setData({
+        page: options.page
+      })
+    }
   },
   onReady:function(){
     // 页面渲染完成
@@ -117,7 +122,7 @@ Page({
   },
   // 跳转到场景
   handleGoToScene: function (event) {
-    wx.navigateTo({url: "../home/enjoy/streetEnjoy?type=" + event.currentTarget.dataset.type})
+    wx.navigateTo({url: "../home/enjoy/enjoy?type=" + event.currentTarget.dataset.type})
   },
   // 订单列表
   handleGoToOrderDetail: function (event) {

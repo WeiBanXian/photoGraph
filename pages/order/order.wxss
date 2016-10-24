@@ -51,7 +51,7 @@
     font-size: 28rpx;
     color: #FFF;
     text-align: center;
-    z-index: 999;
+    z-index: 998;
 }
 
 .orderStatusPicOrder {
@@ -60,7 +60,7 @@
     left: -15rpx;
     width: 180rpx;
     height: 60rpx;
-    z-index: 998;
+    z-index: 997;
 }
 
 .leftWrapperOrder {

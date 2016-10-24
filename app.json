@@ -6,11 +6,11 @@
     "navigationBarTextStyle":"#000"
   },
   "pages": [
+    "pages/home/book/book",
     "pages/index/index",
     "pages/order/order",
     "pages/order/orderDetail/orderDetail",
     "pages/gallery/gallery",
-    "pages/home/book/book",
     "pages/index/register/register",
     "pages/index/forget/forget",
     "pages/total/total",
@@ -22,6 +22,6 @@
     "pages/mine/myInfo/myInfo",
     "pages/home/book/location/location",
     "pages/home/book/location/city/city",
-    "pages/home/enjoy/streetEnjoy"
+    "pages/home/enjoy/enjoy"
   ]
 }

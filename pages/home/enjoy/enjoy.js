@@ -41,7 +41,6 @@ Page({
     // 页面关闭
   },
   handleGoToBook:function (event) {
-    console.log(this.data.sceneData.list)
     wx.navigateTo({url: "./../book/book?list=" + JSON.stringify(this.data.sceneData.list)})
   },
   handleBack: function () {
