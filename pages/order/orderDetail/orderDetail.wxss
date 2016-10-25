@@ -7,7 +7,7 @@
 }
 
 .bgPic {
-
+	filter: blur(15px);
 }
 
 .topContent {
@@ -22,8 +22,8 @@
     bottom: 0;
     margin: auto;
     z-index: 999;
-    background: rgba(255, 255, 255, 0.6);
-    box-shadow: 0 0 1500px 5px #999 inset;
+    /*background: rgba(255, 255, 255, 0.6);
+    box-shadow: 0 0 1500px 5px #999 inset;*/
 }
 
 .contentTopWrapper {
