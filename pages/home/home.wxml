@@ -7,7 +7,7 @@
     scroll-top="{{homeScrollTop}}">
     <view class="bannerWrapper">
         <swiper class="swiperWrapper" autoplay="true" duration="1000">
-            <swiper-item wx:for="{{homeData.bannerData.data}}"  wx:for-index="idx" wx:for-item="item">
+            <swiper-item wx:for="{{homeData.bannerData.data}}" wx:key="unique" wx:for-index="idx" wx:for-item="item">
                 <image class="bannerPic" bindtap="handleGoToScene" data-type="{{item.id}}" src="{{item.picUrl}}"></image>
             </swiper-item>
         </swiper>
@@ -20,7 +20,7 @@
             </view>
             <view class="priceWrapper">
                 <text class="priceNum">{{homeData.priceData.data.price}}</text>
-                <text class="priceUnit">元/每小时</text>
+                <text class="priceUnit">元/小时</text>
             </view>
         </view>
         <view class="picsWrapper">

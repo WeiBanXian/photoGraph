@@ -1,7 +1,4 @@
 <view class="wrapperOrder">
-    <view class="emptyWrapperOrder" wx:if="{{orderData.list.length == 0}}">
-        <image class="emptyOrder" mode="aspectFit" src="./../../resource/images/order/order_nodata@3x.png"></image>
-    </view>
     <scroll-view
         wx:else
         scroll-y="true"
@@ -9,8 +6,9 @@
         bindscrolltoupper="handleScrollUpper"
         bindscrolltolower="handleScrollLower"
         bindscroll="handleOrderScroll"
-        scroll-top="{{orderScrollTop}}">
-        <view class="rowOrder" wx:for="{{orderData.list}}" wx:for-index="index" wx:for-item="item" data-orderid="{{item.orderId}}" bindtap="handleGoToOrderDetail">
+        scroll-top="{{orderScrollTop}}"
+        wx:if="{{orderData.list.length > 0}}">
+        <view class="rowOrder" wx:for="{{orderData.list}}" wx:key="unique" wx:for-index="index" wx:for-item="item" data-orderid="{{item.orderId}}" bindtap="handleGoToOrderDetail">
             <view class="rowContentOrder">
                 <text class="orderStatusTextOrder" wx:if="{{item.orderStat == 1}}">等待拍摄</text>
                 <text class="orderStatusTextOrder" wx:elif="{{item.orderStat == 2}}">正在拍摄</text>
@@ -43,4 +41,7 @@
         </view>
         <view class="blankOrder"></view>
     </scroll-view>
+    <view class="emptyWrapperOrder" wx:else>
+        <image class="emptyOrder" mode="aspectFit" src="./../../resource/images/order/order_nodata@3x.png"></image>
+    </view>
 </view>

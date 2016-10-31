@@ -63,4 +63,9 @@ Page({
       hidden: true
     })
   },
+  handleCall: function () {
+    wx.makePhoneCall({
+      phoneNumber: this.data.mobile //仅为示例，并非真实的电话号码
+    })
+  }
 })

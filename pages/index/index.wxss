@@ -1,6 +1,5 @@
-/**index.wxss**/
-@import "../../pages/template/loading/loading.wxss";
-@import "../../pages/template/alert/alert.wxss";
+
+/*@import "../../pages/template/alert/alert.wxss";*/
 
 .wrapper {
 	display: flex;

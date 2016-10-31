@@ -1,27 +1,30 @@
 {
+  "pages":[
+    "pages/index/index",
+    "pages/index/register/register",
+    "pages/index/forget/forget",
+    "pages/total/total",
+    "pages/home/enjoy/enjoy",
+    "pages/home/book/book",
+    "pages/home/book/location/location",
+    "pages/order/order",
+    "pages/order/orderDetail/orderDetail",
+    "pages/gallery/gallery",
+    "pages/mine/myInfo/myInfo",
+    "pages/mine/myCoupon/myCoupon",
+    "pages/mine/feedback/feedback",
+    "pages/mine/aboutUs/aboutUs"
+  ],
   "window":{
     "backgroundTextStyle":"#FFF",
     "navigationBarBackgroundColor": "#FFF",
     "navigationBarTitleText": "想拍就拍",
     "navigationBarTextStyle":"#000"
   },
-  "pages": [
-    "pages/index/index",
-    "pages/home/book/book",
-    "pages/order/order",
-    "pages/order/orderDetail/orderDetail",
-    "pages/gallery/gallery",
-    "pages/index/register/register",
-    "pages/index/forget/forget",
-    "pages/total/total",
-    "pages/home/home",
-    "pages/mine/myCoupon/myCoupon",
-    "pages/mine/feedback/feedback",
-    "pages/mine/aboutUs/aboutUs",
-    "pages/mine/mine",
-    "pages/mine/myInfo/myInfo",
-    "pages/home/book/location/location",
-    "pages/home/book/location/city/city",
-    "pages/home/enjoy/enjoy"
-  ]
+  "networkTimeout": {
+    "request": 10000,
+    "connectSocket": 10000,
+    "uploadFile": 10000,
+    "downloadFile": 10000
+  }
 }

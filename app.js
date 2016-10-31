@@ -13,14 +13,11 @@ App({
     }else{
       //调用登录接口
       wx.login({
-        success: function (res) {
-          // console.log(res)
+        success: function () {
           wx.getUserInfo({
-            success: function (info) {
-              // console.log(info)
+            success: function (res) {
               that.globalData.userInfo = res.userInfo
               typeof cb == "function" && cb(that.globalData.userInfo)
-              // wx.redirectTo("pages/index/index")
             }
           })
         }

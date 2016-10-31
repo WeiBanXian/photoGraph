@@ -158,6 +158,7 @@ Page({
   },
   // 跳转到场景
   handleGoToScene: function (event) {
+    console.log(event.currentTarget.dataset.type)
     wx.navigateTo({url: "../home/enjoy/enjoy?type=" + event.currentTarget.dataset.type})
   },
   // 订单列表

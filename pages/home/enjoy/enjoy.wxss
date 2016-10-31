@@ -28,7 +28,7 @@
 }
 
 .enjoyText {
-    padding: 7rpx 20rpx;
+    padding: 10rpx 20rpx;
     font-size: 24rpx;
     line-height: 36rpx;
     color: #999;
@@ -60,13 +60,13 @@
 
 .columnPic {
     display: block;
-    width: 40rpx;
-    height: 40rpx;
+    width: 45rpx;
+    height: 45rpx;
     margin: auto;
 }
 
 .columnText {
-    font-size: 16rpx;
+    font-size: 24rpx;
     color: #999;
 }
 
@@ -96,22 +96,22 @@
 .priceWrapper {
     justify-content: flex-start;
     align-items: center;
-    margin-left: 25rpx;
+    margin-left: 30rpx;
 }
 
 .priceNum {
-    font-size: 40rpx;
+    font-size: 45rpx;
     color: #55CBBD;
 }
 
 .priceUnit {
-    font-size: 10rpx;
+    font-size: 20rpx;
     color: #55CBBD;
 }
 
 .orderTipsBtn {
     margin-right: 25rpx;
-    padding: 3rpx 45rpx;
+    padding: 4rpx 50rpx;
     justify-content: center;
     align-items: center;
     border-radius: 3rpx;
@@ -119,7 +119,7 @@
 }
 
 .orderTipsText {
-    font-size: 24rpx;
+    font-size: 28rpx;
     line-height: 40rpx;
     color: #FFF;
 }

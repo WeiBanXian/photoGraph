@@ -22,13 +22,13 @@
 			<text class="columnText">专业摄影1名</text>
 		</view>
 	</view>
-	<view class="picsWrapper" wx:for="{{sceneData.list}}" wx:for-item="item" >
+	<view class="picsWrapper" wx:for="{{sceneData.list}}" wx:key="unique" wx:for-item="item" >
 		<image class="pic" mode="aspectFill" src="{{item.photo}}" data-src="{{item.photo}}" bindtap="handlePreviewImage"></image>
 	</view>
 	<view class="orderTipsWrapper">
         <view class="priceWrapper">
             <text class="priceNum">199</text>
-            <text class="priceUnit">元/每小时</text>
+            <text class="priceUnit">元/小时</text>
         </view>
 		<view class="orderTipsBtn" bindtap="handleGoToBook">
 			<text class="orderTipsText">立即预约</text>

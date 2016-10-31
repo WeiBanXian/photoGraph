@@ -37,9 +37,5 @@
             </view>
         </view>
     </view>
-    <loading hidden="{{hidden}}" bindchange="loadingChange">
-        加载中...
-    </loading>
     <include src="../template/alert/alert.wxml" animation="{{...animationData}}" data="{{...toastText}}"/>
-    <!--<include data="{{...hidden}}" src="../template/loading/loading.wxml" animation="{{...loadingAnimationData}}" />-->
 </view>

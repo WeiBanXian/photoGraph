@@ -11,12 +11,11 @@ Page({
   data: {
     toastText: "",
     animationData: {},
-    loadingAnimationData: {},
     hidden: true,
-    // userName: '11000000907',
-    // password: '123456',
-    userName: '',
-    password: '',
+    userName: '11000000907',
+    password: '123456',
+    // userName: '',
+    // password: '',
     pic: ''
   },
   onLoad: function () {
@@ -28,11 +27,6 @@ Page({
       })
     });
     DateManager.init();
-    Loading.init(function (animation) {
-        this.setData({
-          loadingAnimationData:animation.export()
-        })
-    }.bind(this));
   },
   onReady:function(){
     // 页面渲染完成
@@ -54,28 +48,17 @@ Page({
   },
   // 登录
   handleLogin: function() {
-    // this.setData({
-    //   hidden: true
+
+    // wx.redirectTo({
+    //     url: './../total/total'
     // })
-      
-    // wx.chooseImage({
-    //   success:function(res){
-    //     console.log(res)
-    //     // console.log(getEtag(res.tempFilePaths[0]))
-    //     this.setData({
-    //       pic: res.tempFilePaths[0]
-    //     })  
-    //     // var reader = new FileReader();
-    //     // reader.readAsDataURL(res.tempFilePaths[0]);
-    //     // reader.onload=function(e){
-    //     //   console.log("aa")
-    //     // }
-    //   }.bind(this)
-    // });
-
-
+    
     var _self = this;
-    this.loadingTap();
+    wx.showToast({
+      title: '登录中...',
+      icon: 'loading',
+      duration: 10000
+    })
     UserServer.setMobile(this.data.userName);
     UserServer.setPassword(this.data.password);
     UserServer.login(function (res) {
@@ -87,15 +70,16 @@ Page({
           _self.handleAlert("账号密码输入有误");
         break;
         case 200:
-          wx.redirectTo({
-              url: '../total/total'
+          wx.navigateTo({
+          // wx.redirectTo({
+              url: './../total/total'
           })
         break;
       }
-      _self.loadingChange();
+      wx.hideToast()
     }, function (error) {
       _self.handleAlert(error);
-      _self.loadingChange();
+      wx.hideToast()
     });
   },
   // 跳转到忘记密码
@@ -106,33 +90,9 @@ Page({
   },
   // 跳转到注册
   handleGoToRegister: function () {
-    // Loading.hide(function (animation) {
-    //     this.setData({
-    //       loadingAnimationData:animation.export()
-    //     })
-    //   }.bind(this));
     wx.navigateTo({
         url: './register/register'
     })
-  },
-  // 关闭loading
-  loadingChange: function () {
-    this.setData({
-      hidden: true
-    })
-  },
-  // 开启loading
-  loadingTap: function () {
-    this.setData({
-      hidden: false
-    })
-
-    // var that = this
-    // setTimeout(function () {
-    //   that.setData({
-    //     hidden: true
-    //   })
-    // }, 1500)
   },
   handleAlert: function (toastText) {
     Alert.show(function (animation) {
