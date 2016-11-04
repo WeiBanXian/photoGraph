@@ -158,10 +158,9 @@ Page({
   },
   // 跳转到场景
   handleGoToScene: function (event) {
-    console.log(event.currentTarget.dataset.type)
     wx.navigateTo({url: "../home/enjoy/enjoy?type=" + event.currentTarget.dataset.type})
   },
-  // 订单列表
+  // 订单详情
   handleGoToOrderDetail: function (event) {
     var currentOrderId = event.currentTarget.dataset.orderid;
     var orderList = this.data.orderData.list;
@@ -170,5 +169,11 @@ Page({
         wx.navigateTo({url: "../order/orderDetail/orderDetail?orderData=" + JSON.stringify(orderList[index])});
       }
     }
+  },
+  handleCall: function (e) {
+    var phone = event.currentTarget.dataset.phone;
+    wx.makePhoneCall({
+      phoneNumber: phone
+    })
   }
 })

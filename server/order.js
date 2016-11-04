@@ -114,24 +114,24 @@ var Order = {
             success: function (res) {
                 this.setLongitude(res.longitude);
                 this.setLatitude(res.latitude);
-                var url = 'http://restapi.amap.com/v3/geocode/regeo';
-                wx.request({
-                    url: url,
-                    data: {
-                        key: "6bbcf8a9041e51985d60fb352723e62c",
-                        location: res.longitude + ',' + res.latitude,
-                        radius: 100,
-                        extensions: "all"
-                    },
-                    header:{
-                        "Content-Type":"application/json"
-                    },
-                    success: function(result) {
-                        this.setLocationPois(result.data.regeocode.pois);
-                        this.setLocationText(result.data.regeocode.pois[0].name);
+                // var url = 'http://restapi.amap.com/v3/geocode/regeo';
+                // wx.request({
+                //     url: url,
+                //     data: {
+                //         key: "6bbcf8a9041e51985d60fb352723e62c",
+                //         location: res.longitude + ',' + res.latitude,
+                //         radius: 100,
+                //         extensions: "all"
+                //     },
+                //     header:{
+                //         "Content-Type":"application/json"
+                //     },
+                //     success: function(result) {
+                //         this.setLocationPois(result.data.regeocode.pois);
+                //         this.setLocationText(result.data.regeocode.pois[0].name);
                         callback && callback();
-                    }.bind(this)
-                });
+                    // }.bind(this)
+                // });
             }.bind(this)
         })
     },

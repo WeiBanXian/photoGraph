@@ -17,7 +17,7 @@
   ],
   "window":{
     "backgroundTextStyle":"#FFF",
-    "navigationBarBackgroundColor": "#FFF",
+    "navigationBarBackgroundColor": "#000",
     "navigationBarTitleText": "想拍就拍",
     "navigationBarTextStyle":"#000"
   },

@@ -5,34 +5,34 @@
     </view>
     <view class="rowsMine" bindtap="handleGoToMyInfo">
         <view class="rowLeftMine">
-            <image class="rowPicMine" mode="aspectFit" src="./../../resource/images/user/user_profile@3x.png"></image>
+            <image class="rowPicMine" mode="aspectFit" src="https://fe.c360dn.com/wxapps/photograph/images/user/user_profile%403x.png"></image>
             <text class="rowTextMine">我的资料</text>
         </view>
-        <image class="rowArrowMine" src="./../../resource/images/user/arrow@3x.png"></image>
+        <image class="rowArrowMine" src="https://fe.c360dn.com/wxapps/photograph/images/user/arrow%403x.png"></image>
     </view>
     <view class="lineMine"></view>
     <view class="rowsMine" bindtap="handleGoToMyCoupon">
         <view class="rowLeftMine">
-            <image class="rowPicMine" mode="aspectFit" src="./../../resource/images/user/user_coupon@3x.png"></image>
+            <image class="rowPicMine" mode="aspectFit" src="https://fe.c360dn.com/wxapps/photograph/images/user/user_coupon%403x.png"></image>
             <text class="rowTextMine">我的优惠券</text>
         </view>
-        <image class="rowArrowMine" src="./../../resource/images/user/arrow@3x.png"></image>
+        <image class="rowArrowMine" src="https://fe.c360dn.com/wxapps/photograph/images/user/arrow%403x.png"></image>
     </view>
     <view class="lineMine"></view>
     <view class="rowsMine" bindtap="handleGoToFeedback">
         <view class="rowLeftMine">
-            <image class="rowPicMine" mode="aspectFit" src="./../../resource/images/user/user_feedback@3x.png"></image>
+            <image class="rowPicMine" mode="aspectFit" src="https://fe.c360dn.com/wxapps/photograph/images/user/user_feedback%403x.png"></image>
             <text class="rowTextMine">意见反馈</text>
         </view>
-        <image class="rowArrowMine" src="./../../resource/images/user/arrow@3x.png"></image>
+        <image class="rowArrowMine" src="https://fe.c360dn.com/wxapps/photograph/images/user/arrow%403x.png"></image>
     </view>
     <view class="lineMine"></view>
     <view class="rowsMine" bindtap="handleGoToAboutUs">
         <view class="rowLeftMine">
-            <image class="rowPicMine" mode="aspectFit" src="./../../resource/images/user/user_about@3x.png"></image>
+            <image class="rowPicMine" mode="aspectFit" src="https://fe.c360dn.com/wxapps/photograph/images/user/user_about%403x.png"></image>
             <text class="rowTextMine">关于我们</text>
         </view>
-        <image class="rowArrowMine" src="./../../resource/images/user/arrow@3x.png"></image>
+        <image class="rowArrowMine" src="https://fe.c360dn.com/wxapps/photograph/images/user/arrow%403x.png"></image>
     </view>
     <view class="lineMine"></view>
 </view>

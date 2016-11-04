@@ -1,3 +1,0 @@
-<view class="loadingWrapper" wx:if="{{hidden}}">
-    <image animation="{{loadingAnimationData}}" class="loadingPic" src="./../../../resource/images/common/loading@3x.png"/>
-</view>

@@ -11,7 +11,7 @@
     flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	background-image: url("./../../resource/images/user/user_bg@3x.png");
+	background-image: url("https://fe.c360dn.com/wxapps/photograph/images/user/user_bg%403x.png");
 	background-size: 100%;
     background-repeat: no-repeat;
 }

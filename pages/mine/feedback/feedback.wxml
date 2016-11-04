@@ -1,6 +1,6 @@
 <view class="wrapper">
 	<view class="leftMesWrapper">
-        <image class="leftHeadPic" src="./../../../resource/images/user/logo@2x.png" />
+        <image class="leftHeadPic" src="./.https://fe.c360dn.com/wxapps/photograph/images/user/logo@2x.png" />
         <view class="leftMesContainer">
             <text class="leftMesContent">aasdfjalasdfsadfasdfasdfasdfasdfasdfasdfasdfasdfadssdfkjasdflkdsj</text>
             <view class="leftArrow"></view>
@@ -11,10 +11,10 @@
             <text class="rightMesContent">aasdfjalsdfkjasdflkdsj</text>
             <view class="rightArrow"></view>
         </view>
-        <image class="rightHeadPic" src="./../../../resource/images/user/logo@2x.png" />
+        <image class="rightHeadPic" src="./.https://fe.c360dn.com/wxapps/photograph/images/user/logo@2x.png" />
     </view>
 	<view class="leftMesWrapper">
-        <image class="leftHeadPic" src="./../../../resource/images/user/logo@2x.png" />
+        <image class="leftHeadPic" src="./.https://fe.c360dn.com/wxapps/photograph/images/user/logo@2x.png" />
         <view class="leftMesContainer">
             <text class="leftMesContent">aasdfjalasdfsadfasdfasdfasdfasdfasdfasdfasdfasdfadssdfkjasdflkdsj</text>
             <view class="leftArrow"></view>
@@ -25,10 +25,10 @@
             <text class="rightMesContent">aasdfjalsdfkjasdflkdsj</text>
             <view class="rightArrow"></view>
         </view>
-        <image class="rightHeadPic" src="./../../../resource/images/user/logo@2x.png" />
+        <image class="rightHeadPic" src="./.https://fe.c360dn.com/wxapps/photograph/images/user/logo@2x.png" />
     </view>
 	<view class="leftMesWrapper">
-        <image class="leftHeadPic" src="./../../../resource/images/user/logo@2x.png" />
+        <image class="leftHeadPic" src="./.https://fe.c360dn.com/wxapps/photograph/images/user/logo@2x.png" />
         <view class="leftMesContainer">
             <text class="leftMesContent">aasdfjalasdfsadfasdfasdfasdfasdfasdfasdfasdfasdfadssdfkjasdflkdsj</text>
             <view class="leftArrow"></view>
@@ -39,10 +39,10 @@
             <text class="rightMesContent">aasdfjalsdfkjasdflkdsj</text>
             <view class="rightArrow"></view>
         </view>
-        <image class="rightHeadPic" src="./../../../resource/images/user/logo@2x.png" />
+        <image class="rightHeadPic" src="./.https://fe.c360dn.com/wxapps/photograph/images/user/logo@2x.png" />
     </view>
 	<view class="leftMesWrapper">
-        <image class="leftHeadPic" src="./../../../resource/images/user/logo@2x.png" />
+        <image class="leftHeadPic" src="./.https://fe.c360dn.com/wxapps/photograph/images/user/logo@2x.png" />
         <view class="leftMesContainer">
             <text class="leftMesContent">aasdfjalasdfsadfasdfasdfasdfasdfasdfasdfasdfasdfadssdfkjasdflkdsj</text>
             <view class="leftArrow"></view>
@@ -53,10 +53,10 @@
             <text class="rightMesContent">aasdfjalsdfkjasdflkdsj</text>
             <view class="rightArrow"></view>
         </view>
-        <image class="rightHeadPic" src="./../../../resource/images/user/logo@2x.png" />
+        <image class="rightHeadPic" src="./.https://fe.c360dn.com/wxapps/photograph/images/user/logo@2x.png" />
     </view>
 	<view class="leftMesWrapper">
-        <image class="leftHeadPic" src="./../../../resource/images/user/logo@2x.png" />
+        <image class="leftHeadPic" src="./.https://fe.c360dn.com/wxapps/photograph/images/user/logo@2x.png" />
         <view class="leftMesContainer">
             <text class="leftMesContent">aasdfjalasdfsadfasdfasdfasdfasdfasdfasdfasdfasdfadssdfkjasdflkdsj</text>
             <view class="leftArrow"></view>
@@ -67,7 +67,7 @@
             <text class="rightMesContent">aasdfjalsdfkjasdflkdsj</text>
             <view class="rightArrow"></view>
         </view>
-        <image class="rightHeadPic" src="./../../../resource/images/user/logo@2x.png" />
+        <image class="rightHeadPic" src="./.https://fe.c360dn.com/wxapps/photograph/images/user/logo@2x.png" />
     </view>
     <!--<view class="blank"></view>-->
 	<view class="inputWrapper">

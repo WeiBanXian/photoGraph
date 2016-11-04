@@ -183,8 +183,8 @@ var DateManager = {
         var hh = now.getHours();            //时
         var mm = now.getMinutes();          //分
         var ss = now.getSeconds();          //秒
-        
-        var clock = hh + ":";
+
+        var clock = hh + 1 + ":";
         
         if (mm < 10) clock += '0';
         clock += mm;

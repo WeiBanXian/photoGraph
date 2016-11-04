@@ -1,6 +1,5 @@
 var UserServer = require("../../server/user.js").User;
 var Alert = require("../template/alert/alert.js").Alert;
-var Loading = require("../template/loading/loading.js").Loading;
 
 var {getEtag} = require('../../utils/qetag.js');
 var {DateManager} = require('../../utils/dateManage.js');
@@ -48,10 +47,10 @@ Page({
   },
   // 登录
   handleLogin: function() {
-
-    // wx.redirectTo({
-    //     url: './../total/total'
-    // })
+          // wx.navigateTo({
+          // // wx.redirectTo({
+          //     url: './../total/total'
+          // })
     
     var _self = this;
     wx.showToast({
@@ -87,6 +86,12 @@ Page({
       wx.navigateTo({
           url: './forget/forget'
       })
+  },
+  // 
+  handleCall: function () {
+    wx.makePhoneCall({
+      phoneNumber: '11000000907'
+    })
   },
   // 跳转到注册
   handleGoToRegister: function () {

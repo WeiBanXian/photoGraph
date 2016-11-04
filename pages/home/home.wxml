@@ -25,14 +25,14 @@
         </view>
         <view class="picsWrapper">
             <view class="picsRow">
-                <image class="pic" src="./../../resource/images/home/street@3x.png" bindtap="handleGoToScene" data-type="1"><view class="picText">街拍写真</view></image>
-                <image class="pic" src="./../../resource/images/home/baby@3x.png" bindtap="handleGoToScene" data-type="2"><view class="picText">亲子瞬间</view></image>
-                <image class="pic" src="./../../resource/images/home/pet@3x.png" bindtap="handleGoToScene" data-type="3"><view class="picText">宠物生活</view></image>
+                <image class="pic" src="https://fe.c360dn.com/wxapps/photograph/images/home/street%403x.png" bindtap="handleGoToScene" data-type="1"><view class="picText">街拍写真</view></image>
+                <image class="pic" src="https://fe.c360dn.com/wxapps/photograph/images/home/baby%403x.png" bindtap="handleGoToScene" data-type="2"><view class="picText">亲子瞬间</view></image>
+                <image class="pic" src="https://fe.c360dn.com/wxapps/photograph/images/home/pet%403x.png" bindtap="handleGoToScene" data-type="3"><view class="picText">宠物生活</view></image>
             </view>
             <view class="picsRow">
-                <image class="pic" src="./../../resource/images/home/activityDocument@3x.png" bindtap="handleGoToScene" data-type="4"><view class="picText">活动纪实</view></image>
-                <image class="pic" src="./../../resource/images/home/professionalProfile@3x.png" bindtap="handleGoToScene" data-type="5"><view class="picText">职业形象</view></image>
-                <image class="pic" src="./../../resource/images/home/productPromotion@3x.png" bindtap="handleGoToScene" data-type="6"><view class="picText">产品宣传</view></image>
+                <image class="pic" src="https://fe.c360dn.com/wxapps/photograph/images/home/activityDocument%403x.png" bindtap="handleGoToScene" data-type="4"><view class="picText">活动纪实</view></image>
+                <image class="pic" src="https://fe.c360dn.com/wxapps/photograph/images/home/professionalProfile%403x.png" bindtap="handleGoToScene" data-type="5"><view class="picText">职业形象</view></image>
+                <image class="pic" src="https://fe.c360dn.com/wxapps/photograph/images/home/productPromotion%403x.png" bindtap="handleGoToScene" data-type="6"><view class="picText">产品宣传</view></image>
             </view>
         </view>
     </view>

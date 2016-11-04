@@ -1,6 +1,6 @@
 <view class="wrapper">
 	<view class="topWrapper">
-		<image class="bgPic" src="../../../../resource/images/home/banner0@3x.jpg" />
+		<image class="bgPic" src="https://fe.c360dn.com/wxapps/photograph/images/home/banner0%403x.jpg" />
 		<view class="topContent">
 			<view class="contentTopWrapper">
 				<text class="cancelText" bindtap="handleCancelOrder" wx:if="{{status < 3}}">取消订单</text>
@@ -54,7 +54,7 @@
 		<view class="row">
 			<text class="label">联系电话：</text>
 			<text class="value">{{mobile}}</text>
-			<image class="arrow" bindtap="handleCall" src="./../../../resource/images/order/listPhone@3x.png"/>
+			<image class="arrow" bindtap="handleCall" src="https://fe.c360dn.com/wxapps/photograph/images/order/listPhone%403x.png"/>
 		</view>
 		<view class="row">
 			<text class="label">拍摄时间：</text>

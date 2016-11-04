@@ -1,7 +1,7 @@
 <view class="wrapper">
     <view class="content">
         <view class="row">
-            <image class="icon" src="./../../resource/images/nLogin/newPhone@3x.png"></image>
+            <image class="icon" src="https://fe.c360dn.com/wxapps/photograph/images/nLogin/newPhone%403x.png"></image>
             <input
                 class="input"
                 placeholder-class="input-placeholder"
@@ -12,7 +12,7 @@
                 bindchange="handleChangePhoneNum" />
         </view>
         <view class="row">
-            <image class="icon" src="./../../resource/images/nLogin/newLock@3x.png"></image>
+            <image class="icon" src="https://fe.c360dn.com/wxapps/photograph/images/nLogin/newLock%403x.png"></image>
             <input
                 class="input"
                 placeholder-class="input-placeholder"
@@ -29,7 +29,7 @@
             <text class="btnText">登录</text>
         </view>
         <view class="bottomWrapper">
-            <view class="leftWrapper">
+            <view class="leftWrapper" bindtap="handleCall">
                 <text class="leftText">微信登录</text>
             </view>
             <view class="rightWrapper" bindtap="handleGoToRegister">

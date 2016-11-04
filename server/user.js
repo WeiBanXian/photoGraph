@@ -157,10 +157,10 @@ var User = {
             url: root + '/photoBazaar/sPro/login',
             // url: userCenterRoot + '/api/v2/mobLoginForTest',
             // url: root + '/manage/index/photoGrapherLogin',
-            data: data?data:{},
+            data: data,
             medthod: 'post',
             header:{
-                "Content-Type":"application/json"
+                "Content-Type":"application/x-www-form-urlencoded"
             },
             success: function(res) {
                 var data = res.data;
@@ -205,6 +205,13 @@ var User = {
                 successCallback && successCallback(data);
             }.bind(this)
         });
+    },
+    json2Form: function (json) {  
+        var str = [];  
+        for(var p in json){  
+            str.push(encodeURIComponent(p) + "=" + encodeURIComponent(json[p]));  
+        }  
+        return str.join("&");  
     },
     // 用户名
     setUserName: function (_userName) {

@@ -15,7 +15,7 @@
                 <text class="orderStatusTextOrder" wx:elif="{{item.orderStat == 3}}">等待支付</text>
                 <text class="orderStatusTextOrder" wx:elif="{{item.orderStat == 4}}">已完成</text>
                 <text class="orderStatusTextOrder" wx:elif="{{item.orderStat == 5}}">订单取消</text>
-                <image class="orderStatusPicOrder" src="./../../../resource/images/order/order_Pay@3x.png" />
+                <image class="orderStatusPicOrder" src="https://fe.c360dn.com/wxapps/photograph/images/order/order_Pay%403x.png" />
                 <view class="leftWrapperOrder">
                     <image class="orderInfoBgPicOrder" mode="aspectFill" src="{{item.scenePic}}" />
                     <text class="orderInfoTextOrder">{{item.sceneName}}</text>
@@ -25,14 +25,14 @@
                         <image class="headPicOrder" mode="aspectFill" src="{{item.avatar}}" />
                     </view>
                     <text class="nameTextOrder">{{item.nickname}}</text>
-                    <text class="phoneTextorder">{{item.mobile}}</text>
+                    <text class="phoneTextorder" data-phone="{{item.mobile}}" bindtap="handleCall">{{item.mobile}}</text>
                     <view class="botWrapperOrder">
                         <view class="timeWrapperOrder">
-                            <image class="timePicOrder" mode="aspectFit" src="./../../../resource/images/order/time@3x.png" />
+                            <image class="timePicOrder" mode="aspectFit" src="https://fe.c360dn.com/wxapps/photograph/images/order/time%403x.png" />
                             <text class="timeTextOrder">{{item.bookDate}}</text>
                         </view>
                         <view class="addressWrapperOrder">
-                            <image class="addressPicOrder" mode="aspectFit" src="./../../../resource/images/order/location@3x.png" />
+                            <image class="addressPicOrder" mode="aspectFit" src="https://fe.c360dn.com/wxapps/photograph/images/order/location%403x.png" />
                             <text class="addressTextOrder">{{item.place}}</text>
                         </view>
                     </view>
@@ -42,6 +42,6 @@
         <view class="blankOrder"></view>
     </scroll-view>
     <view class="emptyWrapperOrder" wx:else>
-        <image class="emptyOrder" mode="aspectFit" src="./../../resource/images/order/order_nodata@3x.png"></image>
+        <image class="emptyOrder" mode="aspectFit" src="https://fe.c360dn.com/wxapps/photograph/images/order/order_nodata%403x.png"></image>
     </view>
 </view>

@@ -1,6 +1,6 @@
 <view class="wrapper">
 	<view class="banner">
-		<image class="backBtn" bindtap="handleBack" src="./../../../resource/images/order/createOrderBack_normal@3x.png"/>
+		<image class="backBtn" bindtap="handleBack" src="https://fe.c360dn.com/wxapps/photograph/images/order/createOrderBack_normal%403x.png"/>
         <swiper class="swiperWrapper" autoplay="true" duration="1000">
             <swiper-item wx:for="{{imageList}}" wx:key="unique" wx:for-item="item" wx:for-index="index">
                 <image class="bannerPic" src="{{imageList[index]}}" data-src="{{imageList[index]}}" bindtap="handlePreviewImage"></image>
@@ -13,7 +13,7 @@
 	<view class="row" bindtap="handleGoToLocation">
 		<text class="label">拍摄地址</text>
 		<text class="value">{{locationText}}</text>
-		<image class="arrow" src="./../../../resource/images/user/arrow@3x.png"/>
+		<image class="arrow" src="https://fe.c360dn.com/wxapps/photograph/images/user/arrow%403x.png"/>
 	</view>
 	<view class="row">
 		<text class="label">详细地址</text>
@@ -44,13 +44,13 @@
 	<view class="row">
 		<text class="label">性别</text>
         <view class="female radioWrapper" data-gender="0" bindtap="handleChoseGender">
-            <image class="femalePic radioPic" wx:if="{{gender == 0}}" src="./../../../resource/images/common/selectedRadio@3x.png" />
-            <image class="femalePic radioPic" wx:else src="./../../../resource/images/common/unselectRadio@3x.png" />
+            <image class="femalePic radioPic" wx:if="{{gender == 0}}" src="https://fe.c360dn.com/wxapps/photograph/images/common/selectedRadio%403x.png" />
+            <image class="femalePic radioPic" wx:else src="https://fe.c360dn.com/wxapps/photograph/images/common/unselectRadio%403x.png" />
 		    <text class="radioText">女</text>
         </view>
         <view class="male radioWrapper" data-gender="1" bindtap="handleChoseGender">
-            <image class="malePic radioPic" wx:if="{{gender == 1}}" src="./../../../resource/images/common/selectedRadio@3x.png" />
-            <image class="malePic radioPic" wx:else src="./../../../resource/images/common/unselectRadio@3x.png" />
+            <image class="malePic radioPic" wx:if="{{gender == 1}}" src="https://fe.c360dn.com/wxapps/photograph/images/common/selectedRadio%403x.png" />
+            <image class="malePic radioPic" wx:else src="https://fe.c360dn.com/wxapps/photograph/images/common/unselectRadio%403x.png" />
 		    <text class="radioText">男</text>
         </view>
 	</view>
@@ -62,7 +62,4 @@
 	<view class="submitBtn" bindtap="handleCreateOrder">
 		<text class="submitText">立即预约</text>
 	</view>
-    <loading hidden="{{hidden}}" bindchange="loadingChange">
-        加载中...
-    </loading>
 </view>

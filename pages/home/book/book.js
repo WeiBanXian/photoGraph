@@ -5,10 +5,9 @@ var {DateManager} = require("../../../utils/dateManage.js");
 
 Page({
   data:{
-    hidden: true,
     list: {},
     imageList: [],
-    locationText: "",
+    locationText: "天府软件园",
     detailAddress: "",
     type: 1,
     currentDate: '',
@@ -40,7 +39,7 @@ Page({
         time: startTime,
         mobile: mobile,
         userName: userName,
-        locationText: OrderServer.getLocationText(),
+        // locationText: OrderServer.getLocationText(),
         list: list,
         imageList: imageList
       });
@@ -51,9 +50,9 @@ Page({
   },
   onShow:function(){
     // 页面显示
-    this.setData({
-      locationText: OrderServer.getLocationText()
-    });
+    // this.setData({
+    //   locationText: OrderServer.getLocationText()
+    // });
   },
   onHide:function(){
     // 页面隐藏
@@ -122,39 +121,36 @@ Page({
   },
   // 立即预约，创建订单
   handleCreateOrder: function () {
-    this.loadingTap();
+    wx.showToast({
+      title: '预约中...',
+      icon: 'loading',
+      duration: 10000
+    })
     var _self = this;
     var bookTimestamp = DateManager.getTimestamp(this.data.date + " " + this.data.time);
 
     OrderServer.setLocationText(this.data.locationText+this.data.detailAddress);
     OrderServer.setDetailAddress(this.data.detailAddress);
-    OrderServer.setType(this.data.type);
+    OrderServer.setType(2);
     OrderServer.setTimeLength(this.data.timeLength);
-    OrderServer.setDate(bookTimestamp);
+    OrderServer.setDate(1478335560);
     OrderServer.setUserName(this.data.userName);
     OrderServer.setGender(this.data.gender);
     OrderServer.setMobile(this.data.mobile);
     OrderServer.createOrder(function (res) {
+      wx.hideToast()
       if (res.data.status == 200) {
-        wx.navigateTo({url: "../../order/orderDetail/orderDetail"});
-        _self.loadingChange();
-        wx.navigateTo({url: "../../order/order"});
-        // wx.redirectTo({url: "../../total/total?page=2"});
+        wx.showToast({
+          title: '预约成功',
+          icon: 'success',
+          duration: 2000
+        });
+        // wx.navigateTo({url: "../../order/orderDetail/orderDetail"});
+        // wx.navigateTo({url: "../../order/order"});
+        wx.redirectTo({url: "../../total/total?page=2"});
       } else if (res.data.status == 10880) {
         console.log(res.data.message)
       }
     });
-  },
-  // 开启loading
-  loadingTap: function () {
-    this.setData({
-      hidden: false
-    })
-  },
-  // 关闭loading
-  loadingChange: function () {
-    this.setData({
-      hidden: true
-    })
-  },
+  }
 })

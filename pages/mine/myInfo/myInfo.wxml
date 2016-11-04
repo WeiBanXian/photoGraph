@@ -16,13 +16,13 @@
 		<text class="label">性别</text>
 		<view class="sexName">
             <view class="sexWrapper" data-gender="1" bindtap="handleChoseGender">
-			    <image class="malePic sexPic" wx:if="{{gender == 1}}" src="./../../../resource/images/common/selectedRadio@3x.png"/>
-			    <image class="malePic sexPic" wx:else src="./../../../resource/images/common/unselectRadio@3x.png"/>
+			    <image class="malePic sexPic" wx:if="{{gender == 1}}" src="https://fe.c360dn.com/wxapps/photograph/images/common/selectedRadio%403x.png"/>
+			    <image class="malePic sexPic" wx:else src="https://fe.c360dn.com/wxapps/photograph/images/common/unselectRadio%403x.png"/>
 			    <text class="maleText sexText">男</text>
             </view>
             <view class="sexWrapper" data-gender="0" bindtap="handleChoseGender">
-                <image class="femalePic sexPic" wx:if="{{gender == 0}}" src="./../../../resource/images/common/selectedRadio@3x.png"/>
-                <image class="femalePic sexPic" wx:else src="./../../../resource/images/common/unselectRadio@3x.png"/>
+                <image class="femalePic sexPic" wx:if="{{gender == 0}}" src="https://fe.c360dn.com/wxapps/photograph/images/common/selectedRadio%403x.png"/>
+                <image class="femalePic sexPic" wx:else src="https://fe.c360dn.com/wxapps/photograph/images/common/unselectRadio%403x.png"/>
                 <text class="femaleText sexText">女</text>
             </view>
 		</view>
@@ -39,8 +39,4 @@
 	<view class="logoutBtn" bindtap="handleLogout">
 		<text class="logoutText">退出登录</text>
 	</view>
-    <loading hidden="{{hidden}}" bindchange="loadingChange">
-        加载中...
-    </loading>
-    <include src="../../template/alert/alert.wxml" animation="{{...animationData}}" data="{{...toastText}}"/>
 </view>

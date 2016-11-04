@@ -1,6 +1,6 @@
 <view class="wrapperGallery">
     <view class="emptyWrapperGallery" wx:if="{{galleryData.list.length == 0}}">
-        <image class="emptyGallery" mode="aspectFit" src="./../../resource/images/order/photo_nodata@3x.png"></image>
+        <image class="emptyGallery" mode="aspectFit" src="https://fe.c360dn.com/wxapps/photograph/images/order/photo_nodata%403x.png"></image>
     </view>
     <scroll-view
         wx:elif="{{galleryData.list.length > 0}}"
@@ -21,15 +21,15 @@
             </view>
             <view class="picsWrapperGallery">
                 <image class="picGallery" mode="aspectFill" src="/Users/macbook/Desktop/pic.png" />
-                <image class="picGallery" mode="aspectFill" src="./../../../resource/images/home/banner0@3x.jpg" />
-                <image class="picGallery" mode="aspectFill" src="./../../../resource/images/home/banner0@3x.jpg" />
-                <image class="picGallery" mode="aspectFill" src="./../../../resource/images/home/banner0@3x.jpg" />
-                <image class="picGallery" mode="aspectFill" src="./../../../resource/images/home/banner0@3x.jpg" />
-                <image class="picGallery" mode="aspectFill" src="./../../../resource/images/home/banner0@3x.jpg" />
-                <image class="picGallery" mode="aspectFill" src="./../../../resource/images/home/banner0@3x.jpg" />
-                <image class="picGallery" mode="aspectFill" src="./../../../resource/images/home/banner0@3x.jpg" />
-                <image class="picGallery" mode="aspectFill" src="./../../../resource/images/home/banner0@3x.jpg" />
-                <image class="picGallery" mode="aspectFill" src="./../../../resource/images/home/banner0@3x.jpg" />
+                <image class="picGallery" mode="aspectFill" src="./.https://fe.c360dn.com/wxapps/photograph/images/home/banner0%403x.jpg" />
+                <image class="picGallery" mode="aspectFill" src="./.https://fe.c360dn.com/wxapps/photograph/images/home/banner0%403x.jpg" />
+                <image class="picGallery" mode="aspectFill" src="./.https://fe.c360dn.com/wxapps/photograph/images/home/banner0%403x.jpg" />
+                <image class="picGallery" mode="aspectFill" src="./.https://fe.c360dn.com/wxapps/photograph/images/home/banner0%403x.jpg" />
+                <image class="picGallery" mode="aspectFill" src="./.https://fe.c360dn.com/wxapps/photograph/images/home/banner0%403x.jpg" />
+                <image class="picGallery" mode="aspectFill" src="./.https://fe.c360dn.com/wxapps/photograph/images/home/banner0%403x.jpg" />
+                <image class="picGallery" mode="aspectFill" src="./.https://fe.c360dn.com/wxapps/photograph/images/home/banner0%403x.jpg" />
+                <image class="picGallery" mode="aspectFill" src="./.https://fe.c360dn.com/wxapps/photograph/images/home/banner0%403x.jpg" />
+                <image class="picGallery" mode="aspectFill" src="./.https://fe.c360dn.com/wxapps/photograph/images/home/banner0%403x.jpg" />
             </view>
         </view>
         <view class="blockGallery">
@@ -42,16 +42,16 @@
                 <text class="photoTextGallery">20张照片</text>
             </view>
             <view class="picsWrapperGallery">
-                <image class="picGallery" mode="aspectFill" src="./../../../resource/images/home/banner0@3x.jpg" />
-                <image class="picGallery" mode="aspectFill" src="./../../../resource/images/home/banner0@3x.jpg" />
-                <image class="picGallery" mode="aspectFill" src="./../../../resource/images/home/banner0@3x.jpg" />
-                <image class="picGallery" mode="aspectFill" src="./../../../resource/images/home/banner0@3x.jpg" />
-                <image class="picGallery" mode="aspectFill" src="./../../../resource/images/home/banner0@3x.jpg" />
-                <image class="picGallery" mode="aspectFill" src="./../../../resource/images/home/banner0@3x.jpg" />
-                <image class="picGallery" mode="aspectFill" src="./../../../resource/images/home/banner0@3x.jpg" />
-                <image class="picGallery" mode="aspectFill" src="./../../../resource/images/home/banner0@3x.jpg" />
-                <image class="picGallery" mode="aspectFill" src="./../../../resource/images/home/banner0@3x.jpg" />
-                <image class="picGallery" mode="aspectFill" src="./../../../resource/images/home/banner0@3x.jpg" />
+                <image class="picGallery" mode="aspectFill" src="./.https://fe.c360dn.com/wxapps/photograph/images/home/banner0%403x.jpg" />
+                <image class="picGallery" mode="aspectFill" src="./.https://fe.c360dn.com/wxapps/photograph/images/home/banner0%403x.jpg" />
+                <image class="picGallery" mode="aspectFill" src="./.https://fe.c360dn.com/wxapps/photograph/images/home/banner0%403x.jpg" />
+                <image class="picGallery" mode="aspectFill" src="./.https://fe.c360dn.com/wxapps/photograph/images/home/banner0%403x.jpg" />
+                <image class="picGallery" mode="aspectFill" src="./.https://fe.c360dn.com/wxapps/photograph/images/home/banner0%403x.jpg" />
+                <image class="picGallery" mode="aspectFill" src="./.https://fe.c360dn.com/wxapps/photograph/images/home/banner0%403x.jpg" />
+                <image class="picGallery" mode="aspectFill" src="./.https://fe.c360dn.com/wxapps/photograph/images/home/banner0%403x.jpg" />
+                <image class="picGallery" mode="aspectFill" src="./.https://fe.c360dn.com/wxapps/photograph/images/home/banner0%403x.jpg" />
+                <image class="picGallery" mode="aspectFill" src="./.https://fe.c360dn.com/wxapps/photograph/images/home/banner0%403x.jpg" />
+                <image class="picGallery" mode="aspectFill" src="./.https://fe.c360dn.com/wxapps/photograph/images/home/banner0%403x.jpg" />
             </view>
         </view>
         <view class="blankGallery"></view>

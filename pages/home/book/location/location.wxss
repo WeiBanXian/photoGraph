@@ -47,7 +47,7 @@
 .locationList {
     width: 100%;
     margin-top: 80rpx;
-    background: #F00;
+    background: #FFF;
 }
 
 .row {
