@@ -1,5 +1,5 @@
 <view class="wrapper">
-	<image class="logo" src="./.https://fe.c360dn.com/wxapps/photograph/images/user/logo@2x.png" />
+	<image class="logo" src="https://fe.c360dn.com/wxapps/photograph/images/user/logo@2x.png" />
 	<text class="name">想拍就拍</text>
 	<text class="version">Version 1.1.9</text>
 	<view class="botWrapper">

@@ -3,14 +3,6 @@
     align-items: center;
 }
 
-.backBtn {
-    position: fixed;
-    top: 30rpx;
-    left: 30rpx;
-    width: 60rpx;
-    height: 60rpx;
-}
-
 .headPic {
     width: 100%;
 }

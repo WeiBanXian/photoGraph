@@ -36,15 +36,16 @@ Page({
   },
   // 订单详情
   handleGoToOrderDetail: function (event) {
-    var currentOrderId = event.currentTarget.dataset.orderid;
-    var orderList = this.data.orderData.list;
-    for (var index in orderList) {
-      if (currentOrderId == orderList[index].orderId) {
-        wx.navigateTo({url: "../order/orderDetail/orderDetail?orderData=" + JSON.stringify(orderList[index])});
-      }
-    }
+    // var currentOrderId = event.currentTarget.dataset.orderid;
+    // var orderList = this.data.orderData.list;
+    // for (var index in orderList) {
+    //   if (currentOrderId == orderList[index].orderId) {
+    //     wx.navigateTo({url: "../order/orderDetail/orderDetail?orderData=" + JSON.stringify(orderList[index])});
+    //   }
+    // }
   },
   handleCall: function (e) {
+    console.log(e)
     var phone = event.currentTarget.dataset.phone;
     wx.makePhoneCall({
       phoneNumber: phone

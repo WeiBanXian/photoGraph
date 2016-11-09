@@ -81,7 +81,7 @@ Page({
         if (result.data.status == 200) {
           var _orderData = OrderServer.getOrderListData();
           for (var index in _orderData.list) {
-            _orderData.list[index].bookDate = DateManager.getTimeToLocaleDate(_orderData.list[index].bookDate);
+            _orderData.list[index].bookDate = DateManager.getTimeToLocale(_orderData.list[index].bookDate);
           }
           // _orderData.list = [];
           _self.setData({
@@ -171,7 +171,7 @@ Page({
     }
   },
   handleCall: function (e) {
-    var phone = event.currentTarget.dataset.phone;
+    var phone = e.currentTarget.dataset.phone;
     wx.makePhoneCall({
       phoneNumber: phone
     })

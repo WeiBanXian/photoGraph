@@ -7,7 +7,7 @@ Page({
   data:{
     list: {},
     imageList: [],
-    locationText: "天府软件园",
+    locationText: "",
     detailAddress: "",
     type: 1,
     currentDate: '',
@@ -39,7 +39,7 @@ Page({
         time: startTime,
         mobile: mobile,
         userName: userName,
-        // locationText: OrderServer.getLocationText(),
+        locationText: OrderServer.getLocationText(),
         list: list,
         imageList: imageList
       });
@@ -50,9 +50,9 @@ Page({
   },
   onShow:function(){
     // 页面显示
-    // this.setData({
-    //   locationText: OrderServer.getLocationText()
-    // });
+    this.setData({
+      locationText: OrderServer.getLocationText()
+    });
   },
   onHide:function(){
     // 页面隐藏
@@ -115,10 +115,6 @@ Page({
       mobile: event.detail.value
     })
   },
-  // 返回上一级界面
-  handleBack: function () {
-    wx.navigateBack();
-  },
   // 立即预约，创建订单
   handleCreateOrder: function () {
     wx.showToast({
@@ -147,7 +143,8 @@ Page({
         });
         // wx.navigateTo({url: "../../order/orderDetail/orderDetail"});
         // wx.navigateTo({url: "../../order/order"});
-        wx.redirectTo({url: "../../total/total?page=2"});
+        // wx.redirectTo({url: "../../total/total?page=2"});
+        wx.navigateBack({delta: 3, page: 2});
       } else if (res.data.status == 10880) {
         console.log(res.data.message)
       }

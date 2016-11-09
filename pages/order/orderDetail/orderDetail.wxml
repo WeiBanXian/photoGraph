@@ -54,7 +54,7 @@
 		<view class="row">
 			<text class="label">联系电话：</text>
 			<text class="value">{{mobile}}</text>
-			<image class="arrow" bindtap="handleCall" src="https://fe.c360dn.com/wxapps/photograph/images/order/listPhone%403x.png"/>
+			<image class="phonePic" bindtap="handleCall" src="https://fe.c360dn.com/wxapps/photograph/images/order/listPhone%403x.png"/>
 		</view>
 		<view class="row">
 			<text class="label">拍摄时间：</text>

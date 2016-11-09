@@ -9,6 +9,13 @@ var Order = {
     getLocationText: function () {
         return this._locationText;
     },
+    // 当前城市
+    setCurrentCity: function (_currentCity) {
+        this._currentCity = _currentCity;
+    },
+    getCurrentCity: function () {
+        return this._currentCity;
+    },
     // 经度
     setLongitude: function (_longitude) {
         this._longitude = _longitude;
@@ -114,47 +121,50 @@ var Order = {
             success: function (res) {
                 this.setLongitude(res.longitude);
                 this.setLatitude(res.latitude);
-                // var url = 'http://restapi.amap.com/v3/geocode/regeo';
-                // wx.request({
-                //     url: url,
-                //     data: {
-                //         key: "6bbcf8a9041e51985d60fb352723e62c",
-                //         location: res.longitude + ',' + res.latitude,
-                //         radius: 100,
-                //         extensions: "all"
-                //     },
-                //     header:{
-                //         "Content-Type":"application/json"
-                //     },
-                //     success: function(result) {
-                //         this.setLocationPois(result.data.regeocode.pois);
-                //         this.setLocationText(result.data.regeocode.pois[0].name);
+                var url = root + '/photoBazaar/location/getPoi';
+                var data = {
+                    query: '',
+                    lat: res.latitude,
+                    lng: res.longitude,
+                    region: this.getCurrentCity()
+                }
+                UserServer.getDataWithPublicParams(data);
+                wx.request({
+                    url: url,
+                    data: data?data:{},
+                    header:{
+                        "Content-Type":"application/json"
+                    },
+                    success: function(result) {
+                        console.log(result)
+                        this.setLocationPois(result.data.data.list);
+                        this.setLocationText(result.data.data.list[0].name);
                         callback && callback();
-                    // }.bind(this)
-                // });
+                    }.bind(this)
+                });
             }.bind(this)
         })
     },
     // 获取关键字搜索的信息
     searchLocation: function (callback) {
-        var url = "http://restapi.amap.com/v3/place/text";
+        var url = root + '/photoBazaar/location/getPoi';
+        var data = {
+            query: this.getSearchText(),
+            lat: this.getLatitude(),
+            lng: this.getLongitude(),
+            region: this.getCurrentCity()
+        }
+        UserServer.getDataWithPublicParams(data);
         wx.request({
             url: url,
-            data: {
-                key: "6bbcf8a9041e51985d60fb352723e62c",
-                keywords: this.getSearchText(),
-                // keywords: "四川大学",
-                city: "chengdu",
-                offset: 25,
-                page: 1,
-                extensions: "all"
-            },
+            data: data?data:{},
             header:{
                 "Content-Type":"application/json"
             },
             success: function(result) {
-                this.setLocationPois(result.data.pois);
-                callback && callback(result)
+                console.log(result)
+                this.setLocationPois(result.data.data.list);
+                callback && callback(result.data.data.list);
             }.bind(this)
         });
     },

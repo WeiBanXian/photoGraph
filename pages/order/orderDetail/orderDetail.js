@@ -6,7 +6,7 @@ Page({
     price: 199,
     timeLength: '234:23:00',
     statusArray: ["订单提交", "等待拍摄", "正在拍摄", "付款", "完成"],
-    status: 1,
+    status: 4,
     orderId: '',
     userName: 'Mary',
     photographer: '',
@@ -19,7 +19,7 @@ Page({
     var orderData = JSON.parse(options.orderData)
     var time = orderData.bookDate;
     this.setData({
-      status: parseInt(orderData.orderStat) + 1,
+      // status: parseInt(orderData.orderStat) + 1,
       orderId: orderData.orderId,
       photographer: orderData.nickname,
       mobile: orderData.mobile,

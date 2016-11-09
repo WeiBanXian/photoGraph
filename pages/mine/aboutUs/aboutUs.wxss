@@ -33,13 +33,14 @@
 
 .botWrapper {
     position: absolute;
+    width: 100%;
     bottom: 10rpx;
+    text-align: center;
 }
 
 .protocol {
     display: block;
     margin: auto;
-    text-align: center;
     font-size: 24rpx;
     color: #333;
 }

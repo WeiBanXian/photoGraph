@@ -8,7 +8,7 @@
 
 .bgPic {
     width: 100%;
-	filter: blur(15px);
+	filter: blur(35px);
 }
 
 .topContent {
@@ -23,8 +23,6 @@
     bottom: 0;
     margin: auto;
     z-index: 999;
-    /*background: rgba(255, 255, 255, 0.6);
-    box-shadow: 0 0 1500px 5px #999 inset;*/
 }
 
 .contentTopWrapper {
@@ -33,21 +31,17 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding-top: 60rpx;
 }
 
 .cancelText {
     position: absolute;
     top: 30rpx;
     right: 30rpx;
-    /*margin-right: 30rpx;*/
-    /*align-self: flex-end;*/
     font-size: 34rpx;
     color: #EEE;
 }
 
 .priceWrapper {
-    margin: 15rpx;
     justify-content: flex-start;
     align-items: center;
 }
@@ -68,23 +62,21 @@
 }
 
 .timelengthText {
-    font-size: 24rpx;
+    font-size: 32rpx;
     color: #FFF;
 }
 
 .payText {
     display: block;
     padding: 16rpx 75rpx;
-    font-size: 28rpx;
+    font-size: 24rpx;
     color: #FFF;
-    border-radius: 30rpx;
+    border-radius: 32rpx;
     background: #E1556B;
 }
 
 .statusWrapper {
     flex: 3;
-    /*position: absolute;
-    bottom: 0;*/
     display: flex;
     flex-direction: column;
     align-self: flex-end;
@@ -102,7 +94,6 @@
     align-items: center;
     width: 100%;
 }
-
 
 .statusRowBottomWrapper {
     display: flex;
@@ -197,6 +188,7 @@
     height: 100rpx;
     flex-direction: row;
     align-items: center;
+    justify-content: flex-start;
     border-bottom: 1px solid #EEE;
     background: #FFF;
 }
@@ -212,8 +204,7 @@
     color: #000;
 }
 
-.arrow {
-    position: absolute;
+.phonePic {
     right: 0;
     width: 90rpx;
     height: 60rpx;

@@ -1,7 +1,6 @@
 var {root, loginRoot} = require("../../../server/common.js");
 var UserServer = require("../../../server/user.js").User;
 
-
 Page({
   data:{
     // text:"这是一个页面"
@@ -49,9 +48,6 @@ Page({
   },
   handleGoToBook:function (event) {
     wx.navigateTo({url: "./../book/book?list=" + JSON.stringify(this.data.sceneData.list) + "&imageList=" + JSON.stringify(this.data.imageList)})
-  },
-  handleBack: function () {
-    wx.navigateBack();
   },
   handlePreviewImage: function (e) {
     var current = e.target.dataset.src

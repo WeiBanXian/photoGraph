@@ -1,6 +1,6 @@
 <view class="wrapper">
 	<view class="headWrapper">
-		<text class="currentCity" bindtap="handleGoToCity">成都</text>
+		<text class="currentCity" bindtap="handleGoToCity">{{currentCity}}</text>
 		<image class="arrow" bindtap="handleGoToCity" src="./../.https://fe.c360dn.com/wxapps/photograph/images/home/downArrow%403x.png" />
 		<input class="input" placeholder="搜索..." bindinput="handleSearchLocation" />
 		<text class="cancel" bindtap="handleCancelSearch">取消</text>

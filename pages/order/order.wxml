@@ -15,7 +15,10 @@
                 <text class="orderStatusTextOrder" wx:elif="{{item.orderStat == 3}}">等待支付</text>
                 <text class="orderStatusTextOrder" wx:elif="{{item.orderStat == 4}}">已完成</text>
                 <text class="orderStatusTextOrder" wx:elif="{{item.orderStat == 5}}">订单取消</text>
-                <image class="orderStatusPicOrder" src="https://fe.c360dn.com/wxapps/photograph/images/order/order_Pay%403x.png" />
+                <image class="orderStatusPicOrder" wx:if="{{item.orderStat == 1}}" src="https://fe.c360dn.com/wxapps/photograph/images/order/order_waiting%403x.png" />
+                <image class="orderStatusPicOrder" wx:elif="{{item.orderStat == 2}}" src="https://fe.c360dn.com/wxapps/photograph/images/order/order_doing%403x.png" />
+                <image class="orderStatusPicOrder" wx:elif="{{item.orderStat == 3}}" src="https://fe.c360dn.com/wxapps/photograph/images/order/order_Pay%403x.png" />
+                <image class="orderStatusPicOrder" wx:elif="{{item.orderStat == 4 || item.orderStat == 5}}" src="https://fe.c360dn.com/wxapps/photograph/images/order/order_end%403x.png" />
                 <view class="leftWrapperOrder">
                     <image class="orderInfoBgPicOrder" mode="aspectFill" src="{{item.scenePic}}" />
                     <text class="orderInfoTextOrder">{{item.sceneName}}</text>
@@ -25,7 +28,9 @@
                         <image class="headPicOrder" mode="aspectFill" src="{{item.avatar}}" />
                     </view>
                     <text class="nameTextOrder">{{item.nickname}}</text>
-                    <text class="phoneTextorder" data-phone="{{item.mobile}}" bindtap="handleCall">{{item.mobile}}</text>
+                    <view data-phone="{{item.mobile}}" bindtap="handleCall" >
+                        <text class="phoneTextorder">{{item.mobile}}</text>
+                    </view>
                     <view class="botWrapperOrder">
                         <view class="timeWrapperOrder">
                             <image class="timePicOrder" mode="aspectFit" src="https://fe.c360dn.com/wxapps/photograph/images/order/time%403x.png" />

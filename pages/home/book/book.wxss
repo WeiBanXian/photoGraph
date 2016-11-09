@@ -2,15 +2,6 @@
     background: #F9F9F9;
 }
 
-.backBtn {
-    position: absolute;
-    top: 30rpx;
-    left: 30rpx;
-    width: 45rpx;
-    height: 45rpx;
-    z-index: 999;
-}
-
 .banner {
     width: 750rpx;
     height: 500rpx;

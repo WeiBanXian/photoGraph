@@ -1,6 +1,5 @@
 <view class="wrapper">
 	<view class="banner">
-		<image class="backBtn" bindtap="handleBack" src="https://fe.c360dn.com/wxapps/photograph/images/order/createOrderBack_normal%403x.png"/>
         <swiper class="swiperWrapper" autoplay="true" duration="1000">
             <swiper-item wx:for="{{imageList}}" wx:key="unique" wx:for-item="item" wx:for-index="index">
                 <image class="bannerPic" src="{{imageList[index]}}" data-src="{{imageList[index]}}" bindtap="handlePreviewImage"></image>

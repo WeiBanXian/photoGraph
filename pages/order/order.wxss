@@ -63,8 +63,9 @@
     left: -15rpx;
     width: 180rpx;
     height: 60rpx;
-    padding: 16rpx 0;
+    /*padding: 16rpx 0;*/
     font-size: 28rpx;
+    line-height: 60rpx;
     color: #FFF;
     text-align: center;
     z-index: 998;

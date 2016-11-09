@@ -1,24 +1,23 @@
 <view class="wrapper">
-	<image class="backBtn" bindtap="handleBack" src="./.https://fe.c360dn.com/wxapps/photograph/images/photoSample/photoSample_back%403x.png"/>
 	<image class="headPic" mode="aspectFill" src="{{sceneData.scenePic}}"/>
 	<view class="textWrapper">
 	    <text class="nameText">{{sceneData.sceneName}}</text>
         <view class="enjoy">
 		    <text class="enjoyText">客片欣赏</text>
         </view>
-        <image class="line" src="./.https://fe.c360dn.com/wxapps/photograph/images/photoSample/photoSample_Line%403x.png" />
+        <image class="line" src="https://fe.c360dn.com/wxapps/photograph/images/photoSample/photoSample_Line%403x.png" />
 	</view>
 	<view class="midWrapper">
 		<view class="column">
-			<image class="columnPic" src="./.https://fe.c360dn.com/wxapps/photograph/images/photoSample/photoSample_location%403x.png"></image>
+			<image class="columnPic" src="https://fe.c360dn.com/wxapps/photograph/images/photoSample/photoSample_location%403x.png"></image>
 			<text class="columnText">成都地区拍摄</text>
 		</view>
 		<view class="column">
-			<image class="columnPic" src="./.https://fe.c360dn.com/wxapps/photograph/images/photoSample/photoSample_photo%403x.png"></image>
+			<image class="columnPic" src="https://fe.c360dn.com/wxapps/photograph/images/photoSample/photoSample_photo%403x.png"></image>
 			<text class="columnText">照片27张</text>
 		</view>
 		<view class="column">
-			<image class="columnPic" src="./.https://fe.c360dn.com/wxapps/photograph/images/photoSample/photoSample_photographer%403x.png"></image>
+			<image class="columnPic" src="https://fe.c360dn.com/wxapps/photograph/images/photoSample/photoSample_photographer%403x.png"></image>
 			<text class="columnText">专业摄影1名</text>
 		</view>
 	</view>

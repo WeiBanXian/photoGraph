@@ -1,9 +1,9 @@
 <view class="wrapper">
-    <!--<view class="emptyWrapper">
+    <view class="emptyWrapper" wx:if="{{couponList.length == 0}}">
         <image class="empty" mode="aspectFit" src="https://fe.c360dn.com/wxapps/photograph/images/coupon/coupon_nodata%403x.png" />
-    </view>-->
-    <view class="rowWrapper">
-        <view class="row" wx:for="{{couponList}}" wx:for-index="index" wx:for-item="item" wx:if="{{item.status == 3}}">
+    </view>
+    <view class="rowWrapper" wx:else>
+        <view class="row" wx:for="{{couponList}}" wx:key="unique" wx:for-index="index" wx:for-item="item" wx:if="{{item.status == 3}}">
             <view class="leftWrapper">
                 <text class="titleText">想拍就拍VIP优惠券</text>
                 <view class="midWrapper">
@@ -17,7 +17,7 @@
             <image class="statusSquarePic" src="https://fe.c360dn.com/wxapps/photograph/images/coupon/coupon_hasused_bg%403x.png"/>
             <image class="statusTextPic" mode="aspectFit" src="https://fe.c360dn.com/wxapps/photograph/images/coupon/coupon_hasused%403x.png"/>
         </view>
-        <view class="row" wx:for="{{couponList}}" wx:for-index="index" wx:for-item="item" wx:if="{{item.status == 2}}">
+        <view class="row" wx:for="{{couponList}}" wx:key="unique" wx:for-index="index" wx:for-item="item" wx:if="{{item.status == 2}}">
             <view class="leftWrapper">
                 <text class="titleText">想拍就拍VIP优惠券</text>
                 <view class="midWrapper">
@@ -31,7 +31,7 @@
             <image class="statusSquarePic" src="https://fe.c360dn.com/wxapps/photograph/images/coupon/coupon_hasused_bg%403x.png"/>
             <image class="statusTextPic" mode="aspectFit" src="https://fe.c360dn.com/wxapps/photograph/images/coupon/coupon_overdate%403x.png"/>
         </view>
-        <view class="row" wx:for="{{couponList}}" wx:for-index="index" wx:for-item="item" wx:if="{{item.status == 1}}">
+        <view class="row" wx:for="{{couponList}}" wx:key="unique" wx:for-index="index" wx:for-item="item" wx:if="{{item.status == 1}}">
             <view class="leftWrapper">
                 <text class="titleText">想拍就拍VIP优惠券</text>
                 <view class="midWrapper">
