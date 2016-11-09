@@ -17,7 +17,6 @@ Page({
     // 页面渲染完成
   },
   onShow:function(){
-    console.log("asdfasdf")
     // 页面显示
   },
   onHide:function(){
