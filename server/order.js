@@ -250,11 +250,18 @@ var Order = {
         });
     },
     // 获取订单列表
-    getOrderList:function (callback) {
+    getOrderList:function (sp, callback) {
+        if (sp > 1) {
+            wx.showToast({
+                title: '加载中...',
+                icon: 'loading',
+                duration: 10000
+            });
+        }
         var url = root + "/photoBazaar/order/getList";
         var data = {
-            sp: 0,
-            limit: 10
+            sp: sp,
+            limit: 4
         };
         UserServer.getDataWithPublicParams(data);
         wx.request({
@@ -273,7 +280,7 @@ var Order = {
                 }
             }.bind(this),
             complete: function () {
-                
+                wx.hideToast();
             }
         });
     },

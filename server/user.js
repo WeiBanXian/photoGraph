@@ -276,7 +276,6 @@ var User = {
             appversion: "1.1.8",
             appVersion: "1.1.8",
             locale: "zh-Hans-CN",
-            sp: "0",
             appKey: "f6cb3d93e7ac1146",
             cid: "",
             appname: "想拍就拍",
