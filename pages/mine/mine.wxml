@@ -1,38 +1,30 @@
-<view class="wrapperMine">
-    <view class="headWrapperMine">
-        <image class="headPicMine" mode="aspectFit" src="{{mineData.avatar}}" bindtap="handleGoToMyInfo"></image>
-        <text class="headTextMine">{{mineData.nickname}}</text>
+<view class="mineWrapper">
+    <view class="headWrapper">
+        <image class="headPic" mode="aspectFit" src="{{avatar}}"></image>
+        <text class="headText">{{nickname}}</text>
     </view>
-    <view class="rowsMine" bindtap="handleGoToMyInfo">
-        <view class="rowLeftMine">
-            <image class="rowPicMine" mode="aspectFit" src="https://fe.c360dn.com/wxapps/photograph/images/user/user_profile%403x.png"></image>
-            <text class="rowTextMine">我的资料</text>
+    <view class="rows" bindtap="handleGoToMyCoupon">
+        <view class="rowLeft">
+            <image class="rowPic" mode="aspectFit" src="https://fe.c360dn.com/wxapps/photograph/images/user/user_coupon%403x.png"></image>
+            <text class="rowText">我的优惠券</text>
         </view>
-        <image class="rowArrowMine" src="https://fe.c360dn.com/wxapps/photograph/images/user/arrow%403x.png"></image>
+        <image class="rowArrow" src="https://fe.c360dn.com/wxapps/photograph/images/user/arrow%403x.png"></image>
     </view>
-    <view class="lineMine"></view>
-    <view class="rowsMine" bindtap="handleGoToMyCoupon">
-        <view class="rowLeftMine">
-            <image class="rowPicMine" mode="aspectFit" src="https://fe.c360dn.com/wxapps/photograph/images/user/user_coupon%403x.png"></image>
-            <text class="rowTextMine">我的优惠券</text>
+    <view class="line"></view>
+    <view class="rows" bindtap="handleGoToFeedback">
+        <view class="rowLeft">
+            <image class="rowPic" mode="aspectFit" src="https://fe.c360dn.com/wxapps/photograph/images/user/user_feedback%403x.png"></image>
+            <text class="rowText">意见反馈</text>
         </view>
-        <image class="rowArrowMine" src="https://fe.c360dn.com/wxapps/photograph/images/user/arrow%403x.png"></image>
+        <image class="rowArrow" src="https://fe.c360dn.com/wxapps/photograph/images/user/arrow%403x.png"></image>
     </view>
-    <view class="lineMine"></view>
-    <view class="rowsMine" bindtap="handleGoToFeedback">
-        <view class="rowLeftMine">
-            <image class="rowPicMine" mode="aspectFit" src="https://fe.c360dn.com/wxapps/photograph/images/user/user_feedback%403x.png"></image>
-            <text class="rowTextMine">意见反馈</text>
+    <view class="line"></view>
+    <view class="rows" bindtap="handleGoToAboutUs">
+        <view class="rowLeft">
+            <image class="rowPic" mode="aspectFit" src="https://fe.c360dn.com/wxapps/photograph/images/user/user_about%403x.png"></image>
+            <text class="rowText">关于我们</text>
         </view>
-        <image class="rowArrowMine" src="https://fe.c360dn.com/wxapps/photograph/images/user/arrow%403x.png"></image>
+        <image class="rowArrow" src="https://fe.c360dn.com/wxapps/photograph/images/user/arrow%403x.png"></image>
     </view>
-    <view class="lineMine"></view>
-    <view class="rowsMine" bindtap="handleGoToAboutUs">
-        <view class="rowLeftMine">
-            <image class="rowPicMine" mode="aspectFit" src="https://fe.c360dn.com/wxapps/photograph/images/user/user_about%403x.png"></image>
-            <text class="rowTextMine">关于我们</text>
-        </view>
-        <image class="rowArrowMine" src="https://fe.c360dn.com/wxapps/photograph/images/user/arrow%403x.png"></image>
-    </view>
-    <view class="lineMine"></view>
+    <view class="line"></view>
 </view>

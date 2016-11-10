@@ -1,4 +1,4 @@
-.wrapperOrder {
+.orderWrapper {
     position: absolute;
     top: 0;
     left: 0;
@@ -9,7 +9,7 @@
     background: #F9F9F9;
 }
 
-.emptyWrapperOrder {
+.emptyWrapper {
     display: flex;
     width: 100%;
     height: 100%;
@@ -18,33 +18,27 @@
     background: #F9F9F9;
 }
 
-.emptyOrder {
-    margin-top: -125rpx;
+.empty {
     width: 20%;
 }
 
-.orderScrollWrapper {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    width: 100%;
-    height: 100%;
+.rowWrapper {
+    padding-bottom: 16rpx;
+    background: #F9F9F9;
 }
 
-.rowOrder {
+.row {
     width: 750rpx;
     margin-bottom: 20rpx;
     background: #F9F9F9;
 }
 
-.blankOrder {
+.blank {
     height: 125rpx;
     background: #F9F9F9;
 }
 
-.rowContentOrder {
+.rowContent {
     display: flex;
     flex-direction: row;
 	width: 720rpx;
@@ -57,7 +51,7 @@
     box-shadow: 1px 1px 10px #888888;
 }
 
-.orderStatusTextOrder {
+.orderStatusText {
 	position: absolute;
     top: 50rpx;
     left: -15rpx;
@@ -71,7 +65,7 @@
     z-index: 998;
 }
 
-.orderStatusPicOrder {
+.orderStatusPic {
 	position: absolute;
     top: 50rpx;
     left: -15rpx;
@@ -80,17 +74,17 @@
     z-index: 997;
 }
 
-.leftWrapperOrder {
+.leftWrapper {
     flex: 8;
     position: relative;
 }
 
-.orderInfoBgPicOrder {
+.orderInfoBgPic {
     width: 100%;
     height: 100%;
 }
 
-.orderInfoTextOrder {
+.orderInfoText {
     display: block;
     position: absolute;
     top: 0;
@@ -105,7 +99,7 @@
     line-height: 160rpx;
 }
 
-.rightWrapperOrder {
+.rightWrapper {
     display: flex;
     flex: 9;
     flex-direction: column;
@@ -113,35 +107,35 @@
     text-align: center;
 }
 
-.headWrapperOrder {
+.headWrapper {
     text-align: center;
 }
 
-.headPicOrder {
+.headPic {
     width: 90rpx;
     height: 90rpx;
     border-radius: 45rpx;
 }
 
-.nameTextOrder {
+.nameText {
     display: block;
     margin: 10rpx;
     font-size: 36rpx;
     color: #333;
 }
 
-.phoneTextorder {
+.phoneText {
     display: block;
     font-size: 32rpx;
     color: #AED1DF;
     text-decoration: underline;
 }
 
-.botWrapperOrder {
+.botWrapper {
     margin: 15rpx;
 }
 
-.timeWrapperOrder {
+.timeWrapper {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -152,13 +146,13 @@
     margin-bottom: 5rpx;
 }
 
-.timePicOrder {
+.timePic {
     display: block;
     width: 45rpx;
     height: 45rpx;
 }
 
-.timeTextOrder {
+.timeText {
     display: block;
     width: 80%;
     font-size: 24rpx;
@@ -169,7 +163,7 @@
     text-overflow: ellipsis;
 }
 
-.addressWrapperOrder {
+.addressWrapper {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -178,13 +172,13 @@
     margin: auto;
 }
 
-.addressPicOrder {
+.addressPic {
     display: block;
     width: 45rpx;
     height: 45rpx;
 }
 
-.addressTextOrder {
+.addressText {
     display: block;
     width: 80%;
     font-size: 24rpx;

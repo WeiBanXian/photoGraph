@@ -78,7 +78,7 @@
     right: 0;
     bottom: 0;
     width: 100%;
-    height: 90rpx;
+    height: 100rpx;
     justify-content:  space-between;
     align-items: center;
     border-top: 1px solid #EEE;
@@ -92,21 +92,21 @@
 }
 
 .priceNum {
-    font-size: 45rpx;
+    font-size: 50rpx;
     color: #55CBBD;
 }
 
 .priceUnit {
-    font-size: 20rpx;
+    font-size: 24rpx;
     color: #55CBBD;
 }
 
 .orderTipsBtn {
     margin-right: 25rpx;
-    padding: 4rpx 50rpx;
+    padding: 10rpx 50rpx;
     justify-content: center;
     align-items: center;
-    border-radius: 3rpx;
+    border-radius: 5rpx;
     background: #42CDC2;
 }
 

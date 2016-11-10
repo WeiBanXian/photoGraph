@@ -1,29 +1,29 @@
-var {root, loginRoot} = require("./../../server/common.js");
-// var Home = {
+var GlobalServer = require("../../server/global.js").Global;
 
-// }
+var {DateManager} = require('../../utils/dateManage.js');
 
-// module.exports = {
-//   Home: Home
-// }
 Page({
   data:{
-    // text:"这是一个页面"
+    bannerList: {},
+    price: ''
   },
   onLoad:function(options){
-    // 页面初始化 options为页面跳转所带来的参数
+    var _self = this;
+    // 获取轮播图片信息
+    GlobalServer.getSlideList(function (result) {
+        _self.setData({
+            bannerList: result.data
+        })
+    });
+    // 获取单价信息
+    GlobalServer.getConfList(function (result) {
+        _self.setData({
+            price: result.data.price
+        })
+    });
   },
-  onReady:function(){
-    // 页面渲染完成
+  // 跳转到场景
+  handleGoToScene: function (event) {
+    wx.navigateTo({url: "../home/enjoy/enjoy?type=" + event.currentTarget.dataset.type})
   },
-  onShow:function(){
-    console.log("asdfasdf")
-    // 页面显示
-  },
-  onHide:function(){
-    // 页面隐藏
-  },
-  onUnload:function(){
-    // 页面关闭
-  }
 })

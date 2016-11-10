@@ -1,57 +1,41 @@
 var {root, loginRoot} = require("../../../server/common.js");
-var UserServer = require("../../../server/user.js").User;
+var GlobalServer = require("../../../server/global.js").Global;
 
 Page({
   data:{
-    // text:"这是一个页面"
     sceneData: {},
-    imageList: []
+    imageList: [],
+    price: 199,
+    type: 1
   },
   onLoad:function(options){
-    // 页面初始化 options为页面跳转所带来的参数
     var _self = this;
-    var _data = UserServer.getDataWithPublicParams({type: options.type});
     var imageList = [];
-    wx.request({
-      url: root + '/photoBazaar/photo/photoSamples',
-      data: _data,
-      medthod: 'post',
-      header:{
-          "Content-Type":"application/json"
-      },
-      success: function(res) {
-          var sceneData = res.data.data;
-          if (res.data.status == "200") {
-            var _list = sceneData.list;
-            for (var i in _list) {
-              imageList.push(_list[i].photo);
-            }
-            _self.setData({
-              sceneData: sceneData,
-              imageList: imageList
-            })
+    // 获取客片欣赏信息
+    GlobalServer.getSceneData(options.type, function(res) {
+        var sceneData = res.data.data;
+        if (res.data.status == "200") {
+          var _list = sceneData.list;
+          // 抽取图片信息，方便传递到下一个界面
+          for (var i in _list) {
+            imageList.push(_list[i].photo);
           }
-      }
+          _self.setData({
+            sceneData: sceneData,
+            imageList: imageList,
+            price: GlobalServer.getPrice(),
+            type: options.type
+          })
+        }
     })
   },
-  onReady:function(){
-    // 页面渲染完成
-  },
-  onShow:function(){
-    // 页面显示
-  },
-  onHide:function(){
-    // 页面隐藏
-  },
-  onUnload:function(){
-    // 页面关闭
-  },
+  // 跳转到预约界面
   handleGoToBook:function (event) {
-    wx.navigateTo({url: "./../book/book?list=" + JSON.stringify(this.data.sceneData.list) + "&imageList=" + JSON.stringify(this.data.imageList)})
+    wx.navigateTo({url: "./../book/book?type=" + this.data.type + "&imageList=" + JSON.stringify(this.data.imageList)})
   },
+  // 浏览图片
   handlePreviewImage: function (e) {
     var current = e.target.dataset.src
-
     wx.previewImage({
       current: current,
       urls: this.data.imageList

@@ -1,5 +1,4 @@
 var UserServer = require("../../server/user.js").User;
-var Alert = require("../template/alert/alert.js").Alert;
 
 var {getEtag} = require('../../utils/qetag.js');
 var {DateManager} = require('../../utils/dateManage.js');
@@ -63,10 +62,10 @@ Page({
     UserServer.login(function (res) {
       switch(res.status) {
         case 10538:
-          _self.handleAlert("请输入合法的手机号码");
+        
         break;
         case 10510:
-          _self.handleAlert("账号密码输入有误");
+        
         break;
         case 200:
           wx.navigateTo({
@@ -77,7 +76,7 @@ Page({
       }
       wx.hideToast()
     }, function (error) {
-      _self.handleAlert(error);
+      
       wx.hideToast()
     });
   },
@@ -98,21 +97,5 @@ Page({
     wx.navigateTo({
         url: './register/register'
     })
-  },
-  handleAlert: function (toastText) {
-    Alert.show(function (animation) {
-      this.setData({
-        toastText: toastText,  
-        animationData: animation.export()
-      })
-    }.bind(this));
-    setTimeout(function () {
-      Alert.hide(function (animation) {
-        this.setData({
-          toastText: "",  
-          animationData: animation.export()
-        })
-      }.bind(this));
-    }.bind(this), 2000);
   }
 })

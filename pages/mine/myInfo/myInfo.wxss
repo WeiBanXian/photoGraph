@@ -1,5 +1,3 @@
-@import "../../template/alert/alert.wxss";
-
 .wrapper {
     position: absolute;
     top: 0;

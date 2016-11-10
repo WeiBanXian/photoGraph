@@ -26,7 +26,7 @@
 	</view>
 	<view class="orderTipsWrapper">
         <view class="priceWrapper">
-            <text class="priceNum">199</text>
+            <text class="priceNum">{{price}}</text>
             <text class="priceUnit">元/小时</text>
         </view>
 		<view class="orderTipsBtn" bindtap="handleGoToBook">

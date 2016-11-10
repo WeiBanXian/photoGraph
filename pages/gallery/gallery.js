@@ -2,33 +2,52 @@ var OrderServer = require("../../server/order.js").Order;
 
 Page({
   data:{
-    animationData: {}
+    galleryList: []
   },
   onLoad: function(options) {
-    
+    var imageList = [
+      "https://fe.c360dn.com/wxapps/photograph/images/home/banner0%403x.jpg",
+      "https://fe.c360dn.com/wxapps/photograph/images/home/banner0%403x.jpg",
+      "https://fe.c360dn.com/wxapps/photograph/images/home/banner0%403x.jpg",
+      "https://fe.c360dn.com/wxapps/photograph/images/home/banner0%403x.jpg",
+      "https://fe.c360dn.com/wxapps/photograph/images/home/banner0%403x.jpg",
+      "https://fe.c360dn.com/wxapps/photograph/images/home/banner0%403x.jpg",
+      "https://fe.c360dn.com/wxapps/photograph/images/home/banner0%403x.jpg",
+      "https://fe.c360dn.com/wxapps/photograph/images/home/banner0%403x.jpg",
+      "https://fe.c360dn.com/wxapps/photograph/images/home/banner0%403x.jpg",
+      "https://fe.c360dn.com/wxapps/photograph/images/home/banner0%403x.jpg",
+      "https://fe.c360dn.com/wxapps/photograph/images/home/banner0%403x.jpg",
+      "https://fe.c360dn.com/wxapps/photograph/images/home/banner0%403x.jpg",
+      "https://fe.c360dn.com/wxapps/photograph/images/home/banner0%403x.jpg",
+      "https://fe.c360dn.com/wxapps/photograph/images/home/banner0%403x.jpg"
+    ];
+    var _galleryList = [];
+    _galleryList.push(imageList);
+    _galleryList.push(imageList);
+    _galleryList.push(imageList);
+    OrderServer.getOrderPhoto();
+    this.setData({
+      galleryList: _galleryList
+    })
   },
   onReady: function() {
     
   },
   onShow:function(){
-    wx.previewImage({
-        current: './.https://fe.c360dn.com/wxapps/photograph/images/home/banner0%403x.jpg', // 当前显示图片的http链接
-        urls: ['./.https://fe.c360dn.com/wxapps/photograph/images/home/banner0%403x.jpg', './.https://fe.c360dn.com/wxapps/photograph/images/home/banner0%403x.jpg', './.https://fe.c360dn.com/wxapps/photograph/images/home/banner0%403x.jpg'], // 需要预览的图片http链接列表
-        success: function(res) {
-        	console.log(res);
-	      },
-　　　　 fail: function() {
-　　　　    console.log('fail')
-　　　　 },
-	      complete:function(){
-	        console.log('complete')
-	      }
-    });
+    
   },
   onHide: function() {
-    clearInterval(this.timer);
+    
   },
   onUnload: function() {
     
   },
+  // 浏览图片
+  handlePreviewImage: function (e) {
+    var current = e.target.dataset.src
+    wx.previewImage({
+      current: e.target.dataset.src,
+      urls: this.data.galleryList[e.target.dataset.index]
+    })
+  }
 })

@@ -1,13 +1,7 @@
-<scroll-view
-    scroll-y="true"
-    class="homeScrollWrapper"
-    bindscrolltoupper="handleScrollUpper"
-    bindscrolltolower="handleScrollLower"
-    bindscroll="handleHomeScroll"
-    scroll-top="{{homeScrollTop}}">
+<view class="homeWrapper">
     <view class="bannerWrapper">
         <swiper class="swiperWrapper" autoplay="true" duration="1000">
-            <swiper-item wx:for="{{homeData.bannerData.data}}" wx:key="unique" wx:for-index="idx" wx:for-item="item">
+            <swiper-item wx:for="{{bannerList}}" wx:key="unique" wx:for-index="idx" wx:for-item="item">
                 <image class="bannerPic" bindtap="handleGoToScene" data-type="{{item.id}}" src="{{item.picUrl}}"></image>
             </swiper-item>
         </swiper>
@@ -19,7 +13,7 @@
                 <text class="enTitle">PHOTOGRAPHY PROJECT</text>
             </view>
             <view class="priceWrapper">
-                <text class="priceNum">{{homeData.priceData.data.price}}</text>
+                <text class="priceNum">{{price}}</text>
                 <text class="priceUnit">元/小时</text>
             </view>
         </view>
@@ -36,5 +30,4 @@
             </view>
         </view>
     </view>
-    <view class="blankHome"></view>
-</scroll-view>
+</view>

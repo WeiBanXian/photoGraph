@@ -1,5 +1,3 @@
-@import "../../template/alert/alert.wxss";
-
 .wrapper {
     width: 100%;
     background: #FFF;

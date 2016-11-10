@@ -1,5 +1,4 @@
 var UserServer = require("../../../server/user.js").User;
-var Alert = require("../../template/alert/alert.js").Alert;
 
 Page({
   data:{

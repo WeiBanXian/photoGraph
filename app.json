@@ -1,25 +1,54 @@
 {
   "pages":[
+    "pages/home/home",
     "pages/index/index",
     "pages/index/register/register",
     "pages/index/forget/forget",
-    "pages/total/total",
     "pages/home/enjoy/enjoy",
     "pages/home/book/book",
     "pages/home/book/location/location",
     "pages/order/order",
     "pages/order/orderDetail/orderDetail",
     "pages/gallery/gallery",
+    "pages/mine/mine",
     "pages/mine/myInfo/myInfo",
     "pages/mine/myCoupon/myCoupon",
     "pages/mine/feedback/feedback",
-    "pages/mine/aboutUs/aboutUs"
+    "pages/mine/aboutUs/aboutUs",
+    "pages/mine/aboutUs/protocol/protocol"
   ],
   "window":{
     "backgroundTextStyle":"#FFF",
     "navigationBarBackgroundColor": "#000",
     "navigationBarTitleText": "想拍就拍",
-    "navigationBarTextStyle":"#000"
+    "navigationBarTextStyle":"#FFF"
+  },
+  "tabBar": {
+    "color": "#999",
+    "selectedColor": "#333",
+    "borderStyle": "white",
+    "backgroundColor": "#E9E9E9",
+    "list": [{
+      "pagePath": "pages/home/home",
+      "iconPath": "resource/images/tabBar/fb_tab_home@3x.png",
+      "selectedIconPath": "resource/images/tabBar/fb_tab_home_h@3x.png",
+      "text": "首页"
+    }, {
+      "pagePath": "pages/order/order",
+      "iconPath": "resource/images/tabBar/fb_tab_orders@3x.png",
+      "selectedIconPath": "resource/images/tabBar/fb_tab_orders_h@3x.png",
+      "text": "订单"
+    }, {
+      "pagePath": "pages/gallery/gallery",
+      "iconPath": "resource/images/tabBar/fb_tab_photos@3x.png",
+      "selectedIconPath": "resource/images/tabBar/fb_tab_photos_h@3x.png",
+      "text": "照片库"
+    }, {
+      "pagePath": "pages/mine/mine",
+      "iconPath": "resource/images/tabBar/fb_tab_user@3x.png",
+      "selectedIconPath": "resource/images/tabBar/fb_tab_user_h@3x.png",
+      "text": "我的"
+    }]
   },
   "networkTimeout": {
     "request": 10000,

@@ -1,28 +1,100 @@
+var {root} = require("./common.js");
+var UserServer = require("./user.js").User;
+
 var Global = {
     init: function () {
 
     },
-    // 设置首页界面scroll高度
-    setHomeScrollTop: function (_homeScrollTop) {
-        this._homeScrollTop = _homeScrollTop;
+    setPrice: function (_price) {
+        this._price = _price;
     },
-    getHomeScrollTop: function () {
-        return this._homeScrollTop;
+    getPrice: function () {
+        return this._price;
     },
-    // 设置订单界面scroll高度
-    setOrderScrollTop: function (_orderScrollTop) {
-        this._orderScrollTop = _orderScrollTop;
+    alert: function (content) {
+      wx.showModal({
+        title: '',
+        content: content,
+        showCancel: false,
+        success: function(res) {
+          if (res.confirm) {
+            console.log('用户点击确定')
+          }
+        }
+      })
     },
-    getOrderScrollTop: function () {
-        return this._orderScrollTop;
+    //获取access_token
+    getAccessToken: function (callback) {
+        var data = {
+            grant_type: "client_credential",
+            appid: "wx82141199f13f7f8b",
+            secret: "997001afb8811368645140430df48e68"
+        }
+        var _self = this;
+        wx.request({
+            url: 'https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=APPID&secret=APPSECRET',
+            data: data?data:{},
+            medthod: 'get',
+            header:{
+                "Content-Type":"application/json"
+            },
+            success: function(res) {
+                if (res.data.status == "200") {
+                    callback(res);
+                }
+            }
+        })
     },
-    // 设置照片库界面scroll高度
-    setGalleryScrollTop: function (_galleryScrollTop) {
-        this._galleryScrollTop = _galleryScrollTop;
+    // 获取banner数据
+    getSlideList: function (callback) {
+        var _self = this;
+        wx.request({
+            url: root + '/photoBazaar/index/slide',
+            data: {},
+            medthod: 'post',
+            header:{
+                "Content-Type":"application/json"
+            },
+            success: function(res) {
+                if (res.data.status == "200") {
+                    callback(res.data);
+                }
+            }
+        })
     },
-    getGalleryScrollTop: function () {
-        return this._galleryScrollTop;
+    // 获取单价信息
+    getConfList: function (callback) {
+        var _self = this;
+        wx.request({
+            url: root + '/photoBazaar/index/conf',
+            data: {},
+            medthod: 'post',
+            header:{
+                "Content-Type":"application/json"
+            },
+            success: function(res) {
+                if (res.data.status == "200") {
+                    _self.setPrice(res.data.data.price);
+                    callback(res.data);
+                }
+            }
+        })
     },
+    // 获取客片欣赏信息
+    getSceneData: function (type, callback) {
+        var _data = UserServer.getDataWithPublicParams({type: type});
+        wx.request({
+            url: root + '/photoBazaar/photo/photoSamples',
+            data: _data,
+            medthod: 'post',
+            header:{
+                "Content-Type":"application/json"
+            },
+            success: function(res) {
+                callback(res);
+            }
+        });
+    }
 }
 
 module.exports = {

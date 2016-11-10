@@ -1,5 +1,4 @@
 var UserServer = require("../../../server/user.js").User;
-var Alert = require("../../template/alert/alert.js").Alert;
 
 Page({
   data:{
@@ -58,7 +57,6 @@ Page({
     UserServer.getRequestRegisterCode(function (res) {
       var data = res.data;
       if (data.status == 200) {
-        _self.AlertShow("已发送验证码");
         _self.setData({
           registerBtnActive: true,
           registerText: registerTextNum + "s"
@@ -86,13 +84,12 @@ Page({
         
         switch (data.status) {
           case 20881:
-            _self.AlertShow(data.message);
+          
           break;
         }
       }
       _self.loadingChange();
     }, function (mes) {
-      _self.AlertShow(mes);
       _self.loadingChange();
     });
   },
@@ -111,13 +108,13 @@ Page({
             url: '../../total/total'
         })
       } else if (data.status == "10537") {
-        _self.AlertShow("验证码错误");
+        
       } else if (data.status == "20881") {
-        _self.AlertShow(data.message);
+        
       }
       _self.loadingChange();
     }, function (error) {
-      _self.AlertShow(error);
+      
       _self.loadingChange();
     });
   },
@@ -132,23 +129,5 @@ Page({
     this.setData({
       hidden: false
     })
-  },
-  AlertShow: function (toastText) {
-    Alert.show(function (animation) {
-      this.setData({
-        toastText: toastText,
-        animationData:animation.export()
-      })
-    }.bind(this));
-    setTimeout(function () {
-      this.AlertHide();
-    }.bind(this), 2500);
-  },
-  AlertHide: function () {
-    Alert.hide(function (animation) {
-      this.setData({
-        animationData:animation.export()
-      })
-    }.bind(this));
   }
 })

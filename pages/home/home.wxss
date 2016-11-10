@@ -1,4 +1,4 @@
-.homeScrollWrapper {
+.homeWrapper {
     position: absolute;
     top: 0;
     left: 0;
@@ -6,11 +6,6 @@
     bottom: 0;
     width: 100%;
     height: 100%;
-}
-
-.blankHome {
-    height: 110rpx;
-    background: #FFF;
 }
 
 .bannerWrapper {
@@ -79,15 +74,15 @@
 
 .picsRow {
     display: flex;
-    margin-bottom: 5rpx;
+    margin-bottom: 4rpx;
     justify-content: space-between;
     background: #FFF;
 }
 
 .pic {
     position: relative;
-    width: 245rpx;
-    height: 245rpx;
+    width: 249rpx;
+    height: 249rpx;
 }
 
 .picText {

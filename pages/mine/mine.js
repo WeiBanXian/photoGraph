@@ -1,9 +1,16 @@
+var UserServer = require("../../server/user.js").User;
 Page({
   data:{
-    // text:"这是一个页面"
+    avatar: '',
+    nickname: ''
   },
   onLoad:function(options){
     // 页面初始化 options为页面跳转所带来的参数
+    var userInfo = getApp().globalData.userInfo;
+    this.setData({
+      avatar: userInfo.avatarUrl,
+      nickname: userInfo.nickName
+    })
   },
   onReady:function(){
     // 页面渲染完成

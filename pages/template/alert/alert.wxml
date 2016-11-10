@@ -1,3 +1,0 @@
-<view animation="{{animationData}}"  class="toastWrapper">
-    <text class="toastText">{{toastText}}</text>
-</view>

@@ -1,10 +1,10 @@
-.wrapperMine {
+.mineWrapper {
     width: 100%;
     height: 100%;
     background-color: #F9F9F9;
 }
 
-.headWrapperMine {
+.headWrapper {
     display: flex;
     width: 750rpx;
     height: 460rpx;
@@ -16,7 +16,7 @@
     background-repeat: no-repeat;
 }
 
-.headPicMine {
+.headPic {
     display: flex;
     width: 160rpx;
     height: 160rpx;
@@ -24,7 +24,7 @@
     border-radius: 100rpx;
 }
 
-.headTextMine {
+.headText {
     display: flex;
     margin: auto;
     margin-top: -100rpx;
@@ -33,7 +33,7 @@
     color: #FFF;
 }
 
-.rowsMine {
+.rows {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -43,7 +43,7 @@
     background-color: #FFF;
 }
 
-.rowLeftMine {
+.rowLeft {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -51,24 +51,24 @@
     padding-left: 30rpx;
 }
 
-.rowPicMine {
+.rowPic {
     width: 60rpx;
     height: 60rpx;
 }
 
-.rowTextMine {
+.rowText {
     width: 100%;
     font-size: 24rpx;
     margin-left: 20rpx;
 }
 
-.rowArrowMine {
+.rowArrow {
     width: 50rpx;
     height: 50rpx;
     margin-right: 20rpx;
 }
 
-.lineMine {
+.line {
     width: 720rpx;
     height: 1px;
     border-left: 30rpx solid #FFF;

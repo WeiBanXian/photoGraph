@@ -1,52 +1,45 @@
-<view class="wrapperOrder">
-    <scroll-view
-        wx:else
-        scroll-y="true"
-        class="orderScrollWrapper"
-        bindscrolltoupper="handleScrollUpper"
-        bindscrolltolower="handleScrollLower"
-        bindscroll="handleOrderScroll"
-        scroll-top="{{orderScrollTop}}"
-        wx:if="{{orderData.list.length > 0}}">
-        <view class="rowOrder" wx:for="{{orderData.list}}" wx:key="unique" wx:for-index="index" wx:for-item="item" data-orderid="{{item.orderId}}" bindtap="handleGoToOrderDetail">
-            <view class="rowContentOrder">
-                <text class="orderStatusTextOrder" wx:if="{{item.orderStat == 1}}">等待拍摄</text>
-                <text class="orderStatusTextOrder" wx:elif="{{item.orderStat == 2}}">正在拍摄</text>
-                <text class="orderStatusTextOrder" wx:elif="{{item.orderStat == 3}}">等待支付</text>
-                <text class="orderStatusTextOrder" wx:elif="{{item.orderStat == 4}}">已完成</text>
-                <text class="orderStatusTextOrder" wx:elif="{{item.orderStat == 5}}">订单取消</text>
-                <image class="orderStatusPicOrder" wx:if="{{item.orderStat == 1}}" src="https://fe.c360dn.com/wxapps/photograph/images/order/order_waiting%403x.png" />
-                <image class="orderStatusPicOrder" wx:elif="{{item.orderStat == 2}}" src="https://fe.c360dn.com/wxapps/photograph/images/order/order_doing%403x.png" />
-                <image class="orderStatusPicOrder" wx:elif="{{item.orderStat == 3}}" src="https://fe.c360dn.com/wxapps/photograph/images/order/order_Pay%403x.png" />
-                <image class="orderStatusPicOrder" wx:elif="{{item.orderStat == 4 || item.orderStat == 5}}" src="https://fe.c360dn.com/wxapps/photograph/images/order/order_end%403x.png" />
-                <view class="leftWrapperOrder">
-                    <image class="orderInfoBgPicOrder" mode="aspectFill" src="{{item.scenePic}}" />
-                    <text class="orderInfoTextOrder">{{item.sceneName}}</text>
+<view class="orderWrapper">
+    <view
+        class="rowWrapper"
+        wx:if="{{orderList.length > 0}}">
+        <view class="row" wx:for="{{orderList}}" wx:key="unique" wx:for-index="index" wx:for-item="item" data-orderid="{{item.orderId}}" bindtap="handleGoToOrderDetail">
+            <view class="rowContent">
+                <text class="orderStatusText" wx:if="{{item.orderStat == 1}}">等待拍摄</text>
+                <text class="orderStatusText" wx:elif="{{item.orderStat == 2}}">正在拍摄</text>
+                <text class="orderStatusText" wx:elif="{{item.orderStat == 3}}">等待支付</text>
+                <text class="orderStatusText" wx:elif="{{item.orderStat == 4}}">已完成</text>
+                <text class="orderStatusText" wx:elif="{{item.orderStat == 5}}">订单取消</text>
+                <image class="orderStatusPic" wx:if="{{item.orderStat == 1}}" src="https://fe.c360dn.com/wxapps/photograph/images/order/order_waiting%403x.png" />
+                <image class="orderStatusPic" wx:elif="{{item.orderStat == 2}}" src="https://fe.c360dn.com/wxapps/photograph/images/order/order_doing%403x.png" />
+                <image class="orderStatusPic" wx:elif="{{item.orderStat == 3}}" src="https://fe.c360dn.com/wxapps/photograph/images/order/order_Pay%403x.png" />
+                <image class="orderStatusPic" wx:elif="{{item.orderStat == 4 || item.orderStat == 5}}" src="https://fe.c360dn.com/wxapps/photograph/images/order/order_end%403x.png" />
+                <view class="leftWrapper">
+                    <image class="orderInfoBgPic" mode="aspectFill" src="{{item.scenePic}}" />
+                    <text class="orderInfoText">{{item.sceneName}}</text>
                 </view>
-                <view class="rightWrapperOrder">
-                    <view class="headWrapperOrder">
-                        <image class="headPicOrder" mode="aspectFill" src="{{item.avatar}}" />
+                <view class="rightWrapper">
+                    <view class="headWrapper">
+                        <image class="headPic" mode="aspectFill" src="{{item.avatar}}" />
                     </view>
-                    <text class="nameTextOrder">{{item.nickname}}</text>
+                    <text class="nameText">{{item.nickname}}</text>
                     <view data-phone="{{item.mobile}}" bindtap="handleCall" >
-                        <text class="phoneTextorder">{{item.mobile}}</text>
+                        <text class="phoneText">{{item.mobile}}</text>
                     </view>
-                    <view class="botWrapperOrder">
-                        <view class="timeWrapperOrder">
-                            <image class="timePicOrder" mode="aspectFit" src="https://fe.c360dn.com/wxapps/photograph/images/order/time%403x.png" />
-                            <text class="timeTextOrder">{{item.bookDate}}</text>
+                    <view class="botWrapper">
+                        <view class="timeWrapper">
+                            <image class="timePic" mode="aspectFit" src="https://fe.c360dn.com/wxapps/photograph/images/order/time%403x.png" />
+                            <text class="timeText">{{item.bookDate}}</text>
                         </view>
-                        <view class="addressWrapperOrder">
-                            <image class="addressPicOrder" mode="aspectFit" src="https://fe.c360dn.com/wxapps/photograph/images/order/location%403x.png" />
-                            <text class="addressTextOrder">{{item.place}}</text>
+                        <view class="addressWrapper">
+                            <image class="addressPic" mode="aspectFit" src="https://fe.c360dn.com/wxapps/photograph/images/order/location%403x.png" />
+                            <text class="addressText">{{item.place}}</text>
                         </view>
                     </view>
                 </view>
             </view>
         </view>
-        <view class="blankOrder"></view>
-    </scroll-view>
-    <view class="emptyWrapperOrder" wx:else>
-        <image class="emptyOrder" mode="aspectFit" src="https://fe.c360dn.com/wxapps/photograph/images/order/order_nodata%403x.png"></image>
+    </view>
+    <view class="emptyWrapper" wx:else>
+        <image class="empty" mode="aspectFit" src="https://fe.c360dn.com/wxapps/photograph/images/order/order_nodata%403x.png"></image>
     </view>
 </view>

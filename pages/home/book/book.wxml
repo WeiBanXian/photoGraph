@@ -20,10 +20,10 @@
 	</view>
 	<view class="row">
 		<text class="label">拍摄时间</text>
-        <picker mode="date" value="{{date}}" start="{{date}}" bindchange="bindDateChange">
+        <picker mode="date" value="{{date}}" start="{{startDate}}" bindchange="bindDateChange">
             <text class="value">{{date}}</text>
         </picker>
-        <picker mode="time" value="{{time}}" start="{{time}}" bindchange="bindTimeChange">
+        <picker mode="time" value="{{time}}" start="{{startTime}}" bindchange="bindTimeChange">
             <text class="value" style="margin-left: 20rpx;">{{time}}</text>
         </picker>
 	</view>

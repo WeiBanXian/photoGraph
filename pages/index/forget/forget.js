@@ -1,5 +1,4 @@
 var UserServer = require("../../../server/user.js").User;
-var Alert = require("../../template/alert/alert.js").Alert;
 
 Page({
   data:{
@@ -20,11 +19,6 @@ Page({
   },
   onShow:function(){
     // 页面显示
-    // Alert.show(function (animation) {
-    //   this.setData({
-    //         animationData:animation.export()
-    //   })
-    // }.bind(this));
   },
   onHide:function(){
     // 页面隐藏
@@ -107,17 +101,5 @@ Page({
         });
       }
     }.bind(this), 1000);
-  },
-  // 关闭loading
-  loadingChange: function () {
-    this.setData({
-      hidden: true
-    })
-  },
-  // 开启loading
-  loadingTap: function () {
-    this.setData({
-      hidden: false
-    })
   }
 })

@@ -1,4 +1,4 @@
-.wrapperGallery {
+.galleryWrapper {
     position: absolute;
     top: 0;
     left: 0;
@@ -9,22 +9,12 @@
     background: #F9F9F9;
 }
 
-.galleryScrollWrapper {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    width: 100%;
-    height: 100%;
+.blockWrapper {
+    padding-bottom: 16rpx;
+    background: #F9F9F9;
 }
 
-.blankGallery {
-    height: 115rpx;
-    background: #FFF;
-}
-
-.emptyWrapperGallery {
+.emptyWrapper {
     display: flex;
     width: 100%;
     height: 100%;
@@ -33,55 +23,54 @@
     background: #F9F9F9;
 }
 
-.emptyGallery {
-    margin-top: -125rpx;
+.empty {
     width: 20%;
 }
 
 
-.blockGallery {
+.block {
     background: #FFF;
 }
 
-.topWrapperGallery {
+.topWrapper {
     padding: 30rpx 0 0 25rpx;
 }
 
-.dayTextGallery {
+.dayText {
     font-size: 40rpx;
     color: #333;
 }
 
-.dateTextGallery {
+.dateText {
     margin-left: 15rpx;
     font-size: 32rpx;
     color: #333;
 }
 
-.midWrapperGallery {
+.midWrapper {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 20rpx;
 }
 
-.addressTextGallery {
+.addressText {
     font-size: 26rpx;
     color: #999;
 }
 
-.photoTextGallery {
+.photoText {
     font-size: 26rpx;
     color: #999;
 }
 
-.picsWrapperGallery {
+.picsWrapper {
     display: flex;
     flex-wrap: wrap;
     background: #F9F9F9;
 }
 
-.picGallery {
+.pic {
     display: block;
     margin: 2rpx;
     width: 246rpx;

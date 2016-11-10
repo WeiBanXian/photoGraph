@@ -1,5 +1,6 @@
 var {root} = require("./common.js");
 var UserServer = require("./user.js").User;
+var GlobalServer = require("./global.js").Global;
 
 var Order = {
     // 地址信息
@@ -116,6 +117,11 @@ var Order = {
     },
     // 获取当前经纬度的信息
     getLocationInfo: function (callback) {
+        wx.showToast({
+            title: '定位中...',
+            icon: 'loading',
+            duration: 10000
+        });
         wx.getLocation({
             type: 'wgs84',
             success: function (res) {
@@ -136,11 +142,20 @@ var Order = {
                         "Content-Type":"application/json"
                     },
                     success: function(result) {
-                        console.log(result)
-                        this.setLocationPois(result.data.data.list);
-                        this.setLocationText(result.data.data.list[0].name);
-                        callback && callback();
-                    }.bind(this)
+                        if (result.data.status == 200) {
+                            this.setLocationPois(result.data.data.list);
+                            this.setLocationText(result.data.data.list[0].name);
+                            callback && callback();
+                        } else {
+                            GlobalServer.alert("定位失败");
+                        }
+                    }.bind(this),
+                    fail: function () {
+                        GlobalServer.alert("定位失败");
+                    },
+                    complete: function () {
+                        wx.hideToast();
+                    }
                 });
             }.bind(this)
         })
@@ -162,26 +177,50 @@ var Order = {
                 "Content-Type":"application/json"
             },
             success: function(result) {
-                console.log(result)
-                this.setLocationPois(result.data.data.list);
-                callback && callback(result.data.data.list);
-            }.bind(this)
+                if (result.data.status == 200) {
+                    this.setLocationPois(result.data.data.list);
+                    callback && callback(result.data.data.list);
+                } else {
+                    GlobalServer.alert("没有搜索到相关定位信息");
+                }
+            }.bind(this),
+            fail: function () {
+                GlobalServer.alert("没有搜索到相关定位信息");
+            },
+            complete: function () {
+                
+            }
         });
     },
     // 创建订单
     createOrder: function (callback) {
+        if (this.getLocationText() == '') {
+            GlobalServer.alert("预约时间不能为空");
+            return false;
+        }
+        if (this.getUserName() == '') {
+            GlobalServer.alert("姓名不能为空");
+            return false;
+        }
+        if (this.getMobile() == '') {
+            GlobalServer.alert("手机号不能为空");
+            return false;
+        }
+        wx.showToast({
+            title: '预约中...',
+            icon: 'loading',
+            duration: 10000
+        });
         var url = root + "/photoBazaar/order/create";
         var data = {
-            lat: this.getLatitude(),  // 经度
-            lng: this.getLongitude(),  // 纬度
-            type: this.getType(),  // 拍摄服务类型：1-8 场景 ; 0,快拍
-            bookDate: this.getDate(),  // 预约时间
-            place: this.getLocationText(),  // 预约地点
-            sex: this.getGender(),  // 性别，默认为 0/女, 1/男
-            name: this.getUserName(),  // 姓名
-            mobile: this.getMobile()  // 电话
-            // name: "this.getUserName()",  // 姓名
-            // mobile: "18583269107"  // 电话
+            lat: this.getLatitude(),         // 经度
+            lng: this.getLongitude(),        // 纬度
+            type: this.getType(),            // 拍摄服务类型：1-8 场景 ; 0,快拍
+            bookDate: this.getDate(),        // 预约时间
+            place: this.getLocationText(),   // 预约地点
+            sex: this.getGender(),           // 性别，默认为 0/女, 1/男
+            name: this.getUserName(),        // 姓名
+            mobile: this.getMobile()         // 电话
         };
         UserServer.getDataWithPublicParams(data);
         wx.request({
@@ -191,8 +230,23 @@ var Order = {
                 "Content-Type":"application/json"
             },
             success: function(result) {
-                callback && callback(result)
-            }.bind(this)
+                if (result.data.status == 200) {
+                    wx.showToast({
+                        title: '预约成功',
+                        icon: 'success',
+                        duration: 2000
+                    });
+                    callback && callback(result)
+                } else {
+                    GlobalServer.alert("预约失败，请重试");
+                }
+            }.bind(this),
+            fail: function () {
+                GlobalServer.alert("预约失败，请重试");
+            },
+            complete: function () {
+                wx.hideToast();
+            }
         });
     },
     // 获取订单列表
@@ -210,18 +264,26 @@ var Order = {
                 "Content-Type":"application/json"
             },
             success: function(result) {
-                if (result.statusCode == 200) {
-                    if (result.data.status == 200) {
-                        this.setOrderListData(result.data.data);
-                    }
+                if (result.data.status == 200) {
+                    this.setOrderListData(result.data.data);
+                    this.setIsCancelOrder(false);
+                    callback && callback(result)
+                } else {
+                    // GlobalServer.alert("订单列表请求失败");
                 }
-                this.setIsCancelOrder(false);
-                callback && callback(result)
-            }.bind(this)
+            }.bind(this),
+            complete: function () {
+                
+            }
         });
     },
     // 取消订单
     cancelOrder: function (callback) {
+        wx.showToast({
+            title: '取消中...',
+            icon: 'loading',
+            duration: 10000
+        });
         this.setIsCancelOrder(true);
         var url = root + "/photoBazaar/order/cancelOrder";
         var data = {
@@ -235,17 +297,26 @@ var Order = {
                 "Content-Type":"application/json"
             },
             success: function(result) {
-                // if (result.statusCode == 200) {}
-                callback && callback(result)
-                // callback && callback()
-            }.bind(this)
+                if (result.statusCode == 200) {
+                    callback && callback(result)
+                } else {
+                    GlobalServer.alert("取消失败，请重试");
+                }
+            }.bind(this),
+            fail: function () {
+                GlobalServer.alert("取消失败，请重试");
+            },
+            complete: function () {
+                wx.hideToast();
+            }
         });
     },
     // 获取云端照片
-    getOrderPhoto: function () {
+    getOrderPhoto: function (callback) {
         var url = root + "/photoBazaar/photo/orderPhoto";
         var data = {
-            
+            oid: '56454ef65356c485',
+            all: 0
         };
         UserServer.getDataWithPublicParams(data);
         wx.request({
@@ -255,10 +326,11 @@ var Order = {
                 "Content-Type":"application/json"
             },
             success: function(result) {
-                console.log(result)
-                // if (result.statusCode == 200) {}
                 callback && callback(result)
-            }.bind(this)
+            }.bind(this),
+            complete: function () {
+                
+            }
         });
     }
 }

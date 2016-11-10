@@ -142,6 +142,12 @@ var User = {
             return false;
         }
 
+        wx.showToast({
+            title: '登录中...',
+            icon: 'loading',
+            duration: 10000
+        })
+
         var data = {};
         var isMobile = true;
 
@@ -163,47 +169,28 @@ var User = {
                 "Content-Type":"application/x-www-form-urlencoded"
             },
             success: function(res) {
-                var data = res.data;
                 if (res.data.status == "200") {
+                    var data = res.data;
                     this.UserParams = data.data;
-                    // this.setToken(data.data.utoken);
-                    // this.setUserId(data.data.pgid);
                     this.setToken(data.data.token);
                     this.setUserId(data.data.userId);
                     this.setPublicParams();
-                    // avatar: "https://phototask.c360dn.com/FgLLcrZnb5GdQ9ND8SEC6JqJFYZI"
-                    // backgroundPic: ""
-                    // birthday: ""
-                    // cc: 86
-                    // certificated: 2
-                    // city: "1"
-                    // country: "1"
-                    // desc: ""
-                    // description: ""
-                    // email: ""
-                    // firstLogin: false
-                    // forgetPass: 0
-                    // gender: ""
-                    // language: "zh-Hans"
-                    // lastLoginTime: 1476497959
-                    // mobile: "18583269107"
-                    // nickname: "丰哦吼吼吼"
-                    // province: "51"
-                    // regDateTime: 1462864073
-                    // setPass: 1
-                    // third: ""
-                    // token: "VGkxQjhXNTZiTXprckt6NkVXOEsxcmwvYlFRenE3cDZGbkgyYndTSzNhMGU3Yll1Q2tCeW92WG5NMzFNQXNaZ2JkYlpOdUdOT1ZZRzhNOG96akN0UUhLNUkwQ1BFc0xsYUZHSDN3Y0tTUzBGYVBMUzNDaCtpQWF3T2JhT2pkVHM="
-                    // tokenEnd: 1479090029
-                    // tokenExpire: 2592000
-                    // userId: "06943d573188c9317ee6e176"
+                    var loginData = {
+                        mobile: this.getMobile(),
+                        password: this.getPassword()
+                    };
+                    wx.setStorage({key: "loginData", data: loginData});
+                    successCallback && successCallback();
+                } else {
+                    failCallback && failCallback();
                 }
-                var loginData = {
-                    mobile: this.getMobile(),
-                    password: this.getPassword()
-                };
-                wx.setStorage({key: "loginData", data: loginData});
-                successCallback && successCallback(data);
-            }.bind(this)
+            }.bind(this),
+            fail: function () {
+                failCallback && failCallback();
+            },
+            complete: function () {
+                wx.hideToast()
+            }
         });
     },
     json2Form: function (json) {  
@@ -211,7 +198,7 @@ var User = {
         for(var p in json){  
             str.push(encodeURIComponent(p) + "=" + encodeURIComponent(json[p]));  
         }  
-        return str.join("&");  
+        return str.join("&");
     },
     // 用户名
     setUserName: function (_userName) {
@@ -280,30 +267,6 @@ var User = {
     },
     // 设置公共参数
     setPublicParams: function() {
-
-        // var data = {
-            // mnc: "01",
-            // device: "Unknown",
-            // deviceId: "4A27FABF-D501-4AA8-BF4F-BA844D742BF2",
-            // icc: "cn",
-            // channel: "appstore",
-            // appversion: "1.1.8",
-            // appVersion: "1.1.8",
-            // locale: "zh-Hans-CN",
-            // sp: "0",
-            // appKey: "f6cb3d93e7ac1146",
-            // cid: "",
-            // appname: "想拍就拍",
-            // token: "eElOUUVuSGdzMC9UTSswaTk5R2NlWUJIVUlyUnRZL1pIOTl5VWY0REJyQTB6UklaNEhaajd3NDgvb3JnOVlYbg==",
-            // platform: "iphone",
-            // timestamp: "1476761678.339511",
-            // certType: "production",
-            // appName: "想拍就拍",
-            // cnet: "wifi",
-            // systemVersion: "10.0",
-            // appkey: "f6cb3d93e7ac1146",
-            // userId: "03be0558071a791624e21e83",
-        // }
         this.publicParams = {
             mnc: "01",
             device: "Unknown",
@@ -339,11 +302,8 @@ var User = {
 
     // 获取优惠券列表
     getCouponList: function (callback) {
-        // /photoBazaar/order/couponList
         var url = root + "/photoBazaar/order/couponList";
-        var data = {
-            
-        };
+        var data = {};
         this.getDataWithPublicParams(data);
         wx.request({
             url: url,
@@ -352,15 +312,15 @@ var User = {
                 "Content-Type":"application/json"
             },
             success: function(result) {
-                // if (result.statusCode == 200) {}
-                callback && callback(result)
+                if (result.statusCode == 200) {
+                    callback && callback(result)
+                }
             }.bind(this)
         });
     },
 
     // 更新用户信息
-    updateInfo: function (data, callback) { 
-        // /photoBazaar/user/updateInfo
+    updateInfo: function (data, callback) {
         var url = root + "/photoBazaar/user/updateInfo";
         var data = data;
         this.getDataWithPublicParams(data);
@@ -371,15 +331,15 @@ var User = {
                 "Content-Type":"application/json"
             },
             success: function(result) {
-                // if (result.statusCode == 200) {}
-                callback && callback(result)
+                if (result.statusCode == 200) {
+                    callback && callback(result)
+                }
             }.bind(this)
         });
     },
 
     // 退出登录
     loginOut: function (callback) {
-        // /photoBazaar/user/loginOut
         var url = root + "/photoBazaar/user/loginOut";
         var data = {};
         this.getDataWithPublicParams(data);
@@ -390,13 +350,13 @@ var User = {
                 "Content-Type":"application/json"
             },
             success: function(result) {
-                // if (result.statusCode == 200) {}
-                wx.clearStorage();
-                callback && callback(result)
+                if (result.statusCode == 200) {
+                    wx.clearStorage();
+                    callback && callback(result)
+                }
             }.bind(this)
         });
     }
-   
 }
 
 module.exports = {

@@ -1,59 +1,34 @@
-<view class="wrapperGallery">
-    <view class="emptyWrapperGallery" wx:if="{{galleryData.list.length == 0}}">
-        <image class="emptyGallery" mode="aspectFit" src="https://fe.c360dn.com/wxapps/photograph/images/order/photo_nodata%403x.png"></image>
+<view class="galleryWrapper">
+    <view wx:if="{{galleryList.length > 0}}"
+        class="blockWrapper">
+        <view class="block"
+        wx:for="{{galleryList}}"
+        wx:key="unique"
+        wx:for-index="indexs"
+        wx:for-item="images">
+            <view class="topWrapper">
+                <text class="dayText">05</text>
+                <text class="dateText">2016.09</text>
+            </view>
+            <view class="midWrapper">
+                <text class="addressText">黄桃园KTV</text>
+                <text class="photoText">20张照片</text>
+            </view>
+            <view class="picsWrapper">
+                <image
+                    class="pic"
+                    mode="aspectFill"
+                    wx:for="{{galleryList[indexs]}}"
+                    wx:key="unique"
+                    wx:for-item="item"
+                    src="{{item}}"
+                    data-src="{{item}}"
+                    data-index="{{indexs}}"
+                    bindtap="handlePreviewImage" />
+            </view>
+        </view>
     </view>
-    <scroll-view
-        wx:elif="{{galleryData.list.length > 0}}"
-        scroll-y="true"
-        class="galleryScrollWrapper"
-        bindscrolltoupper="handleScrollUpper"
-        bindscrolltolower="handleScrollLower"
-        bindscroll="handleGalleryScroll"
-        scroll-top="{{galleryScrollTop}}">
-        <view class="blockGallery">
-            <view class="topWrapperGallery">
-                <text class="dayTextGallery">05</text>
-                <text class="dateTextGallery">2016.09</text>
-            </view>
-            <view class="midWrapperGallery">
-                <text class="addressTextGallery">黄桃园KTV</text>
-                <text class="photoTextGallery">20张照片</text>
-            </view>
-            <view class="picsWrapperGallery">
-                <image class="picGallery" mode="aspectFill" src="/Users/macbook/Desktop/pic.png" />
-                <image class="picGallery" mode="aspectFill" src="./.https://fe.c360dn.com/wxapps/photograph/images/home/banner0%403x.jpg" />
-                <image class="picGallery" mode="aspectFill" src="./.https://fe.c360dn.com/wxapps/photograph/images/home/banner0%403x.jpg" />
-                <image class="picGallery" mode="aspectFill" src="./.https://fe.c360dn.com/wxapps/photograph/images/home/banner0%403x.jpg" />
-                <image class="picGallery" mode="aspectFill" src="./.https://fe.c360dn.com/wxapps/photograph/images/home/banner0%403x.jpg" />
-                <image class="picGallery" mode="aspectFill" src="./.https://fe.c360dn.com/wxapps/photograph/images/home/banner0%403x.jpg" />
-                <image class="picGallery" mode="aspectFill" src="./.https://fe.c360dn.com/wxapps/photograph/images/home/banner0%403x.jpg" />
-                <image class="picGallery" mode="aspectFill" src="./.https://fe.c360dn.com/wxapps/photograph/images/home/banner0%403x.jpg" />
-                <image class="picGallery" mode="aspectFill" src="./.https://fe.c360dn.com/wxapps/photograph/images/home/banner0%403x.jpg" />
-                <image class="picGallery" mode="aspectFill" src="./.https://fe.c360dn.com/wxapps/photograph/images/home/banner0%403x.jpg" />
-            </view>
-        </view>
-        <view class="blockGallery">
-            <view class="topWrapperGallery">
-                <text class="dayTextGallery">05</text>
-                <text class="dateTextGallery">2016.09</text>
-            </view>
-            <view class="midWrapperGallery">
-                <text class="addressTextGallery">黄桃园KTV</text>
-                <text class="photoTextGallery">20张照片</text>
-            </view>
-            <view class="picsWrapperGallery">
-                <image class="picGallery" mode="aspectFill" src="./.https://fe.c360dn.com/wxapps/photograph/images/home/banner0%403x.jpg" />
-                <image class="picGallery" mode="aspectFill" src="./.https://fe.c360dn.com/wxapps/photograph/images/home/banner0%403x.jpg" />
-                <image class="picGallery" mode="aspectFill" src="./.https://fe.c360dn.com/wxapps/photograph/images/home/banner0%403x.jpg" />
-                <image class="picGallery" mode="aspectFill" src="./.https://fe.c360dn.com/wxapps/photograph/images/home/banner0%403x.jpg" />
-                <image class="picGallery" mode="aspectFill" src="./.https://fe.c360dn.com/wxapps/photograph/images/home/banner0%403x.jpg" />
-                <image class="picGallery" mode="aspectFill" src="./.https://fe.c360dn.com/wxapps/photograph/images/home/banner0%403x.jpg" />
-                <image class="picGallery" mode="aspectFill" src="./.https://fe.c360dn.com/wxapps/photograph/images/home/banner0%403x.jpg" />
-                <image class="picGallery" mode="aspectFill" src="./.https://fe.c360dn.com/wxapps/photograph/images/home/banner0%403x.jpg" />
-                <image class="picGallery" mode="aspectFill" src="./.https://fe.c360dn.com/wxapps/photograph/images/home/banner0%403x.jpg" />
-                <image class="picGallery" mode="aspectFill" src="./.https://fe.c360dn.com/wxapps/photograph/images/home/banner0%403x.jpg" />
-            </view>
-        </view>
-        <view class="blankGallery"></view>
-    </scroll-view>
+    <view class="emptyWrapper" wx:if="{{galleryList.length == 0}}">
+        <image class="empty" mode="aspectFit" src="https://fe.c360dn.com/wxapps/photograph/images/order/photo_nodata%403x.png"></image>
+    </view>
 </view>
