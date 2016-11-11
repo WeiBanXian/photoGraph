@@ -27,12 +27,12 @@
             <text class="value" style="margin-left: 20rpx;">{{time}}</text>
         </picker>
 	</view>
-	<view class="row">
+	<!--<view class="row">
 		<text class="label">拍摄时长</text>
         <picker mode="selector" range="{{timeLength}}" value="{{timeLengthIndex}}" bindchange="handleSelectTimeLength">
             <text class="value">{{timeLength[timeLengthIndex]}}</text>
         </picker>
-	</view>
+	</view>-->
     <view class="block">
 	    <text class="blockText">预约人信息</text>
     </view>

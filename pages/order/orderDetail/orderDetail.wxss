@@ -8,7 +8,7 @@
 
 .bgPic {
     width: 100%;
-	filter: blur(35px);
+	filter: blur(10px);
 }
 
 .topContent {

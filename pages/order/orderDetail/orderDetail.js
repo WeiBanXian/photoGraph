@@ -3,6 +3,7 @@ var GlobalServer = require("../../../server/global.js").Global;
 
 Page({
   data:{
+    bgPic: '',
     price: '',
     timeLength: '00:00:00',
     statusArray: ["订单提交", "等待拍摄", "正在拍摄", "付款", "完成"],
@@ -24,6 +25,7 @@ Page({
       mobile: orderData.mobile,
       time: orderData.bookDate,
       address: orderData.place,
+      bgPic: orderData.scenePic,
       price: GlobalServer.getPrice()
     })
   },
