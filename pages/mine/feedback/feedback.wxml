@@ -1,77 +1,42 @@
 <view class="wrapper">
-	<view class="leftMesWrapper">
-        <image class="leftHeadPic" src="https://fe.c360dn.com/wxapps/photograph/images/user/logo@2x.png" />
-        <view class="leftMesContainer">
-            <text class="leftMesContent">aasdfjalasdfsadfasdfasdfasdfasdfasdfasdfasdfasdfadssdfkjasdflkdsj</text>
-            <view class="leftArrow"></view>
+    <scroll-view scroll-y="true" class="scrollWrapper" scroll-into-view="{{toView}}">
+        <view wx:for="{{messageList}}" wx:key="unique" wx:for-item="item" wx:for-index="index">
+            <block wx:if="{{item.type == 0}}">
+                <view class="leftMesWrapper" wx:if="{{index == messageList.length -1}}" id="last">
+                    <image class="leftHeadPic" src="{{item.headPic}}" />
+                    <view class="leftMesContainer">
+                        <text class="leftMesContent">{{item.contentText}}</text>
+                        <view class="leftArrow"></view>
+                    </view>
+                </view>
+                <view class="leftMesWrapper" wx:else>
+                    <image class="leftHeadPic" src="{{item.headPic}}" />
+                    <view class="leftMesContainer">
+                        <text class="leftMesContent">{{item.contentText}}</text>
+                        <view class="leftArrow"></view>
+                    </view>
+                </view>
+            </block>
+            <block wx:else>
+                <view class="rightMesWrapper" wx:if="{{index == messageList.length -1}}" id="last">
+                    <view class="rightMesContainer">
+                        <text class="rightMesContent">{{item.contentText}}</text>
+                        <view class="rightArrow"></view>
+                    </view>
+                    <image class="rightHeadPic" src="{{item.headPic}}" />
+                </view>
+                <view class="rightMesWrapper" wx:else>
+                    <view class="rightMesContainer">
+                        <text class="rightMesContent">{{item.contentText}}</text>
+                        <view class="rightArrow"></view>
+                    </view>
+                    <image class="rightHeadPic" src="{{item.headPic}}" />
+                </view>
+            </block>
         </view>
-    </view>
-	<view class="rightMesWrapper">
-        <view class="rightMesContainer">
-            <text class="rightMesContent">aasdfjalsdfkjasdflkdsj</text>
-            <view class="rightArrow"></view>
-        </view>
-        <image class="rightHeadPic" src="https://fe.c360dn.com/wxapps/photograph/images/user/logo@2x.png" />
-    </view>
-	<view class="leftMesWrapper">
-        <image class="leftHeadPic" src="https://fe.c360dn.com/wxapps/photograph/images/user/logo@2x.png" />
-        <view class="leftMesContainer">
-            <text class="leftMesContent">aasdfjalasdfsadfasdfasdfasdfasdfasdfasdfasdfasdfadssdfkjasdflkdsj</text>
-            <view class="leftArrow"></view>
-        </view>
-    </view>
-	<view class="rightMesWrapper">
-        <view class="rightMesContainer">
-            <text class="rightMesContent">aasdfjalsdfkjasdflkdsj</text>
-            <view class="rightArrow"></view>
-        </view>
-        <image class="rightHeadPic" src="https://fe.c360dn.com/wxapps/photograph/images/user/logo@2x.png" />
-    </view>
-	<view class="leftMesWrapper">
-        <image class="leftHeadPic" src="https://fe.c360dn.com/wxapps/photograph/images/user/logo@2x.png" />
-        <view class="leftMesContainer">
-            <text class="leftMesContent">aasdfjalasdfsadfasdfasdfasdfasdfasdfasdfasdfasdfadssdfkjasdflkdsj</text>
-            <view class="leftArrow"></view>
-        </view>
-    </view>
-	<view class="rightMesWrapper">
-        <view class="rightMesContainer">
-            <text class="rightMesContent">aasdfjalsdfkjasdflkdsj</text>
-            <view class="rightArrow"></view>
-        </view>
-        <image class="rightHeadPic" src="https://fe.c360dn.com/wxapps/photograph/images/user/logo@2x.png" />
-    </view>
-	<view class="leftMesWrapper">
-        <image class="leftHeadPic" src="https://fe.c360dn.com/wxapps/photograph/images/user/logo@2x.png" />
-        <view class="leftMesContainer">
-            <text class="leftMesContent">aasdfjalasdfsadfasdfasdfasdfasdfasdfasdfasdfasdfadssdfkjasdflkdsj</text>
-            <view class="leftArrow"></view>
-        </view>
-    </view>
-	<view class="rightMesWrapper">
-        <view class="rightMesContainer">
-            <text class="rightMesContent">aasdfjalsdfkjasdflkdsj</text>
-            <view class="rightArrow"></view>
-        </view>
-        <image class="rightHeadPic" src="https://fe.c360dn.com/wxapps/photograph/images/user/logo@2x.png" />
-    </view>
-	<view class="leftMesWrapper">
-        <image class="leftHeadPic" src="https://fe.c360dn.com/wxapps/photograph/images/user/logo@2x.png" />
-        <view class="leftMesContainer">
-            <text class="leftMesContent">aasdfjalasdfsadfasdfasdfasdfasdfasdfasdfasdfasdfadssdfkjasdflkdsj</text>
-            <view class="leftArrow"></view>
-        </view>
-    </view>
-	<view class="rightMesWrapper">
-        <view class="rightMesContainer">
-            <text class="rightMesContent">aasdfjalsdfkjasdflkdsj</text>
-            <view class="rightArrow"></view>
-        </view>
-        <image class="rightHeadPic" src="https://fe.c360dn.com/wxapps/photograph/images/user/logo@2x.png" />
-    </view>
-    <!--<view class="blank"></view>-->
+    </scroll-view>
 	<view class="inputWrapper">
-		<input type="text" class="input" placeholder="请输入你的意见"/>
-		<text class="sendBtn">发送</text>
+		<input type="text" class="input" bindinput="handleInput" value="{{inputText}}" placeholder="请输入你的意见"/>
+		<text class="sendBtn" bindtap="handleSubmit">发送</text>
 	</view>
 </view>
