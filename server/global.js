@@ -13,7 +13,7 @@ var Global = {
     },
     alert: function (content) {
       wx.showModal({
-        title: '',
+        title: '提示',
         content: content,
         showCancel: false,
         success: function(res) {

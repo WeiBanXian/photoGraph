@@ -45,6 +45,7 @@
 }
 
 .value {
+    width: 50%;
     font-size: 28rpx;
     color: #000;
 }

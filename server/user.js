@@ -188,7 +188,8 @@ var User = {
             fail: function () {
                 failCallback && failCallback();
             },
-            complete: function () {
+            complete: function (res) {
+                console.log(res)
                 wx.hideToast()
             }
         });

@@ -30,18 +30,6 @@ Page({
       galleryList: _galleryList
     })
   },
-  onReady: function() {
-    
-  },
-  onShow:function(){
-    
-  },
-  onHide: function() {
-    
-  },
-  onUnload: function() {
-    
-  },
   // 浏览图片
   handlePreviewImage: function (e) {
     var current = e.target.dataset.src
