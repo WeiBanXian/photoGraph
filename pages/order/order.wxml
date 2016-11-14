@@ -1,7 +1,8 @@
 <view class="orderWrapper">
-    <view
+    <scroll-view scroll-y="true" style="height: 100%;" 
         class="rowWrapper"
-        wx:if="{{orderList.length > 0}}">
+        wx:if="{{orderList.length > 0}}"
+        bindscrolltolower="handeScrollToLower">
         <view class="row" wx:for="{{orderList}}" wx:key="unique" wx:for-index="index" wx:for-item="item" data-orderid="{{item.orderId}}" bindtap="handleGoToOrderDetail">
             <view class="rowContent">
                 <text class="orderStatusText" wx:if="{{item.orderStat == 1}}">等待拍摄</text>
@@ -38,7 +39,7 @@
                 </view>
             </view>
         </view>
-    </view>
+    </scroll-view>
     <view class="emptyWrapper" wx:else>
         <image class="empty" mode="aspectFit" src="https://fe.c360dn.com/wxapps/photograph/images/order/order_nodata%403x.png"></image>
     </view>
