@@ -19,6 +19,7 @@ Page({
         // 将订单时间的时间戳改为常规形式
         for (var index in _orderData.list) {
           _orderData.list[index].bookDate = DateManager.getTimeToLocale(_orderData.list[index].bookDate);
+          _orderData.list[index].pTime = DateManager.getTimeLength(_orderData.list[index].pTime);
         }
         _self.setData({
           orderList: _orderData.list,

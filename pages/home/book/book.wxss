@@ -90,12 +90,9 @@
     bottom: 0;
     width: 100%;
     height: 90rpx;
-    text-align: center;
-    background: #42CDC2;
-}
-
-.submitText {
     font-size: 32rpx;
     line-height: 90rpx;
     color: #FFF;
+    text-align: center;
+    background: #42CDC2;
 }

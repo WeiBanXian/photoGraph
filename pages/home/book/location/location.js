@@ -4,10 +4,8 @@ Page({
   data:{
     locationPois: [],
     currentCity: ''
-    // text:"这是一个页面"
   },
   onLoad:function(options){
-    // 页面初始化 options为页面跳转所带来的参数
     OrderServer.setCurrentCity('成都');
     this.setData({
       locationPois: OrderServer.getLocationPois(),
@@ -22,10 +20,11 @@ Page({
   },
   handleChoseLocation: function (event) {
     var locationtext = event.target.dataset.locationtext;
-    var location = event.target.dataset.location.split(",");
+    var lat = event.target.dataset.lat;
+    var lng = event.target.dataset.lng;
     OrderServer.setLocationText(locationtext);
-    OrderServer.setLongitude(location[0]);
-    OrderServer.setLatitude(location[1]);
+    OrderServer.setLatitude(lat);
+    OrderServer.setLongitude(lng);
     wx.navigateBack();
   },
   handleSearchLocation: function (event) {

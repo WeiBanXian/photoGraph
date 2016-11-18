@@ -39,13 +39,12 @@
 }
 
 .protocol {
-    display: block;
-    margin: auto;
     font-size: 24rpx;
     color: #333;
 }
 
 .email {
+    display: block;
     font-size: 24rpx;
     color: #333;
 }

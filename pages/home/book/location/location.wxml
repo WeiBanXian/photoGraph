@@ -1,12 +1,12 @@
 <view class="wrapper">
 	<view class="headWrapper">
 		<text class="currentCity" bindtap="handleGoToCity">{{currentCity}}</text>
-		<image class="arrow" bindtap="handleGoToCity" src="./../.https://fe.c360dn.com/wxapps/photograph/images/home/downArrow%403x.png" />
+		<image class="arrow" bindtap="handleGoToCity" src="https://fe.c360dn.com/wxapps/photograph/images/home/downArrow%403x.png" />
 		<input class="input" placeholder="搜索..." bindinput="handleSearchLocation" />
 		<text class="cancel" bindtap="handleCancelSearch">取消</text>
 	</view>
 	<scroll-view scroll-y="true" class="locationList">
-		<view class="row" wx:for="{{locationPois}}" wx:key wx:for-item="item" bindtap="handleChoseLocation" data-location="{{item.location}}" data-locationText="{{item.name}}">
+		<view class="row clickClass" wx:for="{{locationPois}}" wx:key="unique" wx:for-item="item" bindtap="handleChoseLocation" data-lat="{{item.lat}}" data-lng="{{item.lng}}" data-locationText="{{item.name}}">
 			<text class="name" data-location="{{item.location}}" data-locationText="{{item.name}}">{{item.name}}</text>
 			<text class="address" data-location="{{item.location}}" data-locationText="{{item.name}}">{{item.address}}</text>
 		</view>

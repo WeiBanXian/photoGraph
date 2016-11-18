@@ -12,7 +12,7 @@ var DateManager = {
     },
 
     // 获取某个时间格式的时间戳
-    // 2014-07-10 10:21:12的时间戳为：1404958872 
+    // 2014-07-10 10:21:12的时间戳为：1404958872
     getTimestamp: function (stringTime) {
         var timestamp2 = Date.parse(new Date(stringTime));
         timestamp2 = timestamp2 / 1000;
@@ -109,28 +109,28 @@ var DateManager = {
 
         var year = now.getFullYear();       //年
         var month = now.getMonth() + 1;     //月
-        var day = now.getDate();            //日    
+        var day = now.getDate();            //日
         var hh = now.getHours();            //时
         var mm = now.getMinutes();          //分
         var ss = now.getSeconds();          //秒
-        
+
         var clock = year + "-";
-        
+
         if(month < 10) clock += "0";
-        
+
         clock += month + "-";
-        
+
         if(day < 10) clock += "0";
-            
+
         clock += day + " ";
-        
+
         if(hh < 10) clock += "0";
-            
+
         clock += hh + ":";
-        
+
         if (mm < 10) clock += '0';
         clock += mm + ":";
-        
+
         if (ss < 10) clock += '0';
         clock += ss;
         return clock;
@@ -165,37 +165,53 @@ var DateManager = {
         var year = now.getFullYear();       //年
         var month = now.getMonth() + 1;     //月
         var day = now.getDate();            //日
-        
+
         var clock = year + "-";
-        
+
         if(month < 10) clock += "0";
-        
+
         clock += month + "-";
-        
+
         if(day < 10) clock += "0";
-            
+
         clock += day;
         return clock;
     },
     getDetailTime: function (newDate) {
         var now = newDate?newDate:new Date();
-         
+
         var hh = now.getHours();            //时
         var mm = now.getMinutes();          //分
         var ss = now.getSeconds();          //秒
 
         var clock = hh + 1 + ":";
-        
+
         if (mm < 10) clock += '0';
         clock += mm;
-        
+
         // if (mm < 10) clock += '0';
         // clock += mm + ":";
-        
+
         // if (ss < 10) clock += '0';
         // clock += ss;
         return clock;
     },
+    getTimeLength: function (timeLength) {
+        var hh = parseInt(timeLength/3600);
+        var mm = parseInt((timeLength-hh*3600)/60);
+        var ss = parseInt(timeLength-hh*3600-mm*60);
+        var clock = '';
+        if (hh < 10) clock += '0';
+        clock += hh + ":";
+
+        if (mm < 10) clock += '0';
+        clock += mm + ":";
+
+        if (ss < 10) clock += '0';
+        clock += ss;
+
+        return clock;
+    }
 }
 module.exports = {
     DateManager: DateManager

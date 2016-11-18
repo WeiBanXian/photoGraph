@@ -7,14 +7,15 @@ Page({
     price: '',
     timeLength: '00:00:00',
     statusArray: ["订单提交", "等待拍摄", "正在拍摄", "付款", "完成"],
-    status: 4,
+    status: 1,
     orderId: '',
     userName: 'Mary',
     photographer: '',
     mobile: '',
     time: '',
     address: '',
-    amount: '1244'
+    pTime: '',
+    paytotal: ''
   },
   onLoad:function(options){
     var orderData = JSON.parse(options.orderData);
@@ -26,6 +27,8 @@ Page({
       time: orderData.bookDate,
       address: orderData.place,
       bgPic: orderData.scenePic,
+      pTime: orderData.pTime,
+      paytotal: orderData.paytotal,
       price: GlobalServer.getPrice()
     })
   },
@@ -39,12 +42,12 @@ Page({
   },
   // 跳转到照片库
   handleGoToGallery: function () {
-	  wx.navigateTo({url: "../../gallery/gallery"});
+	  wx.navigateTo({url: "../../gallery/galleryDetail/galleryDetail?orderId=" + this.data.orderId});
   },
   // 拨打电话
   handleCall: function () {
     wx.makePhoneCall({
-      phoneNumber: this.data.mobile //仅为示例，并非真实的电话号码
+      phoneNumber: this.data.mobile
     })
   }
 })

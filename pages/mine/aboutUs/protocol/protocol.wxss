@@ -1,0 +1,29 @@
+.protocolWrapper {
+	padding: 20rpx;
+	font-size: 14px;
+}
+
+.title {
+	display: block;
+	font-size: 24rpx;
+	font-weight: bold;
+	margin-bottom: 15rpx;
+	text-align: center;
+}
+
+.label {
+	display: block;
+	margin: 15rpx 0;
+	font-size: 24rpx;
+	font-weight: bold;
+}
+
+.content {
+	display: block;
+	margin: 15rpx 0;
+	font-size: 24rpx;
+}
+
+.contentItem {
+	text-indent: 1em;
+}

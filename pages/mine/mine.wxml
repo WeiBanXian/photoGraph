@@ -1,9 +1,17 @@
 <view class="mineWrapper">
     <view class="headWrapper">
-        <image class="headPic" mode="aspectFit" src="{{avatar}}"></image>
+        <image class="headPic" mode="aspectFit" src="{{avatar}}" bindtap="handleSave"></image>
         <text class="headText">{{nickname}}</text>
     </view>
-    <view class="rows" bindtap="handleGoToMyCoupon">
+    <view class="rows clickClass" bindtap="handleGoToMyInfo">
+        <view class="rowLeft">
+            <image class="rowPic" mode="aspectFit" src="https://fe.c360dn.com/wxapps/photograph/images/user/user_profile%403x.png"></image>
+            <text class="rowText">我的资料</text>
+        </view>
+        <image class="rowArrow" src="https://fe.c360dn.com/wxapps/photograph/images/user/arrow%403x.png"></image>
+    </view>
+    <view class="line"></view>
+    <view class="rows clickClass" bindtap="handleGoToMyCoupon">
         <view class="rowLeft">
             <image class="rowPic" mode="aspectFit" src="https://fe.c360dn.com/wxapps/photograph/images/user/user_coupon%403x.png"></image>
             <text class="rowText">我的优惠券</text>
@@ -11,7 +19,7 @@
         <image class="rowArrow" src="https://fe.c360dn.com/wxapps/photograph/images/user/arrow%403x.png"></image>
     </view>
     <view class="line"></view>
-    <view class="rows" bindtap="handleGoToFeedback">
+    <view class="rows clickClass" bindtap="handleGoToFeedback">
         <view class="rowLeft">
             <image class="rowPic" mode="aspectFit" src="https://fe.c360dn.com/wxapps/photograph/images/user/user_feedback%403x.png"></image>
             <text class="rowText">意见反馈</text>
@@ -19,7 +27,7 @@
         <image class="rowArrow" src="https://fe.c360dn.com/wxapps/photograph/images/user/arrow%403x.png"></image>
     </view>
     <view class="line"></view>
-    <view class="rows" bindtap="handleGoToAboutUs">
+    <view class="rows clickClass" bindtap="handleGoToAboutUs">
         <view class="rowLeft">
             <image class="rowPic" mode="aspectFit" src="https://fe.c360dn.com/wxapps/photograph/images/user/user_about%403x.png"></image>
             <text class="rowText">关于我们</text>
