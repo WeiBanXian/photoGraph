@@ -1,0 +1,78 @@
+.galleryWrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    background: #F9F9F9;
+}
+
+.blockWrapper {
+    padding-bottom: 6rpx;
+    background: #F9F9F9;
+}
+
+.emptyWrapper {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    background: #F9F9F9;
+}
+
+.empty {
+    width: 20%;
+}
+
+
+.block {
+    background: #FFF;
+}
+
+.topWrapper {
+    padding: 30rpx 0 0 25rpx;
+}
+
+.dayText {
+    font-size: 40rpx;
+    color: #333;
+}
+
+.dateText {
+    margin-left: 15rpx;
+    font-size: 32rpx;
+    color: #333;
+}
+
+.midWrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20rpx;
+}
+
+.addressText {
+    font-size: 26rpx;
+    color: #999;
+}
+
+.photoText {
+    font-size: 26rpx;
+    color: #999;
+}
+
+.picsWrapper {
+    display: flex;
+    flex-wrap: wrap;
+    background: #F9F9F9;
+}
+
+.pic {
+    display: block;
+    margin: 2rpx;
+    width: 246rpx;
+    height: 246rpx;
+}

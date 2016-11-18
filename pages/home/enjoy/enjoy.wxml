@@ -29,8 +29,6 @@
             <text class="priceNum">{{price}}</text>
             <text class="priceUnit">元/小时</text>
         </view>
-		<view class="orderTipsBtn" bindtap="handleGoToBook">
-			<text class="orderTipsText">立即预约</text>
-		</view>
+		<text class="orderTipsText btnClickClass" bindtap="handleGoToBook">立即预约</text>
 	</view>
 </view>

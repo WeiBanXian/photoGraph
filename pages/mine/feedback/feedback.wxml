@@ -37,6 +37,6 @@
     </scroll-view>
 	<view class="inputWrapper">
 		<input type="text" class="input" bindinput="handleInput" value="{{inputText}}" placeholder="请输入你的意见"/>
-		<text class="sendBtn" bindtap="handleSubmit">发送</text>
+		<text class="sendBtn btnClickClass" bindtap="handleSubmit">发送</text>
 	</view>
 </view>

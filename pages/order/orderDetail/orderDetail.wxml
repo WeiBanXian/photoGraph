@@ -4,17 +4,17 @@
 		<view class="topContent">
 			<view class="contentTopWrapper">
 				<text class="cancelText" bindtap="handleCancelOrder" wx:if="{{status < 3}}">取消订单</text>
-				<text class="timelengthText" wx:if="{{status >= 4}}">拍摄时长 {{timeLength}}</text>
+				<text class="timelengthText" wx:if="{{status >= 4}}">拍摄时长 {{pTime}}</text>
 				<view class="priceWrapper" wx:if="{{status < 4}}">
 					<text class="priceNum">{{price}}</text>
 					<text class="priceUnit">元/时</text>
 				</view>
 				<view class="priceWrapper" wx:else>
-					<text class="priceNum">{{amount}}</text>
+					<text class="priceNum">{{paytotal}}</text>
 					<text class="priceUnit">元</text>
 				</view>
 				<text class="timingText" wx:if="{{status == 3}}">正在计时...</text>
-				<text class="payText" wx:if="{{status == 4}}">订单支付</text>
+				<text class="payText btnClickClass" wx:if="{{status == 4}}">订单支付</text>
 			</view>
 			<view class="statusWrapper">
 				<view class="statusRowTopWrapper">
@@ -54,7 +54,7 @@
 		<view class="row">
 			<text class="label">联系电话：</text>
 			<text class="value">{{mobile}}</text>
-			<image class="phonePic" bindtap="handleCall" src="https://fe.c360dn.com/wxapps/photograph/images/order/listPhone%403x.png"/>
+			<image class="phonePic btnClickClass" bindtap="handleCall" src="https://fe.c360dn.com/wxapps/photograph/images/order/listPhone%403x.png"/>
 		</view>
 		<view class="row">
 			<text class="label">拍摄时间：</text>
@@ -64,9 +64,6 @@
 			<text class="label">拍摄地点：</text>
 			<text class="value">{{address}}</text>
 		</view>
-		<view class="blank"></view>
 	</view>
-    <view class="photoBtn" bindtap="handleGoToGallery">
-        <text class="photoText">照片库</text>
-    </view>
+    <text class="photoBtn btnClickClass" bindtap="handleGoToGallery" wx:if="{{status >= 3}}">照片库</text>
 </view>

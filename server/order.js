@@ -188,7 +188,7 @@ var Order = {
                 GlobalServer.alert("没有搜索到相关定位信息");
             },
             complete: function () {
-                
+
             }
         });
     },
@@ -261,7 +261,7 @@ var Order = {
         var url = root + "/photoBazaar/order/getList";
         var data = {
             sp: sp,
-            limit: 4
+            limit: 34
         };
         UserServer.getDataWithPublicParams(data);
         wx.request({
@@ -319,10 +319,11 @@ var Order = {
         });
     },
     // 获取云端照片
-    getOrderPhoto: function (callback) {
-        var url = root + "/photoBazaar/photo/orderPhoto";
+    getPhotosByOrderId: function (oid, callback) {
+        var oid = "201611051622107885";
+        var url = root + "/photoBazaar/index/getPhotosByOrderId";
         var data = {
-            oid: '56454ef65356c485',
+            oid: oid,
             all: 0
         };
         UserServer.getDataWithPublicParams(data);
@@ -336,7 +337,29 @@ var Order = {
                 callback && callback(result)
             }.bind(this),
             complete: function () {
-                
+
+            }
+        });
+    },
+    // 获取云端照片
+    getOrderPhoto: function (callback) {
+        var url = root + "/photoBazaar/photo/orderPhoto";
+        var data = {
+            oid: '201611051622107885',
+            all: 1
+        };
+        UserServer.getDataWithPublicParams(data);
+        wx.request({
+            url: url,
+            data: data?data:{},
+            header:{
+                "Content-Type":"application/json"
+            },
+            success: function(result) {
+                callback && callback(result)
+            }.bind(this),
+            complete: function () {
+
             }
         });
     }

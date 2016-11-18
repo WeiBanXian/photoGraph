@@ -1,0 +1,21 @@
+<view class="galleryWrapper">
+    <view class="blockWrapper">
+        <view class="block">
+            <view class="picsWrapper">
+                <image
+                    class="pic"
+                    mode="aspectFill"
+                    wx:for="{{imageList}}"
+                    wx:key="unique"
+                    wx:for-item="item"
+                    src="{{item}}"
+                    data-src="{{item}}"
+                    data-index="{{index}}"
+                    bindtap="handlePreviewImage" />
+            </view>
+        </view>
+    </view>
+    <view class="emptyWrapper" wx:if="{{imageList.length == 0}}">
+        <image class="empty" mode="aspectFit" src="https://fe.c360dn.com/wxapps/photograph/images/order/photo_nodata%403x.png"></image>
+    </view>
+</view>

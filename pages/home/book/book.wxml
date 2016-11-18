@@ -9,7 +9,7 @@
     <view class="block">
 	    <text class="blockText">地址和时间</text>
     </view>
-	<view class="row" bindtap="handleGoToLocation">
+	<view class="row clickClass" bindtap="handleGoToLocation">
 		<text class="label">拍摄地址</text>
 		<text class="value">{{locationText}}</text>
 		<image class="arrow" src="https://fe.c360dn.com/wxapps/photograph/images/user/arrow%403x.png"/>
@@ -55,10 +55,8 @@
 	</view>
 	<view class="row">
 		<text class="label">手机号</text>
-		<input class="value" value="{{mobile}}" placeholder="预约手机号" bindinput="handleChangeMobile" />
+		<input class="value" value="{{mobile}}" placeholder="预约手机号" type="number" maxlength="11" bindinput="handleChangeMobile" />
 	</view>
     <view class="blank"></view>
-	<view class="submitBtn" bindtap="handleCreateOrder">
-		<text class="submitText">立即预约</text>
-	</view>
+	<text class="submitBtn btnClickClass" bindtap="handleCreateOrder">立即预约</text>
 </view>

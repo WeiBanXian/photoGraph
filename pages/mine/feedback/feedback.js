@@ -1,21 +1,24 @@
+var UserServer = require("../../../server/user.js").User;
+
 Page({
   data:{
     toView: "last",
     messageList: [],
-    avator: '',
+    avatar: '',
     inputText: ''
   },
   onLoad:function(options){
     var _self = this;
-    var avator = getApp().globalData.userInfo.avatarUrl;
+    var avatar = UserServer.getUserParams().avatar;
+    console.log(avatar)
     wx.getStorage({
       key: 'messageList',
       success: function(res) {
         _self.setData({
           messageList: JSON.parse(res.data),
-          avator: avator
+          avatar: avatar
         });
-      } 
+      }
     });
   },
   onReady:function(){
@@ -42,7 +45,7 @@ Page({
     var messageList = this.data.messageList;
     messageList.push({
       type: 1,
-      headPic: this.data.avator,
+      headPic: this.data.avatar,
       contentText: this.data.inputText
     });
     this.setData({
@@ -54,6 +57,5 @@ Page({
       key: "messageList",
       data: JSON.stringify(this.data.messageList)
     });
-    console.log(this.data.inputText)
   }
 })

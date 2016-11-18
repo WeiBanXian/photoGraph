@@ -1,6 +1,6 @@
 <view class="wrapper">
 	<text class="title">城市选择</text>
-	<view class="row" bindtap="handleChoseChengdu">
+	<view class="row clickClass" bindtap="handleChoseChengdu">
 		<text class="rowText">成都</text>
 	</view>
 	<text class="tips">其他城市暂未开通，敬请期待...</text>

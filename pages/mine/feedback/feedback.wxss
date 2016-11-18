@@ -42,7 +42,7 @@
     display:block;
     position:absolute;
     top: 30rpx;
-    left: -9rpx;
+    left: -8rpx;
     width:0;
     height:0;
     line-height:0;
@@ -86,7 +86,7 @@
     display:block;
     position:absolute;
     top: 30rpx;
-    right: -9rpx;
+    right: -8rpx;
     width:0;
     height:0;
     line-height:0;

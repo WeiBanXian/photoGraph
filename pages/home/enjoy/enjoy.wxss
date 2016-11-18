@@ -101,17 +101,13 @@
     color: #55CBBD;
 }
 
-.orderTipsBtn {
+.orderTipsText {
+    display: block;
     margin-right: 25rpx;
     padding: 10rpx 50rpx;
-    justify-content: center;
-    align-items: center;
     border-radius: 5rpx;
-    background: #42CDC2;
-}
-
-.orderTipsText {
     font-size: 28rpx;
     line-height: 40rpx;
-    color: #FFF;
+    background-color:#42CDC2;
+    color:#FFF;
 }
