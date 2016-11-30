@@ -1,4 +1,4 @@
-var {root, userCenterRoot, wxapi} = require("./common.js");
+var {root, userCenterRoot, wxapi, message} = require("./common.js");
 var md5 = require('../utils/md5.js')
 
 // 注册号码
@@ -185,7 +185,8 @@ var User = {
                     failCallback && failCallback();
                 }
             }.bind(this),
-            fail: function () {
+            fail: function (error) {
+                console.log(error);
                 failCallback && failCallback();
             },
             complete: function (res) {
@@ -285,7 +286,6 @@ var User = {
             appName: "想拍就拍",
             cnet: "wifi",
             systemVersion: "10.0",
-            appkey: "f6cb3d93e7ac1146",
             token: this.getToken(),
             userId: this.getUserId()
         };
@@ -311,10 +311,18 @@ var User = {
                 "Content-Type":"application/json"
             },
             success: function(result) {
-                if (result.statusCode == 200) {
+                if (result.data.status == 200) {
                     callback && callback(result)
+                } else {
+                    message.alert("优惠券列表获取失败");
                 }
-            }.bind(this)
+            }.bind(this),
+            fail: function () {
+                message.alert("优惠券列表获取失败");
+            },
+            complete: function () {
+                wx.hideToast();
+            }
         });
     },
 
@@ -328,6 +336,7 @@ var User = {
         var url = root + "/photoBazaar/user/updateInfo";
         var data = data;
         this.getDataWithPublicParams(data);
+
         wx.request({
             url: url,
             data: data?data:{},
@@ -336,6 +345,13 @@ var User = {
             },
             success: function(result) {
                 if (result.statusCode == 200) {
+                    setTimeout(function () {
+                        wx.showToast({
+                          title: '更新资料成功',
+                          icon: 'success',
+                          duration: 2000
+                        });
+                    }, 0);
                     var data = result.data.data;
                     if (data.sex == 0 || data.sex == 1) {
                         this.getUserParams().gender = data.sex;
@@ -350,52 +366,15 @@ var User = {
             },
             complete: function () {
                 wx.hideToast();
-                wx.showToast({
-                  title: '更新资料成功',
-                  icon: 'success',
-                  duration: 2000
-                });
             }
         });
     },
-
-    // 退出登录
-    loginOut: function (callback) {
-        wx.showToast({
-          title: '退出登录中...',
-          icon: 'loading',
-          duration: 10000
-        })
-        var url = root + "/photoBazaar/user/loginOut";
-        var data = {};
-        this.getDataWithPublicParams(data);
-        wx.request({
-            url: url,
-            data: data?data:{},
-            header:{
-                "Content-Type":"application/json"
-            },
-            success: function(result) {
-                if (result.statusCode == 200) {
-                    wx.clearStorage();
-                    callback && callback(result)
-                }
-            }.bind(this),
-            fail: function (error) {
-
-            },
-            complete: function () {
-                wx.hideToast();
-            }
-        });
-    },
-
 
     // 微信相关
     accessTokenRequest: function (callback) {
         var data = {
             grant_type: "client_credential",
-            appid: "wx82141199f13f7f8b",
+            appid: "wx8c04fbf04dc2cdab",
             secret: this.getAppSecret()
         };
         wx.request({
@@ -425,7 +404,7 @@ var User = {
     openIdRequest: function (callback) {
         var data = {
             grant_type: "authorization_code",
-            appid: "wx82141199f13f7f8b",
+            appid: "wx8c04fbf04dc2cdab",
             secret: this.getAppSecret(),
             js_code: this.getCode()
         };
@@ -450,12 +429,39 @@ var User = {
         });
     },
 
+    getUnionID: function () {
+        var data = {
+            access_token: this.getAccessToken(),
+            openid: this.getOpenId(),
+            lang: "zh_CN"
+        };
+        wx.request({
+            url: wxapi + '/cgi-bin/user/info',
+            data: data,
+            medthod: 'GET',
+            header:{
+                "Content-Type":"application/x-www-form-urlencoded"
+            },
+            success: function(res) {
+                console.log(res);
+            }.bind(this),
+            fail: function (error) {
+                console.log(error);
+            },
+            complete: function (res) {
+                // console.log(res);
+            }
+        });
+    },
+
     setAppSecret: function (_appSecret) {
         this._appSecret = _appSecret;
     },
     getAppSecret: function () {
         // return this._appSecret;
-        return "1c78c4b2b3bfa1870799217aa2c730c8";
+        // return "1c78c4b2b3bfa1870799217aa2c730c8";  // 微信小程序
+        return "6eb657957dd48302a1c1e98b7332b280";  // 微信小程序公司
+        // return "0961a05bf6cb3d93e7ac1146ddda23bc";  //想拍就拍
     },
 
     setCode: function (_code) {
@@ -486,7 +492,197 @@ var User = {
         return this._formId;
     },
 
+    setSign: function (_sign) {
+        this._sign = _sign;
+    },
+    getSign: function () {
+        return this._sign;
+    },
+
+    // 用户获取uid
+    exchangeUid: function () {
+        var data = {
+            accessToken: this.getAccessToken(),
+            openid: this.getOpenId()
+        };
+        wx.request({
+            url: root + '/photoBazaar/sPro/exchangeUid',
+            data: data,
+            method: 'Get',
+            header:{
+                "Content-Type":"application/json"
+            },
+            success: function(res) {
+                // console.log(res);
+            }.bind(this),
+            fail: function (error) {
+                console.log(error);
+            },
+            complete: function (res) {
+                // console.log(res);
+            }
+        });
+    },
+
+    getLoginSign: function (callback) {
+
+        var tokenData = JSON.stringify({
+            uid: this.getOpenId(),
+            access_token: this.getAccessToken(),
+            expires_in: 7200
+        });
+
+        var publicParams = {
+            mnc:"01",
+            device:"Unknown",
+            deviceId:"4A27FABF-D501-4AA8-BF4F-BA844D742BF2",
+            icc:"cn",
+            channel:"appstore",
+            siteCode:"wechat",
+            appversion:"1.1.8",
+            appVersion:"1.1.8",
+            locale:"zh-Hans-CN",
+            mcc:"460",
+            appKey:"f6cb3d93e7ac1146",
+            cid:"a8db384c3573e8ee0535532197975ba5418f2bbf9b4bd6d674e6f704dcde1719",
+            tokenData:tokenData,
+            appname:"想拍就拍",
+            platform:"iphone",
+            token: '',
+            timestamp:"1479722064.430251",
+            certType:"production",
+            appName:"想拍就拍",
+            cnet:"wifi",
+            signpass:"FVfHE3qwEjxAIzA9VoTQQ0D3RpDvuH5+8rOl4AK5+m5TC92EYtFqs5WgUAICSRv51eGBWPrq3Jnrx0KpmHmkn7uwUwxkX4kNc2NeEuBft3o8PNvzhn8kowQvZRbS8oDXjgtIuXtjKZ5sTTQn3qDjtq9jAs42CHKYXvVVp7j8yR4TkobktXJpYAB3IG52F6+jI4XbVlv4h+sHEmwqc/3WlAWdZ0d7+F+/zTHSxqTi3e8xee/aT2Ew9HJSbTHss5Yj6niceQNglGUMzFFf8pa0nA==",
+            systemVersion:"10.1.1",
+            cnetProvider:"中国联通",
+            appkey:"f6cb3d93e7ac1146",
+            userId:""
+        };
+        // var publicParams = {
+        //     siteCode: "wechat",
+        //     tokenData: tokenData,
+        //     appkey: "f6cb3d93e7ac1146",
+        //     deviceId: "4A27FABF-D501-4AA8-BF4F-BA844D742BF2"
+        // }
+
+        var data = {
+            appSecret: "0961a05bf6cb3d93e7ac1146ddda23bc",
+            postJson: {
+                mnc:"01",
+                device:"Unknown",
+                deviceId:"4A27FABF-D501-4AA8-BF4F-BA844D742BF2",
+                icc:"cn",
+                channel:"appstore",
+                siteCode:"wechat",
+                appversion:"1.1.8",
+                appVersion:"1.1.8",
+                locale:"zh-Hans-CN",
+                mcc:"460",
+                appKey:"f6cb3d93e7ac1146",
+                cid:"a8db384c3573e8ee0535532197975ba5418f2bbf9b4bd6d674e6f704dcde1719",
+                tokenData:tokenData,
+                appname:"想拍就拍",
+                platform:"iphone",
+                token: '',
+                timestamp:"1479722064.430251",
+                certType:"production",
+                appName:"想拍就拍",
+                cnet:"wifi",
+                signpass:"FVfHE3qwEjxAIzA9VoTQQ0D3RpDvuH5+8rOl4AK5+m5TC92EYtFqs5WgUAICSRv51eGBWPrq3Jnrx0KpmHmkn7uwUwxkX4kNc2NeEuBft3o8PNvzhn8kowQvZRbS8oDXjgtIuXtjKZ5sTTQn3qDjtq9jAs42CHKYXvVVp7j8yR4TkobktXJpYAB3IG52F6+jI4XbVlv4h+sHEmwqc/3WlAWdZ0d7+F+/zTHSxqTi3e8xee/aT2Ew9HJSbTHss5Yj6niceQNglGUMzFFf8pa0nA==",
+                systemVersion:"10.1.1",
+                cnetProvider:"中国联通",
+                appkey:"f6cb3d93e7ac1146",
+                userId:""
+            }
+        };
+        wx.request({
+            url: root + '/photoBazaar/index/sign',
+            data: data,
+            method: 'GET',
+            header:{
+                "Content-Type":"application/json"
+            },
+            success: function(res) {
+                console.log(res);
+                this.setSign(res.data.data);
+                callback && callback();
+            }.bind(this),
+            fail: function (error) {
+                console.log(error);
+            },
+            complete: function (res) {
+                // console.log(res);
+            }
+        });
+    },
+
     wxLogin: function (callback) {
+
+        // var tokenData = JSON.stringify({
+        //     uid: this.getOpenId(),
+        //     access_token: this.getAccessToken(),
+        //     expires_in: 7200
+        // });
+
+        // var data = {
+        //     mnc:"01",
+        //     device:"Unknown",
+        //     deviceId:"4A27FABF-D501-4AA8-BF4F-BA844D742BF2",
+        //     icc:"cn",
+        //     channel:"appstore",
+        //     siteCode:"wechat",
+        //     appversion:"1.1.8",
+        //     appVersion:"1.1.8",
+        //     locale:"zh-Hans-CN",
+        //     mcc:"460",
+        //     appKey:"f6cb3d93e7ac1146",
+        //     cid:"a8db384c3573e8ee0535532197975ba5418f2bbf9b4bd6d674e6f704dcde1719",
+        //     tokenData:tokenData,
+        //     appname:"想拍就拍",
+        //     platform:"iphone",
+        //     token: '',
+        //     timestamp:"1479722064.430251",
+        //     certType:"production",
+        //     appName:"想拍就拍",
+        //     cnet:"wifi",
+        //     signpass:"FVfHE3qwEjxAIzA9VoTQQ0D3RpDvuH5+8rOl4AK5+m5TC92EYtFqs5WgUAICSRv51eGBWPrq3Jnrx0KpmHmkn7uwUwxkX4kNc2NeEuBft3o8PNvzhn8kowQvZRbS8oDXjgtIuXtjKZ5sTTQn3qDjtq9jAs42CHKYXvVVp7j8yR4TkobktXJpYAB3IG52F6+jI4XbVlv4h+sHEmwqc/3WlAWdZ0d7+F+/zTHSxqTi3e8xee/aT2Ew9HJSbTHss5Yj6niceQNglGUMzFFf8pa0nA==",
+        //     systemVersion:"10.1.1",
+        //     cnetProvider:"中国联通",
+        //     appkey:"f6cb3d93e7ac1146",
+        //     userId:"",
+        //     sig: this.getSign()
+        // };
+
+        // var data = {
+        //     siteCode: "wechat",
+        //     tokenData: tokenData,
+        //     appkey: "f6cb3d93e7ac1146",
+        //     appSecret: "0961a05bf6cb3d93e7ac1146ddda23bc",
+        //     deviceId: "4A27FABF-D501-4AA8-BF4F-BA844D742BF2",
+        //     sig: this.getSign()
+        // };
+
+        // wx.request({
+            // url: userCenterRoot + '/api/third/login/sso',
+        //     url: userCenterRoot + '/api/v2/ssoLogin',
+        //     data: data,
+        //     method: 'POST',
+        //     header:{
+        //         "Content-Type":"application/json"
+        //     },
+        //     success: function(res) {
+        //         console.log(res);
+        //         callback && callback();
+        //     }.bind(this),
+        //     fail: function (error) {
+        //         console.log(error);
+        //     },
+        //     complete: function (res) {
+        //         // console.log(res);
+        //     }
+        // });
+        // return;
 
         var data = {
             openId: this.getOpenId(),
@@ -498,7 +694,7 @@ var User = {
             data: data,
             medthod: 'GET',
             header:{
-                "Content-Type":"application/x-www-form-urlencoded"
+                "Content-Type":"application/json"
             },
             success: function(res) {
                 // console.log(res);

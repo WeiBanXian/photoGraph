@@ -1,6 +1,5 @@
-var {root} = require("./common.js");
+var {root, message} = require("./common.js");
 var UserServer = require("./user.js").User;
-var GlobalServer = require("./global.js").Global;
 
 var Order = {
     // 地址信息
@@ -147,11 +146,11 @@ var Order = {
                             this.setLocationText(result.data.data.list[0].name);
                             callback && callback();
                         } else {
-                            GlobalServer.alert("定位失败");
+                            message.alert("定位失败");
                         }
                     }.bind(this),
                     fail: function () {
-                        GlobalServer.alert("定位失败");
+                        message.alert("定位失败");
                     },
                     complete: function () {
                         wx.hideToast();
@@ -181,11 +180,11 @@ var Order = {
                     this.setLocationPois(result.data.data.list);
                     callback && callback(result.data.data.list);
                 } else {
-                    GlobalServer.alert("没有搜索到相关定位信息");
+                    message.alert("没有搜索到相关定位信息");
                 }
             }.bind(this),
             fail: function () {
-                GlobalServer.alert("没有搜索到相关定位信息");
+                message.alert("没有搜索到相关定位信息");
             },
             complete: function () {
 
@@ -195,15 +194,15 @@ var Order = {
     // 创建订单
     createOrder: function (callback) {
         if (this.getLocationText() == '') {
-            GlobalServer.alert("预约时间不能为空");
+            message.alert("预约时间不能为空");
             return false;
         }
         if (this.getUserName() == '') {
-            GlobalServer.alert("姓名不能为空");
+            message.alert("姓名不能为空");
             return false;
         }
         if (this.getMobile() == '') {
-            GlobalServer.alert("手机号不能为空");
+            message.alert("手机号不能为空");
             return false;
         }
         wx.showToast({
@@ -238,11 +237,11 @@ var Order = {
                     });
                     callback && callback(result)
                 } else {
-                    GlobalServer.alert("预约失败，请重试");
+                    message.alert("预约失败，请重试");
                 }
             }.bind(this),
             fail: function () {
-                GlobalServer.alert("预约失败，请重试");
+                message.alert("预约失败，请重试");
             },
             complete: function () {
                 wx.hideToast();
@@ -258,10 +257,12 @@ var Order = {
                 duration: 10000
             });
         }
-        var url = root + "/photoBazaar/order/getList";
+        // var url = root + "/photoBazaar/order/getList";
+        var url = root + "/photoBazaar/wechat/orderList";
         var data = {
             sp: sp,
-            limit: 34
+            limit: 34,
+            // uid: UserServer.getUserId()
         };
         UserServer.getDataWithPublicParams(data);
         wx.request({
@@ -276,9 +277,12 @@ var Order = {
                     this.setIsCancelOrder(false);
                     callback && callback(result)
                 } else {
-                    // GlobalServer.alert("订单列表请求失败");
+                    message.alert("订单列表获取失败");
                 }
             }.bind(this),
+            fail: function () {
+                message.alert("订单列表获取失败");
+            },
             complete: function () {
                 wx.hideToast();
             }
@@ -307,11 +311,11 @@ var Order = {
                 if (result.statusCode == 200) {
                     callback && callback(result)
                 } else {
-                    GlobalServer.alert("取消失败，请重试");
+                    message.alert("取消失败，请重试");
                 }
             }.bind(this),
             fail: function () {
-                GlobalServer.alert("取消失败，请重试");
+                message.alert("取消失败，请重试");
             },
             complete: function () {
                 wx.hideToast();

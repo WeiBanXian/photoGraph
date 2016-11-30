@@ -19,14 +19,14 @@
         <image class="rowArrow" src="https://fe.c360dn.com/wxapps/photograph/images/user/arrow%403x.png"></image>
     </view>
     <view class="line"></view>
-    <view class="rows clickClass" bindtap="handleGoToFeedback">
+ <!--    <view class="rows clickClass" bindtap="handleGoToFeedback">
         <view class="rowLeft">
             <image class="rowPic" mode="aspectFit" src="https://fe.c360dn.com/wxapps/photograph/images/user/user_feedback%403x.png"></image>
             <text class="rowText">意见反馈</text>
         </view>
         <image class="rowArrow" src="https://fe.c360dn.com/wxapps/photograph/images/user/arrow%403x.png"></image>
     </view>
-    <view class="line"></view>
+    <view class="line"></view> -->
     <view class="rows clickClass" bindtap="handleGoToAboutUs">
         <view class="rowLeft">
             <image class="rowPic" mode="aspectFit" src="https://fe.c360dn.com/wxapps/photograph/images/user/user_about%403x.png"></image>

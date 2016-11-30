@@ -1,12 +1,20 @@
 <view class="wrapper">
 	<view class="block">
-		<text class="blockText">基本信息</text>
+		<text class="blockText">账号信息</text>
 	</view>
 	<view class="row">
 		<text class="label">头像</text>
-		<image class="headPic" bindtap="handleChoseImage" src="{{avatar}}" />
+		<image class="headPic" src="{{avatar}}" />
 	</view>
     <view class="line"></view>
+	<view class="row">
+		<text class="label">手机</text>
+		<text class="value" style="color: #999;">{{mobile}}</text>
+	</view>
+    <view class="line"></view>
+	<view class="block">
+		<text class="blockText">基本信息</text>
+	</view>
 	<view class="row">
 		<text class="label">昵称</text>
 		<input class="input" value="{{nickname}}" bindblur="handleChangeNickname" />
@@ -28,15 +36,4 @@
 		</view>
 	</view>
     <view class="line"></view>
-	<view class="block">
-		<text class="blockText">账号信息</text>
-	</view>
-	<view class="row">
-		<text class="label">手机</text>
-		<text class="value" style="color: #999;">{{mobile}}</text>
-	</view>
-    <view class="line"></view>
-<!-- 	<view class="logoutBtn" bindtap="handleLogout">
-		<text class="logoutText">退出登录</text>
-	</view> -->
 </view>

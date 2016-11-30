@@ -5,33 +5,28 @@ Page({
     toView: "last",
     messageList: [],
     avatar: '',
+    scrollTop: 0,
+    scrollHeight: 0,
     inputText: ''
   },
   onLoad:function(options){
     var _self = this;
-    var avatar = UserServer.getUserParams().avatar;
-    console.log(avatar)
+    // var avatar = UserServer.getUserParams().avatar;
     wx.getStorage({
       key: 'messageList',
       success: function(res) {
         _self.setData({
           messageList: JSON.parse(res.data),
-          avatar: avatar
+          // avatar: avatar
         });
       }
     });
   },
-  onReady:function(){
-    // 页面渲染完成
-  },
-  onShow:function(){
-    // 页面显示
-  },
-  onHide:function(){
-    // 页面隐藏
-  },
-  onUnload:function(){
-    // 页面关闭
+  handleScroll: function (e) {
+    this.setData({
+      scrollTop: e.detail.scrollHeight
+      // scrollHeight: e.detail.scrollHeight
+    });
   },
   handleInput: function (e) {
     this.setData({
@@ -55,7 +50,32 @@ Page({
     })
     wx.setStorage({
       key: "messageList",
-      data: JSON.stringify(this.data.messageList)
+      data: JSON.stringify(this.data.messageList),
+      success: function(res) {
+
+      }
     });
+    this.scrollAnimation();
+  },
+  scrollAnimation: function () {
+    // var _scrollTop = 0;
+    // var _top = _scrollTop;
+    // var timer = setInterval(function () {
+    //   this.setData({
+    //     scrollTop: _top
+    //   });
+    //   _top += 1;
+    //   if (_top > this.data.scrollHeight) {
+    //     clearInterval(timer);
+    //   }
+    //   console.log(_top)
+    // }.bind(this), 5);
+
+    var _scrollTop = this.data.scrollTop + 100;
+    setTimeout(function () {
+      this.setData({
+        scrollTop: _scrollTop
+      });
+    }.bind(this),0)
   }
 })

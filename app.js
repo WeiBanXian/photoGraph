@@ -7,23 +7,25 @@ var {File} = require('utils/file.js');
 
 App({
   onLaunch: function () {
-    // return;
     var _self = this;
     var code = '';
     var accessToken = '';
     wx.login({
       success: function(res) {
+        console.log(res)
         UserServer.setCode(res.code);
         UserServer.openIdRequest(function () {
           UserServer.accessTokenRequest(function () {
-            UserServer.wxLogin(function () {
-              // UserServer.templateRequest();
-            });
+            // UserServer.getLoginSign(function () {
+              // UserServer.exchangeUid();
+              UserServer.getUnionID();
+              // UserServer.wxLogin();
+            // });
           });
         });
         wx.getUserInfo({
           success: function (res) {
-            // console.log(res);
+            console.log(res);
             _self.globalData.userInfo = res.userInfo;
             UserServer.setAvatar(res.userInfo.avatarUrl);
             UserServer.setUserName(res.userInfo.nickName);
@@ -32,6 +34,7 @@ App({
         })
       }
     });
+    // return;
     DateManager.init();
     UserServer.setMobile('11000000907');
     UserServer.setPassword('123456');
@@ -40,10 +43,9 @@ App({
         icon: 'loading',
         duration: 10000
     })
-
     // 登录
     UserServer.login(function () {
-        console.log("登录成功")
+        // console.log("登录成功")
     }, function () {
         GlobalServer.alert("登录失败");
     });

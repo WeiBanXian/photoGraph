@@ -1,5 +1,5 @@
 <view class="wrapper">
-    <scroll-view scroll-y="true" class="scrollWrapper" scroll-into-view="{{toView}}">
+    <scroll-view scroll-y="true" class="scrollWrapper" scroll-top="{{scrollTop}}" scroll-into-view="{{toView}}" bindscroll="handleScroll">
         <view wx:for="{{messageList}}" wx:key="unique" wx:for-item="item" wx:for-index="index">
             <block wx:if="{{item.type == 0}}">
                 <view class="leftMesWrapper" wx:if="{{index == messageList.length -1}}" id="last">

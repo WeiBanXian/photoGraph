@@ -25,7 +25,7 @@ Page({
       wx.navigateTo({url: "aboutUs/aboutUs"});
   },
   handleSave: function () {
-    var url = "https://www.sslshopper.com/assets/images/disable-ssl2-in-iis.png";
+    var url = "https://fe.c360dn.com/wxapps/photograph/images/user/user_coupon%403x.png";
     File.saveNetworkPicture(url, function () {
         File.getSavedFileList();
     });

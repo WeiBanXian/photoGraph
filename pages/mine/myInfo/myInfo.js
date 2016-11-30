@@ -51,11 +51,5 @@ Page({
     UserServer.setGender(this.data.gender);
     UserServer.setUserName(this.data.nickname);
     UserServer.updateInfo({nickname: this.data.nickname});
-  },
-  // 退出登录
-  handleLogout: function () {
-    UserServer.loginOut(function () {
-      wx.redirectTo({url: "../../../pages/index/index"});
-    });
   }
 })
