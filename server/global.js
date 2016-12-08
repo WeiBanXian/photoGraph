@@ -60,9 +60,9 @@ var Global = {
     },
     // 获取客片欣赏信息
     getSceneData: function (type, callback) {
-        var _data = UserServer.getDataWithPublicParams({type: type});
+        var _data = {type: type};
         wx.request({
-            url: root + '/photoBazaar/photo/photoSamples',
+            url: root + '/photoBazaar/sPro/photoSamples',
             data: _data,
             medthod: 'post',
             header:{

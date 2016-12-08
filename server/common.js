@@ -8,7 +8,7 @@ var message = {
 	alert:function (content) {
 	  wx.showModal({
 	    title: '提示',
-	    content: content,
+	    content: content + '',
 	    showCancel: false,
 	    success: function(res) {
 	      if (res.confirm) {

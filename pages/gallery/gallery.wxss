@@ -10,7 +10,6 @@
 }
 
 .blockWrapper {
-    padding-bottom: 16rpx;
     background: #F9F9F9;
 }
 
@@ -71,7 +70,7 @@
 }
 
 .pic {
-    display: block;
+    display: inline-block;
     margin: 2rpx;
     width: 246rpx;
     height: 246rpx;

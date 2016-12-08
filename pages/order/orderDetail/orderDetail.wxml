@@ -10,11 +10,11 @@
 					<text class="priceUnit">元/时</text>
 				</view>
 				<view class="priceWrapper" wx:else>
-					<text class="priceNum">{{paytotal}}</text>
+					<text class="priceNum">{{total}}</text>
 					<text class="priceUnit">元</text>
 				</view>
 				<text class="timingText" wx:if="{{status == 3}}">正在计时...</text>
-				<text class="payText btnClickClass" wx:if="{{status == 4}}">订单支付</text>
+				<text class="payText btnClickClass" bindtap="openPayWrapper" wx:if="{{status == 4}}">订单支付</text>
 			</view>
 			<view class="statusWrapper">
 				<view class="statusRowTopWrapper">
@@ -65,5 +65,31 @@
 			<text class="value">{{address}}</text>
 		</view>
 	</view>
-    <text class="photoBtn btnClickClass" bindtap="handleGoToGallery" wx:if="{{status >= 3}}">照片库</text>
+    <text class="photoBtn btnClickClass" bindtap="handleGoToGallery" wx:if="{{status >= 0}}">照片库</text>
+    <view class="payWrapper" hidden="{{payWrapperHidden}}">
+    	<view class="payContent">
+    		<view class="payHeader">
+    			<text class="headText">订单结算</text>
+    			<image class="closePay" bindtap="closePayWrapper" src="https://fe.c360dn.com/wxapps/photograph/images/common/close_normal%403x.png" />
+    		</view>
+    		<view class="payRow">
+    			<text class="payLabel">应付款</text>
+    			<text class="totalAmount">¥{{total}}</text>
+    		</view>
+    		<view class="payRow">
+    			<text class="payLabel">优惠券</text>
+    			<view class="switchWrapper">
+    				<text class="switchAmount">¥{{amount}}</text>
+    				<switch class="couponSwitch" checked="{{useCoupon}}" bindchange="choseCoupon"/>
+    			</view>
+    		</view>
+    		<view class="payRow">
+    			<text class="payLabel">实付款</text>
+    			<text class="payAmount">¥{{paytotal}}</text>
+    		</view>
+    		<view class="payBtnWrapper btnClickClass" bindtap="handlePay">
+    			<text class="payBtn">确认支付</text>
+    		</view>
+    	</view>
+    </view>
 </view>

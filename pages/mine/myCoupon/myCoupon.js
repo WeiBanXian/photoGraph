@@ -1,4 +1,4 @@
-var UserServer = require("../../../server/user.js").User;
+var OrderServer = require("../../../server/order.js").Order;
 
 var {DateManager} = require('../../../utils/dateManage.js');
 
@@ -8,7 +8,7 @@ Page({
   },
   onLoad:function(options){
     var _self = this;
-    UserServer.getCouponList(function (result) {
+    OrderServer.getCouponList(function (result) {
       var _couponList = result.data.data.list;
       if (_couponList && _couponList.length > 0) {
         for (var index in _couponList) {

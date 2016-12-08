@@ -2,6 +2,7 @@ var OrderServer = require("../../../server/order.js").Order;
 var UserServer = require("../../../server/user.js").User;
 
 var {DateManager} = require("../../../utils/dateManage.js");
+var {root, userCenterRoot, wxapi, message} = require("../../../server/common.js");
 
 Page({
   data:{
@@ -28,6 +29,7 @@ Page({
       var type = options.type;
       var userName = UserServer.getUserName();
       var gender = UserServer.getGender();
+      var mobile = UserServer.getMobile();
       this.setData({
         type: type,
         date: date,
@@ -36,6 +38,7 @@ Page({
         userName: userName,
         locationText: OrderServer.getLocationText(),
         gender: gender,
+        mobile: mobile,
         imageList: imageList
       });
     }.bind(this));
@@ -69,12 +72,12 @@ Page({
   // 日期,
   bindDateChange:function(e){
     this.setData({
-      date:e.detail.value
+      date: e.detail.value
     })
   },
   bindTimeChange:function(e){
     this.setData({
-      time:e.detail.value
+      time: e.detail.value
     })
   },
   // 跳转到地址
