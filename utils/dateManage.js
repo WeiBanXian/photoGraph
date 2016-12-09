@@ -14,7 +14,8 @@ var DateManager = {
     // 获取某个时间格式的时间戳
     // 2014-07-10 10:21:12的时间戳为：1404958872
     getTimestamp: function (stringTime) {
-        var timestamp2 = Date.parse(new Date(stringTime));
+        var _stringTime = stringTime.replace(/\-/g,"/");
+        var timestamp2 = Date.parse(new Date(_stringTime));
         timestamp2 = timestamp2 / 1000;
         // console.log(stringTime + "的时间戳为：" + timestamp2);
         return timestamp2;
@@ -61,7 +62,7 @@ var DateManager = {
         // console.log(newDate.toLocaleDateString());
         return newDate.toLocaleDateString();
     },
-    // 2014年6月18日 上午10:33:24 
+    // 2014年6月18日 上午10:33:24
     getTimeToLocale:function (stringTime) {
         var stringTime = stringTime || this.currentTimestamp;
         var newDate = new Date();
@@ -69,7 +70,7 @@ var DateManager = {
         // console.log(newDate.toLocaleString());
         return newDate.toLocaleString();
     },
-    // 上午10:33:24 
+    // 上午10:33:24
     getTimeToLocaleTime:function (stringTime) {
         var stringTime = stringTime || this.currentTimestamp;
         var newDate = new Date();
@@ -85,7 +86,7 @@ var DateManager = {
         // console.log(newDate.toString());
         return newDate.toString();
     },
-    // 10:33:24 GMT+0800 (中国标准时间) 
+    // 10:33:24 GMT+0800 (中国标准时间)
     getTimeToTimeStandard:function (stringTime) {
         var stringTime = stringTime || this.currentTimestamp;
         var newDate = new Date();

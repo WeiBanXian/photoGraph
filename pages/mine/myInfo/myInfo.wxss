@@ -41,6 +41,7 @@
 }
 
 .input {
+    font-size: 30rpx;
     width: 500rpx;
     text-align: right;
 }

@@ -1,15 +1,14 @@
 var UserServer = require("../../server/user.js").User;
-var {File} = require('../../utils/file.js');
+
 Page({
   data:{
     avatar: '',
     nickname: ''
   },
   onShow:function(){
-    var _userData = UserServer.getUserParams();
     this.setData({
-      avatar: _userData.avatar,
-      nickname: _userData.nickname
+      avatar: UserServer.getAvatar(),
+      nickname: UserServer.getUserName()
     })
   },
   handleGoToMyInfo: function () {
@@ -25,9 +24,7 @@ Page({
       wx.navigateTo({url: "aboutUs/aboutUs"});
   },
   handleSave: function () {
-    var url = "https://www.sslshopper.com/assets/images/disable-ssl2-in-iis.png";
-    File.saveNetworkPicture(url, function () {
-        File.getSavedFileList();
-    });
+    // var url = "https://fe.c360dn.com/wxapps/photograph/images/user/user_coupon%403x.png";
+    wx.navigateTo({url: "myInfo/myInfo"});
   }
 })

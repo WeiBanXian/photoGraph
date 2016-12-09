@@ -23,18 +23,17 @@
 }
 
 .rowWrapper {
-    /*margin-bottom: 16rpx;*/
     background: #F9F9F9;
 }
 
 .row {
     width: 750rpx;
-    margin-bottom: 20rpx;
-    background: #F9F9F9;
+    height: 380rpx;
+    background: #FFF;
 }
 
 .blank {
-    height: 125rpx;
+    height: 20rpx;
     background: #F9F9F9;
 }
 
@@ -44,7 +43,7 @@
 	width: 720rpx;
     height: 360rpx;
     position: relative;
-    top: 25rpx;
+    top: 20rpx;
     margin: auto;
     border-radius: 7rpx;
     background: #FFF;

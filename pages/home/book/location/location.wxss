@@ -16,8 +16,10 @@
 }
 
 .currentCity {
-    flex: 3;
+    flex: 4;
+    height: 100%;
     font-size: 28rpx;
+    line-height: 60rpx;
     color: #000;
     text-align: center;
 }
@@ -26,6 +28,8 @@
     flex: 1;
     width: 40rpx;
     height: 40rpx;
+    margin-left: -40rpx;
+    margin-right: 40rpx;
 }
 
 .input {
@@ -39,7 +43,9 @@
 
 .cancel {
     flex: 3;
+    height: 100%;
     font-size: 28rpx;
+    line-height: 60rpx;
     color: #000;
     text-align: center;
 }

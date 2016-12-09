@@ -98,3 +98,49 @@
     font-size: 30rpx;
     line-height: 245rpx;
 }
+
+.couponWrapper {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.6);
+}
+
+.couponTop {
+    display: block;
+    margin: auto;
+    width: 390rpx;
+    height: 486rpx;
+}
+
+.couponBotWrapper {
+    position: relative;
+}
+
+.couponBot {
+    display: block;
+    margin: 30rpx auto;
+    width: 470rpx;
+    height: 96rpx;
+}
+
+.couponText {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    font-size: 33rpx;
+    color: #F9F9F9;
+    line-height: 96rpx;
+    text-align: center;
+    z-index: 999
+}

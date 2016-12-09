@@ -12,28 +12,28 @@ Page({
     mobile: ''
   },
   onLoad:function(options){
-    var _userData = UserServer.getUserParams();
     this.setData({
-      avatar: _userData.avatar,
-      nickname: _userData.nickname,
-      gender: _userData.gender,
-      mobile:  _userData.mobile
+      avatar: UserServer.getAvatar(),
+      nickname: UserServer.getUserName()?UserServer.getUserName():"",
+      gender: UserServer.getGender(),
+      mobile: UserServer.getMobile()
     })
   },
-  handleChoseImage: function () {
-    var _self = this;
-    wx.chooseImage({
-      count: 9,
-      sizeType: ['original', 'compressed'],
-      sourceType: ['album', 'camera'],
-      success: function (res) {
-        var tempFilePaths = res.tempFilePaths;
-        _self.setData({
-          avatar: tempFilePaths
-        })
-      }
-    });
-  },
+  // 修改头像
+  // handleChoseImage: function () {
+  //   var _self = this;
+  //   wx.chooseImage({
+  //     count: 9,
+  //     sizeType: ['original', 'compressed'],
+  //     sourceType: ['album', 'camera'],
+  //     success: function (res) {
+  //       var tempFilePaths = res.tempFilePaths;
+  //       _self.setData({
+  //         avatar: tempFilePaths
+  //       })
+  //     }
+  //   });
+  // },
   // 修改性别
   handleChoseGender: function (event) {
     this.setData({
@@ -52,10 +52,13 @@ Page({
     UserServer.setUserName(this.data.nickname);
     UserServer.updateInfo({nickname: this.data.nickname});
   },
-  // 退出登录
-  handleLogout: function () {
-    UserServer.loginOut(function () {
-      wx.redirectTo({url: "../../../pages/index/index"});
+  // 修改手机
+  handleChangeMobile: function (event) {
+    this.setData({
+      mobile: event.detail.value
     });
+    UserServer.setGender(this.data.gender);
+    UserServer.setUserName(this.data.nickname);
+    UserServer.updateInfo({mobile: this.data.mobile});
   }
 })

@@ -3,19 +3,24 @@ var GlobalServer = require("../../../server/global.js").Global;
 
 Page({
   data:{
-    bgPic: '',
-    price: '',
-    timeLength: '00:00:00',
-    statusArray: ["订单提交", "等待拍摄", "正在拍摄", "付款", "完成"],
-    status: 1,
-    orderId: '',
-    userName: 'Mary',
-    photographer: '',
-    mobile: '',
-    time: '',
-    address: '',
-    pTime: '',
-    paytotal: ''
+    payWrapperHidden: true,   // 支付弹框是否显示
+    useCoupon: true,          // 是否适用优惠券
+    bgPic: '',                // 背景图片
+    price: '',                // 单价
+    timeLength: '00:00:00',   // 时间
+    statusArray: ["订单提交", "等待拍摄", "正在拍摄", "付款", "完成"],    // 状态
+    status: 1,                // 状态
+    orderId: '',              // 订单号
+    userName: '',             // 用户名字
+    photographer: '',         // 摄影师名字
+    mobile: '',               // 摄影师电话
+    time: '',                 // 拍摄时间
+    address: '',              // 拍摄地址
+    pTime: '',                // 拍摄时长
+    paytotal: '',             // 支付金额
+    total: '',                // 总金额
+    amount: '',             // 优惠金额
+    coupon: ''                // 优惠券号
   },
   onLoad:function(options){
     var orderData = JSON.parse(options.orderData);
@@ -28,7 +33,7 @@ Page({
       address: orderData.place,
       bgPic: orderData.scenePic,
       pTime: orderData.pTime,
-      paytotal: orderData.paytotal,
+      total: orderData.total,
       price: GlobalServer.getPrice()
     })
   },
@@ -49,5 +54,44 @@ Page({
     wx.makePhoneCall({
       phoneNumber: this.data.mobile
     })
+  },
+  openPayWrapper: function () {
+    var _self = this;
+    OrderServer.setOrderId(this.data.orderId);
+    OrderServer.getPayCoupon(function () {
+      OrderServer.useCoupon(function (result) {
+        var payData = result.data.data;
+        _self.setData({
+          payWrapperHidden: false,
+          useCoupon: true,
+          paytotal: payData.paytotal,
+          total: payData.total,
+          amount: OrderServer.getAmount()
+        })
+      })
+    });
+  },
+  closePayWrapper: function () {
+    this.setData({
+      payWrapperHidden: true
+    })
+  },
+  choseCoupon: function (e) {
+    OrderServer.setIsUseCoupon(!OrderServer.getIsUseCoupon());
+    console.log(!OrderServer.getIsUseCoupon())
+    OrderServer.useCoupon(function (result) {
+      var payData = result.data.data;
+      this.setData({
+        useCoupon: e.detail.value,
+        paytotal: payData.paytotal,
+        total: payData.total,
+        amount: payData.amount
+      })
+    }.bind(this));
+  },
+  handlePay: function () {
+    OrderServer.prepayOrder(function (result) {
+      OrderServer.payOrder();
+    });
   }
 })

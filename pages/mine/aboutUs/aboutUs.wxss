@@ -15,19 +15,19 @@
 
 .logo {
     display: block;
-    width: 120rpx;
-    height: 120rpx;
+    width: 160rpx;
+    height: 160rpx;
 }
 
 .name {
     display: block;
     margin: 20rpx;
-    font-size: 24rpx;
+    font-size: 28rpx;
     color: #333;
 }
 
 .version {
-    font-size: 24rpx;
+    font-size: 28rpx;
     color: #333;
 }
 
@@ -39,12 +39,13 @@
 }
 
 .protocol {
-    font-size: 24rpx;
+    font-size: 28rpx;
+    line-height: 36rpx;
     color: #333;
 }
 
 .email {
     display: block;
-    font-size: 24rpx;
+    font-size: 28rpx;
     color: #333;
 }

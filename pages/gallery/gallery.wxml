@@ -1,7 +1,9 @@
 <view class="galleryWrapper">
-    <view wx:if="{{galleryList.length > 0}}"
-        class="blockWrapper">
-        <view class="block"
+    <scroll-view scroll-y="true" style="height: 100%;"
+        class="blockWrapper"
+        wx:if="{{galleryList.length > 0}}"
+        bindscrolltolower="handeScrollToLower">
+        <!-- <view class="block"
         wx:for="{{galleryList}}"
         wx:key="unique"
         wx:for-index="indexs"
@@ -14,20 +16,20 @@
                 <text class="addressText">黄桃园KTV</text>
                 <text class="photoText">20张照片</text>
             </view>
-            <view class="picsWrapper">
+            <view class="picsWrapper"> -->
                 <image
                     class="pic"
                     mode="aspectFill"
-                    wx:for="{{galleryList[indexs]}}"
+                    wx:for="{{galleryList}}"
                     wx:key="unique"
                     wx:for-item="item"
-                    src="{{item}}"
-                    data-src="{{item}}"
-                    data-index="{{indexs}}"
+                    src="{{item.photourl}}"
+                    data-src="{{item.photourl}}"
+                    data-index="{{index}}"
                     bindtap="handlePreviewImage" />
-            </view>
-        </view>
-    </view>
+            <!-- </view> -->
+        <!-- </view> -->
+    </scroll-view>
     <view class="emptyWrapper" wx:if="{{galleryList.length == 0}}">
         <image class="empty" mode="aspectFit" src="https://fe.c360dn.com/wxapps/photograph/images/order/photo_nodata%403x.png"></image>
     </view>

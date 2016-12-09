@@ -1,6 +1,5 @@
-var {root} = require("./common.js");
+var {root, message} = require("./common.js");
 var UserServer = require("./user.js").User;
-var GlobalServer = require("./global.js").Global;
 
 var Order = {
     // 地址信息
@@ -134,7 +133,6 @@ var Order = {
                     lng: res.longitude,
                     region: this.getCurrentCity()
                 }
-                UserServer.getDataWithPublicParams(data);
                 wx.request({
                     url: url,
                     data: data?data:{},
@@ -147,11 +145,11 @@ var Order = {
                             this.setLocationText(result.data.data.list[0].name);
                             callback && callback();
                         } else {
-                            GlobalServer.alert("定位失败");
+                            message.alert("定位失败");
                         }
                     }.bind(this),
                     fail: function () {
-                        GlobalServer.alert("定位失败");
+                        message.alert("定位失败");
                     },
                     complete: function () {
                         wx.hideToast();
@@ -169,7 +167,6 @@ var Order = {
             lng: this.getLongitude(),
             region: this.getCurrentCity()
         }
-        UserServer.getDataWithPublicParams(data);
         wx.request({
             url: url,
             data: data?data:{},
@@ -181,11 +178,11 @@ var Order = {
                     this.setLocationPois(result.data.data.list);
                     callback && callback(result.data.data.list);
                 } else {
-                    GlobalServer.alert("没有搜索到相关定位信息");
+                    message.alert("没有搜索到相关定位信息");
                 }
             }.bind(this),
             fail: function () {
-                GlobalServer.alert("没有搜索到相关定位信息");
+                message.alert("没有搜索到相关定位信息");
             },
             complete: function () {
 
@@ -195,15 +192,19 @@ var Order = {
     // 创建订单
     createOrder: function (callback) {
         if (this.getLocationText() == '') {
-            GlobalServer.alert("预约时间不能为空");
+            message.alert("请选择预约时间");
             return false;
         }
         if (this.getUserName() == '') {
-            GlobalServer.alert("姓名不能为空");
+            message.alert("请输入姓名");
             return false;
         }
         if (this.getMobile() == '') {
-            GlobalServer.alert("手机号不能为空");
+            message.alert("请输入手机号");
+            return false;
+        }
+        if (!UserServer.checkPhoneNum(this.getMobile())) {
+            message.alert("请输入正确的手机号");
             return false;
         }
         wx.showToast({
@@ -211,8 +212,9 @@ var Order = {
             icon: 'loading',
             duration: 10000
         });
-        var url = root + "/photoBazaar/order/create";
+        var url = root + "/photoBazaar/sPro/createOrder";
         var data = {
+            uid: UserServer.getUserId(),
             lat: this.getLatitude(),         // 经度
             lng: this.getLongitude(),        // 纬度
             type: this.getType(),            // 拍摄服务类型：1-8 场景 ; 0,快拍
@@ -222,7 +224,6 @@ var Order = {
             name: this.getUserName(),        // 姓名
             mobile: this.getMobile()         // 电话
         };
-        UserServer.getDataWithPublicParams(data);
         wx.request({
             url: url,
             data: data?data:{},
@@ -236,13 +237,14 @@ var Order = {
                         icon: 'success',
                         duration: 2000
                     });
+                    this.setIsCancelOrder(true);
                     callback && callback(result)
                 } else {
-                    GlobalServer.alert("预约失败，请重试");
+                    message.alert("预约失败，请重试");
                 }
             }.bind(this),
             fail: function () {
-                GlobalServer.alert("预约失败，请重试");
+                message.alert("预约失败，请重试");
             },
             complete: function () {
                 wx.hideToast();
@@ -258,15 +260,16 @@ var Order = {
                 duration: 10000
             });
         }
-        var url = root + "/photoBazaar/order/getList";
+        var url = root + "/photoBazaar/sPro/orderList";
         var data = {
             sp: sp,
-            limit: 34
+            limit: 5,
+            uid: UserServer.getUserId()
         };
-        UserServer.getDataWithPublicParams(data);
         wx.request({
             url: url,
             data: data?data:{},
+            method: "GET",
             header:{
                 "Content-Type":"application/json"
             },
@@ -276,9 +279,12 @@ var Order = {
                     this.setIsCancelOrder(false);
                     callback && callback(result)
                 } else {
-                    // GlobalServer.alert("订单列表请求失败");
+                    message.alert("订单列表获取失败");
                 }
             }.bind(this),
+            fail: function () {
+                message.alert("订单列表获取失败");
+            },
             complete: function () {
                 wx.hideToast();
             }
@@ -292,11 +298,10 @@ var Order = {
             duration: 10000
         });
         this.setIsCancelOrder(true);
-        var url = root + "/photoBazaar/order/cancelOrder";
+        var url = root + "/photoBazaar/sPro/cancelOrder";
         var data = {
             orderId: this.getOrderId()
         };
-        UserServer.getDataWithPublicParams(data);
         wx.request({
             url: url,
             data: data?data:{},
@@ -307,11 +312,11 @@ var Order = {
                 if (result.statusCode == 200) {
                     callback && callback(result)
                 } else {
-                    GlobalServer.alert("取消失败，请重试");
+                    message.alert("取消失败，请重试");
                 }
             }.bind(this),
             fail: function () {
-                GlobalServer.alert("取消失败，请重试");
+                message.alert("取消失败，请重试");
             },
             complete: function () {
                 wx.hideToast();
@@ -321,15 +326,16 @@ var Order = {
     // 获取云端照片
     getPhotosByOrderId: function (oid, callback) {
         var oid = "201611051622107885";
-        var url = root + "/photoBazaar/index/getPhotosByOrderId";
+        var url = root + "/photoBazaar/sPro/getPhotosByOrderId";
         var data = {
+            uid: UserServer.getUserId(),
             oid: oid,
             all: 0
         };
-        UserServer.getDataWithPublicParams(data);
         wx.request({
             url: url,
             data: data?data:{},
+            method: "GET",
             header:{
                 "Content-Type":"application/json"
             },
@@ -342,13 +348,20 @@ var Order = {
         });
     },
     // 获取云端照片
-    getOrderPhoto: function (callback) {
-        var url = root + "/photoBazaar/photo/orderPhoto";
+    getOrderPhoto: function (sp, callback) {
+        if (sp > 1) {
+            wx.showToast({
+                title: '加载中...',
+                icon: 'loading',
+                duration: 10000
+            });
+        }
+        var url = root + "/photoBazaar/sPro/orderPhoto";
         var data = {
-            oid: '201611051622107885',
-            all: 1
+            uid: UserServer.getUserId(),
+            limit: 18,
+            sp: sp
         };
-        UserServer.getDataWithPublicParams(data);
         wx.request({
             url: url,
             data: data?data:{},
@@ -358,10 +371,262 @@ var Order = {
             success: function(result) {
                 callback && callback(result)
             }.bind(this),
+            fail: function () {
+                message.alert("照片库获取失败");
+            },
             complete: function () {
-
+                wx.hideToast();
             }
         });
+    },
+
+    // 获取优惠券列表
+    getCouponList: function (callback) {
+        // var url = root + "/photoBazaar/order/couponList";
+        var url = root + "/photoBazaar/sPro/myCoupon";
+        var data = {
+            uid: UserServer.getUserId()
+        };
+        wx.request({
+            url: url,
+            data: data?data:{},
+            header:{
+                "Content-Type":"application/json"
+            },
+            success: function(result) {
+                if (result.data.status == 200) {
+                    callback && callback(result)
+                } else {
+                    message.alert("优惠券列表获取失败");
+                }
+            }.bind(this),
+            fail: function () {
+                message.alert("优惠券列表获取失败");
+            },
+            complete: function () {
+                wx.hideToast();
+            }
+        });
+    },
+    // 优惠券检测
+    checkCoupon: function (callback) {
+        var url = root + "/photoBazaar/sPro/checkCoupon";
+        var data = {
+            uid: UserServer.getUserId()
+        };
+        wx.request({
+            url: url,
+            data: data?data:{},
+            header:{
+                "Content-Type":"application/json"
+            },
+            success: function(result) {
+                if (result.data.status == 200) {
+                    callback && callback(result)
+                }
+            }.bind(this),
+            fail: function () {
+
+            },
+            complete: function () {
+                wx.hideToast();
+            }
+        });
+    },
+    // 获取支付优惠券
+    getPayCoupon: function (callback) {
+        var url = root + "/photoBazaar/sPro/myCoupon";
+        var data = {
+            uid: UserServer.getUserId(),
+            orderId: this.getOrderId()
+        };
+        wx.request({
+            url: url,
+            data: data?data:{},
+            header:{
+                "Content-Type":"application/json"
+            },
+            success: function(result) {
+                if (result.data.status == 200) {
+                    this.setIsUseCoupon(true);
+                    if (result.data.data.list.length > 0) {
+                        this.setPrid(result.data.data.list[0].prid);
+                        this.setAmount(result.data.data.list[0].amount);
+                    }
+                    callback && callback(result)
+                } else {
+                    message.alert("支付唤起失败，请重试！");
+                }
+            }.bind(this),
+            fail: function () {
+                message.alert("支付唤起失败，请重试！");
+            },
+            complete: function () {
+                wx.hideToast();
+            }
+        });
+    },
+    setIsUseCoupon: function (_isUseCoupon) {
+        this._isUseCoupon = _isUseCoupon;
+    },
+    getIsUseCoupon: function () {
+        return this._isUseCoupon;
+    },
+    setPrid: function (_prid) {
+        this._prid = _prid;
+    },
+    getPrid: function () {
+        return this._prid?this._prid:'';
+    },
+    setAmount: function (_amount) {
+        this._amount = _amount;
+    },
+    getAmount: function () {
+        return this._amount?this._amount:0;
+    },
+    // 使用优惠券
+    useCoupon: function (callback) {
+        var url = root + "/photoBazaar/sPro/useCoupon";
+        var data = {
+            orderId: this.getOrderId(),
+            uid: UserServer.getUserId(),
+            payType: 202,
+            coupon: this.getIsUseCoupon()?this.getPrid():'',
+            openid: UserServer.getUserId()
+        };
+        wx.showToast({
+            title: '加载中...',
+            icon: 'loading',
+            duration: 10000
+        });
+        wx.request({
+            url: url,
+            data: data?data:{},
+            header:{
+                "Content-Type":"application/json"
+            },
+            success: function(result) {
+                if (result.data.status == 200) {
+                    callback && callback(result)
+                } else {
+                    message.alert("支付唤起失败，请重试！");
+                }
+            }.bind(this),
+            fail: function () {
+                message.alert("支付唤起失败，请重试！");
+            },
+            complete: function () {
+                wx.hideToast();
+            }
+        });
+    },
+
+    // 支付唤起
+    prepayOrder: function (callback) {
+        var url = root + "/photoBazaar/sPro/payOrder";
+        var data = {
+            orderId: this.getOrderId(),
+            uid: UserServer.getUserId(),
+            payType: 202,
+            coupon: this.getIsUseCoupon()?this.getPrid():'',
+            openid: UserServer.getOpenId()
+        };
+        wx.showToast({
+            title: '加载中...',
+            icon: 'loading',
+            duration: 10000
+        });
+        wx.request({
+            url: url,
+            data: data?data:{},
+            header:{
+                "Content-Type":"application/json"
+            },
+            success: function(result) {
+                if (result.data.status == 200) {
+                    this.setTimeStamp(result.data.data.sdk.timeStamp);
+                    this.setNonceStr(result.data.data.sdk.nonceStr);
+                    this.setPackage(result.data.data.sdk.package);
+                    this.setPaySign(result.data.data.sdk.paySign);
+                    callback && callback(result)
+                } else {
+                    message.alert("支付唤起失败，请重试！");
+                }
+            }.bind(this),
+            fail: function () {
+                message.alert("支付唤起失败，请重试！");
+            },
+            complete: function () {
+                wx.hideToast();
+            }
+        });
+    },
+
+    setTimeStamp: function (_timeStamp) {
+        this._timeStamp = _timeStamp;
+    },
+
+    getTimeStamp: function () {
+        return this._timeStamp;
+    },
+
+    setNonceStr: function (_nonceStr) {
+        this._nonceStr = _nonceStr;
+    },
+
+    getNonceStr: function () {
+        return this._nonceStr;
+    },
+
+    setPackage: function (_package) {
+        this._package = _package;
+    },
+
+    getPackage: function () {
+        return this._package;
+    },
+
+    setPaySign: function (_paySign) {
+        this._paySign = _paySign;
+    },
+
+    getPaySign: function () {
+        return this._paySign;
+    },
+
+    // 支付
+    payOrder: function (callback) {
+        wx.showToast({
+            title: '加载中...',
+            icon: 'loading',
+            duration: 10000
+        });
+        wx.requestPayment({
+            timeStamp: this.getTimeStamp(),
+            nonceStr: this.getNonceStr(),
+            package: this.getPackage(),
+            signType: "MD5",
+            paySign: this.getPaySign(),
+            success: function(result) {
+                if (result.data.status == 200) {
+                    callback && callback(result)
+                } else {
+                    message.alert("支付失败，请重试！");
+                }
+            }.bind(this),
+            fail: function () {
+                message.alert("支付失败，请重试！");
+            },
+            complete: function (result) {
+                wx.hideToast();
+            }
+        });
+    },
+    controlCouponHidden: function (_callback) {
+        this._callback = _callback;
+    },
+    couponHiddenListener: function () {
+        this._callback && this._callback();
     }
 }
 

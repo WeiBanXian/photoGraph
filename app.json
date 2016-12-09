@@ -1,9 +1,6 @@
 {
   "pages":[
     "pages/home/home",
-    "pages/index/index",
-    "pages/index/register/register",
-    "pages/index/forget/forget",
     "pages/home/enjoy/enjoy",
     "pages/home/book/book",
     "pages/home/book/location/location",

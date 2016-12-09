@@ -19,9 +19,9 @@ Page({
     wx.navigateBack();
   },
   handleChoseLocation: function (event) {
-    var locationtext = event.target.dataset.locationtext;
-    var lat = event.target.dataset.lat;
-    var lng = event.target.dataset.lng;
+    var locationtext = event.currentTarget.dataset.locationtext;
+    var lat = event.currentTarget.dataset.lat;
+    var lng = event.currentTarget.dataset.lng;
     OrderServer.setLocationText(locationtext);
     OrderServer.setLatitude(lat);
     OrderServer.setLongitude(lng);
