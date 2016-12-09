@@ -74,11 +74,15 @@ var User = {
                         });
                     }, 0);
                     var data = result.data.data;
-                    if (data.sex == 0 || data.sex == 1) {
-                        this.getUserParams().gender = data.sex;
-                    }
-                    if (data.nickname != "undefined") {
-                        this.getUserParams().nickname = data.nickname;
+                    var keys = []
+                    for (var key in data) {
+                        if (key == "sex") {
+                            this.setGender(data[key]);
+                        } else if (key == "nickname") {
+                            this.setUserName(data[key]);
+                        } else if (key == "mobile") {
+                            this.setMobile(data[key]);
+                        }
                     }
                 }
             }.bind(this),
