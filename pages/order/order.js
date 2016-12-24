@@ -1,12 +1,29 @@
 var OrderServer = require("../../server/order.js").Order;
 var {DateManager} = require('../../utils/dateManage.js');
+var {formatTime} = require('../../utils/util.js');
 
 Page({
   data:{
     orderList: [],
+    scrollHeight: 0,
     sp: 1
   },
+  onShareAppMessage: function () {
+    return {
+      title: '想拍就拍Lite',
+      desc: '线下专题拍摄服务',
+      path: 'pages/home/home'
+    }
+  },
   onLoad:function(options){
+    var _self = this;
+    wx.getSystemInfo({
+      success:function(res){
+        _self.setData({
+            scrollHeight:res.windowHeight
+        });
+      }
+    });
     // 设置为true时，当从“订单详情”页取消订单后，返回到“订单列表”页时重新请求订单列表数据并刷新
     OrderServer.setIsCancelOrder(true);
   },
@@ -18,7 +35,7 @@ Page({
         var _orderData = OrderServer.getOrderListData();
         // 将订单时间的时间戳改为常规形式
         for (var index in _orderData.list) {
-          _orderData.list[index].bookDate = DateManager.getTimeToLocale(_orderData.list[index].bookDate);
+          _orderData.list[index].bookDate = formatTime(new Date(parseInt(_orderData.list[index].bookDate + '000')));
           _orderData.list[index].pTime = DateManager.getTimeLength(_orderData.list[index].pTime);
         }
         _self.setData({
@@ -38,15 +55,10 @@ Page({
       }
     }
   },
-  // 拨打电话
-  handleCall: function (e) {
-    wx.makePhoneCall({
-      phoneNumber: e.currentTarget.dataset.phone
-    })
-  },
   // 下拉刷新
   onPullDownRefresh: function () {
       // 获取订单列表
+      wx.stopPullDownRefresh()
       var _self = this;
       OrderServer.getOrderList(1, function (result) {
         var _orderData = OrderServer.getOrderListData();
@@ -67,6 +79,19 @@ Page({
       var _self = this;
       OrderServer.getOrderList(this.data.sp, function (result) {
         var _orderData = OrderServer.getOrderListData();
+        if (_orderData.list.length == 0) {
+          wx.showModal({
+            title: '提示',
+            content: '没有更多订单了',
+            showCancel: false,
+            success: function(res) {
+              if (res.confirm) {
+                console.log('用户点击确定')
+              }
+            }
+          })
+          return;
+        }
         // 将订单时间的时间戳改为常规形式
         for (var index in _orderData.list) {
           _orderData.list[index].bookDate = DateManager.getTimeToLocale(_orderData.list[index].bookDate);

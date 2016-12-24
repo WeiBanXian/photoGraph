@@ -42,6 +42,7 @@
     font-size: 28rpx;
     line-height: 36rpx;
     color: #333;
+    text-decoration: underline;
 }
 
 .email {

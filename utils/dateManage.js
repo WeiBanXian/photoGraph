@@ -201,17 +201,12 @@ var DateManager = {
         var hh = parseInt(timeLength/3600);
         var mm = parseInt((timeLength-hh*3600)/60);
         var ss = parseInt(timeLength-hh*3600-mm*60);
-        var clock = '';
-        if (hh < 10) clock += '0';
-        clock += hh + ":";
 
-        if (mm < 10) clock += '0';
-        clock += mm + ":";
-
-        if (ss < 10) clock += '0';
-        clock += ss;
-
-        return clock;
+        return [hh, mm, ss].map(this.formatNumber).join(':');
+    },
+    formatNumber: function (n) {
+      n = n.toString()
+      return n[1] ? n : '0' + n
     }
 }
 module.exports = {

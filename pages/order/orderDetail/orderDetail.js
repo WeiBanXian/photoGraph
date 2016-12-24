@@ -22,6 +22,13 @@ Page({
     amount: '',             // 优惠金额
     coupon: ''                // 优惠券号
   },
+  onShareAppMessage: function () {
+    return {
+      title: '想拍就拍Lite',
+      desc: '线下专题拍摄服务',
+      path: 'pages/home/home'
+    }
+  },
   onLoad:function(options){
     var orderData = JSON.parse(options.orderData);
     this.setData({
@@ -50,9 +57,17 @@ Page({
 	  wx.navigateTo({url: "../../gallery/galleryDetail/galleryDetail?orderId=" + this.data.orderId});
   },
   // 拨打电话
-  handleCall: function () {
-    wx.makePhoneCall({
-      phoneNumber: this.data.mobile
+  handleCall: function (e) {
+    wx.showModal({
+      title: '提示',
+      content: '是否拨打：' + this.data.mobile,
+      success: function(res) {
+        if (res.confirm) {
+          wx.makePhoneCall({
+            phoneNumber: this.data.mobile
+          })
+        }
+      }.bind(this)
     })
   },
   openPayWrapper: function () {

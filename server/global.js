@@ -1,4 +1,5 @@
-var {root} = require("./common.js");
+// var {root} = require("./common.js");
+const root = "https://photobazaar.camera360.com";
 var UserServer = require("./user.js").User;
 
 var Global = {
@@ -64,6 +65,20 @@ var Global = {
         wx.request({
             url: root + '/photoBazaar/sPro/photoSamples',
             data: _data,
+            medthod: 'post',
+            header:{
+                "Content-Type":"application/json"
+            },
+            success: function(res) {
+                callback(res);
+            }
+        });
+    },
+    // 获取客片欣赏信息
+    getSceneList: function (callback) {
+        wx.request({
+            url: root + '/photoBazaar/sPro/scene',
+            data: {},
             medthod: 'post',
             header:{
                 "Content-Type":"application/json"

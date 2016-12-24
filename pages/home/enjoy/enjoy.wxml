@@ -1,34 +1,35 @@
 <view class="wrapper">
-	<image class="headPic" mode="aspectFill" src="{{sceneData.scenePic}}"/>
-	<view class="textWrapper">
-	    <text class="nameText">{{sceneData.sceneName}}</text>
+    <image class="headPic" mode="aspectFill" src="{{sceneData.scenePic + '?imageMogr2/thumbnail/!70p'}}"/>
+    <view class="textWrapper">
+        <text class="nameText">{{sceneData.sceneName}}</text>
         <view class="enjoy">
-		    <text class="enjoyText">客片欣赏</text>
+            <text class="enjoyText">客片欣赏</text>
         </view>
         <image class="line" src="https://fe.c360dn.com/wxapps/photograph/images/photoSample/photoSample_Line%403x.png" />
-	</view>
-	<view class="midWrapper">
-		<view class="column">
-			<image class="columnPic" src="https://fe.c360dn.com/wxapps/photograph/images/photoSample/photoSample_location%403x.png"></image>
-			<text class="columnText">成都地区拍摄</text>
-		</view>
-		<view class="column">
-			<image class="columnPic" src="https://fe.c360dn.com/wxapps/photograph/images/photoSample/photoSample_photo%403x.png"></image>
-			<text class="columnText">照片27张</text>
-		</view>
-		<view class="column">
-			<image class="columnPic" src="https://fe.c360dn.com/wxapps/photograph/images/photoSample/photoSample_photographer%403x.png"></image>
-			<text class="columnText">专业摄影1名</text>
-		</view>
-	</view>
-	<view class="picsWrapper" wx:for="{{sceneData.list}}" wx:key="unique" wx:for-item="item" >
-		<image class="pic" mode="aspectFill" src="{{item.photo}}" data-src="{{item.photo}}" bindtap="handlePreviewImage"></image>
-	</view>
-	<view class="orderTipsWrapper">
+    </view>
+    <view class="midWrapper">
+        <view class="column">
+            <image class="columnPic" src="https://fe.c360dn.com/wxapps/photograph/images/photoSample/photoSample_location%403x.png"></image>
+            <text class="columnText">成都地区拍摄</text>
+        </view>
+        <view class="column">
+            <image class="columnPic" src="https://fe.c360dn.com/wxapps/photograph/images/photoSample/photoSample_photo%403x.png"></image>
+            <text class="columnText">照片27张</text>
+        </view>
+        <view class="column">
+            <image class="columnPic" src="https://fe.c360dn.com/wxapps/photograph/images/photoSample/photoSample_photographer%403x.png"></image>
+            <text class="columnText">专业摄影1名</text>
+        </view>
+    </view>
+    <view class="picsWrapper" wx:for="{{sceneData.list}}" wx:key="unique" wx:for-item="item" >
+        <image class="pic" mode="widthFix" src="{{item.photo + '?imageMogr2/thumbnail/!70p'}}" data-src="{{item.photo}}" bindtap="handlePreviewImage"></image>
+    </view>
+    <view class="blank"></view>
+    <view class="orderTipsWrapper">
         <view class="priceWrapper">
             <text class="priceNum">{{price}}</text>
             <text class="priceUnit">元/小时</text>
         </view>
-		<text class="orderTipsText btnClickClass" bindtap="handleGoToBook">立即预约</text>
-	</view>
+        <text class="orderTipsText btnClickClass" bindtap="handleGoToBook">立即预约</text>
+    </view>
 </view>

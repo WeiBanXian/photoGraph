@@ -1,6 +1,6 @@
 <view class="wrapper">
 	<view class="topWrapper">
-		<image class="bgPic" src="{{bgPic}}" />
+		<image class="bgPic" mode="aspectFill" src="{{bgPic + '?imageMogr2/thumbnail/!30p'}}" />
 		<view class="topContent">
 			<view class="contentTopWrapper">
 				<text class="cancelText" bindtap="handleCancelOrder" wx:if="{{status < 3}}">取消订单</text>
@@ -65,7 +65,8 @@
 			<text class="value">{{address}}</text>
 		</view>
 	</view>
-    <text class="photoBtn btnClickClass" bindtap="handleGoToGallery" wx:if="{{status >= 0}}">照片库</text>
+	<view class="blank"></view>
+    <text class="photoBtn btnClickClass" bindtap="handleGoToGallery" wx:if="{{status >= 4}}">照片库</text>
     <view class="payWrapper" hidden="{{payWrapperHidden}}">
     	<view class="payContent">
     		<view class="payHeader">

@@ -1,4 +1,4 @@
-var {root, message} = require("./common.js");
+var {root, wxapi, message} = require("./common.js");
 var UserServer = require("./user.js").User;
 
 var Order = {
@@ -58,12 +58,26 @@ var Order = {
     getTimeLength: function () {
         return this._timeLength;
     },
-    // 日期
+    // 日期（时间戳）
     setDate: function (_date) {
         this._date = _date;
     },
     getDate: function () {
         return this._date;
+    },
+    // 日期（可读时间）
+    setDateStr: function (_dateStr) {
+        this._dateStr = _dateStr;
+    },
+    getDateStr: function () {
+        return this._dateStr;
+    },
+    // 日期（可读时间）
+    setSceneData: function (_sceneData) {
+        this._sceneData = _sceneData;
+    },
+    getSceneData: function () {
+        return this._sceneData;
     },
     // 姓名
     setUserName: function (_userName) {
@@ -251,6 +265,67 @@ var Order = {
             }
         });
     },
+    templateRequest: function () {
+        // 姓名
+        // 电话
+        // 项目
+        // 时间
+        // 地址
+        var typeStr = '想拍就拍专题拍摄';
+        for (var i in this.getSceneData()) {
+            if (this.getType() == this.getSceneData()[i].type) {
+                typeStr += '——' + this.getSceneData()[i].name;
+            }
+        }
+        var value = {
+            "keyword1": {
+                "value": this.getUserName(),
+                "color": "#173177"
+            },
+            "keyword2": {
+                "value": this.getMobile(),
+                "color": "#173177"
+            },
+            "keyword3": {
+                "value": typeStr,
+                "color": "#173177"
+            },
+            "keyword4": {
+                "value": this.getDateStr(),
+                "color": "#173177"
+            },
+            "keyword5": {
+                "value": this.getLocationText(),
+                "color": "#173177"
+            }
+        };
+        var data = {
+            touser: UserServer.getOpenId(),
+            template_id: "j7dnCXGWS2QVQT4R7GNRRHj5CImwUHJ9H1Fd7jb8ES8",
+            // page: '',
+            form_id: UserServer.getFormId(),
+            data: value,
+            color: '#F00',
+            // emphasis_keyword: ''
+        };
+        wx.request({
+            url: wxapi + '/cgi-bin/message/wxopen/template/send?access_token=' + UserServer.getAccessToken(),
+            data: data,
+            method: 'POST',
+            header:{
+                'Content-Type': 'application/json'
+            },
+            success: function(res) {
+                // console.log(res);
+            }.bind(this),
+            fail: function (error) {
+                console.log(error);
+            },
+            complete: function (res) {
+                // console.log(res);
+            }
+        });
+    },
     // 获取订单列表
     getOrderList:function (sp, callback) {
         if (sp > 1) {
@@ -325,7 +400,6 @@ var Order = {
     },
     // 获取云端照片
     getPhotosByOrderId: function (oid, callback) {
-        var oid = "201611051622107885";
         var url = root + "/photoBazaar/sPro/getPhotosByOrderId";
         var data = {
             uid: UserServer.getUserId(),

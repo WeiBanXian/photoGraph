@@ -71,6 +71,10 @@
     margin-top: 20rpx;
 }
 
+.blank {
+    height: 100rpx;
+}
+
 .orderTipsWrapper {
     display: flex;
     position: fixed;

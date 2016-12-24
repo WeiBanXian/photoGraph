@@ -1,5 +1,7 @@
 <view class="orderWrapper">
-    <scroll-view scroll-y="true" style="height: 100%;"
+    <scroll-view
+        scroll-y="true"
+        style="height: {{scrollHeight}}px;"
         class="rowWrapper"
         wx:if="{{orderList.length > 0}}"
         bindscrolltolower="handeScrollToLower">
@@ -15,7 +17,7 @@
                 <image class="orderStatusPic" wx:elif="{{item.orderStat == 3}}" src="https://fe.c360dn.com/wxapps/photograph/images/order/order_Pay%403x.png" />
                 <image class="orderStatusPic" wx:elif="{{item.orderStat == 201 || item.orderStat == 5}}" src="https://fe.c360dn.com/wxapps/photograph/images/order/order_end%403x.png" />
                 <view class="leftWrapper">
-                    <image class="orderInfoBgPic" mode="aspectFill" src="{{item.scenePic}}" />
+                    <image class="orderInfoBgPic" mode="aspectFill" src="{{item.scenePic + '?imageMogr2/thumbnail/!70p'}}" />
                     <text class="orderInfoText">{{item.sceneName}}</text>
                 </view>
                 <view class="rightWrapper">
@@ -23,8 +25,8 @@
                         <image class="headPic" mode="aspectFill" src="{{item.avatar}}" />
                     </view>
                     <text class="nameText">{{item.nickname}}</text>
-                    <view data-phone="{{item.mobile}}" bindtap="handleCall" >
-                        <text class="phoneText btnClickClass">{{item.mobile}}</text>
+                    <view>
+                        <text class="phoneText">{{item.mobile}}</text>
                     </view>
                     <view class="botWrapper">
                         <view class="timeWrapper">

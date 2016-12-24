@@ -1,5 +1,5 @@
 {
     "navigationBarTitleText": "订单列表",
-    "backgroundTextStyle": "dark",
+    "backgroundTextStyle": "light",
     "enablePullDownRefresh": true
 }

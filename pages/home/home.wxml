@@ -2,7 +2,7 @@
     <view class="bannerWrapper">
         <swiper class="swiperWrapper" autoplay="true" duration="1000">
             <swiper-item wx:for="{{bannerList}}" wx:key="unique" wx:for-index="idx" wx:for-item="item">
-                <image class="bannerPic" bindtap="handleGoToScene" data-type="{{item.id}}" src="{{item.picUrl}}"></image>
+                <image class="bannerPic" bindtap="handleGoToScene" data-type="{{item.sceneType}}" src="{{item}}"></image>
             </swiper-item>
         </swiper>
     </view>
@@ -18,16 +18,11 @@
             </view>
         </view>
         <view class="picsWrapper">
-            <view class="picsRow">
-                <image class="pic" src="https://fe.c360dn.com/wxapps/photograph/images/home/street%403x.png" bindtap="handleGoToScene" data-type="1"><view class="picText">街拍写真</view></image>
-                <image class="pic" src="https://fe.c360dn.com/wxapps/photograph/images/home/baby%403x.png" bindtap="handleGoToScene" data-type="2"><view class="picText">亲子瞬间</view></image>
-                <image class="pic" src="https://fe.c360dn.com/wxapps/photograph/images/home/pet%403x.png" bindtap="handleGoToScene" data-type="3"><view class="picText">宠物生活</view></image>
-            </view>
-            <view class="picsRow">
-                <image class="pic" src="https://fe.c360dn.com/wxapps/photograph/images/home/activityDocument%403x.png" bindtap="handleGoToScene" data-type="4"><view class="picText">活动纪实</view></image>
-                <image class="pic" src="https://fe.c360dn.com/wxapps/photograph/images/home/professionalProfile%403x.png" bindtap="handleGoToScene" data-type="5"><view class="picText">职业形象</view></image>
-                <image class="pic" src="https://fe.c360dn.com/wxapps/photograph/images/home/productPromotion%403x.png" bindtap="handleGoToScene" data-type="6"><view class="picText">产品宣传</view></image>
-            </view>
+            <block class="picBlock" wx:for="{{sceneList}}" wx:key="unique" wx:for-index="idx" wx:for-item="item">
+                <image class="pic" src="{{item.icon + '?imageMogr2/thumbnail/!50p'}}" bindtap="handleGoToScene" data-type="{{item.type}}">
+                    <view class="picText">{{item.name}}</view>
+                </image>
+            </block>
         </view>
     </view>
     <view class="couponWrapper" hidden="{{couponHidden}}">
