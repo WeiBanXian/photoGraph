@@ -96,6 +96,7 @@
     right: 90rpx;
     width: 180rpx;
     height: 180rpx;
+    z-index: 999;
 }
 
 .statusTextPic {

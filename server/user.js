@@ -47,48 +47,70 @@ var User = {
     },
 
     // 更新用户信息
-    updateInfo: function (data, callback) {
-        wx.showToast({
-          title: '修改中...',
-          icon: 'loading',
-          duration: 10000
-        });
-        var url = root + "/photoBazaar/sPro/updateInfo";
-        var data = data;
-        data.uid = this.getUserId();
+    updateInfo: function (_updateData, callback) {
+        var _self = this;
+        wx.getNetworkType({
+            success: function(res) {
+                var networkType = res.networkType;
+                if (networkType == "fail") {
+                    wx.showModal({
+                        title: '提示',
+                        content: '当前网络不可用',
+                        success: function(res) {
+                            if (res.confirm) {
+                                console.log('用户点击确定')
+                            }
+                        }
+                    })
+                } else {
+                    wx.showToast({
+                      title: '修改中...',
+                      icon: 'loading',
+                      duration: 10000
+                    });
+                    var url = root + "/photoBazaar/sPro/updateInfo";
+                    var updateData = _updateData;
+                    updateData.uid = _self.getUserId();
 
-        wx.request({
-            url: url,
-            data: data?data:{},
-            method: "GET",
-            header:{
-                "Content-Type":"application/json"
-            },
-            success: function(result) {
-                if (result.statusCode == 200) {
-                    setTimeout(function () {
-                        wx.showToast({
-                          title: '更新资料成功',
-                          icon: 'success',
-                          duration: 2000
-                        });
-                    }, 0);
-                    var data = result.data.data;
-                    if (data.sex == 0 || data.sex == 1) {
-                        this.getUserParams().gender = data.sex;
-                    }
-                    if (data.nickname != "undefined") {
-                        this.getUserParams().nickname = data.nickname;
-                    }
+                    wx.request({
+                        url: url,
+                        data: updateData?updateData:{},
+                        method: "GET",
+                        header:{
+                            "Content-Type":"application/json"
+                        },
+                        success: function(result) {
+                            if (result.statusCode == 200) {
+                                setTimeout(function () {
+                                    wx.showToast({
+                                      title: '更新资料成功',
+                                      icon: 'success',
+                                      duration: 2000
+                                    });
+                                }, 500);
+                                var data = result.data.data;
+                                var keys = []
+                                for (var key in data) {
+                                    if (key == "sex") {
+                                        _self.setGender(data[key]);
+                                    } else if (key == "nickname") {
+                                        _self.setUserName(data[key]);
+                                    } else if (key == "mobile") {
+                                        _self.setMobile(data[key]);
+                                    }
+                                }
+                            }
+                        }.bind(this),
+                        fail: function (error) {
+
+                        },
+                        complete: function () {
+                            wx.hideToast();
+                        }
+                    });
                 }
-            }.bind(this),
-            fail: function (error) {
-
-            },
-            complete: function () {
-                wx.hideToast();
             }
-        });
+        })
     },
 
     // 微信相关
@@ -124,6 +146,11 @@ var User = {
      * @return {openId}
      */
     openIdRequest: function (callback) {
+        wx.showToast({
+            title: '加载中',
+            icon: 'loading',
+            duration: 10000
+        })
         var data = {
             grant_type: "authorization_code",
             appid: this.getAppId(),
@@ -242,52 +269,6 @@ var User = {
                     this.setAvatar(res.data.data.avatar);
                     callback && callback();
                 }
-            }.bind(this),
-            fail: function (error) {
-                console.log(error);
-            },
-            complete: function (res) {
-                // console.log(res);
-            }
-        });
-    },
-    templateRequest: function () {
-        var value = {
-            "keyword1": {
-                "value": "339208499",
-                "color": "#173177"
-            },
-            "keyword2": {
-                "value": "2015年01月05日 12:30",
-                "color": "#173177"
-            },
-            "keyword3": {
-                "value": "粤海喜来登酒店",
-                "color": "#173177"
-            } ,
-            "keyword4": {
-                "value": "广州市天河区天河路208号",
-                "color": "#173177"
-            }
-        };
-        var data = {
-            touser: this.getOpenId(),
-            template_id: "ucz0HL9jStw_uL3GmQsxtEHMOeOWpDiohHJPSfglWn4",
-            // page: '',
-            form_id: this.getFormId(),
-            data: value,
-            color: '#F00',
-            // emphasis_keyword: ''
-        };
-        wx.request({
-            url: wxapi + '/cgi-bin/message/wxopen/template/send?access_token=' + this.getAccessToken(),
-            data: data,
-            method: 'POST',
-            header:{
-                'Content-Type': 'application/json'
-            },
-            success: function(res) {
-                console.log(res);
             }.bind(this),
             fail: function (error) {
                 console.log(error);

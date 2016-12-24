@@ -2,7 +2,7 @@
 	<view class="banner">
         <swiper class="swiperWrapper" autoplay="true" duration="1000">
             <swiper-item wx:for="{{imageList}}" wx:key="unique" wx:for-item="item" wx:for-index="index">
-                <image class="bannerPic" src="{{imageList[index]}}" data-src="{{imageList[index]}}" bindtap="handlePreviewImage"></image>
+                <image class="bannerPic" mode="aspectFill" src="{{imageList[index] + '?imageMogr2/thumbnail/!70p'}}" data-src="{{imageList[index]}}" bindtap="handlePreviewImage"></image>
             </swiper-item>
         </swiper>
 	</view>
@@ -16,7 +16,7 @@
 	</view>
 	<view class="row">
 		<text class="label">详细地址</text>
-		<input class="value" placeholder="街道/小区/楼层" bindinput="handleChangeDetailAddress" />
+		<input class="value" placeholder="街道/小区/楼层" maxlength="40" bindinput="handleChangeDetailAddress" />
 	</view>
 	<view class="row">
 		<text class="label">拍摄时间</text>
@@ -38,7 +38,7 @@
     </view>
 	<view class="row">
 		<text class="label">姓名</text>
-		<input class="value" value="{{userName}}" placeholder="预约人姓名" bindinput="handleChangeName" />
+		<input class="value" value="{{userName}}" placeholder="预约人姓名" maxlength="20" bindinput="handleChangeName" />
 	</view>
 	<view class="row">
 		<text class="label">性别</text>
@@ -58,5 +58,7 @@
 		<input class="value" value="{{mobile}}" placeholder="预约手机号" type="number" maxlength="11" bindinput="handleChangeMobile" />
 	</view>
     <view class="blank"></view>
-	<text class="submitBtn btnClickClass" bindtap="handleCreateOrder">立即预约</text>
+    <form report-submit="false" bindsubmit="formSubmit" bindreset="formReset">
+        <button class="submitBtn btnClickClass" formType="submit">立即预约</button>
+    </form>
 </view>

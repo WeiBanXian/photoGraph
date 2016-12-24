@@ -7,6 +7,22 @@ var {message} = require('server/common.js');
 
 App({
     onLaunch: function () {
+        wx.getNetworkType({
+            success: function(res) {
+                var networkType = res.networkType;
+                if (networkType == "fail") {
+                    wx.showModal({
+                        title: '提示',
+                        content: '当前网络不可用',
+                        success: function(res) {
+                            if (res.confirm) {
+                                console.log('用户点击确定')
+                            }
+                        }
+                    })
+                }
+            }
+        })
         DateManager.init();
         var _self = this;
         var code = '';

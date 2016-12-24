@@ -1,9 +1,4 @@
 <view class="protocolWrapper">
-<!--     <form report-submit="false" bindsubmit="formSubmit" bindreset="formReset">
-        <view class="section__title">switch</view>
-        <switch name="switch"/>
-        <button formType="submit">Submit</button>
-    </form> -->
 	<text class="title">"想拍就拍"服务协议及版权声明</text>
 	<text class="content">本服务协议（以下简称“本协议”）是由您（指所有使用“想拍就拍”的用户：包括但不限于任何注册、登录、使用、浏览本想拍就拍的个人或组织等）与成都品果科技有限公司（以下简称“品果”）就您使用品果提供的“想拍就拍”服务而约定的相关权利义务等。</text>
 	<text class="label">1、接受条款</text>

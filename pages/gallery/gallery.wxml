@@ -1,34 +1,24 @@
 <view class="galleryWrapper">
-    <scroll-view scroll-y="true" style="height: 100%;"
+    <scroll-view
+        scroll-y="true"
+        style="height: {{scrollHeight}}px;"
         class="blockWrapper"
         wx:if="{{galleryList.length > 0}}"
         bindscrolltolower="handeScrollToLower">
-        <!-- <view class="block"
-        wx:for="{{galleryList}}"
-        wx:key="unique"
-        wx:for-index="indexs"
-        wx:for-item="images">
-            <view class="topWrapper">
-                <text class="dayText">05</text>
-                <text class="dateText">2016.09</text>
-            </view>
-            <view class="midWrapper">
-                <text class="addressText">黄桃园KTV</text>
-                <text class="photoText">20张照片</text>
-            </view>
-            <view class="picsWrapper"> -->
+        <view class="picsWrapper">
+            <block
+                wx:for="{{galleryList}}"
+                wx:key="unique"
+                wx:for-item="item">
                 <image
                     class="pic"
                     mode="aspectFill"
-                    wx:for="{{galleryList}}"
-                    wx:key="unique"
-                    wx:for-item="item"
-                    src="{{item.photourl}}"
+                    src="{{item.photourl + '?imageMogr2/thumbnail/!20p'}}"
                     data-src="{{item.photourl}}"
                     data-index="{{index}}"
                     bindtap="handlePreviewImage" />
-            <!-- </view> -->
-        <!-- </view> -->
+            </block>
+        </view>
     </scroll-view>
     <view class="emptyWrapper" wx:if="{{galleryList.length == 0}}">
         <image class="empty" mode="aspectFit" src="https://fe.c360dn.com/wxapps/photograph/images/order/photo_nodata%403x.png"></image>

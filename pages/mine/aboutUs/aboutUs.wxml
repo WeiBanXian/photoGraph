@@ -2,7 +2,14 @@
 	<image class="logo" src="https://fe.c360dn.com/wxapps/photograph/images/user/logo@2x.png" />
 	<text class="name">想拍就拍</text>
 	<view class="botWrapper">
-		<text class="protocol clickClass" bindtap="handleGoToProtocol">{{'<<'}}想拍就拍用户协议声明{{'>>'}}</text>
+		<text class="protocol clickClass" bindtap="handleGoToProtocol">想拍就拍用户协议声明</text>
 		<text class="email">官方邮箱：photograph@camera360.com</text>
 	</view>
+
+<!--     <contact-button
+      type="default-light"
+      size="20"
+      session-from="weapp"
+    >
+    </contact-button> -->
 </view>

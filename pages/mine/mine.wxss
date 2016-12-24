@@ -58,7 +58,7 @@
 
 .rowText {
     width: 100%;
-    font-size: 24rpx;
+    font-size: 28rpx;
     margin-left: 20rpx;
 }
 

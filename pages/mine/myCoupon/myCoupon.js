@@ -6,6 +6,13 @@ Page({
   data:{
     couponList: []
   },
+  onShareAppMessage: function () {
+    return {
+      title: '想拍就拍Lite',
+      desc: '线下专题拍摄服务',
+      path: 'pages/home/home'
+    }
+  },
   onLoad:function(options){
     var _self = this;
     OrderServer.getCouponList(function (result) {

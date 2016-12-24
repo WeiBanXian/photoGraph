@@ -20,6 +20,13 @@ Page({
     gender: 0,
     mobile: ""
   },
+  onShareAppMessage: function () {
+    return {
+      title: '想拍就拍Lite',
+      desc: '线下专题拍摄服务',
+      path: 'pages/home/home'
+    }
+  },
   onLoad:function(options){
     var date = DateManager.getDetailDate();
     var time = DateManager.getDetailTime();
@@ -103,7 +110,10 @@ Page({
     });
   },
   // 立即预约，创建订单
-  handleCreateOrder: function () {
+  formSubmit: function(e) {
+    // console.log('form发生了submit事件，携带数据为：', e.detail.formId);
+    var formId = e.detail.formId;
+    UserServer.setFormId(formId);
     var _self = this;
     // 预约时间的时间戳
     var bookTimestamp = DateManager.getTimestamp(this.data.date + " " + this.data.time);
@@ -113,15 +123,19 @@ Page({
     OrderServer.setType(this.data.type);
     OrderServer.setTimeLength(this.data.timeLength);
     OrderServer.setDate(bookTimestamp);
+    OrderServer.setDateStr(this.data.date + " " + this.data.time);
     OrderServer.setUserName(this.data.userName);
     OrderServer.setGender(this.data.gender);
     OrderServer.setMobile(this.data.mobile);
     // 预约订单
     OrderServer.createOrder(function (res) {
-      // wx.navigateTo({url: "../../order/orderDetail/orderDetail"});
-      // wx.navigateTo({url: "../../order/order"});
-      // wx.redirectTo({url: "../../total/total?page=2"});
-      wx.navigateBack({delta: 3, page: 2});
+      OrderServer.templateRequest();
+      wx.switchTab({
+        url: '../../../pages/order/order'
+      })
     });
+  },
+  formReset: function() {
+    console.log('form发生了reset事件')
   }
 })

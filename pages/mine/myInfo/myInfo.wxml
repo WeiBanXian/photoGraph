@@ -17,7 +17,7 @@
     <view class="line"></view>
 	<view class="row">
 		<text class="label">手机</text>
-		<input class="input" value="{{mobile}}" bindblur="handleChangeMobile" />
+		<input class="input" value="{{mobile}}" type="number" maxlength="11" bindblur="handleChangeMobile" />
 	</view>
     <view class="line"></view>
 	<view class="row">

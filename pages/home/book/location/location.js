@@ -5,6 +5,13 @@ Page({
     locationPois: [],
     currentCity: ''
   },
+  onShareAppMessage: function () {
+    return {
+      title: '想拍就拍Lite',
+      desc: '线下专题拍摄服务',
+      path: 'pages/home/home'
+    }
+  },
   onLoad:function(options){
     OrderServer.setCurrentCity('成都');
     this.setData({
