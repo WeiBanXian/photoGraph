@@ -26,16 +26,10 @@ Page({
         })
     });
     var _self = this;
-    // var bannerList = [
-    //   "../../resource/images/tabBar/fb_tab_home@3x.png",
-    //   "../../resource/images/tabBar/fb_tab_orders@3x.png",
-    //   "../../resource/images/tabBar/fb_tab_photos@3x.png"
-    // ]
     // 获取轮播图片信息
     GlobalServer.getSlideList(function (result) {
         _self.setData({
             bannerList: result.data
-            // bannerList: bannerList
         })
     });
     // 获取单价信息

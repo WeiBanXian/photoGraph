@@ -1,8 +1,9 @@
 <view class="homeWrapper">
+    <input class="value" style="display:none" />
     <view class="bannerWrapper">
         <swiper class="swiperWrapper" autoplay="true" duration="1000">
             <swiper-item wx:for="{{bannerList}}" wx:key="unique" wx:for-index="idx" wx:for-item="item">
-                <image class="bannerPic" bindtap="handleGoToScene" data-type="{{item.sceneType}}" src="{{item}}"></image>
+                <image class="bannerPic" bindtap="handleGoToScene" data-type="{{item.sceneType}}" src="{{item.picUrl + '?imageMogr2/thumbnail/!50p'}}"></image>
             </swiper-item>
         </swiper>
     </view>
@@ -23,15 +24,6 @@
                     <view class="picText">{{item.name}}</view>
                 </image>
             </block>
-        </view>
-    </view>
-    <view class="couponWrapper" hidden="{{couponHidden}}">
-        <view class="couponContent">
-            <image class="couponTop" src="https://fe.c360dn.com/wxapps/photograph/images/common/gift%403x.png" />
-            <view class="couponBotWrapper" bindtap="handleCloseCoupon">
-                <image class="couponBot" src="https://fe.c360dn.com/wxapps/photograph/images/common/getKnow%403x.png" />
-                <text class="couponText">恭喜你获取100元优惠券</text>
-            </view>
         </view>
     </view>
 </view>
