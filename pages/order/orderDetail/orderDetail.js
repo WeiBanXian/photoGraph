@@ -106,7 +106,10 @@ Page({
   },
   handlePay: function () {
     OrderServer.prepayOrder(function (result) {
-      OrderServer.payOrder();
+      OrderServer.payOrder(function () {
+        OrderServer.setIsCancelOrder(false);
+        wx.navigateBack();
+      });
     });
   }
 })
