@@ -670,6 +670,7 @@ var Order = {
 
     // 支付
     payOrder: function (callback) {
+        var _self = this;
         wx.showToast({
             title: '加载中...',
             icon: 'loading',
@@ -683,6 +684,7 @@ var Order = {
             paySign: this.getPaySign(),
             success: function(result) {
                 if (result.data.status == 200) {
+                    _self.getOrderList(1, function (){});
                     callback && callback(result)
                 } else {
                     message.alert("支付失败，请重试！");
