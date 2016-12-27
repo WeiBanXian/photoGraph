@@ -43,13 +43,13 @@
 	<view class="row">
 		<text class="label">性别</text>
         <view class="female radioWrapper" data-gender="0" bindtap="handleChoseGender">
-            <image class="femalePic radioPic" wx:if="{{gender == 0}}" src="https://fe.c360dn.com/wxapps/photograph/images/common/selectedRadio%403x.png" />
-            <image class="femalePic radioPic" wx:else src="https://fe.c360dn.com/wxapps/photograph/images/common/unselectRadio%403x.png" />
+            <image class="femalePic radioPic" wx:if="{{gender == 0}}" src="../../../resource/images/common/selectedRadio@3x.png" />
+            <image class="femalePic radioPic" wx:else src="../../../resource/images/common/unselectRadio@3x.png" />
 		    <text class="radioText">女</text>
         </view>
         <view class="male radioWrapper" data-gender="1" bindtap="handleChoseGender">
-            <image class="malePic radioPic" wx:if="{{gender == 1}}" src="https://fe.c360dn.com/wxapps/photograph/images/common/selectedRadio%403x.png" />
-            <image class="malePic radioPic" wx:else src="https://fe.c360dn.com/wxapps/photograph/images/common/unselectRadio%403x.png" />
+            <image class="malePic radioPic" wx:if="{{gender == 1}}" src="../../../resource/images/common/selectedRadio@3x.png" />
+            <image class="malePic radioPic" wx:else src="../../../resource/images/common/unselectRadio@3x.png" />
 		    <text class="radioText">男</text>
         </view>
 	</view>
