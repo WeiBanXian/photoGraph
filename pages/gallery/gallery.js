@@ -49,16 +49,13 @@ Page({
       var _self = this;
       OrderServer.getOrderPhoto(this.data.sp, function (result) {
         if (result.data.data.list.length == 0) {
-          wx.showModal({
-            title: '提示',
-            content: '没有更多图片了',
-            showCancel: false,
-            success: function(res) {
-              if (res.confirm) {
-                console.log('用户点击确定')
-              }
-            }
-          })
+          setTimeout(function () {
+            wx.showToast({
+            title: '没有更多图片了',
+              icon: 'success',
+              duration: 2000
+            });
+          }, 500);
           return;
         }
         var galleryList = _self.data.galleryList.concat(result.data.data.list);

@@ -80,16 +80,13 @@ Page({
       OrderServer.getOrderList(this.data.sp, function (result) {
         var _orderData = OrderServer.getOrderListData();
         if (_orderData.list.length == 0) {
-          wx.showModal({
-            title: '提示',
-            content: '没有更多订单了',
-            showCancel: false,
-            success: function(res) {
-              if (res.confirm) {
-                console.log('用户点击确定')
-              }
-            }
-          })
+          setTimeout(function () {
+            wx.showToast({
+            title: '没有更多订单了',
+              icon: 'success',
+              duration: 2000
+            });
+          }, 500);
           return;
         }
         // 将订单时间的时间戳改为常规形式
