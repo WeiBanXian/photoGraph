@@ -9,7 +9,7 @@
                     wx:key="unique"
                     wx:for-item="item"
                     src="{{item}}"
-                    data-src="{{item}}"
+                    data-src="{{item + '?imageMogr2/thumbnail/!20p'}}"
                     data-index="{{index}}"
                     bindtap="handlePreviewImage" />
             </view>

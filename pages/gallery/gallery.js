@@ -74,7 +74,6 @@ Page({
     for (var i in _list) {
       imageList.push(_list[i].photourl);
     }
-    console.log(e.target.dataset.src)
     var current = e.target.dataset.src
     wx.previewImage({
       current: e.target.dataset.src,

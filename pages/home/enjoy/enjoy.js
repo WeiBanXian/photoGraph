@@ -3,7 +3,7 @@ var GlobalServer = require("../../../server/global.js").Global;
 
 Page({
   data:{
-    sceneData: {},
+    sceneData: {scenePic:""},
     imageList: [],
     price: 199,
     type: 1
