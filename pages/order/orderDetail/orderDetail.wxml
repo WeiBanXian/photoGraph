@@ -71,7 +71,9 @@
     	<view class="payContent">
     		<view class="payHeader">
     			<text class="headText">订单结算</text>
-    			<image class="closePay" bindtap="closePayWrapper" src="https://fe.c360dn.com/wxapps/photograph/images/common/close_normal%403x.png" />
+    			<view class="closeWrapper" bindtap="closePayWrapper">
+    				<image class="closePay" src="https://fe.c360dn.com/wxapps/photograph/images/common/close_normal%403x.png" />
+    			</view>
     		</view>
     		<view class="payRow">
     			<text class="payLabel">应付款</text>

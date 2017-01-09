@@ -80,7 +80,7 @@ var User = {
                             "Content-Type":"application/json"
                         },
                         success: function(result) {
-                            if (result.statusCode == 200) {
+                            if (result.data.status == 200) {
                                 setTimeout(function () {
                                     wx.showToast({
                                       title: '更新资料成功',
@@ -99,10 +99,28 @@ var User = {
                                         _self.setMobile(data[key]);
                                     }
                                 }
+                            } else {
+                                wx.showModal({
+                                    title: '提示',
+                                    content: '更新资料失败，请稍后重试',
+                                    success: function(res) {
+                                        if (res.confirm) {
+                                            // console.log('用户点击确定')
+                                        }
+                                    }
+                                });
                             }
                         }.bind(this),
                         fail: function (error) {
-
+                            wx.showModal({
+                                title: '提示',
+                                content: '更新资料失败，请稍后重试',
+                                success: function(res) {
+                                    if (res.confirm) {
+                                        // console.log('用户点击确定')
+                                    }
+                                }
+                            });
                         },
                         complete: function () {
                             wx.hideToast();

@@ -5,7 +5,7 @@ Page({
   data:{
     payWrapperHidden: true,   // 支付弹框是否显示
     useCoupon: true,          // 是否适用优惠券
-    bgPic: '',                // 背景图片
+    bgPic: '',                // 背景图片 ../../../resource/images/logoBg.png
     price: '',                // 单价
     timeLength: '00:00:00',   // 时间
     statusArray: ["订单提交", "等待拍摄", "正在拍摄", "付款", "完成"],    // 状态
@@ -47,10 +47,18 @@ Page({
   // 取消订单
   handleCancelOrder: function () {
     var _self = this;
-    OrderServer.setOrderId(this.data.orderId);
-    OrderServer.cancelOrder(function () {
-      wx.navigateBack();
-    });
+    wx.showModal({
+      title: '提示',
+      content: '点击确定取消订单',
+      success: function(res) {
+        if (res.confirm) {
+          OrderServer.setOrderId(_self.data.orderId);
+          OrderServer.cancelOrder(function () {
+            wx.navigateBack();
+          });
+        }
+      }
+    })
   },
   // 跳转到照片库
   handleGoToGallery: function () {
@@ -58,17 +66,17 @@ Page({
   },
   // 拨打电话
   handleCall: function (e) {
-    wx.showModal({
-      title: '提示',
-      content: '是否拨打：' + this.data.mobile,
-      success: function(res) {
-        if (res.confirm) {
+    // wx.showModal({
+    //   title: '提示',
+    //   content: '是否拨打：' + this.data.mobile,
+    //   success: function(res) {
+    //     if (res.confirm) {
           wx.makePhoneCall({
             phoneNumber: this.data.mobile
           })
-        }
-      }.bind(this)
-    })
+    //     }
+    //   }.bind(this)
+    // })
   },
   openPayWrapper: function () {
     var _self = this;
