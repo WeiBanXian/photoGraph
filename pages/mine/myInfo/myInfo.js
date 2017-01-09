@@ -9,7 +9,8 @@ Page({
     avatar: '',
     nickname: '',
     gender: 0,
-    mobile: ''
+    mobile: '',
+    isChanged: false
   },
   onShareAppMessage: function () {
     return {
@@ -26,25 +27,61 @@ Page({
       mobile: UserServer.getMobile()
     })
   },
+  handleSubmit: function () {
+    if (this.data.mobile.length != 11 || isNaN(this.data.mobile)) {
+      wx.showModal({
+          title: '提示',
+          content: '手机号必须是11位的数字',
+          success: function(res) {
+              if (res.confirm) {
+                  // console.log('用户点击确定')
+              }
+          }
+      });
+      return;
+    }
+    if (this.data.nickname == '') {
+      wx.showModal({
+          title: '提示',
+          content: '昵称不能为空',
+          success: function(res) {
+              if (res.confirm) {
+                  // console.log('用户点击确定')
+              }
+          }
+      });
+      return;
+    }
+    UserServer.updateInfo({
+      mobile: this.data.mobile,
+      sex: this.data.gender,
+      nickname: this.data.nickname
+    });
+  },
+  handleShowBtn: function () {
+    this.setData({
+      isChanged: true
+    });
+  },
   // 修改性别
   handleChoseGender: function (event) {
     this.setData({
+      isChanged: true,
       gender: event.currentTarget.dataset.gender
     });
-    UserServer.updateInfo({sex: this.data.gender});
   },
   // 修改昵称
   handleChangeNickname: function (event) {
     this.setData({
+      isChanged: true,
       nickname: event.detail.value
     });
-    UserServer.updateInfo({nickname: this.data.nickname});
   },
   // 修改手机
   handleChangeMobile: function (event) {
     this.setData({
+      isChanged: true,
       mobile: event.detail.value
     });
-    UserServer.updateInfo({mobile: this.data.mobile});
   }
 })

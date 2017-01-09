@@ -74,7 +74,10 @@
 
 .leftWrapper {
     flex: 8;
+    display: flex;
     position: relative;
+    justify-content: center;
+    align-items: center;
 }
 
 .orderInfoBgPic {
@@ -90,17 +93,10 @@
 
 .orderInfoText {
     display: block;
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    margin: auto;
-    padding: 100rpx;
+    z-index: 999;
     color: #FFF;
     font-size: 45rpx;
     text-align: center;
-    line-height: 160rpx;
     background: rgba(0,0,0,0);
 }
 

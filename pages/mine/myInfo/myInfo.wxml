@@ -12,12 +12,12 @@
 	</view>
 	<view class="row">
 		<text class="label">昵称</text>
-		<input class="input" value="{{nickname}}" bindblur="handleChangeNickname" />
+		<input class="input" value="{{nickname}}" bindblur="handleChangeNickname" bindinput="handleShowBtn"/>
 	</view>
     <view class="line"></view>
 	<view class="row">
 		<text class="label">手机</text>
-		<input class="input" value="{{mobile}}" type="number" maxlength="11" bindblur="handleChangeMobile" />
+		<input class="input" value="{{mobile}}" type="number" maxlength="11" bindblur="handleChangeMobile" bindinput="handleShowBtn"/>
 	</view>
     <view class="line"></view>
 	<view class="row">
@@ -36,4 +36,5 @@
 		</view>
 	</view>
     <view class="line"></view>
+    <text class="submitBtn btnClickClass" bindtap="handleSubmit" wx:if="{{isChanged}}">确认修改</text>
 </view>

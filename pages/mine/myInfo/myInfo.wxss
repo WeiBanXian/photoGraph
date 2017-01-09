@@ -92,3 +92,17 @@
     font-size: 30rpx;
     color: #F00;
 }
+
+.submitBtn {
+    display: block;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    font-size: 30rpx;
+    padding: 30rpx;
+    color: #FFF;
+    letter-spacing: 3px;
+    text-align: center;
+    background: #42CDC3;
+}
