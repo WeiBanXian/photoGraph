@@ -1,4 +1,4 @@
-<view class="wrapper">
+<view class="wrapper" wx:if="{{isLogin}}">
 	<view class="banner">
         <swiper class="swiperWrapper" autoplay="true" duration="1000">
             <swiper-item wx:for="{{imageList}}" wx:key="unique" wx:for-item="item" wx:for-index="index">
@@ -61,4 +61,10 @@
     <form report-submit="false" bindsubmit="formSubmit" bindreset="formReset">
         <button class="submitBtn btnClickClass" formType="submit">立即预约</button>
     </form>
+</view>
+<view class="logoutWrapper" wx:else>
+    <image class="logo" src="https://fe.c360dn.com/wxapps/photograph/images/user/whiteLogo.jpg" />
+    <text class="logoutText">离线状态，请先登录</text>
+    <button class="logoutBtn" type="primary" size="default" loading="{{false}}" plain="{{false}}"
+        disabled="{{false}}" bindtap="loginAgain"> 登录 </button>
 </view>

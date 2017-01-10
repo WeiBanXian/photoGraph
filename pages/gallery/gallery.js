@@ -1,10 +1,12 @@
 var OrderServer = require("../../server/order.js").Order;
+var GlobalServer = require("../../server/global.js").Global;
 
 Page({
   data:{
     galleryList: [],
     scrollHeight: 0,
-    sp: 1
+    sp: 1,
+    isLogin: false
   },
   onShareAppMessage: function () {
     return {
@@ -32,6 +34,11 @@ Page({
     });
   },
   onShow:function(){
+    var appInstance = getApp();
+    var isLogin = appInstance.globalData.isLogin;
+    this.setData({
+        isLogin: isLogin
+    });
   },
   // 下拉刷新
   onPullDownRefresh: function () {
@@ -79,5 +86,19 @@ Page({
       current: e.target.dataset.src,
       urls: imageList
     })
+  },
+  loginAgain: function () {
+    var _self = this;
+    GlobalServer.loginAgain(function () {
+      OrderServer.getOrderPhoto(1, function (result) {
+        // http://c360-o2o.c360dn.com/FuOjg-l8hcno6teKJhK3kMCE7ZGT
+        // http://c360-o2o.c360dn.com/FuOjg-l8hcno6teKJhK3kMCE7ZGT?imageMogr2/thumbnail/!20p
+        _self.setData({
+          galleryList: result.data.data.list,
+          sp: result.data.data.sp,
+          isLogin: true
+        })
+      });
+    });
   }
 })
