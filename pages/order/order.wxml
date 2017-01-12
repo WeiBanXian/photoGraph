@@ -1,8 +1,9 @@
 <view class="orderWrapper" wx:if="{{isLogin}}">
     <scroll-view
         scroll-y="true"
-        style="height: {{scrollHeight}}px;"
+        style="height: 100%;"
         class="rowWrapper"
+        lower-threshold="{{60}}"
         wx:if="{{orderList.length > 0}}"
         bindscrolltolower="handeScrollToLower">
         <view class="row" wx:for="{{orderList}}" wx:key="unique" wx:for-index="index" wx:for-item="item" data-orderid="{{item.orderId}}" bindtap="handleGoToOrderDetail">
@@ -41,7 +42,11 @@
                 </view>
             </view>
         </view>
-        <view class="blank"></view>
+        <view class="pullLoad" wx:if="{{loadHidden}}">
+            <image class="loadLogo" src="https://fe.c360dn.com/wxapps/photograph/images/user/whiteLogo.jpg" />
+            <text class="loadText">{{loadText}}</text>
+        </view>
+        <view class="blank" wx:else></view>
     </scroll-view>
     <view class="emptyWrapper" wx:else>
         <image class="empty" mode="aspectFit" src="https://fe.c360dn.com/wxapps/photograph/images/order/order_nodata%403x.png"></image>

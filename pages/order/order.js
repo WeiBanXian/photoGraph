@@ -8,6 +8,8 @@ Page({
     orderList: [],
     scrollHeight: 0,
     sp: 1,
+    loadHidden: true,
+    loadText: '正在加载...',
     isLogin: false
   },
   onShareAppMessage: function () {
@@ -40,6 +42,11 @@ Page({
       // 获取订单列表
       OrderServer.getOrderList(1, function (result) {
         var _orderData = OrderServer.getOrderListData();
+        if (_orderData.list.length < 5) {
+          _self.setData({
+            loadHidden: false
+          })
+        }
         // 将订单时间的时间戳改为常规形式
         for (var index in _orderData.list) {
           _orderData.list[index].bookDate = formatTime(new Date(parseInt(_orderData.list[index].bookDate + '000')));
@@ -69,6 +76,11 @@ Page({
       var _self = this;
       OrderServer.getOrderList(1, function (result) {
         var _orderData = OrderServer.getOrderListData();
+        if (_orderData.list.length < 5) {
+          _self.setData({
+            loadHidden: false
+          })
+        }
         // 将订单时间的时间戳改为常规形式
         for (var index in _orderData.list) {
           _orderData.list[index].bookDate = DateManager.getTimeToLocale(_orderData.list[index].bookDate);
@@ -87,14 +99,15 @@ Page({
       OrderServer.getOrderList(this.data.sp, function (result) {
         var _orderData = OrderServer.getOrderListData();
         if (_orderData.list.length == 0) {
-          setTimeout(function () {
-            wx.showToast({
-            title: '没有更多订单了',
-              icon: 'success',
-              duration: 2000
-            });
-          }, 500);
+          _self.setData({
+            loadText: '加载完成'
+          })
           return;
+        }
+        if (_orderData.list.length < 5) {
+          _self.setData({
+            loadHidden: false
+          })
         }
         // 将订单时间的时间戳改为常规形式
         for (var index in _orderData.list) {

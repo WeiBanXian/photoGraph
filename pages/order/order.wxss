@@ -34,7 +34,25 @@
 
 .blank {
     height: 20rpx;
+}
+
+.pullLoad {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80rpx;
     background: #F9F9F9;
+}
+
+.loadLogo {
+    width: 60rpx;
+    height: 60rpx;
+}
+
+.loadText {
+    margin-left: 15rpx;
+    font-size: 28rpx;
+    color: #666;
 }
 
 .rowContent {

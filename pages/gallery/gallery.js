@@ -6,6 +6,8 @@ Page({
     galleryList: [],
     scrollHeight: 0,
     sp: 1,
+    loadHidden: true,
+    loadText: '正在加载...',
     isLogin: false
   },
   onShareAppMessage: function () {
@@ -17,14 +19,12 @@ Page({
   },
   onLoad: function(options) {
     var _self = this;
-    wx.getSystemInfo({
-      success:function(res){
-        _self.setData({
-            scrollHeight:res.windowHeight
-        });
-      }
-    });
     OrderServer.getOrderPhoto(1, function (result) {
+      if (result.data.data.list.length < 18) {
+        _self.setData({
+          loadHidden: false
+        })
+      }
       // http://c360-o2o.c360dn.com/FuOjg-l8hcno6teKJhK3kMCE7ZGT
       // http://c360-o2o.c360dn.com/FuOjg-l8hcno6teKJhK3kMCE7ZGT?imageMogr2/thumbnail/!20p
       _self.setData({
@@ -44,6 +44,11 @@ Page({
   onPullDownRefresh: function () {
       var _self = this;
       OrderServer.getOrderPhoto(1, function (result) {
+        if (result.data.data.list.length < 18) {
+          _self.setData({
+            loadHidden: false
+          })
+        }
         _self.setData({
           galleryList: result.data.data.list,
           sp: result.data.data.sp
@@ -56,14 +61,15 @@ Page({
       var _self = this;
       OrderServer.getOrderPhoto(this.data.sp, function (result) {
         if (result.data.data.list.length == 0) {
-          setTimeout(function () {
-            wx.showToast({
-            title: '没有更多图片了',
-              icon: 'success',
-              duration: 2000
-            });
-          }, 500);
+          _self.setData({
+            loadText: '加载完成'
+          })
           return;
+        }
+        if (result.data.data.list.length < 18) {
+          _self.setData({
+            loadHidden: false
+          })
         }
         var galleryList = _self.data.galleryList.concat(result.data.data.list);
         _self.setData({

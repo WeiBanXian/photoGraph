@@ -1,7 +1,8 @@
 <view class="galleryWrapper" wx:if="{{isLogin}}">
     <scroll-view
         scroll-y="true"
-        style="height: {{scrollHeight}}px;"
+        style="height: 100%;"
+        lower-threshold="{{60}}"
         class="blockWrapper"
         wx:if="{{galleryList.length > 0}}"
         bindscrolltolower="handeScrollToLower">
@@ -18,6 +19,10 @@
                     data-index="{{index}}"
                     bindtap="handlePreviewImage" />
             </block>
+        </view>
+        <view class="pullLoad" wx:if="{{loadHidden}}">
+            <image class="loadLogo" src="https://fe.c360dn.com/wxapps/photograph/images/user/whiteLogo.jpg" />
+            <text class="loadText">{{loadText}}</text>
         </view>
     </scroll-view>
     <view class="emptyWrapper" wx:if="{{galleryList.length == 0}}">
