@@ -7,6 +7,7 @@ var {message} = require('server/common.js');
 
 App({
     onLaunch: function () {
+        var _self = this;
         wx.getNetworkType({
             success: function(res) {
                 var networkType = res.networkType;
@@ -16,45 +17,49 @@ App({
                         content: '当前网络不可用',
                         success: function(res) {
                             if (res.confirm) {
-                                console.log('用户点击确定')
+                                // console.log('用户点击确定')
                             }
                         }
                     })
                 }
             }
         })
-        DateManager.init();
-        var _self = this;
-        var code = '';
-        var accessToken = '';
-        wx.login({
-            success: function(r) {
-                UserServer.setCode(r.code);
-                wx.getUserInfo({
-                    success: function (res) {
-                        _self.globalData.userInfo = res.userInfo;
-                        UserServer.setIv(res.iv);
-                        UserServer.setEncryptedData(res.encryptedData);
-                        UserServer.openIdRequest(function () {
-                            UserServer.accessTokenRequest(function () {
-                                UserServer.exchangeUid(function () {
-                                    OrderServer.checkCoupon(function (result) {
-                                        if (result.data.data.list.length > 0) {
-                                            _self.globalData.couponHidden = false;
-                                        }
-                                        OrderServer.couponHiddenListener();
+        GlobalServer.startApp(function (callback) {
+            DateManager.init();
+            var code = '';
+            var accessToken = '';
+            wx.login({
+                success: function(r) {
+                    UserServer.setCode(r.code);
+                    wx.getUserInfo({
+                        success: function (res) {
+                            _self.globalData.userInfo = res.userInfo;
+                            UserServer.setIv(res.iv);
+                            UserServer.setEncryptedData(res.encryptedData);
+                            UserServer.openIdRequest(function () {
+                                UserServer.accessTokenRequest(function () {
+                                    UserServer.exchangeUid(function () {
+                                        OrderServer.checkCoupon(function (result) {
+                                            _self.globalData.isLogin = true;
+                                            if (result.data.data.list.length > 0) {
+                                                _self.globalData.couponHidden = false;
+                                            }
+                                            OrderServer.couponHiddenListener();
+                                            callback && callback();
+                                        });
                                     });
                                 });
                             });
-                        });
-                    }
-                })
-            }
+                        }
+                    })
+                }
+            });
         });
     },
     getUserInfo:function(cb){
     },
     globalData:{
-        couponHidden: true
+        couponHidden: true,
+        isLogin: false
     }
 })

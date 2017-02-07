@@ -34,7 +34,25 @@
 
 .blank {
     height: 20rpx;
+}
+
+.pullLoad {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80rpx;
     background: #F9F9F9;
+}
+
+.loadLogo {
+    width: 60rpx;
+    height: 60rpx;
+}
+
+.loadText {
+    margin-left: 15rpx;
+    font-size: 28rpx;
+    color: #666;
 }
 
 .rowContent {
@@ -190,3 +208,32 @@
     text-overflow: ellipsis;
     -webkit-text-overflow: ellipsis;
 }
+
+.logoutWrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: #EEE;
+}
+
+.logo {
+    margin: 30rpx 0;
+    width: 160rpx;
+    height: 160rpx;
+}
+
+.logoutBtn {
+    display: block;
+    margin-top: 30rpx;
+    width: 480rpx;
+    height: 75rpx;
+    line-height: 75rpx;
+    font-size: 36rpx;
+}
+

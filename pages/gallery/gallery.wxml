@@ -1,7 +1,8 @@
-<view class="galleryWrapper">
+<view class="galleryWrapper" wx:if="{{isLogin}}">
     <scroll-view
         scroll-y="true"
-        style="height: {{scrollHeight}}px;"
+        style="height: 100%;"
+        lower-threshold="{{60}}"
         class="blockWrapper"
         wx:if="{{galleryList.length > 0}}"
         bindscrolltolower="handeScrollToLower">
@@ -19,8 +20,18 @@
                     bindtap="handlePreviewImage" />
             </block>
         </view>
+        <view class="pullLoad" wx:if="{{loadHidden}}">
+            <image class="loadLogo" src="https://fe.c360dn.com/wxapps/photograph/images/user/whiteLogo.jpg" />
+            <text class="loadText">{{loadText}}</text>
+        </view>
     </scroll-view>
     <view class="emptyWrapper" wx:if="{{galleryList.length == 0}}">
         <image class="empty" mode="aspectFit" src="https://fe.c360dn.com/wxapps/photograph/images/order/photo_nodata%403x.png"></image>
     </view>
+</view>
+<view class="logoutWrapper" wx:else>
+    <image class="logo" src="https://fe.c360dn.com/wxapps/photograph/images/user/whiteLogo.jpg" />
+    <text class="logoutText">离线状态，请先登录</text>
+    <button class="logoutBtn" type="primary" size="default" loading="{{false}}" plain="{{false}}"
+        disabled="{{false}}" bindtap="loginAgain"> 登录 </button>
 </view>

@@ -329,11 +329,11 @@ var Order = {
     // 获取订单列表
     getOrderList:function (sp, callback) {
         if (sp > 1) {
-            wx.showToast({
-                title: '加载中...',
-                icon: 'loading',
-                duration: 10000
-            });
+            // wx.showToast({
+            //     title: '加载中...',
+            //     icon: 'loading',
+            //     duration: 10000
+            // });
         }
         var url = root + "/photoBazaar/sPro/orderList";
         var data = {
@@ -402,7 +402,7 @@ var Order = {
     getPhotosByOrderId: function (oid, callback) {
         var url = root + "/photoBazaar/sPro/getPhotosByOrderId";
         var data = {
-            uid: UserServer.getUserId(),
+            // uid: UserServer.getUserId(),
             oid: oid,
             all: 0
         };
@@ -424,11 +424,7 @@ var Order = {
     // 获取云端照片
     getOrderPhoto: function (sp, callback) {
         if (sp > 1) {
-            wx.showToast({
-                title: '加载中...',
-                icon: 'loading',
-                duration: 10000
-            });
+
         }
         var url = root + "/photoBazaar/sPro/orderPhoto";
         var data = {

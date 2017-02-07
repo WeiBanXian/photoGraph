@@ -1,5 +1,6 @@
 var OrderServer = require("../../../server/order.js").Order;
 var UserServer = require("../../../server/user.js").User;
+var GlobalServer = require("../../../server/global.js").Global;
 
 var {DateManager} = require("../../../utils/dateManage.js");
 var {root, userCenterRoot, wxapi, message} = require("../../../server/common.js");
@@ -51,8 +52,12 @@ Page({
     }.bind(this));
   },
   onShow:function(){
+    var appInstance = getApp();
+    var isLogin = appInstance.globalData.isLogin;
+    console.log(isLogin)
     // 进入搜索定位信息，点击选项返回后，重置定位地点
     this.setData({
+      isLogin: isLogin,
       locationText: OrderServer.getLocationText()
     });
   },
@@ -137,5 +142,28 @@ Page({
   },
   formReset: function() {
     console.log('form发生了reset事件')
+  },
+  loginAgain: function () {
+    var _self = this;
+    GlobalServer.loginAgain(function () {
+      var date = DateManager.getDetailDate();
+      var time = DateManager.getDetailTime();
+      // 获取定位信息
+      OrderServer.getLocationInfo(function () {
+        var userName = UserServer.getUserName();
+        var gender = UserServer.getGender();
+        var mobile = UserServer.getMobile();
+        _self.setData({
+          date: date,
+          time: time,
+          startDate: date,
+          userName: userName,
+          locationText: OrderServer.getLocationText(),
+          gender: gender,
+          mobile: mobile,
+          isLogin: true
+        });
+      });
+    });
   }
 })

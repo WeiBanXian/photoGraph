@@ -87,6 +87,14 @@ var Global = {
                 callback(res);
             }
         });
+    },
+    // 启动应用，注册登录方法
+    startApp: function (logincallback) {
+        this.logincallback = logincallback;
+        logincallback && logincallback();
+    },
+    loginAgain: function (callback) {
+        this.logincallback && this.logincallback(callback);
     }
 }
 

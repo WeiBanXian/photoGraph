@@ -1,4 +1,5 @@
 var OrderServer = require("../../server/order.js").Order;
+var GlobalServer = require("../../server/global.js").Global;
 var {DateManager} = require('../../utils/dateManage.js');
 var {formatTime} = require('../../utils/util.js');
 
@@ -6,7 +7,10 @@ Page({
   data:{
     orderList: [],
     scrollHeight: 0,
-    sp: 1
+    sp: 1,
+    loadHidden: true,
+    loadText: '正在加载...',
+    isLogin: false
   },
   onShareAppMessage: function () {
     return {
@@ -28,11 +32,21 @@ Page({
     OrderServer.setIsCancelOrder(true);
   },
   onShow:function(){
+    var appInstance = getApp();
+    var isLogin = appInstance.globalData.isLogin;
+    this.setData({
+        isLogin: isLogin
+    });
     var _self = this;
     if (OrderServer.getIsCancelOrder()) {
       // 获取订单列表
       OrderServer.getOrderList(1, function (result) {
         var _orderData = OrderServer.getOrderListData();
+        if (_orderData.list.length < 5) {
+          _self.setData({
+            loadHidden: false
+          })
+        }
         // 将订单时间的时间戳改为常规形式
         for (var index in _orderData.list) {
           _orderData.list[index].bookDate = formatTime(new Date(parseInt(_orderData.list[index].bookDate + '000')));
@@ -62,6 +76,11 @@ Page({
       var _self = this;
       OrderServer.getOrderList(1, function (result) {
         var _orderData = OrderServer.getOrderListData();
+        if (_orderData.list.length < 5) {
+          _self.setData({
+            loadHidden: false
+          })
+        }
         // 将订单时间的时间戳改为常规形式
         for (var index in _orderData.list) {
           _orderData.list[index].bookDate = DateManager.getTimeToLocale(_orderData.list[index].bookDate);
@@ -80,14 +99,15 @@ Page({
       OrderServer.getOrderList(this.data.sp, function (result) {
         var _orderData = OrderServer.getOrderListData();
         if (_orderData.list.length == 0) {
-          setTimeout(function () {
-            wx.showToast({
-            title: '没有更多订单了',
-              icon: 'success',
-              duration: 2000
-            });
-          }, 500);
+          _self.setData({
+            loadText: '加载完成'
+          })
           return;
+        }
+        if (_orderData.list.length < 5) {
+          _self.setData({
+            loadHidden: false
+          })
         }
         // 将订单时间的时间戳改为常规形式
         for (var index in _orderData.list) {
@@ -100,5 +120,24 @@ Page({
         })
         wx.stopPullDownRefresh();
       });
+  },
+  loginAgain: function () {
+    var _self = this;
+    GlobalServer.loginAgain(function () {
+        // 获取订单列表
+        OrderServer.getOrderList(1, function (result) {
+          var _orderData = OrderServer.getOrderListData();
+          // 将订单时间的时间戳改为常规形式
+          for (var index in _orderData.list) {
+            _orderData.list[index].bookDate = formatTime(new Date(parseInt(_orderData.list[index].bookDate + '000')));
+            _orderData.list[index].pTime = DateManager.getTimeLength(_orderData.list[index].pTime);
+          }
+          _self.setData({
+            orderList: _orderData.list,
+            sp: result.data.data.sp,
+            isLogin: true
+          })
+        });
+    });
   }
 })

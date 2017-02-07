@@ -1,4 +1,4 @@
-<view class="mineWrapper">
+<view class="mineWrapper" wx:if="{{isLogin}}">
     <view class="headWrapper">
         <image class="headPic" mode="aspectFit" src="{{avatar}}" bindtap="handleSave"></image>
         <text class="headText">{{nickname}}</text>
@@ -35,4 +35,10 @@
         <image class="rowArrow" src="https://fe.c360dn.com/wxapps/photograph/images/user/arrow%403x.png"></image>
     </view>
     <view class="line"></view>
+</view>
+<view class="logoutWrapper" wx:else>
+    <image class="logo" src="https://fe.c360dn.com/wxapps/photograph/images/user/whiteLogo.jpg" />
+    <text class="logoutText">离线状态，请先登录</text>
+    <button class="logoutBtn" type="primary" size="default" loading="{{false}}" plain="{{false}}"
+        disabled="{{false}}" bindtap="loginAgain"> 登录 </button>
 </view>
