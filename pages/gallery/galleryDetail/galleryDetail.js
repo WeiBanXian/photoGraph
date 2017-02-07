@@ -2,16 +2,20 @@ var OrderServer = require("../../../server/order.js").Order;
 
 Page({
   data:{
-    imageList: []
+    imageList: [],
+    orderId: ''
   },
   onShareAppMessage: function () {
     return {
       title: '想拍就拍Lite',
-      desc: '线下专题拍摄服务',
-      path: 'pages/home/home'
+      desc: '看看我分享的图片吧',
+      path: 'pages/gallery/galleryDetail/galleryDetail?orderId=' + this.data.orderId
     }
   },
   onLoad: function(options) {
+    this.setData({
+      orderId: options.orderId
+    })
     var _self = this;
     var imageList = [];
     OrderServer.getPhotosByOrderId(options.orderId, function (res) {

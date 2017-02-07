@@ -402,7 +402,7 @@ var Order = {
     getPhotosByOrderId: function (oid, callback) {
         var url = root + "/photoBazaar/sPro/getPhotosByOrderId";
         var data = {
-            uid: UserServer.getUserId(),
+            // uid: UserServer.getUserId(),
             oid: oid,
             all: 0
         };
