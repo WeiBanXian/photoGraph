@@ -99,7 +99,6 @@ var Global = {
             },
             success: function(res) {
                 callback(res);
-                console.log(res)
             }
         });
     },

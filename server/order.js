@@ -205,8 +205,13 @@ var Order = {
     },
     // 创建订单
     createOrder: function (callback) {
+        var currentTimestamp = Date.parse(new Date())
+        if (this.getDate()*1000 <= currentTimestamp) {
+            message.alert("请选择合理的预约时间");
+            return false;
+        }
         if (this.getLocationText() == '') {
-            message.alert("请选择预约时间");
+            message.alert("请选择预约地点");
             return false;
         }
         if (this.getUserName() == '') {
@@ -233,7 +238,7 @@ var Order = {
             lng: this.getLongitude(),        // 纬度
             type: this.getType(),            // 拍摄服务类型：1-8 场景 ; 0,快拍
             bookDate: this.getDate(),        // 预约时间
-            shootTime: this.getShootTime(),        // 预约时长
+            shootTime: this.getShootTime(),  // 预约时长
             place: this.getLocationText(),   // 预约地点
             sex: this.getGender(),           // 性别，默认为 0/女, 1/男
             name: this.getUserName(),        // 姓名
@@ -622,6 +627,7 @@ var Order = {
         var url = root + "/photoBazaar/sPro/payOrder";
         var data = {
             orderId: this.getOrderId(),
+            // orderId: "201612071022535272",
             uid: UserServer.getUserId(),
             payType: 202,
             coupon: this.getIsUseCoupon()?this.getPrid():'',
@@ -640,12 +646,25 @@ var Order = {
             },
             success: function(result) {
                 if (result.data.status == 200) {
+                    if (result.data.data.pay == 1) {
+                        message.alert("您已支付过了！", function () {
+                            this.setIsCancelOrder(true);
+                            wx.navigateBack();
+                        }.bind(this));
+                        return;
+                    }
                     this.setTimeStamp(result.data.data.sdk.timeStamp);
                     this.setNonceStr(result.data.data.sdk.nonceStr);
                     this.setPackage(result.data.data.sdk.package);
                     this.setPaySign(result.data.data.sdk.paySign);
                     this.setSignType(result.data.data.sdk.signType);
                     callback && callback(result)
+                } else if (result.data.status == 10084) {
+                    message.alert("您已支付过了！", function () {
+                        this.setIsCancelOrder(true);
+                        wx.navigateBack();
+                    }.bind(this));
+                    return;
                 } else {
                     message.alert("支付唤起失败，请重试！");
                 }

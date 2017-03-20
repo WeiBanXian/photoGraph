@@ -67,7 +67,6 @@ Page({
   onShow:function(){
     var appInstance = getApp();
     var isLogin = appInstance.globalData.isLogin;
-    console.log(isLogin)
     // 进入搜索定位信息，点击选项返回后，重置定位地点
     this.setData({
       isLogin: isLogin,
