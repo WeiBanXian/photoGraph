@@ -19,14 +19,14 @@ Page({
     pTime: '',                // 拍摄时长
     paytotal: '',             // 支付金额
     total: '',                // 总金额
-    amount: '',             // 优惠金额
+    amount: '',               // 优惠金额
     coupon: ''                // 优惠券号
   },
   onShareAppMessage: function () {
     return {
       title: '想拍就拍Lite',
       desc: '看看我分享的图片吧',
-      path: 'pages/gallery/galleryDetail/galleryDetail?orderId=' + this.data.orderId
+      path: 'pages/gallery/galleryShare/galleryShare?orderId=' + this.data.orderId
     }
   },
   onLoad:function(options){
@@ -114,10 +114,7 @@ Page({
   },
   handlePay: function () {
     OrderServer.prepayOrder(function (result) {
-      OrderServer.payOrder(function () {
-        OrderServer.setIsCancelOrder(false);
-        wx.navigateBack();
-      });
+      OrderServer.payOrder();
     });
   }
 })

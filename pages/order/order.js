@@ -50,7 +50,7 @@ Page({
         // 将订单时间的时间戳改为常规形式
         for (var index in _orderData.list) {
           _orderData.list[index].bookDate = formatTime(new Date(parseInt(_orderData.list[index].bookDate + '000')));
-          _orderData.list[index].pTime = DateManager.getTimeLength(_orderData.list[index].pTime);
+          _orderData.list[index].pTime = DateManager.getTimeLength(_orderData.list[index].pTime*60);
         }
         _self.setData({
           orderList: _orderData.list,
@@ -130,7 +130,7 @@ Page({
           // 将订单时间的时间戳改为常规形式
           for (var index in _orderData.list) {
             _orderData.list[index].bookDate = formatTime(new Date(parseInt(_orderData.list[index].bookDate + '000')));
-            _orderData.list[index].pTime = DateManager.getTimeLength(_orderData.list[index].pTime);
+            _orderData.list[index].pTime = DateManager.getTimeLength(_orderData.list[index].pTime*60);
           }
           _self.setData({
             orderList: _orderData.list,

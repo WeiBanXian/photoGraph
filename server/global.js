@@ -12,14 +12,14 @@ var Global = {
     getPrice: function () {
         return this._price;
     },
-    alert: function (content) {
+    alert: function (content, callback) {
       wx.showModal({
         title: '提示',
         content: content,
         showCancel: false,
         success: function(res) {
           if (res.confirm) {
-            console.log('用户点击确定')
+            callback && callback();
           }
         }
       })
@@ -85,6 +85,21 @@ var Global = {
             },
             success: function(res) {
                 callback(res);
+            }
+        });
+    },
+    // 获取预约时长配置
+    getApTimeConf: function (callback) {
+        wx.request({
+            url: root + '/photoBazaar/index/apTimeConf',
+            data: {},
+            medthod: 'post',
+            header:{
+                "Content-Type":"application/json"
+            },
+            success: function(res) {
+                callback(res);
+                console.log(res)
             }
         });
     },

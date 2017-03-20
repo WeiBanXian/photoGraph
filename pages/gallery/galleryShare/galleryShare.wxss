@@ -9,12 +9,6 @@
     background: #F9F9F9;
 }
 
-.cancelWrapper {
-    position: absolute;
-    top: 0;
-    right: 0;
-}
-
 .deleteWrapper {
     position: fixed;
     right: 10rpx;

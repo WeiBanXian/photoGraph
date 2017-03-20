@@ -15,8 +15,9 @@ Page({
     startDate: "2016-09-01",
     time: "12:00",
     startTime: "00:00",
-    timeLength: ["1.0 小时", "1.5 小时", "2.0 小时", "2.5 小时", "3.0 小时", "3.5 小时", "4.0 小时"],
-    timeLengthIndex: 0,
+    timeLength: ["1.0", "1.5", "2.0", "2.5", "3.0", "3.5", "4.0"],
+    timeLengthIndex: 2,
+    shootTime: "2",
     userName: "",
     gender: 0,
     mobile: ""
@@ -50,6 +51,18 @@ Page({
         imageList: imageList
       });
     }.bind(this));
+    GlobalServer.getApTimeConf(function (res) {
+      var maxHour = 4,minHour = 1,step = 30;
+      var hourTimes = step/60;
+      var hourLength = (maxHour-minHour)*60/30;
+      var timeLength = [];
+      for (var i=0;i<=hourLength;i++) {
+        timeLength.push(minHour+i*hourTimes+'');
+      }
+      this.setData({
+        timeLength: timeLength
+      });
+    }.bind(this));
   },
   onShow:function(){
     var appInstance = getApp();
@@ -78,8 +91,9 @@ Page({
   // 时长
   handleSelectTimeLength: function(e) {
     this.setData({
+      shootTime: e.detail.value,
       timeLengthIndex: e.detail.value
-    });
+    })
   },
   // 日期,
   bindDateChange:function(e){
@@ -126,7 +140,7 @@ Page({
     OrderServer.setLocationText(this.data.locationText+this.data.detailAddress);
     OrderServer.setDetailAddress(this.data.detailAddress);
     OrderServer.setType(this.data.type);
-    OrderServer.setTimeLength(this.data.timeLength);
+    OrderServer.setShootTime(this.data.timeLength[this.data.shootTime]*60);
     OrderServer.setDate(bookTimestamp);
     OrderServer.setDateStr(this.data.date + " " + this.data.time);
     OrderServer.setUserName(this.data.userName);

@@ -1,0 +1,26 @@
+<view class="galleryWrapper">
+    <view class="blockWrapper">
+        <view class="block">
+            <view class="picsWrapper">
+                <image
+                    class="pic"
+                    mode="aspectFill"
+                    wx:for="{{galleryList}}"
+                    wx:key="unique"
+                    wx:for-item="item"
+                    src="{{item.photourl + '?imageMogr2/thumbnail/!20p'}}"
+                    data-src="{{item.photourl}}"
+                    data-index="{{index}}"
+                    bindtap="handlePreviewImage">
+                </image>
+            </view>
+        </view>
+    </view>
+    <view class="emptyWrapper" wx:if="{{imageList.length == 0}}">
+        <image class="empty" mode="aspectFit" src="https://fe.c360dn.com/wxapps/photograph/images/order/photo_nodata%403x.png"></image>
+    </view>
+    <view class="deleteWrapper">
+        <button type="primary" size="mini" loading="{{false}}" plain="{{false}}"
+                disabled="{{false}}" bindtap="handleGoToHome" hover-class="other-button-hover">进入首页</button>
+    </view>
+</view>

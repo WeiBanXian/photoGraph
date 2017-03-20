@@ -9,6 +9,12 @@
     background: #FF0;
 }
 
+.deleteWrapper {
+    position: fixed;
+    right: 10rpx;
+    bottom: 10rpx;
+}
+
 .blockWrapper {
     background: #F9F9F9;
 }
@@ -32,6 +38,12 @@
     background-image: url("../../resource/images/logoBg.png");
     background-size: 100% 100%;
     background-color: #EEE;
+}
+
+.cancelWrapper {
+    position: absolute;
+    top: 0;
+    right: 0;
 }
 
 .emptyWrapper {

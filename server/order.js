@@ -52,11 +52,11 @@ var Order = {
         return this._detailAddress;
     },
     // 时长
-    setTimeLength: function (_timeLength) {
-        this._timeLength = _timeLength;
+    setShootTime: function (_shootTime) {
+        this._shootTime = _shootTime;
     },
-    getTimeLength: function () {
-        return this._timeLength;
+    getShootTime: function () {
+        return this._shootTime;
     },
     // 日期（时间戳）
     setDate: function (_date) {
@@ -233,6 +233,7 @@ var Order = {
             lng: this.getLongitude(),        // 纬度
             type: this.getType(),            // 拍摄服务类型：1-8 场景 ; 0,快拍
             bookDate: this.getDate(),        // 预约时间
+            shootTime: this.getShootTime(),        // 预约时长
             place: this.getLocationText(),   // 预约地点
             sex: this.getGender(),           // 性别，默认为 0/女, 1/男
             name: this.getUserName(),        // 姓名
@@ -423,9 +424,6 @@ var Order = {
     },
     // 获取云端照片
     getOrderPhoto: function (sp, callback) {
-        if (sp > 1) {
-
-        }
         var url = root + "/photoBazaar/sPro/orderPhoto";
         var data = {
             uid: UserServer.getUserId(),
@@ -446,6 +444,34 @@ var Order = {
             },
             complete: function () {
                 wx.hideToast();
+            }
+        });
+    },
+    // 删除云端照片
+    getDelPhotos: function (pid, callback) {
+        wx.showToast({
+            title: '删除中...',
+            icon: 'loading',
+            duration: 10000
+        });
+        var url = root + "/photoBazaar/sPro/delPhotos";
+        var data = {
+            uid: UserServer.getUserId(),
+            pid: pid
+        };
+        wx.request({
+            url: url,
+            data: data?data:{},
+            header:{
+                "Content-Type":"application/json"
+            },
+            success: function(result) {
+                callback && callback(result)
+            }.bind(this),
+            fail: function () {
+                message.alert("照片删除失败，请稍候重试");
+            },
+            complete: function () {
             }
         });
     },
@@ -618,6 +644,7 @@ var Order = {
                     this.setNonceStr(result.data.data.sdk.nonceStr);
                     this.setPackage(result.data.data.sdk.package);
                     this.setPaySign(result.data.data.sdk.paySign);
+                    this.setSignType(result.data.data.sdk.signType);
                     callback && callback(result)
                 } else {
                     message.alert("支付唤起失败，请重试！");
@@ -664,6 +691,14 @@ var Order = {
         return this._paySign;
     },
 
+    setSignType: function (_signType) {
+        this._signType = _signType;
+    },
+
+    getSignType: function () {
+        return this._signType;
+    },
+
     // 支付
     payOrder: function (callback) {
         wx.showToast({
@@ -675,20 +710,26 @@ var Order = {
             timeStamp: this.getTimeStamp(),
             nonceStr: this.getNonceStr(),
             package: this.getPackage(),
-            signType: "MD5",
+            signType: this.getSignType(),
             paySign: this.getPaySign(),
             success: function(result) {
-                if (result.data.status == 200) {
-                    callback && callback(result)
+                if (result.errMsg.indexOf("ok") > -1) {
+                    message.alert("支付成功！", function () {
+                        this.setIsCancelOrder(true);
+                        wx.navigateBack();
+                    }.bind(this));
                 } else {
                     message.alert("支付失败，请重试！");
                 }
             }.bind(this),
-            fail: function () {
+            fail: function (errMsg) {
                 message.alert("支付失败，请重试！");
             },
-            complete: function (result) {
+            complete: function (res) {
                 wx.hideToast();
+                if (res.errMsg.indexOf("cancel") > -1) {
+                    message.alert("支付取消！");
+                }
             }
         });
     },

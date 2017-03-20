@@ -5,17 +5,38 @@
                 <image
                     class="pic"
                     mode="aspectFill"
-                    wx:for="{{imageList}}"
+                    wx:for="{{galleryList}}"
                     wx:key="unique"
                     wx:for-item="item"
-                    src="{{item}}"
-                    data-src="{{item + '?imageMogr2/thumbnail/!20p'}}"
+                    src="{{item.photourl + '?imageMogr2/thumbnail/!20p'}}"
+                    data-src="{{item.photourl}}"
                     data-index="{{index}}"
-                    bindtap="handlePreviewImage" />
+                    bindtap="handlePreviewImage"
+                    catchlongtap="handleCatchlongChooseImage">
+                    <view
+                        class="cancelWrapper"
+                        catchtap="handleChooseImage"
+                        data-index="{{index}}"
+                        data-pid="{{item.pid}}"
+                        hidden="{{!readyDelete}}">
+                        <icon type="success" size="28" color="red" wx:if="{{item.hasChosed}}"/>
+                        <icon type="circle" size="28" color="#AAA" wx:else/>
+                    </view>
+                </image>
             </view>
         </view>
     </view>
     <view class="emptyWrapper" wx:if="{{imageList.length == 0}}">
         <image class="empty" mode="aspectFit" src="https://fe.c360dn.com/wxapps/photograph/images/order/photo_nodata%403x.png"></image>
+    </view>
+    <view class="deleteWrapper" wx:if="{{readyDelete}}">
+        <button type="warn" size="mini" loading="{{false}}" plain="{{false}}"
+                disabled="{{false}}" bindtap="handleDeleteImage" hover-class="other-button-hover">删除</button>
+        <button type="default" size="mini" loading="{{false}}" plain="{{false}}" style="margin-left: 10rpx;"
+                disabled="{{false}}" bindtap="handleCancelDelete" hover-class="other-button-hover">取消</button>
+    </view>
+    <view class="deleteWrapper" wx:else hidden="{{!isCanDelete}}">
+        <button type="primary" size="mini" loading="{{false}}" plain="{{false}}"
+                disabled="{{false}}" bindtap="handleCatchlongChooseImage" hover-class="other-button-hover">编辑</button>
     </view>
 </view>

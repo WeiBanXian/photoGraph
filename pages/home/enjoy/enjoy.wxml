@@ -14,7 +14,7 @@
         </view>
         <view class="column">
             <image class="columnPic" src="https://fe.c360dn.com/wxapps/photograph/images/photoSample/photoSample_photo%403x.png"></image>
-            <text class="columnText">照片27张</text>
+            <text class="columnText">照片全送</text>
         </view>
         <view class="column">
             <image class="columnPic" src="https://fe.c360dn.com/wxapps/photograph/images/photoSample/photoSample_photographer%403x.png"></image>

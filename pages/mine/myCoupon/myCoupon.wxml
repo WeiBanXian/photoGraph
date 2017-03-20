@@ -3,6 +3,19 @@
         <image class="empty" mode="aspectFit" src="https://fe.c360dn.com/wxapps/photograph/images/coupon/coupon_nodata%403x.png" />
     </view>
     <view class="rowWrapper" wx:else>
+        <view class="row" wx:for="{{couponList}}" wx:key="unique" wx:for-index="index" wx:for-item="item" wx:if="{{item.status == 1}}">
+            <view class="leftWrapper">
+                <text class="titleText">想拍就拍VIP优惠券</text>
+                <view class="midWrapper">
+                    <text class="yuanText">￥</text>
+                    <text class="moneyText">{{item.amount}}</text>
+                </view>
+                <image class="linePic" src="https://fe.c360dn.com/wxapps/photograph/images/coupon/coupon_line@2x.png"/>
+                <text class="dateText">有效期从{{item.startTime}}至{{item.endTime}}</text>
+            </view>
+            <image class="statusSquarePic" src="https://fe.c360dn.com/wxapps/photograph/images/coupon/coupon_noused_bg%403x.png"/>
+            <image class="statusTextPic" mode="aspectFit" src="https://fe.c360dn.com/wxapps/photograph/images/coupon/coupon_noused%403x.png"/>
+        </view>
         <view class="row" wx:for="{{couponList}}" wx:key="unique" wx:for-index="index" wx:for-item="item" wx:if="{{item.status == 3}}">
             <view class="leftWrapper">
                 <text class="titleText">想拍就拍VIP优惠券</text>
@@ -30,19 +43,6 @@
             <image class="statusRoundPic" mode="aspectFit" src="https://fe.c360dn.com/wxapps/photograph/images/coupon/coupon_overdateStatus%403x.png"/>
             <image class="statusSquarePic" src="https://fe.c360dn.com/wxapps/photograph/images/coupon/coupon_hasused_bg%403x.png"/>
             <image class="statusTextPic" mode="aspectFit" src="https://fe.c360dn.com/wxapps/photograph/images/coupon/coupon_overdate%403x.png"/>
-        </view>
-        <view class="row" wx:for="{{couponList}}" wx:key="unique" wx:for-index="index" wx:for-item="item" wx:if="{{item.status == 1}}">
-            <view class="leftWrapper">
-                <text class="titleText">想拍就拍VIP优惠券</text>
-                <view class="midWrapper">
-                    <text class="yuanText">￥</text>
-                    <text class="moneyText">{{item.amount}}</text>
-                </view>
-                <image class="linePic" src="https://fe.c360dn.com/wxapps/photograph/images/coupon/coupon_line@2x.png"/>
-                <text class="dateText">有效期从{{item.startTime}}至{{item.endTime}}</text>
-            </view>
-            <image class="statusSquarePic" src="https://fe.c360dn.com/wxapps/photograph/images/coupon/coupon_noused_bg%403x.png"/>
-            <image class="statusTextPic" mode="aspectFit" src="https://fe.c360dn.com/wxapps/photograph/images/coupon/coupon_noused%403x.png"/>
         </view>
     </view>
 </view>
